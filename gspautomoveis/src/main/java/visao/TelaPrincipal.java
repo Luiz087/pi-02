@@ -42,8 +42,8 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\imagens\\Design sem nome.png"));
-		lblNewLabel.setBounds(0, 0, 350, 1041);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\imagens\\Borda telas principais.png"));
+		lblNewLabel.setBounds(-11, 0, 350, 1041);
 		contentPane.add(lblNewLabel);
 	}
 }

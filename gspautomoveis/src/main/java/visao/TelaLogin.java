@@ -18,6 +18,7 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					TelaLogin frame = new TelaLogin();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

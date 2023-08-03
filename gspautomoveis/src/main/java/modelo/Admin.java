@@ -1,8 +1,9 @@
 package modelo;
 
-public class Admin {
+public class Admin extends Pessoa {
 
 	private String adminusuario;
+	private String senhausuario;
 
 	public String getAdminusuario() {
 		return adminusuario;
@@ -19,7 +20,5 @@ public class Admin {
 	public void setSenhausuario(String senhausuario) {
 		this.senhausuario = senhausuario;
 	}
-
-	private String senhausuario;
 
 }

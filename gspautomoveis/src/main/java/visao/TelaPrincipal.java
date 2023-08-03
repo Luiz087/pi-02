@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipal extends JFrame {
 
@@ -37,6 +40,10 @@ public class TelaPrincipal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\imagens\\Design sem nome.png"));
+		lblNewLabel.setBounds(0, 0, 350, 1041);
+		contentPane.add(lblNewLabel);
 	}
-
 }

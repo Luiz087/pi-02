@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipalFunc extends JFrame {
 
@@ -40,5 +42,10 @@ public class TelaPrincipalFunc extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\pi-02\\gspautomoveis\\imagens\\Design sem nome.png"));
+		lblNewLabel.setBounds(0, 0, 603, 1051);
+		contentPane.add(lblNewLabel);
 	}
 }

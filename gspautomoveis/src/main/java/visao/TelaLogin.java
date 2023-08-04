@@ -20,8 +20,9 @@ public class TelaLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaLogin frame = new TelaLogin();
-					frame.setVisible(true);
+					TelaLogin telaLogin = new TelaLogin();
+					telaLogin.setLocationRelativeTo(null);
+					telaLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,9 +43,9 @@ public class TelaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\imagens\\Bem-Vindo.png"));
-		lblNewLabel.setBounds(-16, -384, 361, 1286);
-		contentPane.add(lblNewLabel);
+		JLabel imgLateral = new JLabel("");
+		imgLateral.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/bemvindologin.png")));
+		imgLateral.setBounds(-16, -384, 361, 1286);
+		contentPane.add(imgLateral);
 	}
 }

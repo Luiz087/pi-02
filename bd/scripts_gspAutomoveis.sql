@@ -1,11 +1,11 @@
 -- Excliui o banco de dados
-DROP DATABASE IF EXISTS curintia;
+DROP DATABASE IF EXISTS gspAutomoveis;
 
 -- CRIA O BANCO DE DADOS
-CREATE DATABASE IF NOT EXISTS curintia;
+CREATE DATABASE IF NOT EXISTS gspAutomoveis;
 
--- USA O BANCO DE DADOS curiintia
-USE curintia;
+-- USA O BANCO DE DADOS gspAutomoveis
+USE gspAutomoveis;
 
 CREATE TABLE IF NOT EXISTS `enderecos` (
   `cep` BIGINT NOT NULL,
@@ -18,10 +18,9 @@ CREATE TABLE IF NOT EXISTS `enderecos` (
 
 CREATE TABLE IF NOT EXISTS `fornecedores` (
   `id_fornecedor` BIGINT NOT NULL auto_increment,
-  `nome` VARCHAR(45) NOT NULL,
-  `endereco` VARCHAR(45) NOT NULL,
-  `cnpj` BIGINT NOT NULL,
-  `telefone` BIGINT NOT NULL,
+  `nomeFornecedor` VARCHAR(45) NOT NULL,
+  `cnpjFornecedor` BIGINT NOT NULL,
+  `telefoneFornecedor` BIGINT NOT NULL,
   `empresa` VARCHAR(45) NOT NULL,
   `endereco_cep` BIGINT NOT NULL,
   PRIMARY KEY (`id_fornecedor`),
@@ -29,45 +28,18 @@ CREATE TABLE IF NOT EXISTS `fornecedores` (
   ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS `veiculos` (
-  `id_veiculo` BIGINT NOT NULL auto_increment,
-  `modelo` VARCHAR(45) NOT NULL,
-  `novos` TINYINT NOT NULL,
-  `eletrico` TINYINT NOT NULL,
-  `esportivo` TINYINT NOT NULL,
-  `picape` TINYINT NOT NULL,
-  `ano` INT NOT NULL,
-  `cor` VARCHAR(45) NOT NULL,
-  `marca` VARCHAR(45) NOT NULL,
-  `preco` DOUBLE NOT NULL,
-  `quilometragem` FLOAT NOT NULL,
-  `potencia` INT NOT NULL,
-  `abs` TINYINT NOT NULL,
-  `fornecedor_id_fornecedor` BIGINT NOT NULL,
-  PRIMARY KEY (`id_veiculo`),
-  CONSTRAINT `fk_veiculos_fornecedor1` FOREIGN KEY (`fornecedor_id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`)
-  ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS `clientes` (
-  `id_cliente` BIGINT NOT NULL auto_increment,
-  `nome` VARCHAR(45) NOT NULL,
-  `cpf` BIGINT NOT NULL,
-  `usuario` VARCHAR(45) NOT NULL,
-  `telefone` BIGINT NOT NULL,
-  `gmail` VARCHAR(45) NOT NULL,
-  `table1_cep` BIGINT NOT NULL,
-  PRIMARY KEY (`id_cliente`),
-  CONSTRAINT `fk_clientes_table11` FOREIGN KEY (`table1_cep`) REFERENCES `enderecos` (`cep`)
-  ON DELETE CASCADE
-);
-
 CREATE TABLE IF NOT EXISTS `funcionarios` (
   `matricula` BIGINT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `cpf` BIGINT NOT NULL,
-  `contato` BIGINT NOT NULL,
+  `telefone` BIGINT NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `dataDeNasc` DATE NOT NULL,
+  `usuario` VARCHAR(45) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
+  `NivelCargo` VARCHAR(45) NOT NULL,
   `salario` DOUBLE NOT NULL,
+  `comissao` DOUBLE NOT NULL,
   `funcao` VARCHAR(45) NOT NULL,
   `enderecos_cep` BIGINT NOT NULL,
   PRIMARY KEY (`matricula`),
@@ -75,9 +47,27 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS `veiculos` (
+  `id_veiculo` BIGINT NOT NULL auto_increment,
+  `modelo` VARCHAR(45) NOT NULL,
+  `novo_usado` VARCHAR(45) NOT NULL,
+  `ano` INT NOT NULL,
+  `cor` VARCHAR(45) NOT NULL,
+  `marca` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `combustivel` VARCHAR(45) NOT NULL,
+  `quilometragem` FLOAT NOT NULL,
+  `potencia` INT NOT NULL,
+  `abs` TINYINT NOT NULL,
+  `preco` DOUBLE NOT NULL,
+  `fornecedor_id_fornecedor` BIGINT NOT NULL,
+  PRIMARY KEY (`id_veiculo`),
+  CONSTRAINT `fk_veiculos_fornecedor1` FOREIGN KEY (`fornecedor_id_fornecedor`) REFERENCES `fornecedores` (`id_fornecedor`)
+  ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS `vendidos` (
   `veiculos_id_veiculo` BIGINT NOT NULL auto_increment,
-  `clientes_id_cliente` BIGINT NOT NULL,
   `funcionarios_matricula` BIGINT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `cpf` BIGINT NOT NULL,
@@ -87,11 +77,8 @@ CREATE TABLE IF NOT EXISTS `vendidos` (
   `tipo_veiculo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (
     `veiculos_id_veiculo`,
-    `clientes_id_cliente`,
     `funcionarios_matricula`
   ),
-  CONSTRAINT `fk_carros_has_clientes_carros1` FOREIGN KEY (`veiculos_id_veiculo`) REFERENCES `veiculos` (`id_veiculo`) ON DELETE CASCADE,
-  CONSTRAINT `fk_carros_has_clientes_clientes1` FOREIGN KEY (`clientes_id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE CASCADE,
   CONSTRAINT `fk_vendidos_funcionarios1` FOREIGN KEY (`funcionarios_matricula`) REFERENCES `funcionarios` (`matricula`)
   ON DELETE CASCADE
 );

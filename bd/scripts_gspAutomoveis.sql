@@ -49,15 +49,15 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
 
 CREATE TABLE IF NOT EXISTS `veiculos` (
   `id_veiculo` BIGINT NOT NULL auto_increment,
+  `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
   `novo_usado` VARCHAR(45) NOT NULL,
   `ano` INT NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
-  `marca` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
   `combustivel` VARCHAR(45) NOT NULL,
   `quilometragem` FLOAT NOT NULL,
-  `potencia` INT NOT NULL,
+  `potencia` VARCHAR(45),
   `abs` TINYINT NOT NULL,
   `preco` DOUBLE NOT NULL,
   `fornecedor_id_fornecedor` BIGINT NOT NULL,
@@ -68,10 +68,11 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
 
 CREATE TABLE IF NOT EXISTS `vendidos` (
   `veiculos_id_veiculo` BIGINT NOT NULL auto_increment,
-  `funcionarios_matricula` BIGINT NOT NULL,
+  `funcionarios_matricula` BIGINT NOT NULL auto_increment,
   `nome` VARCHAR(45) NOT NULL,
   `cpf` BIGINT NOT NULL,
   `usuario` VARCHAR(45) NOT NULL,
+  `dataVenda` DATE NOT NULL,
   `ipva_pago` TINYINT NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
   `tipo_veiculo` VARCHAR(45) NOT NULL,
@@ -109,135 +110,79 @@ insert into enderecos (cep, rua, bairro, cidade, estado) values (11255228, 'Sher
 insert into enderecos (cep, rua, bairro, cidade, estado) values (21911141, 'Karstens', 'belchior', 'Roanoke', 'Virginia');
 insert into enderecos (cep, rua, bairro, cidade, estado) values (5445448, 'Columbus', 'santa terezinha', 'Lake Charles', 'Louisiana');
 
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Robyn', 18956452766, 'rtitherington0', 4657299931, 'rfandrey0@wisc.edu', 98860771);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Celestyna', 91331353668, 'ccrosfeld1', 9971740985, 'chagland1@illinois.edu', 26360149);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Rafa', 67744441278, 'rgrenshiels2', 4319182549, 'rrobberecht2@unesco.org', 24971323);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Charin', 96494156688, 'csheen3', 8169258044, 'cyegorovnin3@marketwatch.com', 32813459);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Lynda', 34788559069, 'lduff4', 9945226425, 'lneno4@harvard.edu', 33395580);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('James', 22709649232, 'jarchibold5', 9476807421, 'jfarran5@aboutads.info', 66575921);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Jacques', 87889630908, 'jboeter6', 4331319037, 'jpixton6@vkontakte.ru', 18853418);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Hazlett', 482024287, 'holohan7', 9697684928, 'hdeye7@fastcompany.com', 77727522);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Cyndie', 72304745218, 'cbraams8', 4133377466, 'cnyland8@yelp.com', 53015239);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Douglas', 45911620590, 'dfozard9', 1532862367, 'draddan9@google.es', 90807252);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Eustacia', 31545224611, 'epymera', 4103170962, 'eduligala@smh.com.au', 83300006);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Julee', 13125889119, 'jadamssonb', 1056747069, 'jridulfob@facebook.com', 6131187);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Truman', 46899517, 'tgerardetc', 6461550127, 'tbeevensc@netscape.com', 72792903);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Matthiew', 96685581525, 'medgesond', 9823514339, 'mdranced@ocn.ne.jp', 90000298);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Shurlocke', 69654608887, 'smacmanuse', 4206531275, 'selwille@dailymotion.com', 41222385);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Welsh', 72963837431, 'wdeehanf', 1081253378, 'wlangloisf@vkontakte.ru', 71727947);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Wilow', 57188333261, 'wlittong', 8556876778, 'wgoalbyg@gov.uk', 8599487);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Loralyn', 78970686787, 'lmarcosh', 2259586348, 'lkaneh@zimbio.com', 98012944);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Wat', 32943852831, 'wleecei', 6242771387, 'wfilimorei@omniture.com', 37621074);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Sydney', 92443427080, 'sortsj', 5734164916, 'sdustingj@list-manage.com', 96883597);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Andonis', 54306584432, 'akyteleyk', 6033352196, 'aliddyardk@chron.com', 57268243);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Kris', 69828689652, 'kguiotl', 558945865, 'kolekl@issuu.com', 95428790);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Layne', 25924043154, 'lmctrustamm', 9456849032, 'lspittlesm@stumbleupon.com', 11255228);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Eleanor', 21929322727, 'eiacovinin', 1381196750, 'elovickn@cbsnews.com', 21911141);
-insert into clientes (nome, cpf, usuario, telefone, gmail, table1_cep) values ('Briny', 83011432641, 'bcrickmooro', 5402217159, 'bferrierioo@europa.eu', 5445448);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Kristofor', 53217593721871, 5636417237, 'Jabberstorm', 98860771);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Marrilee', 78269610408621, 3784328039, 'Jabberstorm', 26360149);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Mag', 83280557412092, 8125576004, 'Tanoodle', 24971323);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Almire', 74390089876469, 6116345912, 'Fatz', 32813459);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Deedee', 32852831345065, 8161722760, 'Twimm', 33395580);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Billie', 96351611588770, 7744863586, 'Zoomlounge', 66575921);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Minny', 72377443654307, 3512203764, 'Jaxnation', 18853418);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Melinda', 76062709614653, 9555072911, 'Eazzy', 77727522);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Benedikta', 90187484363241, 8638928930, 'Kwimbee', 53015239);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Myra', 89911952851122, 6932423640, 'Dabjam', 53015239);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Catlaina', 98650769044682, 6685031243, 'Gabtune', 83300006);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Peggie', 33299526629846, 1194827427, 'Ntag', 6131187);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Dedra', 11387936755749, 5239009837, 'Eidel', 72792903);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Sarette', 88663418924071, 6732888702, 'Livepath', 90000298);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Deanne', 45166963392729, 6841988947, 'Riffwire', 41222385);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Merill',30123472017368, 6368080537, 'Quaxo', 71727947);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Orbadiah', 8849905555117, 4474275724, 'Yombu', 8599487);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Wolfgang', 28273531692793, 4141608193, 'Brainbox', 98012944);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Sanderson', 33218317298271, 6361220266, 'Ailane', 37621074);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Sula', 87503816182502, 7623216188, 'Thoughtworks', 96883597);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Vaughn', 71754551268602, 8324792894, 'Chatterpoint', 57268243);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Massimo', 81175078723725, 8591088193, 'Feedmix', 95428790);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Hubert', 94092745482858, 4314329449, 'Demivee', 11255228);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Blisse', 90414339055026, 6405793349, 'Youfeed', 21911141);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, endereco_cep) values ('Barron', 40384711421368, 6445590003, 'Blogspan', 5445448);
 
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Kristofor', 'Apt 1796', 53217593721871, 5636417237, 'Jabberstorm', 98860771);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Marrilee', '8th Floor', 78269610408621, 3784328039, 'Jabberstorm', 26360149);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Mag', 'Suite 64', 83280557412092, 8125576004, 'Tanoodle', 24971323);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Almire', 'PO Box 9643', 74390089876469, 6116345912, 'Fatz', 32813459);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Deedee', 'Room 42', 32852831345065, 8161722760, 'Twimm', 33395580);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Billie', 'PO Box 96465', 96351611588770, 7744863586, 'Zoomlounge', 66575921);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Minny', '4th Floor', 72377443654307, 3512203764, 'Jaxnation', 18853418);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Melinda', '4th Floor', 76062709614653, 9555072911, 'Eazzy', 77727522);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Benedikta', '9th Floor', 90187484363241, 8638928930, 'Kwimbee', 53015239);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Myra', 'PO Box 79123', 89911952851122, 6932423640, 'Dabjam', 53015239);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Catlaina', 'PO Box 89699', 98650769044682, 6685031243, 'Gabtune', 83300006);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Peggie', 'Room 1150', 33299526629846, 1194827427, 'Ntag', 6131187);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Dedra', 'Room 1512', 11387936755749, 5239009837, 'Eidel', 72792903);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Sarette', 'PO Box 31637', 88663418924071, 6732888702, 'Livepath', 90000298);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Deanne', 'Suite 10', 45166963392729, 6841988947, 'Riffwire', 41222385);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Merill', '5th Floor', 30123472017368, 6368080537, 'Quaxo', 71727947);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Orbadiah', 'Apt 1924', 8849905555117, 4474275724, 'Yombu', 8599487);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Wolfgang', 'PO Box 49458', 28273531692793, 4141608193, 'Brainbox', 98012944);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Sanderson', 'PO Box 93358', 33218317298271, 6361220266, 'Ailane', 37621074);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Sula', 'Apt 1679', 87503816182502, 7623216188, 'Thoughtworks', 96883597);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Vaughn', 'Apt 488', 71754551268602, 8324792894, 'Chatterpoint', 57268243);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Massimo', 'Room 687', 81175078723725, 8591088193, 'Feedmix', 95428790);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Hubert', '16th Floor', 94092745482858, 4314329449, 'Demivee', 11255228);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Blisse', 'Suite 23', 90414339055026, 6405793349, 'Youfeed', 21911141);
-insert into fornecedores (nome, endereco, cnpj, telefone, empresa, endereco_cep) values ('Barron', 'Apt 375', 40384711421368, 6445590003, 'Blogspan', 5445448);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', 'Novo', 2021, 'Prata', 'Hatchback,' 'Gasolina e álcool', 0, '128 cv', true, 81.111, 2);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', 'Novo', 2023, 'Preto', 'Suv', 'Gasolina', 0, '690 cv',  true, 1.950.000, 1);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Fiat', 'Toro', 'Usado', 2018, 'Cinza', 'Picape', 'Gasolina e álcool', 29.638, '139 cv', true, 90.900, 3);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Chevette', 'Usado', 1976, 'Preto', 'Cupê', 'Gasolina', 100.000, '68 cv', false, 32.000, 4);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Renault', 'Megane', 'Usado', 2010, 'Preto', 'sedã', 'Gasolina e álcool', 111.000, '115 cv', true, 27.000, 5);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Ford', 'Fusion', 'Usado', 2012, 'Prata', 'Sedã', 'Gasolina', 136.000, '173 cv', true, 41.500, 6);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Mazda', 'MX-3', 'Usado', 1997, 'Vermelho', 'Cupê', 'Gasolina', 130.000, '106 cv', false, 44.000, 7);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Ford', 'Edge', 'Usado', 2019, 'Preto', 'Suv', 'Gasolina', 27.270, '335 cv', true, 244.900, 8);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('GMC', 'Sierra 1500', 'Novo', 2022, 'azul', 'Picape', 'Diesel', 0, '280 cv', true, 1.250.000, 9);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Dodge', 'Ram 2500', 'Usado', 2020, 'Preto', 'Picape', 'Diesel', 35.653, '330 cv', true, 472.990, 10);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Mercedes-Benz', 'GLC 300', 'Usado', 2021, 'Azul', 'Suv', 'Gasolina', 13.000, '254 cv', true, 489.900, 11);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Hyundai', 'I30', 'Usado', 2015, 'branco', 'Hatch', 'Gasolina', 96.000, '150 cv', true, 63.000, 12);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Audi', 'Rs3', 'Usado', 2018, 'Vermelho', 'Sedã', 'Gasolina', 41.000, '400 cv', true, 380.000, 13);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Kia', 'Sportage', 'Usado', 2021, 'Azul', 'Suv', 'Gasolina e álcool', 10.500, '178 cv', true, 120.000, 14);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Honda', 'Accord', 'Usado', 1993, 'Preto', 'Sedã', 'Gasolina', 220.000, '158 cv', false, 65.000, 15);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Toyota', 'Corolla', 'Usado', 2020, 'branco', 'Sedã', 'Gasolina e elétrico', 35.000, '143 cv', true, 148.990, 16);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Mitsubishi', 'lancer Evolution', 'Usado', 2015, 'Vermelho,' 'Sedã', 'Gasolina', 75.737, 1991, '340 cv', true, 189.900, 17);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Volkswagen', 'Golf GTI', 'Usado', 2019, 'Branco', 'hatch', 'Gasolina', 55.000, '220 cv', true, 199.900, 18);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Camaro', 'Usado', 2019, 'Laranja', 'Cupê', 'Gasolina', 22.000, '406 cv', true, 411.500, 19);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Ferrari', 'California', 'Usado', 2014, 'Amarelo', 'Cupê', 'Gasolina', 20.931, '460 cv', true, 1.790.000, 20);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('GMC', 'Hummer', 'Novo', 2022, 'Branco', 'Picape', 'Gasolina e elétrico', 0, '1.014 cv', true, 2.499.990, 21);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Chrysler', '300 C', 'Usado', 2012, 'Prata', 'Sedã', 'Gasolina', 53.862, '296 cv', true, 125.990, 22);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Silverado 1500', 'Usado', 2022, 'Azul', 'Picape', 'Diesel', 5.000, '281 cv', true, 1.050.000, 23);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Porshe', 'Panamera', 'Usado', 2022, 'Roxo', 'Sedã', 'gasolina e elétrico', 10.808, '462 cv', true, 935.000, 24);
+insert into veiculos (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('Lamborguini', 'Huracan', 'Novo', 2022, 'Verde', 'Cupê', 'Gasolina', 0, '640 cv', true, 5.430.000, 25);
 
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', 93, 65, false, false, true, false, 2007, 'Orange', true, 617175, 1);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Volkswagen', 'Touareg', 37, 61, false, false, false, true, 2008, 'Mauv', true, 15930, 2);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Lincoln', 'Navigator', 82, 36, true, false, true, false, 2011, 'Mauv', true, 781195, 3);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Corvair 500', 37, 9, true, true, true, true, 1963, 'Blue', false, 697034, 4);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Lincoln', 'Navigator', 85, 37, false, false, true, false, 2011, 'Puce', false, 958820, 5);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Ford', 'Fusion', 12, 35, true, false, false, true, 2009, 'Blue', true, 929550, 6);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Mazda', 'MX-3', 82, 15, false, true, true, false, 1992, 'Aquamarine', true, 136048, 7);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Ford', 'Edge', 48, 24, false, false, false, false, 2012, 'Goldenrod', false, 759029, 8);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('GMC', 'Sierra 1500', 26, 40, false, false, false, false, 2007, 'Blue', true, 718194, 9);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Dodge', 'D150', 51, 30, false, false, false, true, 1993, 'Blue', true, 774026, 10);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Mercedes-Benz', 'S-Class', 40, 7, true, true, false, false, 2005, 'Goldenrod', false, 907369, 11);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Corsica', 61, 99, false, true, false, true, 1994, 'Yellow', true, 443048, 12);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Ford', 'LTD', 90, 35, false, false, false, false, 1985, 'Blue', false, 676606, 13);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Buick', 'LeSabre', 3, 86, false, false, true, false, 1997, 'Pink', false, 652142, 14);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Honda', 'Odyssey', 7, 53, false, false, false, true, 2006, 'Teal', true, 383120, 15);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Volkswagen', 'riolet', 33, 53, false, true, true, true, 1992, 'Yellow', false, 347595, 16);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Mercury', 'Capri', 46, 80, false, true, true, false, 1991, 'Fuscia', false, 456100, 17);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Dodge', 'Viper RT/10', 79, 86, true, true, false, true, 1995, 'Goldenrod', true, 766662, 18);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Chevrolet', 'Malibu Maxx', 73, 71, false, false, false, false, 2006, 'Turquoise', true, 759542, 19);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Hummer', 'H3', 12, 87, true, true, false, true, 2007, 'Purple', true, 210553, 20);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Hyundai', 'XG350', 15, 36, true, true, true, false, 2003, 'Orange', false, 909273, 21);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Chrysler', '300', 57, 88, false, true, true, false, 1999, 'Turquoise', true, 231672, 22);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Mitsubishi', 'Galant', 77, 59, true, false, false, false, 1993, 'Fuscia', true, 762517, 23);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Mercury', 'Grand Marquis', 1, 23, false, true, true, true, 2002, 'Mauv', false, 518766, 24);
-insert into veiculos (marca, modelo, potencia, quilometragem, novos, eletrico, esportivo, picape, ano, cor, abs, preco, fornecedor_id_fornecedor) values ('Plymouth', 'Colt Vista', 34, 85, true, false, false, false, 1994, 'Indigo', true, 583661, 25);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com' , 2005-07-08, 'Luiz047', 'Luizz123,' 'Administrador', 500.000, 2.5, 96883597);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', 2004-07-17, 'Gabriel047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
 
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Lindy', 22726014571, 13410553435, 723164, 'atendente', 98860771);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Jarret', 48791425360, 35980146935, 872439, 'controle de qualidade', 26360149);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Catrina', 80075228935, 19591078528, 34577, 'assistente financeiro', 24971323);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Karola', 15101050114, 77896118040, 60396, 'financeiro', 32813459);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Marsiella', 34307250676, 90680934226, 266864, 'anunciante', 33395580);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Bertha', 12463955569, 90116297387, 848844, 'limpador', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Ferguson', 58930365379, 46109461366, 752010, 'atendente', 33395580);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Natka', 89531149986, 35610619177, 904351, 'abastecedor', 32813459);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Klarrisa', 9836497788	, 91137859023, 366295, 'vendedor', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Lari', 9877551095, 63845844974, 916615, 'empresario', 24971323);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Grace', 23309499408, 67234740452, 514410, 'mecanico', 26360149);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Aila', 505005408, 81714544142, 254192, 'sócio proprietario', 98860771);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Cyrille', 23547659105, 71090598457, 228762, 'coordernador', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Marcile', 13348431197, 53528462624, 628954, 'Editor', 24971323);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Siegfried', 3552317540, 55399779452, 994769, 'Administrator', 26360149);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Pete', 12343440841, 77806073273, 182210, 'vendedor', 32813459);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Georgia', 39684215524, 5922694783, 808915, 'aprendiz de vendas', 24971323);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Berkley', 23432922723, 12278096315, 37000, 'Marketing', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Stefano', 80946074838, 83454126209, 288747, 'mecanico', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Meredithe', 33494134391, 84019606741, 461362, 'financiador', 33395580);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Zachary', 19495325321, 80874368814, 63220, 'gerente', 98860771);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Hanna', 50105009335, 36324574674, 768937, 'dono', 32813459);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Betti', 51034921685, 59913892801, 659172, 'atendente', 24971323);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Ashbey', 98288857125, 79896897818, 66949, 'limpador', 66575921);
-insert into funcionarios (nome, cpf, contato, salario, funcao, enderecos_cep) values ('Nani', 89697889863, 71680589359, 367649, 'vendedor', 98860771);
-
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Adelheid', 68704944920, 'SedVestibulum.ppt', false, 'Silhouette',1,1,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Vasily', 52884361363, 'EtTempus.xls', true, 'S10',2,2,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Herold', 7823368975, 'BlanditNon.tiff', false, 'Navigator',3,3,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Bengt', 49315960949, 'VelAugue.gif', false, 'VehiCROSS',4,4,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Lionello', 28282848725, 'Suspendisse.ppt', true, 'Expedition',5,5,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Ianthe', 96792793746, 'Nec.pdf', false, 'Suburban 1500',6,6,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Riane', 17360308262, 'Molestie.jpeg', true, 'E-Class',7,7,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Lyell', 9639596492, 'Luctus.mp3', true, 'Optima',8,8,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Alix', 23754333721, 'Ac.mov', true, 'Camaro',9,9,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Magdalene', 83304029884, 'LiberoRutrumAc.gif', true, 'Solara',10,10,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Darwin', 82630920672, 'OrciEgetOrci.xls', false, 'RAV4',11,11,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Jerry', 44004039565, 'UltricesErat.txt', false, 'Solara',12,12,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Clea', 89182525968, 'PedeJusto.gif', true, 'V70',13,13,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Robinia', 11987259151, 'Mauris.tiff', true, 'Beretta',14,14,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Rabbi', 49716363623, 'RisusSemperPorta.ppt', true, 'Cabriolet',15,15,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Karisa', 17698270604, 'IntegerAliquet.xls', true, 'XL-7',16,16,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Mikaela', 22032283259, 'ArcuAdipiscingMolestie.xls', false, 'Escalade EXT',17,17,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Alvis', 50868545150, 'OrciVehiculaCondimentum.xls', false, 'Silverado 3500',18,18,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Ertha', 35386100041, 'CongueDiam.mp3', false, 'MDX',19,19,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Conrade', 28482723167, 'Phasellus.xls', false, 'Horizon',20,20,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Dion', 81491983259, 'DiamNeque.tiff', true, 'Toronado',21,21,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Jacob', 19431254984, 'CuraeNullaDapibus.mp3', true, 'B-Series',22,22,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Melva', 37264335722, 'OdioOdioElementum.mp3', true, 'Defender 110',23,23,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('Hildagard', 90710219622, 'Nunc.txt', true, 'NV2500',24,24,'Picape');
-insert into vendidos (nome, cpf, usuario, ipva_pago, modelo,clientes_id_cliente,funcionarios_matricula,tipo_veiculo) values ('vhbjdfhg', 90710219623, 'Nunc.txt', true, 'NV2500',25,25,'Picape');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-03 true, 'Huracan','Cupê');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-03 true, 'Panemera','Sedã');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-05 false, '300 C','Sedã');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-05 false, 'Camaro','Cupê');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-10 true, 'Silverado 1500','Picape');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-10 false, 'California','Cupê');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-13 true, 'Golf GTI','Hatch');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-13 true, 'Corolla', 'Sedã');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 true, 'Sportage','Suv');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 true, 'I30','Hatch');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 false, 'GLC 300','Suv');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 false, 'polo', 'Hatch');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-22 true, 'Escalade Esv','Suv');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-22 true, 'Ram 2500','Picape');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-24 true, 'Fusion','Sedã');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-24 true, 'Chevette','Cupê');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-30 false, 'Toro','Picape');
+insert into vendidos (nome, cpf, usuario, dataVenda, ipva_pago, modelo, ,tipo_veiculo) values ('Luiz', 22726014571, 'Luiz047', 2023-07-30 false, 'Rs3','Sedã');
 
 SELECT COUNT(*) FROM enderecos;
 SELECT COUNT(*) FROM clientes;

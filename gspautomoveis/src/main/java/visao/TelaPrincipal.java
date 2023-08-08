@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class TelaPrincipal extends JFrame {
 
@@ -22,6 +23,9 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
 
 	/**
 	 * Launch the application.
@@ -51,6 +55,47 @@ public class TelaPrincipal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel_6_1_1 = new JLabel("Opção 3");
+		lblNewLabel_6_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_1_1.setFont(new Font("Krona One", Font.BOLD, 22));
+		lblNewLabel_6_1_1.setBounds(1432, 945, 279, 35);
+		contentPane.add(lblNewLabel_6_1_1);
+		
+		JLabel lblNewLabel_6_1 = new JLabel("Opção 2");
+		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6_1.setFont(new Font("Krona One", Font.BOLD, 22));
+		lblNewLabel_6_1.setBounds(1041, 945, 279, 35);
+		contentPane.add(lblNewLabel_6_1);
+		
+		JLabel lblNewLabel_6 = new JLabel("Opção 1");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6.setFont(new Font("Krona One", Font.BOLD, 22));
+		lblNewLabel_6.setBounds(639, 945, 279, 35);
+		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_5_1_1 = new JLabel("Ícone");
+		lblNewLabel_5_1_1.setFont(new Font("Krona One", Font.BOLD, 20));
+		lblNewLabel_5_1_1.setBounds(1530, 706, 76, 35);
+		contentPane.add(lblNewLabel_5_1_1);
+		
+		JLabel lblNewLabel_5_1 = new JLabel("Ícone");
+		lblNewLabel_5_1.setFont(new Font("Krona One", Font.BOLD, 20));
+		lblNewLabel_5_1.setBounds(1142, 706, 76, 35);
+		contentPane.add(lblNewLabel_5_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("Ícone");
+		lblNewLabel_5.setFont(new Font("Krona One", Font.BOLD, 20));
+		lblNewLabel_5.setBounds(743, 706, 76, 35);
+		contentPane.add(lblNewLabel_5);
+		
+		textField_8 = new JTextField();
+		textField_8.setForeground(new Color(0, 0, 0));
+		textField_8.setEnabled(false);
+		textField_8.setEditable(false);
+		textField_8.setColumns(10);
+		textField_8.setBounds(1041, 616, 279, 378);
+		contentPane.add(textField_8);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(74, 149, 175, 190);
@@ -210,13 +255,13 @@ public class TelaPrincipal extends JFrame {
 		JLabel lblNewLabel_4_2_1_2 = new JLabel("Comissão:");
 		lblNewLabel_4_2_1_2.setForeground(Color.BLACK);
 		lblNewLabel_4_2_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1_2.setBounds(917, 304, 175, 35);
+		lblNewLabel_4_2_1_2.setBounds(928, 304, 175, 35);
 		contentPane.add(lblNewLabel_4_2_1_2);
 		
 		textField_4 = new JTextField();
 		textField_4.setEditable(false);
 		textField_4.setColumns(10);
-		textField_4.setBounds(1110, 304, 239, 35);
+		textField_4.setBounds(1121, 304, 239, 35);
 		contentPane.add(textField_4);
 		
 		JLabel lblNewLabel_4_2_1_1_1 = new JLabel("Metas:");
@@ -234,18 +279,64 @@ public class TelaPrincipal extends JFrame {
 		JLabel lblNewLabel_4_2_2_1 = new JLabel("E-mail:");
 		lblNewLabel_4_2_2_1.setForeground(Color.BLACK);
 		lblNewLabel_4_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_2_1.setBounds(417, 423, 119, 35);
+		lblNewLabel_4_2_2_1.setBounds(430, 419, 119, 35);
 		contentPane.add(lblNewLabel_4_2_2_1);
 		
 		textField_6 = new JTextField();
 		textField_6.setEditable(false);
 		textField_6.setColumns(10);
-		textField_6.setBounds(546, 423, 803, 35);
+		textField_6.setBounds(561, 423, 799, 35);
 		contentPane.add(textField_6);
 		
 		JLabel lblNewLabel_2_1_2_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_2_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Tabele de verificação.png")));
 		lblNewLabel_2_1_2_1_1_1_1.setBounds(1478, 304, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1_1_1);
+		
+		JLabel lblNewLabel_2_1_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/maleta.png")));
+		lblNewLabel_2_1_2_1_2.setBounds(380, 304, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2_1_2);
+		
+		JLabel lblNewLabel_2_1_2_1_2_1 = new JLabel("");
+		lblNewLabel_2_1_2_1_2_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/caixacorreio.png")));
+		lblNewLabel_2_1_2_1_2_1.setBounds(380, 418, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2_1_2_1);
+		
+		JLabel lblNewLabel_2_1_2_1_1_2 = new JLabel("");
+		lblNewLabel_2_1_2_1_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/moedas.png")));
+		lblNewLabel_2_1_2_1_1_2.setBounds(867, 304, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2_1_1_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("Sugestões de ações:");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Krona One", Font.BOLD, 30));
+		lblNewLabel_2.setBounds(920, 535, 440, 46);
+		contentPane.add(lblNewLabel_2);
+		
+		textField_7 = new JTextField();
+		textField_7.setEnabled(false);
+		textField_7.setEditable(false);
+		textField_7.setBounds(639, 616, 279, 378);
+		contentPane.add(textField_7);
+		textField_7.setColumns(10);
+		
+		textField_9 = new JTextField();
+		textField_9.setEnabled(false);
+		textField_9.setEditable(false);
+		textField_9.setColumns(10);
+		textField_9.setBounds(1432, 616, 279, 378);
+		contentPane.add(textField_9);
+		
+		JLabel lblNewLabel_2_1_2_1_1_1_2 = new JLabel("");
+		lblNewLabel_2_1_2_1_1_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_2_1_1_1_2.setBounds(1845, 12, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2_1_1_1_2);
+		
+		JLabel lblNewLabel_4_2_1_1_2 = new JLabel("Olá, <funcionário>!");
+		lblNewLabel_4_2_1_1_2.setForeground(Color.BLACK);
+		lblNewLabel_4_2_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_4_2_1_1_2.setBounds(1529, 12, 304, 35);
+		contentPane.add(lblNewLabel_4_2_1_1_2);
 	}
 }

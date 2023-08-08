@@ -16,6 +16,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import javax.swing.UIManager;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.border.Border;
+import javax.swing.JPasswordField;
+
 public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
@@ -56,7 +63,7 @@ public class TelaLogin extends JFrame {
 
 		JLabel imgLateral = new JLabel("");
 		imgLateral.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/bemvindologin.png")));
-		imgLateral.setBounds(-16, -384, 323, 1286);
+		imgLateral.setBounds(0, -382, 323, 1286);
 		contentPane.add(imgLateral);
 		
 		JLabel lblNewLabel_1 = new JLabel("Login:");
@@ -80,10 +87,6 @@ public class TelaLogin extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/senha.png")));
 		lblNewLabel_2.setBounds(345, 250, 60, 79);
 		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setBounds(838, 336, 46, 14);
-		contentPane.add(lblNewLabel_5);
 		
 		textLogin = new JTextField();
 		textLogin.setForeground(new Color(0, 0, 0));

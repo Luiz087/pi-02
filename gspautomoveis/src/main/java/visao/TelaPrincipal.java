@@ -18,11 +18,6 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-<<<<<<< Updated upstream
-	private JTextField textField_3;
-	private JTextField textField_4;
-=======
->>>>>>> Stashed changes
 
 	/**
 	 * Launch the application.
@@ -145,58 +140,6 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel.setBounds(-11, -58, 361, 1141);
 		lblNewLabel.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/bglateral.png")));
 		contentPane.add(lblNewLabel);
-		
-<<<<<<< Updated upstream
-		JLabel lblNewLabel_1 = new JLabel("Nome");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 45));
-		lblNewLabel_1.setBounds(386, 11, 128, 65);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("CNPJ");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(380, 176, 63, 26);
-		contentPane.add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("Cidade");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(601, 26, 73, 25);
-		contentPane.add(lblNewLabel_3);
-		
-		JLabel lblNewLabel_4 = new JLabel("Telefone");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_4.setBounds(567, 110, 92, 26);
-		contentPane.add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("Marca");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_5.setBounds(806, 26, 73, 25);
-		contentPane.add(lblNewLabel_5);
-		
-		textField = new JTextField();
-		textField.setBounds(688, 117, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(474, 229, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(474, 147, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(736, 26, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(889, 32, 86, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-=======
 		JLabel lblNewLabel_2_1_2_1 = new JLabel("");
 		lblNewLabel_2_1_2_1.setBounds(380, 159, 40, 35);
 		lblNewLabel_2_1_2_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\pessoa(nome).png"));
@@ -247,6 +190,5 @@ public class TelaPrincipal extends JFrame {
 		textField_2.setColumns(10);
 		textField_2.setBounds(1646, 159, 239, 35);
 		contentPane.add(textField_2);
->>>>>>> Stashed changes
 	}
 }

@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class TelaPrincipalFunc extends JFrame {
 
@@ -47,5 +48,10 @@ public class TelaPrincipalFunc extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\pi-02\\gspautomoveis\\imagens\\Design sem nome.png"));
 		lblNewLabel.setBounds(0, 0, 603, 1051);
 		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 36));
+		lblNewLabel_1.setBounds(977, 164, 290, 199);
+		contentPane.add(lblNewLabel_1);
 	}
 }

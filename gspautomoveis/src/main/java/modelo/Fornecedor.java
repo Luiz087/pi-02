@@ -6,6 +6,24 @@ public class Fornecedor {
 	private Long cnpjfornecedor;
 	private Long telefoneFornecedor;
 	private String empresa;
+	private Endereco endereco;
+	private String marca;
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getEmpresa() {
 		return empresa;

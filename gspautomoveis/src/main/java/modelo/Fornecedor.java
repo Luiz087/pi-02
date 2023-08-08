@@ -8,7 +8,6 @@ public class Fornecedor {
 	private String marca;
 	private String empresa;
 	private Endereco endereco;
-	private String marca;
 
 	public String getMarca() {
 		return marca;
@@ -56,14 +55,6 @@ public class Fornecedor {
 
 	public void setTelefoneFornecedor(Long telefoneFornecedor) {
 		this.telefoneFornecedor = telefoneFornecedor;
-	}
-
-	public String getMarca() {
-		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 
 }

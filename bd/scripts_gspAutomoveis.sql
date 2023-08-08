@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `id_veiculo` BIGINT NOT NULL auto_increment,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
-  `novo_usado` VARCHAR(45) NOT NULL,
+  `novo` TINYINT NOT NULL,
   `ano` INT NOT NULL,
   `cor` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,

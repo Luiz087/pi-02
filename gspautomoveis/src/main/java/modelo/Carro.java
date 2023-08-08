@@ -6,10 +6,11 @@ public class Carro {
 	private String marca;
 	private Integer ano;
 	private Boolean novo;
-	private Boolean eletrico;
-	private Boolean esportivo;
-	private Boolean picape;
+	private String tipo;
+	private String combustivel;
+	private String potencia;
 	private String cor;
+	private Boolean abs;
 	private Double preco;
 	private Long quilometragem;
 
@@ -45,28 +46,36 @@ public class Carro {
 		this.novo = novo;
 	}
 
-	public Boolean getEletrico() {
-		return eletrico;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setEletrico(Boolean eletrico) {
-		this.eletrico = eletrico;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public Boolean getEsportivo() {
-		return esportivo;
+	public String getCombustivel() {
+		return combustivel;
 	}
 
-	public void setEsportivo(Boolean esportivo) {
-		this.esportivo = esportivo;
+	public void setCombustivel(String combustivel) {
+		this.combustivel = combustivel;
 	}
 
-	public Boolean getPicape() {
-		return picape;
+	public String getPotencia() {
+		return potencia;
 	}
 
-	public void setPicape(Boolean picape) {
-		this.picape = picape;
+	public void setPotencia(String potencia) {
+		this.potencia = potencia;
+	}
+
+	public Boolean getAbs() {
+		return abs;
+	}
+
+	public void setAbs(Boolean abs) {
+		this.abs = abs;
 	}
 
 	public String getCor() {

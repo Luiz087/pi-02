@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Funcionario {
 
 	private String nome;
@@ -9,7 +11,7 @@ public class Funcionario {
 	private Long telefone;
 	private String email;
 	private Double salario;
-	private String funcao;
+	private Date dataDeNasc;
 	private Integer nivelCargo;
 
 	public String getNome() {
@@ -68,19 +70,19 @@ public class Funcionario {
 		this.salario = salario;
 	}
 
-	public String getFuncao() {
-		return funcao;
-	}
-
-	public void setFuncao(String funcao) {
-		this.funcao = funcao;
-	}
-
 	public Integer getNivelCargo() {
 		return nivelCargo;
 	}
 
 	public void setNivelCargo(Integer nivelCargo) {
 		this.nivelCargo = nivelCargo;
+	}
+
+	public Date getDataDeNasc() {
+		return dataDeNasc;
+	}
+
+	public void setDataDeNasc(Date dataDeNasc) {
+		this.dataDeNasc = dataDeNasc;
 	}
 }

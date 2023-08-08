@@ -46,9 +46,11 @@ public class TelaFornecedores extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaFornecedores() {
+		Color color = new Color(68, 117, 157);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -116,13 +118,19 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textField_4);
 		
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
+		btnAdicionar.setBackground(new Color(255, 255, 255));
+		 btnAdicionar.setForeground(new Color(0, 0, 0));
+		 
+		 btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
+		 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
-		btnAdicionar.setBounds(1069, 264, 261, 35);
+		
+		btnAdicionar.setBounds(1069, 264, 251, 35);
 		btnAdicionar.setBorder(new RoundedBorder(10));
+	   
 		contentPane.add(btnAdicionar);
 	}
 }

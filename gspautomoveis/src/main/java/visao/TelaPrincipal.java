@@ -50,7 +50,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(74, 149, 175, 190);
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\Logo sem fundo.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("GSP");
@@ -67,7 +67,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setBounds(28, 498, 40, 35);
-		lblNewLabel_2_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\Engrenagem.png"));
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Engrenagem.png")));
 		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
@@ -78,7 +78,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_1.setBounds(28, 578, 40, 35);
-		lblNewLabel_2_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\Pessoa.png"));
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Pessoa.png")));
 		contentPane.add(lblNewLabel_2_1_1);
 		
 		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
@@ -89,7 +89,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1.setBounds(28, 653, 40, 35);
-		lblNewLabel_2_1_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\carrinho compras.png"));
+		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carrinho compras.png")));
 		contentPane.add(lblNewLabel_2_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
@@ -100,7 +100,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1.setBounds(28, 725, 40, 35);
-		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\carro +.png"));
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carro +.png")));
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Fornecedores");
@@ -111,7 +111,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1.setBounds(28, 808, 40, 35);
-		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\Sistema.png"));
+		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Sistema.png")));
 		contentPane.add(lblNewLabel_2_1_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Sistema");
@@ -122,7 +122,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(10, 945, 40, 35);
-		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\sair.png"));
+		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/sair.png")));
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
@@ -133,7 +133,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
 		lblNewLabel_2_1_2.setBounds(28, 418, 40, 35);
-		lblNewLabel_2_1_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\bau veiculos.png"));
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/bau veiculos.png")));
 		contentPane.add(lblNewLabel_2_1_2);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -142,7 +142,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel);
 		JLabel lblNewLabel_2_1_2_1 = new JLabel("");
 		lblNewLabel_2_1_2_1.setBounds(380, 159, 40, 35);
-		lblNewLabel_2_1_2_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\pessoa(nome).png"));
+		lblNewLabel_2_1_2_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/pessoa(nome).png")));
 		contentPane.add(lblNewLabel_2_1_2_1);
 		
 		textField = new JTextField();
@@ -158,7 +158,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4_2);
 		
 		JLabel lblNewLabel_2_1_2_1_1 = new JLabel("");
-		lblNewLabel_2_1_2_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\Tabele de verificação.png"));
+		lblNewLabel_2_1_2_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Tabele de verificação.png")));
 		lblNewLabel_2_1_2_1_1.setBounds(867, 159, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1);
 		
@@ -175,7 +175,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(textField_1);
 		
 		JLabel lblNewLabel_2_1_2_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_2_1_1_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\telefone.png"));
+		lblNewLabel_2_1_2_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/telefone.png")));
 		lblNewLabel_2_1_2_1_1_1.setBounds(1432, 159, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1_1);
 		

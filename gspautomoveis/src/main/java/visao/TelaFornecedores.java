@@ -20,11 +20,11 @@ import javax.swing.border.Border;
 public class TelaFornecedores extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textNome;
+	private JTextField textTel;
+	private JTextField textCNPJ;
+	private JTextField textMarca;
+	private JTextField textCidade;
 
 	/**
 	 * Launch the application.
@@ -62,60 +62,60 @@ public class TelaFornecedores extends JFrame {
 		lblNewLabel_1.setBounds(-11, 0, 361, 1041);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNewLabel.setBounds(397, 25, 194, 88);
-		contentPane.add(lblNewLabel);
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblNome.setBounds(397, 25, 194, 88);
+		contentPane.add(lblNome);
 		
 		JLabel lblCnpj = new JLabel("CNPJ");
 		lblCnpj.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCnpj.setBounds(1403, 36, 106, 88);
 		contentPane.add(lblCnpj);
 		
-		JLabel lblNewLabel_2 = new JLabel("Cidade");
-		lblNewLabel_2.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNewLabel_2.setBounds(1169, 133, 150, 70);
-		contentPane.add(lblNewLabel_2);
+		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCidade.setBounds(1169, 133, 150, 70);
+		contentPane.add(lblCidade);
 		
 		JLabel lblMarca = new JLabel("Marca");
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblMarca.setBounds(624, 124, 127, 88);
 		contentPane.add(lblMarca);
 		
-		JLabel lblTelfone = new JLabel("Telefone");
-		lblTelfone.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblTelfone.setBounds(873, 36, 175, 88);
-		contentPane.add(lblTelfone);
+		JLabel lblTelefone = new JLabel("Telefone");
+		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblTelefone.setBounds(873, 36, 175, 88);
+		contentPane.add(lblTelefone);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textField.setBounds(528, 49, 335, 50);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textNome = new JTextField();
+		textNome.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textNome.setBounds(528, 49, 335, 50);
+		contentPane.add(textNome);
+		textNome.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textField_1.setColumns(10);
-		textField_1.setBounds(1058, 49, 335, 50);
-		contentPane.add(textField_1);
+		textTel = new JTextField();
+		textTel.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textTel.setColumns(10);
+		textTel.setBounds(1058, 49, 335, 50);
+		contentPane.add(textTel);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBounds(1519, 49, 335, 50);
-		contentPane.add(textField_2);
+		textCNPJ = new JTextField();
+		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textCNPJ.setColumns(10);
+		textCNPJ.setBounds(1519, 49, 335, 50);
+		contentPane.add(textCNPJ);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textField_3.setColumns(10);
-		textField_3.setBounds(761, 147, 335, 50);
-		contentPane.add(textField_3);
+		textMarca = new JTextField();
+		textMarca.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textMarca.setColumns(10);
+		textMarca.setBounds(761, 147, 335, 50);
+		contentPane.add(textMarca);
 		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textField_4.setColumns(10);
-		textField_4.setBounds(1329, 147, 335, 50);
-		contentPane.add(textField_4);
+		textCidade = new JTextField();
+		textCidade.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textCidade.setColumns(10);
+		textCidade.setBounds(1329, 147, 335, 50);
+		contentPane.add(textCidade);
 		
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.setBackground(new Color(255, 255, 255));

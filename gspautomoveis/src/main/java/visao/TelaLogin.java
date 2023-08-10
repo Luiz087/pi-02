@@ -60,22 +60,45 @@ public class TelaLogin extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel_3_2 = new JLabel("Bem-Vindo");
+		lblNewLabel_3_2.setForeground(Color.WHITE);
+		lblNewLabel_3_2.setFont(new Font("Krona One", Font.PLAIN, 36));
+		lblNewLabel_3_2.setBounds(32, 48, 264, 72);
+		contentPane.add(lblNewLabel_3_2);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Automóveis");
+		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblNewLabel_3_1.setBounds(36, 398, 237, 87);
+		contentPane.add(lblNewLabel_3_1);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("");
+		lblNewLabel_1_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1_2.setBounds(70, 147, 175, 190);
+		contentPane.add(lblNewLabel_1_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("GSP");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
+		lblNewLabel_3.setBounds(70, 324, 175, 87);
+		contentPane.add(lblNewLabel_3);
 
 		JLabel imgLateral = new JLabel("");
-		imgLateral.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/bemvindologin.png")));
-		imgLateral.setBounds(0, -382, 323, 1286);
+		imgLateral.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/bglateral.png")));
+		imgLateral.setBounds(0, -382, 323, 1384);
 		contentPane.add(imgLateral);
 		
 		JLabel lblNewLabel_1 = new JLabel("Login:");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(421, 104, 126, 69);
+		lblNewLabel_1.setBounds(466, 104, 126, 69);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Senha:");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1_1.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNewLabel_1_1.setBounds(393, 260, 154, 69);
+		lblNewLabel_1_1.setBounds(438, 260, 154, 69);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -91,7 +114,7 @@ public class TelaLogin extends JFrame {
 		textLogin = new JTextField();
 		textLogin.setForeground(new Color(0, 0, 0));
 		textLogin.setFont(new Font("Krona One", Font.PLAIN, 30));
-		textLogin.setBounds(557, 120, 303, 35);
+		textLogin.setBounds(602, 120, 303, 35);
 		contentPane.add(textLogin);
 		textLogin.setColumns(10);
 		textLogin.setBorder(BorderFactory.createMatteBorder(0,0,3,0, color));
@@ -103,7 +126,7 @@ public class TelaLogin extends JFrame {
 		
 		
 		textSenha.setBorder(BorderFactory.createMatteBorder(0,0,3,0, color));
-		textSenha.setBounds(557, 272, 303, 35);
+		textSenha.setBounds(602, 272, 303, 35);
 		contentPane.add(textSenha);
 		
 		JButton btnEntrar = new JButton("Entrar");
@@ -116,7 +139,7 @@ public class TelaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnEntrar.setBounds(556, 383, 202, 60);
+		btnEntrar.setBounds(601, 383, 202, 60);
 		btnEntrar.setBorder(new RoundedBorder(20));
 		contentPane.add(btnEntrar);
 		
@@ -130,14 +153,10 @@ public class TelaLogin extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnNewButton.setBounds(924, 0, 60, 45);
+		btnNewButton.setBounds(940, 0, 60, 45);
 		btnNewButton.setBorder(null);
 		btnNewButton.setFocusPainted(false);
 		contentPane.add(btnNewButton);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(659, 481, 46, 14);
-		contentPane.add(lblNewLabel_3);
 
 	}
 }

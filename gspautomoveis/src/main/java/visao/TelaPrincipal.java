@@ -103,7 +103,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("GSP");
-		lblNewLabel_3.setBounds(74, 51, 175, 87);
+		lblNewLabel_3.setBounds(74, 51, 166, 72);
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
 		contentPane.add(lblNewLabel_3);

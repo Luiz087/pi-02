@@ -1,13 +1,12 @@
 package modelo;
 
-public class Fornecedor {
+public class Fornecedor extends Endereco{
 
 	private String nomeFornecedor;
 	private Long cnpjfornecedor;
 	private Long telefoneFornecedor;
 	private String marca;
 	private String empresa;
-	private Endereco endereco;
 
 	public String getMarca() {
 		return marca;
@@ -15,14 +14,6 @@ public class Fornecedor {
 
 	public void setMarca(String marca) {
 		this.marca = marca;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getEmpresa() {

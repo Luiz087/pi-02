@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-public class Funcionario {
+public class Funcionario extends Pagamento{
 
 	private String nome;
 	private Long cpf;

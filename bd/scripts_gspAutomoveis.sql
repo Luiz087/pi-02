@@ -193,11 +193,10 @@ SELECT COUNT(*) FROM funcionarios;
 SELECT COUNT(*) FROM vendidos;
 
 SELECT * FROM enderecos order by cep;
-SELECT * FROM clientes order by id_cliente;
 SELECT * FROM fornecedores order by id_fornecedor;
-SELECT * FROM veiculos order by id_veiculo;
+SELECT * FROM Carros order by id_veiculo;
 SELECT * FROM funcionarios order by matricula;
-SELECT * FROM vendidos order by veiculos_id_veiculo;
+SELECT * FROM vendidos order by id_vendidos;
 
 SELECT veiculos.modelo,
     veiculos.novos,

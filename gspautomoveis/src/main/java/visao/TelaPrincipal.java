@@ -16,13 +16,13 @@ import javax.swing.SwingConstants;
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField text_nome;
+	private JTextField text_matricula;
+	private JTextField text_telefone;
+	private JTextField text_cargo;
+	private JTextField text_comissao;
+	private JTextField text_metas;
+	private JTextField text_email;
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
@@ -194,99 +194,99 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2_1_2_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/pessoa(nome).png")));
 		contentPane.add(lblNewLabel_2_1_2_1);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(546, 159, 239, 35);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		text_nome = new JTextField();
+		text_nome.setEditable(false);
+		text_nome.setBounds(546, 159, 239, 35);
+		contentPane.add(text_nome);
+		text_nome.setColumns(10);
 		
-		JLabel lblNewLabel_4_2 = new JLabel("Nome:");
-		lblNewLabel_4_2.setBounds(430, 159, 106, 35);
-		lblNewLabel_4_2.setForeground(new Color(0, 0, 0));
-		lblNewLabel_4_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		contentPane.add(lblNewLabel_4_2);
+		JLabel lblNewLabel_nome = new JLabel("Nome:");
+		lblNewLabel_nome.setBounds(430, 159, 106, 35);
+		lblNewLabel_nome.setForeground(new Color(0, 0, 0));
+		lblNewLabel_nome.setFont(new Font("Krona One", Font.PLAIN, 24));
+		contentPane.add(lblNewLabel_nome);
 		
 		JLabel lblNewLabel_2_1_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_2_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Tabele de verificação.png")));
 		lblNewLabel_2_1_2_1_1.setBounds(867, 159, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1);
 		
-		JLabel lblNewLabel_4_2_1 = new JLabel("Matrícula:");
-		lblNewLabel_4_2_1.setForeground(Color.BLACK);
-		lblNewLabel_4_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1.setBounds(917, 159, 154, 35);
-		contentPane.add(lblNewLabel_4_2_1);
+		JLabel lblNewLabel_matricula = new JLabel("Matrícula:");
+		lblNewLabel_matricula.setForeground(Color.BLACK);
+		lblNewLabel_matricula.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_matricula.setBounds(917, 159, 154, 35);
+		contentPane.add(lblNewLabel_matricula);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(1081, 159, 239, 35);
-		contentPane.add(textField_1);
+		text_matricula = new JTextField();
+		text_matricula.setEditable(false);
+		text_matricula.setColumns(10);
+		text_matricula.setBounds(1081, 159, 239, 35);
+		contentPane.add(text_matricula);
 		
 		JLabel lblNewLabel_2_1_2_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_2_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/telefone.png")));
 		lblNewLabel_2_1_2_1_1_1.setBounds(1432, 159, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1_1);
 		
-		JLabel lblNewLabel_4_2_1_1 = new JLabel("Telefone:");
-		lblNewLabel_4_2_1_1.setForeground(Color.BLACK);
-		lblNewLabel_4_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1_1.setBounds(1482, 159, 154, 35);
-		contentPane.add(lblNewLabel_4_2_1_1);
+		JLabel lblNewLabel_telefone = new JLabel("Telefone:");
+		lblNewLabel_telefone.setForeground(Color.BLACK);
+		lblNewLabel_telefone.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_telefone.setBounds(1482, 159, 154, 35);
+		contentPane.add(lblNewLabel_telefone);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(1646, 159, 239, 35);
-		contentPane.add(textField_2);
+		text_telefone = new JTextField();
+		text_telefone.setEditable(false);
+		text_telefone.setColumns(10);
+		text_telefone.setBounds(1646, 159, 239, 35);
+		contentPane.add(text_telefone);
 		
-		JLabel lblNewLabel_4_2_2 = new JLabel("Cargo:");
-		lblNewLabel_4_2_2.setForeground(Color.BLACK);
-		lblNewLabel_4_2_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_2.setBounds(430, 304, 106, 35);
-		contentPane.add(lblNewLabel_4_2_2);
+		JLabel lblNewLabel_cargo = new JLabel("Cargo:");
+		lblNewLabel_cargo.setForeground(Color.BLACK);
+		lblNewLabel_cargo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_cargo.setBounds(430, 304, 106, 35);
+		contentPane.add(lblNewLabel_cargo);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBounds(546, 304, 239, 35);
-		contentPane.add(textField_3);
+		text_cargo = new JTextField();
+		text_cargo.setEditable(false);
+		text_cargo.setColumns(10);
+		text_cargo.setBounds(546, 304, 239, 35);
+		contentPane.add(text_cargo);
 		
-		JLabel lblNewLabel_4_2_1_2 = new JLabel("Comissão:");
-		lblNewLabel_4_2_1_2.setForeground(Color.BLACK);
-		lblNewLabel_4_2_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1_2.setBounds(928, 304, 175, 35);
-		contentPane.add(lblNewLabel_4_2_1_2);
+		JLabel lblNewLabel_comissao = new JLabel("Comissão:");
+		lblNewLabel_comissao.setForeground(Color.BLACK);
+		lblNewLabel_comissao.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_comissao.setBounds(928, 304, 175, 35);
+		contentPane.add(lblNewLabel_comissao);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
-		textField_4.setBounds(1121, 304, 239, 35);
-		contentPane.add(textField_4);
+		text_comissao = new JTextField();
+		text_comissao.setEditable(false);
+		text_comissao.setColumns(10);
+		text_comissao.setBounds(1121, 304, 239, 35);
+		contentPane.add(text_comissao);
 		
-		JLabel lblNewLabel_4_2_1_1_1 = new JLabel("Metas:");
-		lblNewLabel_4_2_1_1_1.setForeground(Color.BLACK);
-		lblNewLabel_4_2_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1_1_1.setBounds(1530, 304, 106, 35);
-		contentPane.add(lblNewLabel_4_2_1_1_1);
+		JLabel lblNewLabel_metas = new JLabel("Metas:");
+		lblNewLabel_metas.setForeground(Color.BLACK);
+		lblNewLabel_metas.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_metas.setBounds(1530, 304, 106, 35);
+		contentPane.add(lblNewLabel_metas);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setColumns(10);
-		textField_5.setBounds(1646, 304, 239, 35);
-		contentPane.add(textField_5);
+		text_metas = new JTextField();
+		text_metas.setEditable(false);
+		text_metas.setColumns(10);
+		text_metas.setBounds(1646, 304, 239, 35);
+		contentPane.add(text_metas);
 		
-		JLabel lblNewLabel_4_2_2_1 = new JLabel("E-mail:");
-		lblNewLabel_4_2_2_1.setForeground(Color.BLACK);
-		lblNewLabel_4_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_2_1.setBounds(430, 419, 119, 35);
-		contentPane.add(lblNewLabel_4_2_2_1);
+		JLabel lblNewLabel_email = new JLabel("E-mail:");
+		lblNewLabel_email.setForeground(Color.BLACK);
+		lblNewLabel_email.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_email.setBounds(430, 419, 119, 35);
+		contentPane.add(lblNewLabel_email);
 		
-		textField_6 = new JTextField();
-		textField_6.setEditable(false);
-		textField_6.setColumns(10);
-		textField_6.setBounds(561, 423, 799, 35);
-		contentPane.add(textField_6);
+		text_email = new JTextField();
+		text_email.setEditable(false);
+		text_email.setColumns(10);
+		text_email.setBounds(561, 423, 799, 35);
+		contentPane.add(text_email);
 		
 		JLabel lblNewLabel_2_1_2_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_2_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Tabele de verificação.png")));

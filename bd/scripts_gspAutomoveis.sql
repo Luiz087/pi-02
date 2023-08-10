@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `Carros` (
   `quilometragem` FLOAT NOT NULL,
   `potencia` VARCHAR(45),
   `abs` TINYINT NOT NULL,
-  `preco` DOUBLE NOT NULL,
+  `precoCarro` DOUBLE NOT NULL,
   `promocao` TINYINT NOT NULL,
   `fornecedor_id_fornecedor` BIGINT NOT NULL,
   PRIMARY KEY (`id_carro`),
@@ -69,13 +69,12 @@ CREATE TABLE IF NOT EXISTS `Carros` (
 
 CREATE TABLE IF NOT EXISTS `vendidos` (
   `id_vendidos` BIGINT NOT NULL auto_increment,
-  `nome` VARCHAR(45) NOT NULL,
-  `cpf` BIGINT NOT NULL,
-  `usuario` VARCHAR(45) NOT NULL,
+  `nomeCliente` VARCHAR(45) NOT NULL,
+  `cpfCliente` BIGINT NOT NULL,
+  `telefoneCliente` BIGINT NOT NULL,
+  `enderecoCliente` VARCHAR(45) NOT NULL,
   `dataVenda` DATE NOT NULL,
-  `ipva_pago` TINYINT NOT NULL,
-  `modelo` VARCHAR(45) NOT NULL,
-  `tipo_veiculo` VARCHAR(45) NOT NULL,
+  `precoVenda` DOUBLE NOT NULL,
   `funcionarios_matricula` BIGINT NOT NULL,
   `Carros_id_carro` BIGINT NOT NULL,
   PRIMARY KEY (`id_vendidos`),
@@ -135,31 +134,31 @@ insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, em
 insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sanderson', 33218317298271, 6361220266, 'Ailane', 'Porshe', 37621074);
 insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sula', 87503816182502, 7623216188, 'Thoughtworks', 'Lamborguini', 96883597);
 
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', true, 2023, 'Preto', 'Suv', 'Gasolina', 0, '690 cv',  true, 1950000, false, 5);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', true, 2021, 'Prata', 'Hatchback,' 'Gasolina e álcool', 0, '128 cv', true, 81111, false, 6);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Fiat', 'Toro', false, 2018, 'Cinza', 'Picape', 'Gasolina e álcool', 29.638, '139 cv', true, 90900, false, 2);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Chevette', false, 1976, 'Preto', 'Cupê', 'Gasolina', 100.000, '68 cv', false, 32000, false, 7);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Renault', 'Megane', false, 2010, 'Preto', 'sedã', 'Gasolina e álcool', 111.000, '115 cv', true, 27000, false, 8);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Ford', 'Fusion', false, 2012, 'Prata', 'Sedã', 'Gasolina', 136.000, '173 cv', true, 41500, false, 1);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Mazda', 'MX-3', false, 1997, 'Vermelho', 'Cupê', 'Gasolina', 130.000, '106 cv', false, 44000, false, 9);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Ford', 'Edge', false, 2019, 'Preto', 'Suv', 'Gasolina', 27.270, '335 cv', true, 244900, false, 1);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('GMC', 'Sierra 1500', true, 2022, 'azul', 'Picape', 'Diesel', 0, '280 cv', true, 1250000, false, 10);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Dodge', 'Ram 2500', false, 2020, 'Preto', 'Picape', 'Diesel', 35.653, '330 cv', true, 472990, false, 11);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Mercedes-Benz', 'GLC 300', true, 2021, 'Azul', 'Suv', 'Gasolina', 13.000, '254 cv', true, 489900, false, 3);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Hyundai', 'I30', false, 2015, 'branco', 'Hatch', 'Gasolina', 96.000, '150 cv', true, 63000, false, 12);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Audi', 'Rs3', false, 2018, 'Vermelho', 'Sedã', 'Gasolina', 41.000, '400 cv', true, 380000, false, 13);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Kia', 'Sportage', false, 2021, 'Azul', 'Suv', 'Gasolina e álcool', 10.500, '178 cv', true, 120000, false, 14);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Honda', 'Accord', false, 1993, 'Preto', 'Sedã', 'Gasolina', 220.000, '158 cv', false, 65000, false, 15);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Toyota', 'Corolla', false, 2020, 'branco', 'Sedã', 'Gasolina e elétrico', 35.000, '143 cv', true, 148990, false, 4);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Mitsubishi', 'lancer Evolution', false, 2015, 'Vermelho,' 'Sedã', 'Gasolina', 75.737, 1991, '340 cv', true, 189900, false, 16);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Golf GTI', false, 2019, 'Branco', 'hatch', 'Gasolina', 55.000, '220 cv', true, 199900, false, 6);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Camaro', false, 2019, 'Laranja', 'Cupê', 'Gasolina', 22.000, '406 cv', true, 411500, false, 7);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Ferrari', 'California', false, 2014, 'Amarelo', 'Cupê', 'Gasolina', 20.931, '460 cv', true, 1790000, false, 17);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('GMC', 'Hummer', true, 2022, 'Branco', 'Picape', 'Gasolina e elétrico', 0, '1.014 cv', true, 2499990, false, 10);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Chrysler', '300 C', false, 2012, 'Prata', 'Sedã', 'Gasolina', 53.862, '296 cv', true, 125990, false, 18);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Silverado 1500', false, 2022, 'Azul', 'Picape', 'Diesel', 5.000, '281 cv', true, 1050000, false, 7);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Porshe', 'Panamera', false, 2022, 'Roxo', 'Sedã', 'gasolina e elétrico', 10.808, '462 cv', true, 935000, false, 19);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, promocao, fornecedor_id_fornecedor) values ('Lamborguini', 'Huracan', true, 2022, 'Verde', 'Cupê', 'Gasolina', 0, '640 cv', true, 5430000, false, 20);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', true, 2023, 'Preto', 'Suv', 'Gasolina', 0, '690 cv',  true, 1950000, false, 5);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', true, 2021, 'Prata', 'Hatchback,' 'Gasolina e álcool', 0, '128 cv', true, 81111, false, 6);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Fiat', 'Toro', false, 2018, 'Cinza', 'Picape', 'Gasolina e álcool', 29.638, '139 cv', true, 90900, false, 2);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Chevette', false, 1976, 'Preto', 'Cupê', 'Gasolina', 100.000, '68 cv', false, 32000, false, 7);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Renault', 'Megane', false, 2010, 'Preto', 'sedã', 'Gasolina e álcool', 111.000, '115 cv', true, 27000, false, 8);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Ford', 'Fusion', false, 2012, 'Prata', 'Sedã', 'Gasolina', 136.000, '173 cv', true, 41500, false, 1);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Mazda', 'MX-3', false, 1997, 'Vermelho', 'Cupê', 'Gasolina', 130.000, '106 cv', false, 44000, false, 9);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Ford', 'Edge', false, 2019, 'Preto', 'Suv', 'Gasolina', 27.270, '335 cv', true, 244900, false, 1);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('GMC', 'Sierra 1500', true, 2022, 'azul', 'Picape', 'Diesel', 0, '280 cv', true, 1250000, false, 10);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Dodge', 'Ram 2500', false, 2020, 'Preto', 'Picape', 'Diesel', 35.653, '330 cv', true, 472990, false, 11);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Mercedes-Benz', 'GLC 300', true, 2021, 'Azul', 'Suv', 'Gasolina', 13.000, '254 cv', true, 489900, false, 3);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Hyundai', 'I30', false, 2015, 'branco', 'Hatch', 'Gasolina', 96.000, '150 cv', true, 63000, false, 12);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Audi', 'Rs3', false, 2018, 'Vermelho', 'Sedã', 'Gasolina', 41.000, '400 cv', true, 380000, false, 13);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Kia', 'Sportage', false, 2021, 'Azul', 'Suv', 'Gasolina e álcool', 10.500, '178 cv', true, 120000, false, 14);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Honda', 'Accord', false, 1993, 'Preto', 'Sedã', 'Gasolina', 220.000, '158 cv', false, 65000, false, 15);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Toyota', 'Corolla', false, 2020, 'branco', 'Sedã', 'Gasolina e elétrico', 35.000, '143 cv', true, 148990, false, 4);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Mitsubishi', 'lancer Evolution', false, 2015, 'Vermelho,' 'Sedã', 'Gasolina', 75.737, 1991, '340 cv', true, 189900, false, 16);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Golf GTI', false, 2019, 'Branco', 'hatch', 'Gasolina', 55.000, '220 cv', true, 199900, false, 6);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Camaro', false, 2019, 'Laranja', 'Cupê', 'Gasolina', 22.000, '406 cv', true, 411500, false, 7);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Ferrari', 'California', false, 2014, 'Amarelo', 'Cupê', 'Gasolina', 20.931, '460 cv', true, 1790000, false, 17);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('GMC', 'Hummer', true, 2022, 'Branco', 'Picape', 'Gasolina e elétrico', 0, '1.014 cv', true, 2499990, false, 10);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Chrysler', '300 C', false, 2012, 'Prata', 'Sedã', 'Gasolina', 53.862, '296 cv', true, 125990, false, 18);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Silverado 1500', false, 2022, 'Azul', 'Picape', 'Diesel', 5.000, '281 cv', true, 1050000, false, 7);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Porshe', 'Panamera', false, 2022, 'Roxo', 'Sedã', 'gasolina e elétrico', 10.808, '462 cv', true, 935000, false, 19);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Lamborguini', 'Huracan', true, 2022, 'Verde', 'Cupê', 'Gasolina', 0, '640 cv', true, 5430000, false, 20);
 
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com' , 2005-07-08, 'Luiz047', 'Luizz123,' 'Administrador', 500.000, 2.5, 96883597);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', 2004-07-17, 'Biell047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
@@ -167,24 +166,24 @@ insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Sabel', 48791425360, 35980146935, 'Sabel@gmail.com', 2005-12-31, 'Sabel047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('João', 48791425360, 35980146935, 'João@gmail.com', 2005-12-08, 'João047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
 
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-03 true, 'Huracan','Cupê', 1, 25);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-03 true, 'Panemera','Sedã', 2, 24);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-05 false, '300 C','Sedã', 1, 22);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-05 false, 'Camaro','Cupê', 2, 19);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-10 true, 'Silverado 1500','Picape', 1, 23);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-10 false, 'California','Cupê', 2, 20);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-13 true, 'Golf GTI','Hatch', 1, 18);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-13 true, 'Corolla', 'Sedã', 2, 16);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 true, 'Sportage','Suv', 1, 14);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 true, 'I30','Hatch', 2, 12) ;
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 false, 'GLC 300','Suv', 1, 11);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 false, 'polo', 'Hatch', 2, 2);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-22 true, 'Escalade Esv','Suv', 1, 1);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-22 true, 'Ram 2500','Picape', 2, 10);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-24 true, 'Fusion','Sedã', 1, 6);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-24 true, 'Chevette','Cupê', 2, 4);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-30 false, 'Toro','Picape', 1, 3);
-insert into vendidos (id_vendidos, nome, cpf, usuario, dataVenda, ipva_pago, modelo, tipo_veiculo, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-30 false, 'Rs3','Sedã', 2, 13);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-03 true, 'Huracan','Cupê', 1, 25);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-03 true, 'Panemera','Sedã', 2, 24);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-05 false, '300 C','Sedã', 1, 22);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-05 false, 'Camaro','Cupê', 2, 19);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-10 true, 'Silverado 1500','Picape', 1, 23);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-10 false, 'California','Cupê', 2, 20);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-13 true, 'Golf GTI','Hatch', 1, 18);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-13 true, 'Corolla', 'Sedã', 2, 16);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 true, 'Sportage','Suv', 1, 14);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 true, 'I30','Hatch', 2, 12) ;
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 false, 'GLC 300','Suv', 1, 11);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 false, 'polo', 'Hatch', 2, 2);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-22 true, 'Escalade Esv','Suv', 1, 1);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-22 true, 'Ram 2500','Picape', 2, 10);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-24 true, 'Fusion','Sedã', 1, 6);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-24 true, 'Chevette','Cupê', 2, 4);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-30 false, 'Toro','Picape', 1, 3);
+insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-30 false, 'Rs3','Sedã', 2, 13);
 
 SELECT COUNT(*) FROM enderecos;
 SELECT COUNT(*) FROM fornecedores;

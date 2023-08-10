@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   `dataDeNasc` DATE NOT NULL,
   `usuario` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `NivelCargo` VARCHAR(45) NOT NULL,
+  `nivelCargo` VARCHAR(45) NOT NULL,
   `salario` DOUBLE NOT NULL,
   `comissao` DOUBLE NOT NULL,
   `enderecos_cep` BIGINT NOT NULL,
@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `Carros` (
   ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS `vendidos` (
-  `id_vendidos` BIGINT NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `Vendas` (
+  `id_venda` BIGINT NOT NULL auto_increment,
   `nomeCliente` VARCHAR(45) NOT NULL,
   `cpfCliente` BIGINT NOT NULL,
   `telefoneCliente` BIGINT NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `vendidos` (
   `precoVenda` DOUBLE NOT NULL,
   `funcionarios_matricula` BIGINT NOT NULL,
   `Carros_id_carro` BIGINT NOT NULL,
-  PRIMARY KEY (`id_vendidos`),
+  PRIMARY KEY (`id_venda`),
   CONSTRAINT `fk_vendidos_funcionarios1` FOREIGN KEY (`funcionarios_matricula`) REFERENCES `funcionarios` (`matricula`)
   ON DELETE CASCADE,
   CONSTRAINT `fk_vendidos_Carros1`
@@ -135,7 +135,7 @@ insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, em
 insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sula', 87503816182502, 7623216188, 'Thoughtworks', 'Lamborguini', 96883597);
 
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', true, 2023, 'Preto', 'Suv', 'Gasolina', 0, '690 cv',  true, 1950000, false, 5);
-insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', true, 2021, 'Prata', 'Hatchback,' 'Gasolina e álcool', 0, '128 cv', true, 81111, false, 6);
+insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', true, 2021, 'Prata', 'Hatchback', 'Gasolina e álcool', 0, '128 cv', true, 81111, false, 6);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Fiat', 'Toro', false, 2018, 'Cinza', 'Picape', 'Gasolina e álcool', 29.638, '139 cv', true, 90900, false, 2);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Chevrolet', 'Chevette', false, 1976, 'Preto', 'Cupê', 'Gasolina', 100.000, '68 cv', false, 32000, false, 7);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Renault', 'Megane', false, 2010, 'Preto', 'sedã', 'Gasolina e álcool', 111.000, '115 cv', true, 27000, false, 8);
@@ -160,42 +160,42 @@ insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometra
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Porshe', 'Panamera', false, 2022, 'Roxo', 'Sedã', 'gasolina e elétrico', 10.808, '462 cv', true, 935000, false, 19);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Lamborguini', 'Huracan', true, 2022, 'Verde', 'Cupê', 'Gasolina', 0, '640 cv', true, 5430000, false, 20);
 
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com' , 2005-07-08, 'Luiz047', 'Luizz123,' 'Administrador', 500.000, 2.5, 96883597);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', 2004-07-17, 'Biell047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Eric', 22726014571, 13410553435, 'Eric@gmail.com' , 2005-10-06, 'Eric047', 'Luizz123,' 'Administrador', 500.000, 2.5, 96883597);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Sabel', 48791425360, 35980146935, 'Sabel@gmail.com', 2005-12-31, 'Sabel047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('João', 48791425360, 35980146935, 'João@gmail.com', 2005-12-08, 'João047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com', '2005-07-08', 'Luiz047', 'Luizz123', 'Administrador', 500.000, 2.5, 96883597);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', '2004-07-17', 'Biell047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Eric', 17541062722, 53964108953, 'Eric@gmail.com' , '2005-10-06', 'Eric047', 'Ericc123', 'Administrador', 500.000, 2.5, 96883597);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Sabel', 06352419784, 7327146365, 'Sabel@gmail.com', '2005-12-31', 'Sabel047', 'Sabell123', 'Administrador', 500.000, 2.5, 26360149);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('João', 53435501431, 4006755218, 'João@gmail.com', '2005-12-08', 'João047', 'joaoo123', 'Administrador', 500.000, 2.5, 26360149);
 
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-03 true, 'Huracan','Cupê', 1, 25);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-03 true, 'Panemera','Sedã', 2, 24);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-05 false, '300 C','Sedã', 1, 22);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-05 false, 'Camaro','Cupê', 2, 19);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-10 true, 'Silverado 1500','Picape', 1, 23);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-10 false, 'California','Cupê', 2, 20);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-13 true, 'Golf GTI','Hatch', 1, 18);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-13 true, 'Corolla', 'Sedã', 2, 16);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 true, 'Sportage','Suv', 1, 14);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 true, 'I30','Hatch', 2, 12) ;
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-17 false, 'GLC 300','Suv', 1, 11);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-17 false, 'polo', 'Hatch', 2, 2);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-22 true, 'Escalade Esv','Suv', 1, 1);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-22 true, 'Ram 2500','Picape', 2, 10);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-24 true, 'Fusion','Sedã', 1, 6);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-24 true, 'Chevette','Cupê', 2, 4);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Gabriel', 48791425360, 'Gabriel047', 2023-07-30 false, 'Toro','Picape', 1, 3);
-insert into vendidos (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiz', 22726014571, 'Luiz047', 2023-07-30 false, 'Rs3','Sedã', 2, 13);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 2, 25);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 1, 24);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Samuel', 00664059040, 8834760058, 57071707,'2023-07-05', 1050000, 3, 23);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jorge', 95369554072, 2421330613, 72885095, '2023-07-05', 125990, 4, 22);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Edgar', 32762105099, 7936906457, 80050442,'2023-07-10', 2499990, 5, 21);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Cristiano', 87559312004, 8239385162, 69314704,'2023-07-10', 1790000, 1, 20);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Marcio', 93501152043, 4520117845, 68928054,'2023-07-13', 411500, 2, 19);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jose', 77643116008, 9536854857, 47802094, '2023-07-13', 199900, 3, 18);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Andre', 64791387082, 7936131906, 69915210,'2023-07-17', 189900, 4, 17);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Oscar', 82616317028, 7927835461, 70238400,'2023-07-17', 148990, 5, 16) ;
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiza', 20478554036, 6825993819, 64049360, '2023-07-17', 65000, 1, 15);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Daiana', 75551524019, 5431073613, 68906474,'2023-07-17', 120000, 2, 14);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Julia', 78452109008, 6833333876, 89233450, '2023-07-22', 380000, 3, 13);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Marcia', 80268354090, 7928136502, 66615778, '2023-07-22', 63000, 4, 12);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luana', 35260766008, 5539317618, 30411018,'2023-07-24', 489900, 5, 11);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jaqueline', 88836493033, 6525055047, 95072260,'2023-07-24', 472990, 1, 10);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Helena', 69390733022, 2825562999, 77814400,'2023-07-30', 1250000, 2, 9);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Eliana', 19007426087, 6423656942, 53635185,'2023-07-30', 244900, 3, 8);
 
 SELECT COUNT(*) FROM enderecos;
 SELECT COUNT(*) FROM fornecedores;
 SELECT COUNT(*) FROM Carros;
 SELECT COUNT(*) FROM funcionarios;
-SELECT COUNT(*) FROM vendidos;
+SELECT COUNT(*) FROM Vendas;
 
 SELECT * FROM enderecos order by cep;
 SELECT * FROM fornecedores order by id_fornecedor;
-SELECT * FROM Carros order by id_veiculo;
+SELECT * FROM Carros order by id_carro;
 SELECT * FROM funcionarios order by matricula;
-SELECT * FROM vendidos order by id_vendidos;
+SELECT * FROM vendidos order by id_venda;
 
 SELECT Carros.marca,
     Carros.modelo,
@@ -215,35 +215,35 @@ SELECT Carros.marca,
     funcionarios.email,
     funcionarios.dataDeNasc,
     funcionarios.usuario,
-    funcionarios.NivelCargo
-    funcionarios.salario
-    funcionarios.comissao
+    funcionarios.nivelCargo,
+    funcionarios.salario,
+    funcionarios.comissao,
     funcionarios.enderecos_cep
-    FROM vendidos
-INNER JOIN funcionarios ON vendidos.funcionarios_matricula = funcionarios.matricula
-INNER JOIN Carros ON vendidos.carro = Carros.carro;
+    FROM Vendas
+INNER JOIN funcionarios ON Vendas.funcionarios_matricula = funcionarios.matricula
+INNER JOIN Carros ON Vendas.carro = Carros.carro;
 
--- UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
--- UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
--- UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE cep = 26360149;
--- UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE cep = 32813459;
--- UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE cep = 33395580;
--- UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE cep = 18853418;
--- UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE cep = 66575921;
--- UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE cep = 77727522;
--- UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
--- UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
+UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
+UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
+UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE cep = 26360149;
+UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE cep = 32813459;
+UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE cep = 33395580;
+UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE cep = 18853418;
+UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE cep = 66575921;
+UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE cep = 77727522;
+UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
+UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
 
--- UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
--- UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;
--- UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", endereco_cep=24971323 WHERE id_fornecedor= 3;
--- UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", endereco_cep=32813459 WHERE id_fornecedor= 4;
--- UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", endereco_cep=33395580 WHERE id_fornecedor= 5;
--- UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", endereco_cep=66575921 WHERE id_fornecedor= 6;
--- UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", endereco_cep=18853418 WHERE id_fornecedor= 7;
--- UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", endereco_cep=77727522 WHERE id_fornecedor= 8;
--- UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", endereco_cep=53015239 WHERE id_fornecedor= 9;
--- UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", endereco_cep=53015239 WHERE id_fornecedor= 10;
+UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
+UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;
+UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", endereco_cep=24971323 WHERE id_fornecedor= 3;
+UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", endereco_cep=32813459 WHERE id_fornecedor= 4;
+UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", endereco_cep=33395580 WHERE id_fornecedor= 5;
+UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", endereco_cep=66575921 WHERE id_fornecedor= 6;
+UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", endereco_cep=18853418 WHERE id_fornecedor= 7;
+UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", endereco_cep=77727522 WHERE id_fornecedor= 8;
+UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", endereco_cep=53015239 WHERE id_fornecedor= 9;
+UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", endereco_cep=53015239 WHERE id_fornecedor= 10;
 
 -- UPDATE funcionarios SET nome = "Lindy", cpf = "51267649003	", telefone ="95937385512", salario = "435345", enderecos_cep = 98860771 WHERE matricula = 1;
 -- UPDATE funcionarios SET nome = "Jarret", cpf = "73775878068", telefone ="92935526593", salario = "435435", enderecos_cep = 98860771 WHERE matricula = 2;
@@ -267,22 +267,22 @@ INNER JOIN Carros ON vendidos.carro = Carros.carro;
 -- UPDATE Carros SET marca = "Nissan", modelo = "Kicks", potencia = 120, quilometragem = 0, novos = true, eletrico = false, esportivo = false, picape = false, ano = 2023, cor = "Branco", abs = true, preco = 95000, fornecedor_id_fornecedor = 23 WHERE id_veiculo = 9;
 -- UPDATE Carros SET marca = "Hiunday", modelo = "Creta", potencia = 135, quilometragem = 0, novos = true, eletrico = false, esportivo = false, picape = false, ano = 2022, cor = "Cinza", abs = true, preco = 145000, fornecedor_id_fornecedor = 22 WHERE id_veiculo = 10;
 
--- UPDATE vendidos SET nome = "Rodrigo", cpf=28716145631, usuario='Eric.o', ipva_pago=false, modelo='Navigator', funcionarios_matricula=1, tipo_veiculo='Picape' WHERE Carros_id_veiculo =1 ;
--- UPDATE vendidos SET nome = "Andrei", cpf=16272567685, usuario='luis.g', ipva_pago=true, modelo='Camaro', funcionarios_matricula=2, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 2;
--- UPDATE vendidos SET nome = "bernardo", cpf=91315765080, usuario='liz.s', ipva_pago=false, modelo='RAV4', funcionarios_matricula=3, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 3;
--- UPDATE vendidos SET nome = "Gustavo", cpf=55035814157, usuario='joao.g', ipva_pago=true, modelo='RAV4', funcionarios_matricula=4, tipo_veiculo='Picape' WHERE Carros_id_veiculo =4 ;
--- UPDATE vendidos SET nome = "Amanda", cpf=03567342266, usuario='liz.z', ipva_pago=true, modelo='Camaro', funcionarios_matricula=5, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 5;
--- UPDATE vendidos SET nome = "Carlos", cpf=81771519592, usuario='joao.df', ipva_pago=false, modelo='Navigator', funcionarios_matricula=6, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 6;
--- UPDATE vendidos SET nome = "Erik", cpf=16164101590, usuario='Eric.de', ipva_pago=true, modelo='Camaro', funcionarios_matricula=7, tipo_veiculo='Picape' WHERE Carros_id_veiculo =7 ;
--- UPDATE vendidos SET nome = "Anderson", cpf=66119902759, usuario='luis.lo', ipva_pago=false, modelo='RAV4', funcionarios_matricula=8, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 8;
--- UPDATE vendidos SET nome = "Robson", cpf=90190269766, usuario='Eric.sa', ipva_pago=true, modelo='Camaro', funcionarios_matricula=9, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 9 ;
--- UPDATE vendidos SET nome = "Welliton", cpf=94642174800, usuario='luiz.s', ipva_pago=false, modelo='Navigator', funcionarios_matricula=10, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 10;
+-- UPDATE Vendas SET nome = "Rodrigo", cpf=28716145631, usuario='Eric.o', ipva_pago=false, modelo='Navigator', funcionarios_matricula=1, tipo_veiculo='Picape' WHERE Carros_id_veiculo =1 ;
+-- UPDATE Vendas SET nome = "Andrei", cpf=16272567685, usuario='luis.g', ipva_pago=true, modelo='Camaro', funcionarios_matricula=2, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 2;
+-- UPDATE Vendas SET nome = "bernardo", cpf=91315765080, usuario='liz.s', ipva_pago=false, modelo='RAV4', funcionarios_matricula=3, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 3;
+-- UPDATE Vendas SET nome = "Gustavo", cpf=55035814157, usuario='joao.g', ipva_pago=true, modelo='RAV4', funcionarios_matricula=4, tipo_veiculo='Picape' WHERE Carros_id_veiculo =4 ;
+-- UPDATE Vendas SET nome = "Amanda", cpf=03567342266, usuario='liz.z', ipva_pago=true, modelo='Camaro', funcionarios_matricula=5, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 5;
+-- UPDATE Vendas SET nome = "Carlos", cpf=81771519592, usuario='joao.df', ipva_pago=false, modelo='Navigator', funcionarios_matricula=6, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 6;
+-- UPDATE Vendas SET nome = "Erik", cpf=16164101590, usuario='Eric.de', ipva_pago=true, modelo='Camaro', funcionarios_matricula=7, tipo_veiculo='Picape' WHERE Carros_id_veiculo =7 ;
+-- UPDATE Vendas SET nome = "Anderson", cpf=66119902759, usuario='luis.lo', ipva_pago=false, modelo='RAV4', funcionarios_matricula=8, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 8;
+-- UPDATE Vendas SET nome = "Robson", cpf=90190269766, usuario='Eric.sa', ipva_pago=true, modelo='Camaro', funcionarios_matricula=9, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 9 ;
+-- UPDATE Vendas SET nome = "Welliton", cpf=94642174800, usuario='luiz.s', ipva_pago=false, modelo='Navigator', funcionarios_matricula=10, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 10;
 
--- DELETE FROM vendidos WHERE Carros_id_veiculo = 1;
--- DELETE FROM vendidos WHERE Carros_id_veiculo = 2;
--- DELETE FROM vendidos WHERE Carros_id_veiculo = 3;
--- DELETE FROM vendidos WHERE Carros_id_veiculo = 4;
--- DELETE FROM vendidos WHERE Carros_id_veiculo = 5;
+-- DELETE FROM Vendas WHERE Carros_id_veiculo = 1;
+-- DELETE FROM Vendas WHERE Carros_id_veiculo = 2;
+-- DELETE FROM Vendas WHERE Carros_id_veiculo = 3;
+-- DELETE FROM Vendas WHERE Carros_id_veiculo = 4;
+-- DELETE FROM Vendas WHERE Carros_id_veiculo = 5;
 
 -- DELETE FROM funcionarios WHERE matricula = 1;
 -- DELETE FROM funcionarios WHERE matricula = 2;

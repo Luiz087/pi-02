@@ -3,6 +3,7 @@ package visao;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -46,15 +47,13 @@ public class TelaLogin extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public TelaLogin() {
+		setUndecorated(true);
 		Color color = new Color(68, 117, 157);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 580);
 		contentPane = new JPanel();
-		contentPane.setForeground(new Color(68, 116, 157));
+		contentPane.setForeground(new Color(255, 255, 255));
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -80,12 +79,12 @@ public class TelaLogin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/user.png")));
-		lblNewLabel.setBounds(361, 113, 86, 60);
+		lblNewLabel.setBounds(393, 113, 86, 60);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(TelaLogin.class.getResource("/visao/imagens/senha.png")));
-		lblNewLabel_2.setBounds(345, 250, 60, 79);
+		lblNewLabel_2.setBounds(387, 250, 60, 79);
 		contentPane.add(lblNewLabel_2);
 		
 		textLogin = new JTextField();
@@ -119,6 +118,21 @@ public class TelaLogin extends JFrame {
 		btnEntrar.setBounds(556, 383, 202, 60);
 		btnEntrar.setBorder(new RoundedBorder(20));
 		contentPane.add(btnEntrar);
+		
+		JButton btnNewButton = new JButton("X");
+		btnNewButton.setForeground(new Color(255, 0, 0));
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNewButton.setBounds(924, 0, 60, 45);
+		btnNewButton.setBorder(null);
+		btnNewButton.setFocusPainted(false);
+		contentPane.add(btnNewButton);
 
 	}
 }

@@ -3,10 +3,12 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Funcionario;
+import modelo.IFuncionarioDAO;
 
-public class FuncionarioDAO {
+public class FuncionarioDAO implements IFuncionarioDAO {
 
 	public boolean inserir(Funcionario f) {
 
@@ -34,12 +36,32 @@ public class FuncionarioDAO {
 
 			c.fecharConexao();
 
+			return true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return true;
+		return false;
 
+	}
+
+	@Override
+	public boolean alterar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean excluir() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Funcionario> ListarFuncionarios() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

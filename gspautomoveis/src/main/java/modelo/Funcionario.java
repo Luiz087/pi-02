@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-public class Funcionario extends Pagamento{
+public class Funcionario {
 
 	private String nome;
 	private Long cpf;
@@ -13,6 +13,7 @@ public class Funcionario extends Pagamento{
 	private Double salario;
 	private Date dataDeNasc;
 	private Integer nivelCargo;
+	private Double comissao;
 
 	public String getNome() {
 		return nome;
@@ -84,5 +85,13 @@ public class Funcionario extends Pagamento{
 
 	public void setDataDeNasc(Date dataDeNasc) {
 		this.dataDeNasc = dataDeNasc;
+	}
+
+	public Double getComissao() {
+		return comissao;
+	}
+
+	public void setComissao(Double comissao) {
+		this.comissao = comissao;
 	}
 }

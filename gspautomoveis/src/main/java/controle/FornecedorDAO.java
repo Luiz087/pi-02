@@ -3,10 +3,12 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Fornecedor;
+import modelo.IFornecedorDAO;
 
-public class FornecedorDAO {
+public class FornecedorDAO implements IFornecedorDAO {
 
 	public boolean inserir(Fornecedor f) {
 
@@ -29,12 +31,32 @@ public class FornecedorDAO {
 			ps.executeUpdate();
 
 			c.fecharConexao();
+			
+			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean alterar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean excluir() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Fornecedor> ListarFornecedores() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

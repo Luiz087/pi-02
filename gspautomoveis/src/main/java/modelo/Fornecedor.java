@@ -1,6 +1,6 @@
 package modelo;
 
-public class Fornecedor extends Endereco{
+public class Fornecedor extends Endereco {
 
 	private String nomeFornecedor;
 	private Long cnpjfornecedor;

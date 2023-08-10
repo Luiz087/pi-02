@@ -3,10 +3,12 @@ package controle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.Endereco;
+import modelo.IEnderecoDAO;
 
-public class EnderecoDAO {
+public class EnderecoDAO implements IEnderecoDAO {
 
 	public boolean inserir(Endereco e) {
 
@@ -28,12 +30,32 @@ public class EnderecoDAO {
 			ps.executeUpdate();
 
 			c.fecharConexao();
+			
+			return true;
 
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 
-		return true;
+		return false;
 
+	}
+
+	@Override
+	public boolean alterar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean excluir() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Endereco> ListarEnderecos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

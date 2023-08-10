@@ -1,5 +1,14 @@
 package modelo;
 
-public class IFuncionarioDAO {
+import java.util.ArrayList;
 
+public interface IFuncionarioDAO {
+
+	public boolean inserir(Funcionario f);
+
+	public boolean alterar();
+
+	public boolean excluir();
+
+	public ArrayList<Funcionario> ListarFuncionarios();
 }

@@ -4,17 +4,8 @@ import java.time.LocalDate;
 
 public class Pagamento {
 
-	private Double comissao;
 	private String formapagamento;
 	private LocalDate dataPagamento;
-
-	public Double getComissao() {
-		return comissao;
-	}
-
-	public void setComissao(Double comissao) {
-		this.comissao = comissao;
-	}
 
 	public String getFormapagamento() {
 		return formapagamento;
@@ -32,5 +23,4 @@ public class Pagamento {
 		this.dataPagamento = dataPagamento;
 	}
 
-	
 }

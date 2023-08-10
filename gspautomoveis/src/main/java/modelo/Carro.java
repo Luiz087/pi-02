@@ -13,6 +13,7 @@ public class Carro {
 	private Boolean abs;
 	private Double preco;
 	private Long quilometragem;
+	private Boolean promocao;
 
 	public String getModelo() {
 		return modelo;
@@ -100,6 +101,14 @@ public class Carro {
 
 	public void setQuilometragem(Long quilometragem) {
 		this.quilometragem = quilometragem;
+	}
+
+	public Boolean getPromocao() {
+		return promocao;
+	}
+
+	public void setPromocao(Boolean promocao) {
+		this.promocao = promocao;
 	}
 
 }

@@ -16,7 +16,7 @@ public class CarroDAO implements ICarroDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO Carros (marca, modelo, novo_usado, ano, cor, tipo, combustivel, quilometragem, potencia, abs, preco, fornecedor_id_fornecedor) values ('?', '?', '?', ?, '?', '?,' '?', ?, '?', ?, ?, ?);";
+		String query = "INSERT INTO Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('?', '?', '?', ?, '?', '?,' '?', ?, '?', ?, ?, ?, ?);";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -32,6 +32,7 @@ public class CarroDAO implements ICarroDAO {
 			ps.setString(9, ca.getPotencia());
 			ps.setBoolean(10, ca.getAbs());
 			ps.setDouble(11, ca.getPreco());
+			ps.setBoolean(12, ca.getPromocao());
 
 			ps.executeUpdate();
 

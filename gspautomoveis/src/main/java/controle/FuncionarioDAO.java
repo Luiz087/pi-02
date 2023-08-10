@@ -31,6 +31,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setInt(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
+			ps.setLong(11, f.getCep());
 
 			ps.executeUpdate();
 

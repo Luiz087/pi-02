@@ -48,6 +48,7 @@ public class TelaLogin extends JFrame {
 	}
 
 	public TelaLogin() {
+		
 		setUndecorated(true);
 		Color color = new Color(68, 117, 157);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,6 +134,10 @@ public class TelaLogin extends JFrame {
 		btnNewButton.setBorder(null);
 		btnNewButton.setFocusPainted(false);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setBounds(659, 481, 46, 14);
+		contentPane.add(lblNewLabel_3);
 
 	}
 }

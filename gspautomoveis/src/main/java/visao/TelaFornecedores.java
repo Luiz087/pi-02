@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.Border;
+import javax.swing.JTable;
 
 public class TelaFornecedores extends JFrame {
 
@@ -25,6 +26,7 @@ public class TelaFornecedores extends JFrame {
 	private JTextField textCNPJ;
 	private JTextField textMarca;
 	private JTextField textCidade;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -56,11 +58,16 @@ public class TelaFornecedores extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\bglateral.png"));
-		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 36));
-		lblNewLabel_1.setBounds(-11, 0, 361, 1041);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1_1.setBounds(78, 193, 175, 190);
+		contentPane.add(lblNewLabel_1_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("GSP");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
+		lblNewLabel_3.setBounds(78, 49, 175, 87);
+		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Krona One", Font.PLAIN, 30));
@@ -118,7 +125,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textCidade);
 		
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
-		btnAdicionar.setBackground(new Color(255, 255, 255));
+		btnAdicionar.setBackground(new Color(0, 255, 0));
 		 btnAdicionar.setForeground(new Color(0, 0, 0));
 		 
 		 btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
@@ -129,8 +136,97 @@ public class TelaFornecedores extends JFrame {
 		});
 		
 		btnAdicionar.setBounds(1069, 264, 251, 35);
+		btnAdicionar.setFocusPainted(false);
 		btnAdicionar.setBorder(new RoundedBorder(10));
 	   
 		contentPane.add(btnAdicionar);
+		
+		table = new JTable();
+		table.setBackground(new Color(192, 192, 192));
+		table.setBounds(435, 348, 1419, 644);
+		contentPane.add(table);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
+		lblNewLabel_2_1.setBounds(28, 536, 40, 35);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
+		lblNewLabel_4_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1.setBounds(74, 536, 265, 35);
+		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("Veículos");
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4.setBounds(74, 456, 265, 35);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Pessoa.png")));
+		lblNewLabel_2_1_1.setBounds(28, 616, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1);
+		
+		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2.setBounds(28, 456, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2);
+		
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
+		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1.setBounds(74, 691, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/carrinho compras.png")));
+		lblNewLabel_2_1_1_1.setBounds(28, 691, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
+		lblNewLabel_4_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1.setBounds(74, 616, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Fornecedores");
+		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1.setBounds(74, 763, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/carro +.png")));
+		lblNewLabel_2_1_1_1_1.setBounds(28, 763, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Sistema.png")));
+		lblNewLabel_2_1_1_1_1_1.setBounds(28, 846, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Sistema");
+		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1_1.setBounds(74, 846, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
+		lblNewLabel_4_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_4_1_1_1_1_1_1.setBounds(47, 983, 93, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_1_1_1_1_1.setBounds(10, 983, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\bglateral.png"));
+		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 36));
+		lblNewLabel_1.setBounds(-11, 0, 361, 1041);
+		contentPane.add(lblNewLabel_1);
 	}
 }

@@ -1,20 +1,20 @@
 package visao;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.Font;
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class TelaErro extends JFrame {
+public class TelaSucesso extends JFrame {
 
 	private JPanel contentPane;
 
@@ -25,7 +25,7 @@ public class TelaErro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaErro frame = new TelaErro();
+					TelaSucesso frame = new TelaSucesso();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class TelaErro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaErro() {
+	public TelaSucesso() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -47,34 +47,35 @@ public class TelaErro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("X");
-		btnNewButton.setBackground(SystemColor.inactiveCaptionBorder);
-		btnNewButton.setForeground(new Color(255, 0, 0));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 24));
-		btnNewButton.setBounds(373, 0, 89, 23);
-		btnNewButton.setBorder(null);
-		btnNewButton.setFocusPainted(false);
-
-		contentPane.add(btnNewButton);
-		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(telaLoginIncorreto.class.getResource("/visao/imagens/exclama.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaSucesso.class.getResource("/visao/imagens/ok.png")));
 		lblNewLabel.setBounds(178, 23, 143, 100);
 		contentPane.add(lblNewLabel);
 		
-
-		JLabel lblNewLabel_1 = new JLabel("OCORREU UM ERRO");
+		JLabel lblNewLabel_1 = new JLabel("OPERAÇÃO CONCLUÍDA");
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(93, 134, 600, 77);
+		lblNewLabel_1.setBounds(64, 123, 600, 77);
 		contentPane.add(lblNewLabel_1);
 		
-	
+		JLabel lblNewLabel_1_1 = new JLabel("COM SUCESSO");
+		lblNewLabel_1_1.setFont(new Font("Krona One", Font.PLAIN, 20));
+		lblNewLabel_1_1.setBounds(121, 168, 203, 77);
+		contentPane.add(lblNewLabel_1_1);
+		
+		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("Krona One", Font.PLAIN, 11));
+		btnNewButton.setBounds(151, 235, 143, 36);
+		contentPane.add(btnNewButton);
+		btnNewButton.setBorder(new RoundedBorder(20));
+		
 		
 	}
+
 }

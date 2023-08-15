@@ -31,7 +31,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.executeUpdate();
 
 			c.fecharConexao();
-			
+
 			return true;
 
 		} catch (SQLException e) {

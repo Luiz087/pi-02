@@ -2,14 +2,14 @@ package modelo;
 
 import java.util.ArrayList;
 
-public interface ICarroDAO {
-
-	public boolean inserir(Carro ca);
+public interface IVendaDAO {
+	
+	public boolean inserir(Venda v);
 
 	public boolean alterar();
 
 	public boolean excluir();
 
-	public ArrayList<Carro> ListarCarros();
+	public ArrayList<Venda> ListarVendas();
 
 }

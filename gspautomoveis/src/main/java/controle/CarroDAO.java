@@ -2,6 +2,7 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class CarroDAO implements ICarroDAO {
 			ps.setLong(8, ca.getQuilometragem());
 			ps.setString(9, ca.getPotencia());
 			ps.setBoolean(10, ca.getAbs());
-			ps.setDouble(11, ca.getPreco());
+			ps.setDouble(11, ca.getPrecoCarro());
 			ps.setBoolean(12, ca.getPromocao());
 
 			ps.executeUpdate();
@@ -61,7 +62,60 @@ public class CarroDAO implements ICarroDAO {
 
 	@Override
 	public ArrayList<Carro> ListarCarros() {
-		// TODO Auto-generated method stub
+		
+		Conexao c = Conexao.getInstancia();
+		
+		Connection con = c.conectar();
+		
+		ArrayList<Carro> Carros = new ArrayList();
+		
+		String query = "SELECT * FROM Carros";
+		
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String marca = rs.getString("marca");
+				String modelo = rs.getString("modelo");
+				Boolean novo = rs.getBoolean("novo");
+				Integer ano = rs.getInt("ano");
+				String cor = rs.getString("cor");
+				String tipo = rs.getString("tipo");
+				String combustivel = rs.getString("combustivel");
+				Long quilometragem = rs.getLong("quilometragem");
+				String potencia = rs.getString("potencia");
+				Boolean abs = rs.getBoolean("abs");
+				double precoCarro = rs.getDouble("precoCarro");
+				Boolean promocao = rs.getBoolean("promocao");
+				
+				Carro C = new Carro();
+				C.setMarca(marca);
+				C.setModelo(modelo);
+				C.setNovo(novo);
+				C.setAno(ano);
+				C.setCor(cor);
+				C.setTipo(tipo);
+				C.setCombustivel(combustivel);
+				C.setQuilometragem(quilometragem);
+				C.setPotencia(potencia);
+				C.setAbs(abs);
+				C.setPrecoCarro(precoCarro);
+				C.setPromocao(promocao);
+				
+				
+				
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
 		return null;
 	}
 

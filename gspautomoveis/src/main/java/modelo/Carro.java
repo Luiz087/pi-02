@@ -11,7 +11,7 @@ public class Carro {
 	private String potencia;
 	private String cor;
 	private Boolean abs;
-	private Double preco;
+	private Double precoCarro;
 	private Long quilometragem;
 	private Boolean promocao;
 
@@ -87,13 +87,6 @@ public class Carro {
 		this.cor = cor;
 	}
 
-	public Double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
 
 	public Long getQuilometragem() {
 		return quilometragem;
@@ -109,6 +102,14 @@ public class Carro {
 
 	public void setPromocao(Boolean promocao) {
 		this.promocao = promocao;
+	}
+
+	public Double getPrecoCarro() {
+		return precoCarro;
+	}
+
+	public void setPrecoCarro(Double precoCarro) {
+		this.precoCarro = precoCarro;
 	}
 
 }

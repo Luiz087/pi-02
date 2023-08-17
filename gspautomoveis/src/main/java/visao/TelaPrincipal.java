@@ -58,37 +58,40 @@ public class TelaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_6_1_1 = new JLabel("Opção 3");
+		JLabel lblNewLabel_6_1_1 = new JLabel("Histórico");
 		lblNewLabel_6_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6_1_1.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6_1_1.setBounds(1432, 945, 279, 35);
 		contentPane.add(lblNewLabel_6_1_1);
 		
-		JLabel lblNewLabel_6_1 = new JLabel("Opção 2");
+		JLabel lblNewLabel_6_1 = new JLabel("Configurações");
 		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6_1.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6_1.setBounds(1041, 945, 279, 35);
 		contentPane.add(lblNewLabel_6_1);
 		
-		JLabel lblNewLabel_6 = new JLabel("Opção 1");
+		JLabel lblNewLabel_6 = new JLabel("Sistema");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6.setBounds(639, 945, 279, 35);
 		contentPane.add(lblNewLabel_6);
 		
-		JLabel lblNewLabel_5_1_1 = new JLabel("Ícone");
+		JLabel lblNewLabel_5_1_1 = new JLabel("");
+		lblNewLabel_5_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carrinho compras.png")));
 		lblNewLabel_5_1_1.setFont(new Font("Krona One", Font.BOLD, 20));
-		lblNewLabel_5_1_1.setBounds(1530, 706, 76, 35);
+		lblNewLabel_5_1_1.setBounds(1552, 706, 40, 35);
 		contentPane.add(lblNewLabel_5_1_1);
 		
-		JLabel lblNewLabel_5_1 = new JLabel("Ícone");
+		JLabel lblNewLabel_5_1 = new JLabel("");
+		lblNewLabel_5_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_5_1.setFont(new Font("Krona One", Font.BOLD, 20));
-		lblNewLabel_5_1.setBounds(1142, 706, 76, 35);
+		lblNewLabel_5_1.setBounds(1167, 706, 40, 35);
 		contentPane.add(lblNewLabel_5_1);
 		
-		JLabel lblNewLabel_5 = new JLabel("Ícone");
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Sistema.png")));
 		lblNewLabel_5.setFont(new Font("Krona One", Font.BOLD, 20));
-		lblNewLabel_5.setBounds(743, 706, 76, 35);
+		lblNewLabel_5.setBounds(760, 706, 30, 35);
 		contentPane.add(lblNewLabel_5);
 		
 		textField_8 = new JTextField();

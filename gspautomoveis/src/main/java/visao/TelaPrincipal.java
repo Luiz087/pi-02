@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -115,6 +117,13 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//IMPLEMENTAR O DISPOSE QUANDO A TELA FOR CRIADA
+
+			}
+		});
 		lblNewLabel_2_1.setBounds(28, 498, 40, 35);
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Engrenagem.png")));
 		contentPane.add(lblNewLabel_2_1);
@@ -126,11 +135,29 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4_1);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios(); 
+				dispose();
+			    telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);	
+			    telafunc.setVisible(true);
+			}
+		});
 		lblNewLabel_2_1_1.setBounds(28, 578, 40, 35);
 		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Pessoa.png")));
 		contentPane.add(lblNewLabel_2_1_1);
 		
 		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
+		lblNewLabel_4_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios(); 
+				dispose();
+			    telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);	
+			    telafunc.setVisible(true);
+			}
+		});
 		lblNewLabel_4_1_1.setBounds(74, 578, 265, 35);
 		lblNewLabel_4_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -148,11 +175,29 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+		});
 		lblNewLabel_2_1_1_1_1.setBounds(28, 725, 40, 35);
 		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carro +.png")));
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Fornecedores");
+		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+		});
 		lblNewLabel_4_1_1_1_1.setBounds(74, 725, 265, 35);
 		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -170,17 +215,41 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1_1_1.setBounds(10, 945, 40, 35);
+		lblNewLabel_2_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1_1_1_1_1.setBounds(28, 945, 40, 35);
 		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/sair.png")));
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
-		lblNewLabel_4_1_1_1_1_1_1.setBounds(47, 945, 93, 35);
+		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
+		lblNewLabel_4_1_1_1_1_1_1.setBounds(74, 944, 93, 35);
 		lblNewLabel_4_1_1_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				//IMPLEMENTAR O DISPOSE QUANDO A TELA FOR CRIADA
+			}
+		});
 		lblNewLabel_2_1_2.setBounds(28, 418, 40, 35);
 		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/bau veiculos.png")));
 		contentPane.add(lblNewLabel_2_1_2);
@@ -329,14 +398,30 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(textField_9);
 		
 		JLabel lblNewLabel_2_1_2_1_1_1_2 = new JLabel("");
+		lblNewLabel_2_1_2_1_1_1_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
 		lblNewLabel_2_1_2_1_1_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_2_1_1_1_2.setBounds(1845, 12, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1_1_2);
 		
-		JLabel lblNewLabel_4_2_1_1_2 = new JLabel("Olá, <funcionário>!");
+		JLabel lblNewLabel_4_2_1_1_2 = new JLabel("Olá, ");
 		lblNewLabel_4_2_1_1_2.setForeground(Color.BLACK);
 		lblNewLabel_4_2_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_2_1_1_2.setBounds(1529, 12, 304, 35);
+		lblNewLabel_4_2_1_1_2.setBounds(1482, 12, 70, 35);
 		contentPane.add(lblNewLabel_4_2_1_1_2);
+		
+		JLabel lblNomeFunc = new JLabel("tijij");
+		lblNomeFunc.setForeground(Color.BLACK);
+		lblNomeFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNomeFunc.setBounds(1562, 12, 273, 35);
+		contentPane.add(lblNomeFunc);
+		
 	}
 }

@@ -88,7 +88,7 @@ public class CarroDAO implements ICarroDAO {
 				Long quilometragem = rs.getLong("quilometragem");
 				String potencia = rs.getString("potencia");
 				Boolean abs = rs.getBoolean("abs");
-				double precoCarro = rs.getDouble("precoCarro");
+				Double precoCarro = rs.getDouble("precoCarro");
 				Boolean promocao = rs.getBoolean("promocao");
 
 				Carro C = new Carro();

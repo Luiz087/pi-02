@@ -27,8 +27,9 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setLong(3, f.getTelefoneFornecedor());
 			ps.setString(4, f.getEmpresa());
 			ps.setString(5, f.getMarca());
-			ps.setLong(6, f.getCep());
-
+			//ps.setLong(6, f.getEndereco.getCep());
+			// chave estrangeira endereco_ce
+			
 			ps.executeUpdate();
 
 			c.fecharConexao();
@@ -85,7 +86,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 				F.setTelefoneFornecedor(telefoneFornecedor);
 				F.setEmpresa(Empresa);
 				F.setMarca(Marca);
-				F.setCep(Cep);
+				//F.setCep(Cep);
 				
 				Fornecedores.add(F);
 

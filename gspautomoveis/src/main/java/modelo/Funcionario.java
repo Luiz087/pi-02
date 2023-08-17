@@ -1,6 +1,6 @@
 package modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Funcionario extends Endereco {
 
@@ -11,7 +11,7 @@ public class Funcionario extends Endereco {
 	private Long telefone;
 	private String email;
 	private Double salario;
-	private Date dataDeNasc;
+	private LocalDate dataDeNasc;
 	private Integer nivelCargo;
 	private Double comissao;
 
@@ -79,11 +79,11 @@ public class Funcionario extends Endereco {
 		this.nivelCargo = nivelCargo;
 	}
 
-	public Date getDataDeNasc() {
+	public LocalDate getDataDeNasc() {
 		return dataDeNasc;
 	}
 
-	public void setDataDeNasc(Date dataDeNasc) {
+	public void setDataDeNasc(LocalDate dataDeNasc) {
 		this.dataDeNasc = dataDeNasc;
 	}
 

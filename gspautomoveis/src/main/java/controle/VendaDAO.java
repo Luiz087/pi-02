@@ -1,8 +1,11 @@
 package controle;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.IVendaDAO;
@@ -26,7 +29,7 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(2, v.getCpfCliente());
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
-			ps.setDate(5, v.getDataVenda());
+			ps.setDate(5, Date.valueOf(v.getDataVenda()));
 			ps.setDouble(6, v.getPrecoVenda());
 
 			ps.executeUpdate();
@@ -56,8 +59,48 @@ public class VendaDAO implements IVendaDAO {
 
 	@Override
 	public ArrayList<Venda> ListarVendas() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		ArrayList<Venda> Vendas = new ArrayList();
+
+		String Query = "SELECT * FROM Vendas";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				String NomeCliente = rs.getString("NomeCliente");
+				Long CpfCliente = rs.getLong("CpfCliente");
+				Long TelefoneCliente = rs.getLong("TelefoneCliente");
+				String EnderecoCliente = rs.getString("EnderecoCliente");
+				Date DataVenda = rs.getDate("DataVenda");
+				Double PrecoVenda = rs.getDouble("Precovenda");
+
+				Venda V = new Venda();
+
+				V.setNomeCliente(NomeCliente);
+				V.setCpfCliente(CpfCliente);
+				V.setTelefoneCliente(TelefoneCliente);
+				V.setEnderecoCliente(EnderecoCliente);
+				V.setDataVenda(LocalDate.of(DataVenda.getYear(), DataVenda.getMonth(), DataVenda.getDay()));
+				V.setPrecoVenda(PrecoVenda);
+
+				Vendas.add(V);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		c.fecharConexao();
+
+		return Vendas;
 	}
 
 }

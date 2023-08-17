@@ -1,6 +1,6 @@
 package modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Venda {
 
@@ -8,7 +8,7 @@ public class Venda {
 	private Long cpfCliente;
 	private Long telefoneCliente;
 	private String enderecoCliente;
-	private Date dataVenda;
+	private LocalDate dataVenda;
 	private Double precoVenda;
 
 	public String getNomeCliente() {
@@ -43,11 +43,11 @@ public class Venda {
 		this.enderecoCliente = enderecoCliente;
 	}
 
-	public Date getDataVenda() {
+	public LocalDate getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(Date dataVenda) {
+	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 

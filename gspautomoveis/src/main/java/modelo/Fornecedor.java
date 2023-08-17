@@ -1,12 +1,21 @@
 package modelo;
 
-public class Fornecedor extends Endereco {
+public class Fornecedor {
 
 	private String nomeFornecedor;
 	private Long cnpjfornecedor;
 	private Long telefoneFornecedor;
 	private String marca;
 	private String empresa;
+	private Endereco endereco;
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getMarca() {
 		return marca;

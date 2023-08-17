@@ -30,6 +30,8 @@ public class FornecedorDAO implements IFornecedorDAO {
 			//ps.setLong(6, f.getEndereco.getCep());
 			// chave estrangeira endereco_ce
 			
+			ps.setLong(6, f.getEndereco().getCep());
+
 			ps.executeUpdate();
 
 			c.fecharConexao();

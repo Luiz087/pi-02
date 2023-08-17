@@ -8,15 +8,19 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.Border;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaFornecedores extends JFrame {
 
@@ -124,14 +128,32 @@ public class TelaFornecedores extends JFrame {
 		textCidade.setBounds(1329, 147, 335, 50);
 		contentPane.add(textCidade);
 		
+
+		
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.setBackground(new Color(0, 255, 0));
-		 btnAdicionar.setForeground(new Color(0, 0, 0));
-		 
+		 btnAdicionar.setForeground(new Color(0, 0, 0)); 
 		 btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
 		 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(textNome.getText().equals("")||textTel.getText().equals("") || textCNPJ.getText().equals("") ||textMarca.getText().equals("") || textCidade.getText().equals("") ) {
+					System.out.print("deu ruim");
+				}else {
+					String data[] = {textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(), textCidade.getText()};
+					
+					//criar as linhas quando adicionar o fornecedor
+					DefaultTableModel tbltable = (DefaultTableModel)table.getModel();
+					tbltable.addRow(data);
+					
+					System.out.print("Deu boa");
+					//limpar apos clicar no botão
+					textNome.setText("");
+					textTel.setText("");
+					textCNPJ.setText("");
+					textMarca.setText("");
+					textCidade.setText("");
+				}
 			}
 		});
 		
@@ -140,11 +162,6 @@ public class TelaFornecedores extends JFrame {
 		btnAdicionar.setBorder(new RoundedBorder(10));
 	   
 		contentPane.add(btnAdicionar);
-		
-		table = new JTable();
-		table.setBackground(new Color(192, 192, 192));
-		table.setBounds(435, 348, 1419, 644);
-		contentPane.add(table);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
@@ -228,5 +245,17 @@ public class TelaFornecedores extends JFrame {
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 36));
 		lblNewLabel_1.setBounds(-11, 0, 361, 1041);
 		contentPane.add(lblNewLabel_1);
+		
+		//posição do Jpanel
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(438, 465, 1371, 537);
+		contentPane.add(scrollPane);
+		//cadastrar nome das colunas
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Ações" }));
+		
+		table.getColumnModel().getColumn(5).setPreferredWidth(1);
+		
 	}
 }

@@ -22,6 +22,9 @@ import javax.swing.border.Border;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import modelo.Endereco;
+import modelo.Fornecedor;
+
 public class TelaFornecedores extends JFrame {
 
 	private JPanel contentPane;
@@ -31,6 +34,10 @@ public class TelaFornecedores extends JFrame {
 	private JTextField textMarca;
 	private JTextField textCidade;
 	private JTable table;
+	private JTextField textEstado;
+	private JTextField textBairro;
+	private JTextField textRua;
+	private JTextField textCep;
 
 	/**
 	 * Launch the application.
@@ -52,6 +59,9 @@ public class TelaFornecedores extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaFornecedores() {
+		Fornecedor fornec = new Fornecedor();
+		Endereco end = new Endereco();
+		
 		Color color = new Color(68, 117, 157);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -85,12 +95,12 @@ public class TelaFornecedores extends JFrame {
 		
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCidade.setBounds(1169, 133, 150, 70);
+		lblCidade.setBounds(883, 133, 150, 70);
 		contentPane.add(lblCidade);
 		
 		JLabel lblMarca = new JLabel("Marca");
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblMarca.setBounds(624, 124, 127, 88);
+		lblMarca.setBounds(397, 124, 127, 88);
 		contentPane.add(lblMarca);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
@@ -119,13 +129,13 @@ public class TelaFornecedores extends JFrame {
 		textMarca = new JTextField();
 		textMarca.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textMarca.setColumns(10);
-		textMarca.setBounds(761, 147, 335, 50);
+		textMarca.setBounds(528, 147, 335, 50);
 		contentPane.add(textMarca);
 		
 		textCidade = new JTextField();
 		textCidade.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCidade.setColumns(10);
-		textCidade.setBounds(1329, 147, 335, 50);
+		textCidade.setBounds(1058, 147, 335, 50);
 		contentPane.add(textCidade);
 		
 
@@ -146,6 +156,19 @@ public class TelaFornecedores extends JFrame {
 					DefaultTableModel tbltable = (DefaultTableModel)table.getModel();
 					tbltable.addRow(data);
 					
+					fornec.setNomeFornecedor(textNome.getName());
+					fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
+					fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
+					fornec.setMarca(textMarca.getText());
+					
+					end.setCidade(textCidade.getText());
+					end.setRua(textRua.getText());
+					end.setBairro(textBairro.getText());
+					end.setEstado(textEstado.getText());
+					end.setCep(Long.valueOf(textCep.getText()));
+					
+					fornec.setEndereco(end);
+					
 					System.out.print("Deu boa");
 					//limpar apos clicar no botão
 					textNome.setText("");
@@ -153,11 +176,13 @@ public class TelaFornecedores extends JFrame {
 					textCNPJ.setText("");
 					textMarca.setText("");
 					textCidade.setText("");
+					
+					
 				}
 			}
 		});
 		
-		btnAdicionar.setBounds(1069, 264, 251, 35);
+		btnAdicionar.setBounds(982, 360, 251, 35);
 		btnAdicionar.setFocusPainted(false);
 		btnAdicionar.setBorder(new RoundedBorder(10));
 	   
@@ -254,6 +279,50 @@ public class TelaFornecedores extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Ações" }));
+		
+		JLabel lblRua = new JLabel("Rua");
+		lblRua.setFont(new Font("Dialog", Font.PLAIN, 30));
+		lblRua.setBounds(1403, 133, 150, 70);
+		contentPane.add(lblRua);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setFont(new Font("Dialog", Font.PLAIN, 30));
+		lblEstado.setBounds(397, 247, 150, 70);
+		contentPane.add(lblEstado);
+		
+		JLabel lblBairro = new JLabel("Bairro");
+		lblBairro.setFont(new Font("Dialog", Font.PLAIN, 30));
+		lblBairro.setBounds(883, 247, 150, 70);
+		contentPane.add(lblBairro);
+		
+		JLabel lblCep = new JLabel("CEP");
+		lblCep.setFont(new Font("Dialog", Font.PLAIN, 30));
+		lblCep.setBounds(1403, 247, 150, 70);
+		contentPane.add(lblCep);
+		
+		textEstado = new JTextField();
+		textEstado.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textEstado.setColumns(10);
+		textEstado.setBounds(528, 267, 335, 50);
+		contentPane.add(textEstado);
+		
+		textBairro = new JTextField();
+		textBairro.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textBairro.setColumns(10);
+		textBairro.setBounds(1058, 267, 335, 50);
+		contentPane.add(textBairro);
+		
+		textRua = new JTextField();
+		textRua.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textRua.setColumns(10);
+		textRua.setBounds(1519, 147, 335, 50);
+		contentPane.add(textRua);
+		
+		textCep = new JTextField();
+		textCep.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textCep.setColumns(10);
+		textCep.setBounds(1519, 267, 335, 50);
+		contentPane.add(textCep);
 		
 		table.getColumnModel().getColumn(5).setPreferredWidth(1);
 		

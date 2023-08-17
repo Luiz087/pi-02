@@ -34,6 +34,7 @@ public class CarroDAO implements ICarroDAO {
 			ps.setBoolean(10, ca.getAbs());
 			ps.setDouble(11, ca.getPrecoCarro());
 			ps.setBoolean(12, ca.getPromocao());
+			// chave estrangeira fornecedor_id_fornecedor
 
 			ps.executeUpdate();
 
@@ -62,21 +63,21 @@ public class CarroDAO implements ICarroDAO {
 
 	@Override
 	public ArrayList<Carro> ListarCarros() {
-		
+
 		Conexao c = Conexao.getInstancia();
-		
+
 		Connection con = c.conectar();
-		
+
 		ArrayList<Carro> Carros = new ArrayList();
-		
+
 		String query = "SELECT * FROM Carros";
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			
+
 			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				String marca = rs.getString("marca");
 				String modelo = rs.getString("modelo");
 				Boolean novo = rs.getBoolean("novo");
@@ -89,7 +90,7 @@ public class CarroDAO implements ICarroDAO {
 				Boolean abs = rs.getBoolean("abs");
 				double precoCarro = rs.getDouble("precoCarro");
 				Boolean promocao = rs.getBoolean("promocao");
-				
+
 				Carro C = new Carro();
 				C.setMarca(marca);
 				C.setModelo(modelo);
@@ -103,20 +104,18 @@ public class CarroDAO implements ICarroDAO {
 				C.setAbs(abs);
 				C.setPrecoCarro(precoCarro);
 				C.setPromocao(promocao);
-				
-				
-				
+
+				Carros.add(C);
+
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		return null;
+
+		c.fecharConexao();
+
+		return Carros;
 	}
 
 }

@@ -2,6 +2,7 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -55,7 +56,45 @@ public class EnderecoDAO implements IEnderecoDAO {
 
 	@Override
 	public ArrayList<Endereco> ListarEnderecos() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		ArrayList<Endereco> Enderecos = new ArrayList();
+
+		String query = "SELECT * FROM enderecos";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Long Cep = rs.getLong("Cep");
+				String Rua = rs.getString("Rua");
+				String Bairro = rs.getString("Bairro");
+				String Cidade = rs.getString("Cidade");
+				String Estado = rs.getString("Estado");
+
+				Endereco E = new Endereco();
+
+				E.setCep(Cep);
+				E.setRua(Rua);
+				E.setBairro(Bairro);
+				E.setCidade(Cidade);
+				E.setEstado(Estado);
+
+				Enderecos.add(E);
+
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		c.fecharConexao();
+		
+		return Enderecos;
 	}
 }

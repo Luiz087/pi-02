@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo.Endereco;
 import modelo.Fornecedor;
+import raven.cell.TableActionCellRender;
 
 public class TelaFornecedores extends JFrame {
 
@@ -42,6 +43,7 @@ public class TelaFornecedores extends JFrame {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,6 +61,8 @@ public class TelaFornecedores extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaFornecedores() {
+
+		
 		Fornecedor fornec = new Fornecedor();
 		Endereco end = new Endereco();
 		
@@ -266,19 +270,27 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\bglateral.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Admin\\Desktop\\pi-02\\gspautomoveis\\src\\main\\java\\visao\\imagens\\bglateral.png"));
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 36));
-		lblNewLabel_1.setBounds(-11, 0, 361, 1041);
+		lblNewLabel_1.setBounds(-11, 0, 361, 881);
 		contentPane.add(lblNewLabel_1);
 		
 		//posição do Jpanel
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(438, 465, 1371, 537);
+		scrollPane.setBounds(349, 417, 1011, 321);
 		contentPane.add(scrollPane);
 		//cadastrar nome das colunas
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Ações" }));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Nome", "Telefone", "CNPJ", "Marca", "Cidade", "A\u00E7\u00F5es"
+			}
+		));
+		table.getColumnModel().getColumn(5).setPreferredWidth(15);
 		
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
@@ -323,8 +335,6 @@ public class TelaFornecedores extends JFrame {
 		textCep.setColumns(10);
 		textCep.setBounds(1519, 267, 335, 50);
 		contentPane.add(textCep);
-		
-		table.getColumnModel().getColumn(5).setPreferredWidth(1);
 		
 	}
 }

@@ -12,7 +12,7 @@ public class Funcionario extends Endereco {
 	private String email;
 	private Double salario;
 	private LocalDate dataDeNasc;
-	private Integer nivelCargo;
+	private String nivelCargo;
 	private Double comissao;
 
 	public String getNome() {
@@ -71,11 +71,11 @@ public class Funcionario extends Endereco {
 		this.salario = salario;
 	}
 
-	public Integer getNivelCargo() {
+	public String getNivelCargo() {
 		return nivelCargo;
 	}
 
-	public void setNivelCargo(Integer nivelCargo) {
+	public void setNivelCargo(String nivelCargo) {
 		this.nivelCargo = nivelCargo;
 	}
 

@@ -1,6 +1,7 @@
 package controle;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,16 @@ import modelo.Funcionario;
 import modelo.IFuncionarioDAO;
 
 public class FuncionarioDAO implements IFuncionarioDAO {
+
+	private static FuncionarioDAO instancia;
+
+	
+	public static FuncionarioDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new FuncionarioDAO();
+		}
+		return instancia;
+	}
 
 	public boolean inserir(Funcionario f) {
 
@@ -31,7 +42,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setDate(5, Date.valueOf(f.getDataDeNasc()));
 			ps.setString(6, f.getUsuario());
 			ps.setString(7, f.getSenha());
-			ps.setInt(8, f.getNivelCargo());
+			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
 			ps.setLong(11, f.getCep());
@@ -86,7 +97,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				Date DataDeNasc = rs.getDate("DataDeNasc");
 				String Usuario = rs.getString("Usuario");
 				String Senha = rs.getString("Senha");
-				Integer NivelCargo = rs.getInt("NivelCargo");
+				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
 				Long Cep = rs.getLong("Cep");
@@ -104,17 +115,27 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setSalario(Salario);
 				F.setComissao(Comissao);
 				F.setCep(Cep);
-				
+
 				Funcionarios.add(F);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		c.fecharConexao();
-		
+
 		return Funcionarios;
+	}
+
+	public boolean login(Funcionario f) {
+
+		for (Funcionario func : ListarFuncionarios()) {
+			if (func.getUsuario().equals(f.getUsuario()) && func.getSenha().equals(f.getSenha())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

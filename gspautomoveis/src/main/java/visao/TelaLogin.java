@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import controle.FuncionarioDAO;
+import modelo.Funcionario;
+
 import javax.swing.UIManager;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,6 +33,7 @@ public class TelaLogin extends JFrame {
 	private JTextField textLogin;
 	private JTextField textSenha;
 	private JPasswordField passwordSenha;
+	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -156,6 +160,24 @@ public class TelaLogin extends JFrame {
 					passwordSenha.setText(null);
 					textLogin.setText(null);
 
+				} else {
+					Funcionario testelogin = new Funcionario();
+					testelogin.setUsuario(login);
+					testelogin.setSenha(senha);
+					
+					boolean login1 = funcdao.login(testelogin);
+					
+					if(login1) {
+						TelaPrincipal telaPrincip = new TelaPrincipal();
+						dispose();
+						telaPrincip.setExtendedState(MAXIMIZED_BOTH);
+						telaPrincip.setVisible(true);
+					} else {
+						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
+						dadosIncorretos.setLocationRelativeTo(null);
+						dadosIncorretos.setVisible(true);
+					}
+					
 				}
 
 			}

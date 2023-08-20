@@ -355,9 +355,15 @@ public class TelaFornecedores extends JFrame {
 			DefaultTableModel model=(DefaultTableModel)table.getModel();
 			model.removeRow(row);
 			}
+
+			@Override
+			public void onView(int row) {
+				// TODO Auto-generated method stub
+				
+			}
 		};
 		table.getColumnModel().getColumn(5).setCellRenderer(new TableActionCellRender());
-		table.getColumnModel().getColumn(5).setCellEditor(new TableActionCellEditor(null, event));
+		table.getColumnModel().getColumn(5).setCellEditor(new TableActionCellEditor(event));
 		
 	}
 }

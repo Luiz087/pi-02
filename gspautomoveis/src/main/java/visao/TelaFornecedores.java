@@ -364,6 +364,7 @@ public class TelaFornecedores extends JFrame {
 		};
 		table.getColumnModel().getColumn(5).setCellRenderer(new TableActionCellRender());
 		table.getColumnModel().getColumn(5).setCellEditor(new TableActionCellEditor(event));
+		table.setRowHeight(60);
 		
 	}
 }

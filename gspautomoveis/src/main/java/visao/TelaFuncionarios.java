@@ -8,6 +8,8 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.FuncionarioDAO;
+import modelo.Endereco;
 import modelo.Funcionario;
 
 import java.awt.Color;
@@ -18,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -35,6 +36,12 @@ public class TelaFuncionarios extends JFrame {
 	private JTextField textDataNasc;
 	private JTextField textCargo;
 	private JTable table;
+	private JTextField textRua;
+	private JTextField textBairro;
+	private JTextField textEstado;
+	private JTextField textCep;
+	private JTextField textCidade;
+	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -150,10 +157,10 @@ public class TelaFuncionarios extends JFrame {
 		textCargo.setColumns(10);
 		textCargo.setBounds(1295, 92, 567, 38);
 		contentPane.add(textCargo);
-		
+
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(399, 265, 1463, 742);
+		scrollPane.setBounds(399, 414, 1463, 593);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -162,23 +169,24 @@ public class TelaFuncionarios extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int setar = table.getSelectedRow();
-				
+
 				textNome.setText(table.getModel().getValueAt(setar, 0).toString());
 				textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
 				textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
 				textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
 				textCargo.setText(table.getModel().getValueAt(setar, 3).toString());
 				textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
-				
+
 			}
 		});
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Usu\u00E1rio", "Telefone", "Cargo", "Data de Nascimento","Email" , "A\u00E7\u00F5es" }));
-		
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Usu\u00E1rio", "Telefone",
+				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
+
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Funcionario func1 = new Funcionario();
 				String nome = textNome.getText();
 				Long cpf = Long.parseLong(textCPF.getText());
 				String email = textEmail.getText();
@@ -187,16 +195,41 @@ public class TelaFuncionarios extends JFrame {
 				Long telefone = Long.parseLong(textTelefone.getText());
 				String cargo = textCargo.getText();
 				String dataNascimento = textDataNasc.getText();
-				
-				if(nome.equals("")||cpf.equals("")||email.equals("")||usuario.equals("")||senha.equals("")||telefone.equals("")||cargo.equals("")||dataNascimento.equals("")) {
+				String rua = textRua.getText(); 
+				String estado = textEstado.getText();
+				String cidade = textCidade.getText(); 
+				String bairro = textBairro.getText();
+				Long cep = Long.valueOf(textCep.getText());
+
+				func1.setNome(nome);
+				func1.setCpf(cpf);
+				func1.setEmail(email);
+				func1.setUsuario(usuario);
+				func1.setSenha(senha);
+				func1.setTelefone(telefone);
+				func1.setNivelCargo(cargo);
+				func1.setDataDeNasc(dataNascimento);
+
+				Endereco end = new Endereco();
+				end.setRua(rua);
+				end.setCidade(cidade);
+				end.setEstado(estado);
+				end.setCep(cep);
+				end.setBairro(bairro);
+
+				func1.setEndereco(end);
+
+				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
+						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
+						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")) {
 					System.out.print("mal");
 				} else {
-					String data[] = {nome,usuario,String.valueOf(telefone),cargo,dataNascimento,email};
-					
-					DefaultTableModel tbltable = (DefaultTableModel)table.getModel();
+					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
+
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
-					
-					
+
+					funcdao.inserir(func1);
 					
 					textNome.setText("");
 					textCPF.setText("");
@@ -206,8 +239,12 @@ public class TelaFuncionarios extends JFrame {
 					textTelefone.setText("");
 					textCargo.setText("");
 					textDataNasc.setText("");
+					
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
 				}
-				
+
 			}
 		});
 		btnAdicionar.setForeground(Color.BLACK);
@@ -215,12 +252,61 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.setFocusPainted(false);
 		btnAdicionar.setBorder(new RoundedBorder(10));
 		btnAdicionar.setBackground(Color.GREEN);
-		btnAdicionar.setBounds(1069, 208, 251, 35);
+		btnAdicionar.setBounds(1069, 357, 251, 35);
 		contentPane.add(btnAdicionar);
+		
+		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblRua.setBounds(439, 211, 93, 38);
+		contentPane.add(lblRua);
+		
+		textRua = new JTextField();
+		textRua.setColumns(10);
+		textRua.setBounds(542, 211, 196, 38);
+		contentPane.add(textRua);
+		
+		JLabel lblBairro = new JLabel("Bairro:");
+		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblBairro.setBounds(399, 271, 133, 38);
+		contentPane.add(lblBairro);
+		
+		textBairro = new JTextField();
+		textBairro.setColumns(10);
+		textBairro.setBounds(542, 271, 196, 38);
+		contentPane.add(textBairro);
+		
+		JLabel lblCpf_2_1 = new JLabel("Estado:");
+		lblCpf_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_1.setBounds(762, 211, 151, 38);
+		contentPane.add(lblCpf_2_1);
+		
+		textEstado = new JTextField();
+		textEstado.setColumns(10);
+		textEstado.setBounds(928, 211, 196, 38);
+		contentPane.add(textEstado);
+		
+		JLabel lblCpf_2_2 = new JLabel("CEP:");
+		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_2.setBounds(762, 271, 93, 38);
+		contentPane.add(lblCpf_2_2);
+		
+		textCep = new JTextField();
+		textCep.setColumns(10);
+		textCep.setBounds(865, 271, 196, 38);
+		contentPane.add(textCep);
+		
+		JLabel lblCpf_2_3 = new JLabel("Cidade:");
+		lblCpf_2_3.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_3.setBounds(381, 331, 151, 38);
+		contentPane.add(lblCpf_2_3);
+		
+		textCidade = new JTextField();
+		textCidade.setColumns(10);
+		textCidade.setBounds(542, 331, 196, 38);
+		contentPane.add(textCidade);
 
 		// Mudando o tamanho da coluna 7 (Ações)
 		table.getColumnModel().getColumn(6).setPreferredWidth(1);
-		
-		
+
 	}
 }

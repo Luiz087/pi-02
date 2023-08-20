@@ -5,9 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
 
 import modelo.Funcionario;
 import modelo.IFuncionarioDAO;
@@ -16,7 +14,6 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 	private static FuncionarioDAO instancia;
 
-	
 	public static FuncionarioDAO getInstancia() {
 		if (instancia == null) {
 			instancia = new FuncionarioDAO();
@@ -39,13 +36,13 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setLong(2, f.getCpf());
 			ps.setLong(3, f.getTelefone());
 			ps.setString(4, f.getEmail());
-			ps.setDate(5, Date.valueOf(f.getDataDeNasc()));
+			ps.setString(5, f.getDataDeNasc());
 			ps.setString(6, f.getUsuario());
 			ps.setString(7, f.getSenha());
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
-			ps.setLong(11, f.getCep());
+			//ps.setLong(11, f.getCep());
 
 			ps.executeUpdate();
 
@@ -94,7 +91,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				Long Cpf = rs.getLong("Cpf");
 				Long Telefone = rs.getLong("Telefone");
 				String Email = rs.getString("Email");
-				Date DataDeNasc = rs.getDate("DataDeNasc");
+				String DataDeNasc = rs.getString("DataDeNasc");
 				String Usuario = rs.getString("Usuario");
 				String Senha = rs.getString("Senha");
 				String NivelCargo = rs.getString("NivelCargo");
@@ -108,13 +105,13 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setCpf(Cpf);
 				F.setTelefone(Telefone);
 				F.setEmail(Email);
-				F.setDataDeNasc(LocalDate.of(DataDeNasc.getYear(), DataDeNasc.getMonth(), DataDeNasc.getDay()));
+				F.setDataDeNasc(DataDeNasc);
 				F.setUsuario(Usuario);
 				F.setSenha(Senha);
 				F.setNivelCargo(NivelCargo);
 				F.setSalario(Salario);
 				F.setComissao(Comissao);
-				F.setCep(Cep);
+				// F.setCep(Cep);
 
 				Funcionarios.add(F);
 			}

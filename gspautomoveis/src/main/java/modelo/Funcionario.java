@@ -1,8 +1,6 @@
 package modelo;
 
-import java.time.LocalDate;
-
-public class Funcionario extends Endereco {
+public class Funcionario {
 
 	private String nome;
 	private Long cpf;
@@ -11,9 +9,18 @@ public class Funcionario extends Endereco {
 	private Long telefone;
 	private String email;
 	private Double salario;
-	private LocalDate dataDeNasc;
+	private String dataDeNasc;
 	private String nivelCargo;
 	private Double comissao;
+	private Endereco endereco;
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	public String getNome() {
 		return nome;
@@ -79,11 +86,11 @@ public class Funcionario extends Endereco {
 		this.nivelCargo = nivelCargo;
 	}
 
-	public LocalDate getDataDeNasc() {
+	public String getDataDeNasc() {
 		return dataDeNasc;
 	}
 
-	public void setDataDeNasc(LocalDate dataDeNasc) {
+	public void setDataDeNasc(String dataDeNasc) {
 		this.dataDeNasc = dataDeNasc;
 	}
 

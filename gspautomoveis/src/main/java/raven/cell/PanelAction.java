@@ -50,9 +50,9 @@ public class PanelAction extends  javax.swing.JPanel {
         cmdEdit = new raven.cell.ActionButton();
         cmdDelete = new raven.cell.ActionButton();
 
-        cmdEdit.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\edit.png")); // NOI18N
+        cmdEdit.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/edit.png"))); // NOI18N
 
-        cmdDelete.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\delete.png"));
+        cmdDelete.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/delete.png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(

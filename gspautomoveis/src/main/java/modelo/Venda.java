@@ -1,14 +1,13 @@
 package modelo;
 
-import java.time.LocalDate;
-
 public class Venda {
 
+	private Integer idVenda;
 	private String nomeCliente;
 	private Long cpfCliente;
 	private Long telefoneCliente;
 	private String enderecoCliente;
-	private LocalDate dataVenda;
+	private String dataVenda;
 	private Double precoVenda;
 
 	public String getNomeCliente() {
@@ -43,11 +42,11 @@ public class Venda {
 		this.enderecoCliente = enderecoCliente;
 	}
 
-	public LocalDate getDataVenda() {
+	public String getDataVenda() {
 		return dataVenda;
 	}
 
-	public void setDataVenda(LocalDate dataVenda) {
+	public void setDataVenda(String dataVenda) {
 		this.dataVenda = dataVenda;
 	}
 
@@ -57,6 +56,14 @@ public class Venda {
 
 	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
+	}
+
+	public Integer getIdVenda() {
+		return idVenda;
+	}
+
+	public void setIdVenda(Integer idVenda) {
+		this.idVenda = idVenda;
 	}
 
 }

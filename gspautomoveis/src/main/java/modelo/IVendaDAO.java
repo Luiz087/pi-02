@@ -6,9 +6,9 @@ public interface IVendaDAO {
 	
 	public boolean inserir(Venda v);
 
-	public boolean atualizar();
+	public boolean atualizar(Venda v);
 
-	public boolean excluir();
+	public boolean excluir(Venda v);
 
 	public ArrayList<Venda> ListarVendas();
 

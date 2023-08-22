@@ -29,42 +29,82 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(2, v.getCpfCliente());
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
-			ps.setDate(5, Date.valueOf(v.getDataVenda()));
+			ps.setString(5, v.getDataVenda());
 			ps.setDouble(6, v.getPrecoVenda());
 
 			ps.executeUpdate();
-
-			c.fecharConexao();
 
 			return false;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return true;
 	}
 
-	@Override
-	public boolean atualizar() {
-		// TODO Auto-generated method stub
+	public boolean atualizar(Venda v) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE vendas SET nomeCliente = ?" + "cpfCliente = ?" + "telefoneCliente = ?"
+				+ "enderecoCliente = ?" + "dataVenda = ?";
+		// chave estrangeira funcionarios_matricula
+		// chave estrangeira Carros_id_carro
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, v.getNomeCliente());
+			ps.setLong(2, v.getCpfCliente());
+			ps.setLong(3, v.getTelefoneCliente());
+			ps.setString(4, v.getEnderecoCliente());
+			ps.setString(5, v.getDataVenda());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
 		return false;
 	}
 
-	@Override
-	public boolean excluir() {
-		// TODO Auto-generated method stub
+	public boolean excluir(Venda v) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Vendas WHERE id_venda = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, v.getIdVenda());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
 		return false;
 	}
 
-	@Override
 	public ArrayList<Venda> ListarVendas() {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Venda> Vendas = new ArrayList();
+		ArrayList<Venda> Vendas = new ArrayList<>();
 
 		String Query = "SELECT * FROM Vendas";
 
@@ -79,7 +119,7 @@ public class VendaDAO implements IVendaDAO {
 				Long CpfCliente = rs.getLong("CpfCliente");
 				Long TelefoneCliente = rs.getLong("TelefoneCliente");
 				String EnderecoCliente = rs.getString("EnderecoCliente");
-				Date DataVenda = rs.getDate("DataVenda");
+				String DataVenda = rs.getString("DataVenda");
 				Double PrecoVenda = rs.getDouble("Precovenda");
 
 				Venda V = new Venda();
@@ -88,7 +128,7 @@ public class VendaDAO implements IVendaDAO {
 				V.setCpfCliente(CpfCliente);
 				V.setTelefoneCliente(TelefoneCliente);
 				V.setEnderecoCliente(EnderecoCliente);
-				V.setDataVenda(LocalDate.of(DataVenda.getYear(), DataVenda.getMonth(), DataVenda.getDay()));
+				V.setDataVenda(DataVenda);
 				V.setPrecoVenda(PrecoVenda);
 
 				Vendas.add(V);
@@ -96,9 +136,9 @@ public class VendaDAO implements IVendaDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-
-		c.fecharConexao();
 
 		return Vendas;
 	}

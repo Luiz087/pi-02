@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `Vendas` (
   `cpfCliente` BIGINT NOT NULL,
   `telefoneCliente` BIGINT NOT NULL,
   `enderecoCliente` VARCHAR(45) NOT NULL,
-  `dataVenda` DATE NOT NULL,
+  `dataVenda` VARCHAR(10) NOT NULL,
   `precoVenda` DOUBLE NOT NULL,
   `funcionarios_matricula` BIGINT NOT NULL,
   `Carros_id_carro` BIGINT NOT NULL,

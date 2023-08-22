@@ -74,6 +74,94 @@ public class TelaFuncionarios extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("Veículos");
+		lblNewLabel_4.setForeground(Color.WHITE);
+		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4.setBounds(85, 401, 265, 35);
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_1_1_1_1_1.setBounds(39, 928, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("GSP");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
+		lblNewLabel_3.setBounds(85, 34, 166, 72);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
+		lblNewLabel_2_1_1_1_1.setBounds(39, 708, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Sistema");
+		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1_1.setBounds(85, 791, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1);
+		
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carrinho compras.png")));
+		lblNewLabel_2_1_1_1.setBounds(39, 636, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
+		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1.setBounds(85, 636, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1);
+		
+		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2.setBounds(39, 401, 40, 35);
+		contentPane.add(lblNewLabel_2_1_2);
+		
+		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
+		lblNewLabel_4_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNewLabel_4_1_1_1_1_1_1.setBounds(85, 927, 93, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
+		lblNewLabel_4_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1.setBounds(85, 561, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
+		lblNewLabel_2_1.setBounds(39, 481, 40, 35);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Sistema.png")));
+		lblNewLabel_2_1_1_1_1_1.setBounds(39, 791, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Fornecedores");
+		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1.setBounds(85, 708, 265, 35);
+		contentPane.add(lblNewLabel_4_1_1_1_1);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
+		lblNewLabel_4_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1.setBounds(85, 481, 265, 35);
+		contentPane.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Pessoa.png")));
+		lblNewLabel_2_1_1.setBounds(39, 561, 40, 35);
+		contentPane.add(lblNewLabel_2_1_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1.setBounds(85, 132, 175, 190);
+		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bglateral.png")));
@@ -87,7 +175,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCpf.setBounds(439, 92, 93, 38);
+		lblCpf.setBounds(1553, 239, 93, 38);
 		contentPane.add(lblCpf);
 
 		JLabel lblUsurio = new JLabel("Usuário:");
@@ -97,7 +185,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblSenha.setBounds(775, 92, 143, 38);
+		lblSenha.setBounds(389, 92, 143, 38);
 		contentPane.add(lblSenha);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
@@ -117,7 +205,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblCargo = new JLabel("Cargo:");
 		lblCargo.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCargo.setBounds(1152, 92, 133, 38);
+		lblCargo.setBounds(780, 99, 133, 38);
 		contentPane.add(lblCargo);
 
 		textNome = new JTextField();
@@ -127,7 +215,7 @@ public class TelaFuncionarios extends JFrame {
 
 		textCPF = new JTextField();
 		textCPF.setColumns(10);
-		textCPF.setBounds(542, 92, 196, 38);
+		textCPF.setBounds(1679, 239, 196, 38);
 		contentPane.add(textCPF);
 
 		textUsuario = new JTextField();
@@ -142,7 +230,7 @@ public class TelaFuncionarios extends JFrame {
 
 		textSenha = new JTextField();
 		textSenha.setColumns(10);
-		textSenha.setBounds(928, 92, 196, 38);
+		textSenha.setBounds(542, 99, 196, 38);
 		contentPane.add(textSenha);
 
 		textEmail = new JTextField();
@@ -157,7 +245,7 @@ public class TelaFuncionarios extends JFrame {
 
 		textCargo = new JTextField();
 		textCargo.setColumns(10);
-		textCargo.setBounds(1295, 92, 567, 38);
+		textCargo.setBounds(928, 99, 567, 38);
 		contentPane.add(textCargo);
 
 		// Criação do ScrollPane, JFrame vai dentro
@@ -312,12 +400,12 @@ public class TelaFuncionarios extends JFrame {
 		
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
 		lblCpf_2_3.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCpf_2_3.setBounds(381, 331, 151, 38);
+		lblCpf_2_3.setBounds(1505, 99, 151, 38);
 		contentPane.add(lblCpf_2_3);
 		
 		textCidade = new JTextField();
 		textCidade.setColumns(10);
-		textCidade.setBounds(542, 331, 196, 38);
+		textCidade.setBounds(1666, 99, 196, 38);
 		contentPane.add(textCidade);
 		
 		textComissao = new JTextField();

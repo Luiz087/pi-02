@@ -57,7 +57,7 @@ public class TelaErro extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 24));
-		btnNewButton.setBounds(373, 0, 89, 23);
+		btnNewButton.setBounds(376, 11, 74, 23);
 		btnNewButton.setBorder(null);
 		btnNewButton.setFocusPainted(false);
 

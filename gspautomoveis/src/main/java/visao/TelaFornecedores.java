@@ -285,6 +285,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(scrollPane);
 		//cadastrar nome das colunas
 		table = new JTable();
+		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {

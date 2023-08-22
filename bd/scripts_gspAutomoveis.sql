@@ -8,12 +8,13 @@ CREATE DATABASE IF NOT EXISTS gspAutomoveis;
 USE gspAutomoveis;
 
 CREATE TABLE IF NOT EXISTS `enderecos` (
+  `id_endereco` BIGINT NOT NULL auto_increment,
   `cep` BIGINT NOT NULL,
   `rua` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cep`)
+  PRIMARY KEY (`id_endereco`)
 );
 
 CREATE TABLE IF NOT EXISTS `fornecedores` (
@@ -23,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `fornecedores` (
   `telefoneFornecedor` BIGINT NOT NULL,
   `empresa` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
-  `endereco_cep` BIGINT NOT NULL,
+  `enderecos_id_endereco` BIGINT NOT NULL,
   PRIMARY KEY (`id_fornecedor`),
-  CONSTRAINT `fk_fornecedor_endereco1` FOREIGN KEY (`endereco_cep`) REFERENCES `enderecos` (`cep`)
+  CONSTRAINT `fk_fornecedor_endereco1` FOREIGN KEY (`enderecos_id_endereco`) REFERENCES `enderecos` (`id_endereco`)
   ON DELETE CASCADE
 );
 
@@ -41,9 +42,9 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   `nivelCargo` VARCHAR(45) NOT NULL,
   `salario` DOUBLE NOT NULL,
   `comissao` DOUBLE NOT NULL,
-  `enderecos_cep` BIGINT NOT NULL,
+  `enderecos_id_endereco` BIGINT NOT NULL,
   PRIMARY KEY (`matricula`),
-  CONSTRAINT `fk_funcionarios_enderecos1` FOREIGN KEY (`enderecos_cep`) REFERENCES `enderecos` (`cep`)
+  CONSTRAINT `fk_funcionarios_enderecos1` FOREIGN KEY (`enderecos_id_endereco`) REFERENCES `enderecos` (`id_endereco`)
   ON DELETE CASCADE
 );
 
@@ -113,26 +114,26 @@ insert into enderecos (cep, rua, bairro, cidade, estado) values (11255228, 'Sher
 insert into enderecos (cep, rua, bairro, cidade, estado) values (21911141, 'Karstens', 'belchior', 'Roanoke', 'Virginia');
 insert into enderecos (cep, rua, bairro, cidade, estado) values (5445448, 'Columbus', 'santa terezinha', 'Lake Charles', 'Louisiana');
 
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Kristofor', 53217593721871, 5636417237, 'Jabberstorm', 'Ford', 98860771);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Marrilee', 78269610408621, 3784328039, 'Jabberstorm', 'Fiat', 26360149);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Mag', 83280557412092, 8125576004, 'Tanoodle', 'Mercedes-Benz', 24971323);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Almire', 74390089876469, 6116345912, 'Fatz', 'Toyota', 32813459);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Deedee', 32852831345065, 8161722760, 'Twimm', 'Cadillac', 33395580);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Billie', 96351611588770, 7744863586, 'Zoomlounge', 'Volkswagen', 66575921);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Minny', 72377443654307, 3512203764, 'Jaxnation', 'Chevrolet', 18853418);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Melinda', 76062709614653, 9555072911, 'Eazzy', 'Renault', 77727522);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Benedikta', 90187484363241, 8638928930, 'Kwimbee', 'Mazda', 53015239);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Myra', 89911952851122, 6932423640, 'Dabjam', 'GMC', 53015239);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Catlaina', 98650769044682, 6685031243, 'Gabtune', 'Dodge', 83300006);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Peggie', 33299526629846, 1194827427, 'Ntag', 'Hyundai', 6131187);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Dedra', 11387936755749, 5239009837, 'Eidel', 'Audi', 72792903);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sarette', 88663418924071, 6732888702, 'Livepath', 'Kia', 90000298);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Deanne', 45166963392729, 6841988947, 'Riffwire', 'Honda', 41222385);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Merill',30123472017368, 6368080537, 'Quaxo', 'Mitsubishi', 71727947);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Orbadiah', 8849905555117, 4474275724, 'Yombu', 'Ferrari', 8599487);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Wolfgang', 28273531692793, 4141608193, 'Brainbox', 'Chrysler', 98012944);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sanderson', 33218317298271, 6361220266, 'Ailane', 'Porshe', 37621074);
-insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('Sula', 87503816182502, 7623216188, 'Thoughtworks', 'Lamborguini', 96883597);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Kristofor', 53217593721871, 5636417237, 'Jabberstorm', 'Ford', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Marrilee', 78269610408621, 3784328039, 'Jabberstorm', 'Fiat', 2);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Mag', 83280557412092, 8125576004, 'Tanoodle', 'Mercedes-Benz', 3);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Almire', 74390089876469, 6116345912, 'Fatz', 'Toyota', 4);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Deedee', 32852831345065, 8161722760, 'Twimm', 'Cadillac', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Billie', 96351611588770, 7744863586, 'Zoomlounge', 'Volkswagen', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Minny', 72377443654307, 3512203764, 'Jaxnation', 'Chevrolet', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Melinda', 76062709614653, 9555072911, 'Eazzy', 'Renault', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Benedikta', 90187484363241, 8638928930, 'Kwimbee', 'Mazda', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Myra', 89911952851122, 6932423640, 'Dabjam', 'GMC', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Catlaina', 98650769044682, 6685031243, 'Gabtune', 'Dodge', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Peggie', 33299526629846, 1194827427, 'Ntag', 'Hyundai', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Dedra', 11387936755749, 5239009837, 'Eidel', 'Audi', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Sarette', 88663418924071, 6732888702, 'Livepath', 'Kia', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Deanne', 45166963392729, 6841988947, 'Riffwire', 'Honda', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Merill',30123472017368, 6368080537, 'Quaxo', 'Mitsubishi', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Orbadiah', 8849905555117, 4474275724, 'Yombu', 'Ferrari', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Wolfgang', 28273531692793, 4141608193, 'Brainbox', 'Chrysler', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Sanderson', 33218317298271, 6361220266, 'Ailane', 'Porshe', 1);
+insert into fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values ('Sula', 87503816182502, 7623216188, 'Thoughtworks', 'Lamborguini', 1);
 
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Cadillac', 'Escalade ESV', true, 2023, 'Preto', 'Suv', 'Gasolina', 0, '690 cv',  true, 1950000, false, 5);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Volkswagen', 'Polo', true, 2021, 'Prata', 'Hatchback', 'Gasolina e álcool', 0, '128 cv', true, 81111, false, 6);
@@ -160,11 +161,11 @@ insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometra
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Porshe', 'Panamera', false, 2022, 'Roxo', 'Sedã', 'gasolina e elétrico', 10.808, '462 cv', true, 935000, false, 19);
 insert into Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('Lamborguini', 'Huracan', true, 2022, 'Verde', 'Cupê', 'Gasolina', 0, '640 cv', true, 5430000, false, 20);
 
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com', '2005-07-08', 'Luiz047', 'Luizz123', 'Administrador', 500.000, 2.5, 96883597);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', '2004-07-17', 'Biell047', 'Biell777', 'Administrador', 500.000, 2.5, 26360149);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Eric', 17541062722, 53964108953, 'Eric@gmail.com' , '2005-10-06', 'Eric047', 'Ericc123', 'Administrador', 500.000, 2.5, 96883597);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('Sabel', 06352419784, 7327146365, 'Sabel@gmail.com', '2005-12-31', 'Sabel047', 'Sabell123', 'Administrador', 500.000, 2.5, 26360149);
-insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('João', 53435501431, 4006755218, 'João@gmail.com', '2005-12-08', 'João047', 'joaoo123', 'Administrador', 500.000, 2.5, 26360149);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Luiz', 22726014571, 13410553435, 'Luiz@gmail.com', '2005-07-08', 'Luiz047', 'Luizz123', 'Administrador', 500.000, 2.5, 1);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Gabriel', 48791425360, 35980146935, 'Biell7@gmail.com', '2004-07-17', 'Biell047', 'Biell777', 'Administrador', 500.000, 2.5, 2);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Eric', 17541062722, 53964108953, 'Eric@gmail.com' , '2005-10-06', 'Eric047', 'Ericc123', 'Administrador', 500.000, 2.5, 3);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Sabel', 06352419784, 7327146365, 'Sabel@gmail.com', '2005-12-31', 'Sabel047', 'Sabell123', 'Administrador', 500.000, 2.5, 4);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('João', 53435501431, 4006755218, 'João@gmail.com', '2005-12-08', 'João047', 'joaoo123', 'Administrador', 500.000, 2.5, 5);
 
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 2, 25);
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 1, 24);
@@ -223,16 +224,16 @@ SELECT Carros.marca,
 INNER JOIN funcionarios ON Vendas.funcionarios_matricula = funcionarios.matricula
 INNER JOIN Carros ON Vendas.carro = Carros.carro;
 
-UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
-UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
-UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE cep = 26360149;
-UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE cep = 32813459;
-UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE cep = 33395580;
-UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE cep = 18853418;
-UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE cep = 66575921;
-UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE cep = 77727522;
-UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
-UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
+-- UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
+-- UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
+-- UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE cep = 26360149;
+-- UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE cep = 32813459;
+-- UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE cep = 33395580;
+-- UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE cep = 18853418;
+-- UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE cep = 66575921;
+-- UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE cep = 77727522;
+-- UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
+-- UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
 
 UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
 UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;

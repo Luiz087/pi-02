@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   `cpf` BIGINT NOT NULL,
   `telefone` BIGINT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `dataDeNasc` DATE NOT NULL,
+  `dataDeNasc` VARCHAR(10) NOT NULL,
   `usuario` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `nivelCargo` VARCHAR(45) NOT NULL,

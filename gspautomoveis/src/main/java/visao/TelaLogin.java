@@ -170,12 +170,11 @@ public class TelaLogin extends JFrame {
 					if(login1) {
 						TelaPrincipal telaPrincip = new TelaPrincipal();
 						dispose();
+						telaPrincip.setExtendedState(MAXIMIZED_BOTH);
+						telaPrincip.setVisible(true);
 						TelaSucesso sucesso = new TelaSucesso();
 						sucesso.setLocationRelativeTo(null);
 						sucesso.setVisible(true);
-						telaPrincip.setExtendedState(MAXIMIZED_BOTH);
-						telaPrincip.setVisible(true);
-						
 					} else {
 						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
 						dadosIncorretos.setLocationRelativeTo(null);
@@ -196,7 +195,6 @@ public class TelaLogin extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 30));

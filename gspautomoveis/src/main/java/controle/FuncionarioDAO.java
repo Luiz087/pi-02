@@ -59,7 +59,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	}
 
 	@Override
-	public boolean alterar() {
+	public boolean atualizar() {
 		// TODO Auto-generated method stub
 		return false;
 	}

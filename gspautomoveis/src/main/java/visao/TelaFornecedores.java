@@ -91,7 +91,7 @@ public class TelaFornecedores extends JFrame {
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNome.setBounds(349, 26, 194, 88);
+		lblNome.setBounds(349, 26, 136, 88);
 		contentPane.add(lblNome);
 		
 		JLabel lblCnpj = new JLabel("CNPJ");
@@ -101,35 +101,35 @@ public class TelaFornecedores extends JFrame {
 		
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCidade.setBounds(820, 113, 150, 70);
+		lblCidade.setBounds(857, 113, 150, 70);
 		contentPane.add(lblCidade);
 		
 		JLabel lblMarca = new JLabel("Marca");
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblMarca.setBounds(1378, 35, 127, 70);
+		lblMarca.setBounds(1401, 35, 127, 70);
 		contentPane.add(lblMarca);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblTelefone.setBounds(820, 26, 175, 88);
+		lblTelefone.setBounds(857, 26, 175, 70);
 		contentPane.add(lblTelefone);
 		
 		textNome = new JTextField();
 		textNome.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textNome.setBounds(474, 36, 335, 50);
+		textNome.setBounds(497, 35, 335, 50);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
 		textTel = new JTextField();
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textTel.setColumns(10);
-		textTel.setBounds(983, 36, 335, 50);
+		textTel.setBounds(1042, 40, 335, 50);
 		contentPane.add(textTel);
 		
 		textCNPJ = new JTextField();
 		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCNPJ.setColumns(10);
-		textCNPJ.setBounds(475, 219, 312, 50);
+		textCNPJ.setBounds(497, 219, 335, 50);
 		contentPane.add(textCNPJ);
 		
 		textMarca = new JTextField();
@@ -141,7 +141,7 @@ public class TelaFornecedores extends JFrame {
 		textCidade = new JTextField();
 		textCidade.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCidade.setColumns(10);
-		textCidade.setBounds(983, 127, 335, 50);
+		textCidade.setBounds(1042, 127, 335, 50);
 		contentPane.add(textCidade);
 		
 
@@ -297,46 +297,46 @@ public class TelaFornecedores extends JFrame {
 		
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblRua.setBounds(1378, 202, 136, 76);
+		lblRua.setBounds(1401, 202, 136, 76);
 		contentPane.add(lblRua);
 		
 		JLabel lblEstado = new JLabel("Estado");
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblEstado.setBounds(349, 113, 116, 70);
+		lblEstado.setBounds(349, 113, 150, 70);
 		contentPane.add(lblEstado);
 		
 		JLabel lblBairro = new JLabel("Bairro");
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblBairro.setBounds(1378, 116, 150, 70);
+		lblBairro.setBounds(1399, 113, 150, 70);
 		contentPane.add(lblBairro);
 		
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCep.setBounds(820, 219, 101, 60);
+		lblCep.setBounds(857, 210, 101, 60);
 		contentPane.add(lblCep);
 		
 		textEstado = new JTextField();
-		textEstado.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textEstado.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textEstado.setColumns(10);
-		textEstado.setBounds(474, 125, 335, 50);
+		textEstado.setBounds(497, 126, 335, 50);
 		contentPane.add(textEstado);
 		
 		textBairro = new JTextField();
-		textBairro.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textBairro.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textBairro.setColumns(10);
 		textBairro.setBounds(1559, 127, 335, 50);
 		contentPane.add(textBairro);
 		
 		textRua = new JTextField();
-		textRua.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textRua.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textRua.setColumns(10);
 		textRua.setBounds(1559, 225, 335, 50);
 		contentPane.add(textRua);
 		
 		textCep = new JTextField();
-		textCep.setFont(new Font("Dialog", Font.PLAIN, 20));
+		textCep.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCep.setColumns(10);
-		textCep.setBounds(983, 219, 335, 50);
+		textCep.setBounds(1042, 218, 335, 50);
 		contentPane.add(textCep);
 		
 		

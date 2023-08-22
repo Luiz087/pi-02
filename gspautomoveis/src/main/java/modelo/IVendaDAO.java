@@ -6,7 +6,7 @@ public interface IVendaDAO {
 	
 	public boolean inserir(Venda v);
 
-	public boolean alterar();
+	public boolean atualizar();
 
 	public boolean excluir();
 

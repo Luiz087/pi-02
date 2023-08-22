@@ -6,9 +6,9 @@ public interface IEnderecoDAO {
 
 	public boolean inserir(Endereco e);
 
-	public boolean alterar();
+	public boolean atualizar(Endereco e);
 
-	public boolean excluir();
+	public boolean excluir(Endereco ed);
 
 	public ArrayList<Endereco> ListarEnderecos();
 

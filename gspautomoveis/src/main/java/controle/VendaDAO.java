@@ -46,7 +46,7 @@ public class VendaDAO implements IVendaDAO {
 	}
 
 	@Override
-	public boolean alterar() {
+	public boolean atualizar() {
 		// TODO Auto-generated method stub
 		return false;
 	}

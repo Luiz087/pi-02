@@ -6,9 +6,9 @@ public interface ICarroDAO {
 
 	public boolean inserir(Carro ca);
 
-	public boolean alterar();
+	public boolean atualizar(Carro ca);
 
-	public boolean excluir();
+	public boolean excluir(Carro ca);
 
 	public ArrayList<Carro> ListarCarros();
 

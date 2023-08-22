@@ -6,9 +6,9 @@ public interface IFornecedorDAO {
 
 	public boolean inserir(Fornecedor f);
 
-	public boolean alterar();
+	public boolean atualizar(Fornecedor f);
 
-	public boolean excluir();
+	public boolean excluir(Fornecedor f);
 
 	public ArrayList<Fornecedor> ListarFornecedores();
 

@@ -2,6 +2,7 @@ package modelo;
 
 public class Carro {
 
+	private Integer idCarro;
 	private String modelo;
 	private String marca;
 	private Integer ano;
@@ -110,6 +111,14 @@ public class Carro {
 
 	public void setPrecoCarro(Double precoCarro) {
 		this.precoCarro = precoCarro;
+	}
+
+	public Integer getId_carro() {
+		return idCarro;
+	}
+
+	public void setId_carro(Integer id_carro) {
+		this.idCarro = id_carro;
 	}
 
 }

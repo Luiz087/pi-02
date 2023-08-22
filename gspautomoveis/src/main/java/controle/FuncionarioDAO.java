@@ -27,7 +27,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO funcionarios " + "(nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) " + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO funcionarios "
+				+ "(nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -46,38 +48,85 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
 
 	}
 
-	@Override
-	public boolean atualizar() {
-		// TODO Auto-generated method stub
+	public boolean atualizar(Funcionario f) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE funcionarios SET nome = ?" + "cpf = ?" + "telefone = ?" + "email = ?" + "dataDeNasc = ?"
+				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, f.getNome());
+			ps.setLong(2, f.getCpf());
+			ps.setLong(3, f.getTelefone());
+			ps.setString(4, f.getEmail());
+			ps.setString(5, f.getDataDeNasc());
+			ps.setString(6, f.getUsuario());
+			ps.setString(7, f.getSenha());
+			ps.setString(8, f.getNivelCargo());
+			ps.setDouble(8, f.getSalario());
+			ps.setDouble(10, f.getComissao());
+
+			ps.executeUpdate();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
-	public boolean excluir() {
-		// TODO Auto-generated method stub
+	public boolean excluir(Funcionario f) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM funcionarios WHERE matricula = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, f.getMatricula());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
 	public ArrayList<Funcionario> ListarFuncionarios() {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Funcionario> Funcionarios = new ArrayList();
+		ArrayList<Funcionario> Funcionarios = new ArrayList<>();
 
 		String Query = "SELECT * FROM funcionarios";
 
@@ -97,7 +146,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
-				//Long Cep = rs.getLong("Cep");
+				// Long Cep = rs.getLong("Cep");
 
 				Funcionario F = new Funcionario();
 
@@ -118,9 +167,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-
-		c.fecharConexao();
 
 		return Funcionarios;
 	}

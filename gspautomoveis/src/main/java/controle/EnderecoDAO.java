@@ -30,38 +30,81 @@ public class EnderecoDAO implements IEnderecoDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
 
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
 
 	}
 
-	@Override
-	public boolean alterar() {
-		// TODO Auto-generated method stub
+	public boolean atualizar(Endereco e) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE enderecos SET cep = ?" + "rua = ?" + "bairro = ?" + "cidade = ?"
+				+ "estado = ? WHERE id_endereco = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setLong(1, e.getCep());
+			ps.setString(2, e.getRua());
+			ps.setString(3, e.getBairro());
+			ps.setString(4, e.getCidade());
+			ps.setString(5, e.getEstado());
+
+			ps.executeUpdate();
+
+			return true;
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
-	public boolean excluir() {
-		// TODO Auto-generated method stub
+	public boolean excluir(Endereco ed) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM enderecos WHERE id_endereco = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, ed.getIdEndereco());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
 	public ArrayList<Endereco> ListarEnderecos() {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Endereco> Enderecos = new ArrayList();
+		ArrayList<Endereco> Enderecos = new ArrayList<>();
 
 		String query = "SELECT * FROM enderecos";
 
@@ -91,10 +134,10 @@ public class EnderecoDAO implements IEnderecoDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
-		c.fecharConexao();
-		
 		return Enderecos;
 	}
 }

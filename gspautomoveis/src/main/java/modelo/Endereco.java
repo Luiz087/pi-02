@@ -2,6 +2,7 @@ package modelo;
 
 public class Endereco {
 
+	private Integer idEndereco;
 	private String rua;
 	private String bairro;
 	private String cidade;
@@ -46,6 +47,14 @@ public class Endereco {
 
 	public void setCep(Long cep) {
 		this.cep = cep;
+	}
+
+	public Integer getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(Integer idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 }

@@ -6,9 +6,9 @@ public interface IFuncionarioDAO {
 
 	public boolean inserir(Funcionario f);
 
-	public boolean atualizar();
+	public boolean atualizar(Funcionario f);
 
-	public boolean excluir();
+	public boolean excluir(Funcionario f);
 
 	public ArrayList<Funcionario> ListarFuncionarios();
 }

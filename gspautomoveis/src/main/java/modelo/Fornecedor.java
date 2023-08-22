@@ -1,7 +1,8 @@
 package modelo;
 
 public class Fornecedor {
-
+	
+	private Integer idFornecedor;
 	private String nomeFornecedor;
 	private Long cnpjfornecedor;
 	private Long telefoneFornecedor;
@@ -55,6 +56,14 @@ public class Fornecedor {
 
 	public void setTelefoneFornecedor(Long telefoneFornecedor) {
 		this.telefoneFornecedor = telefoneFornecedor;
+	}
+
+	public Integer getIdFornecedor() {
+		return idFornecedor;
+	}
+
+	public void setIdFornecedor(Integer idFornecedor) {
+		this.idFornecedor = idFornecedor;
 	}
 
 }

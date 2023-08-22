@@ -27,33 +27,77 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setLong(3, f.getTelefoneFornecedor());
 			ps.setString(4, f.getEmpresa());
 			ps.setString(5, f.getMarca());
-			//ps.setLong(6, f.getEndereco.getCep());
+			// ps.setLong(6, f.getEndereco.getCep());
 			// chave estrangeira endereco_ce
-			
+
 			ps.setLong(6, f.getEndereco().getCep());
 
 			ps.executeUpdate();
-
-			c.fecharConexao();
 
 			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
 	}
 
-	@Override
-	public boolean alterar() {
-		// TODO Auto-generated method stub
+	public boolean atualizar(Fornecedor f) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE fornecedores SET nomeFornecedor = ?" + "cnpjFornecedor = ?" + "telefoneFornecedor = ?"
+				+ "empresa = ?" + "marca = ?";
+		// chave estrangeira + "Endereco_id_endereco";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, f.getNomeFornecedor());
+			ps.setLong(2, f.getCnpjfornecedor());
+			ps.setLong(3, f.getTelefoneFornecedor());
+			ps.setString(4, f.getEmpresa());
+			ps.setString(5, f.getMarca());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
-	public boolean excluir() {
-		// TODO Auto-generated method stub
+	public boolean excluir(Fornecedor f) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM fornecedores WHERE id_fornecedor";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, f.getIdFornecedor());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
@@ -64,7 +108,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		Connection con = c.conectar();
 
-		ArrayList<Fornecedor> Fornecedores = new ArrayList();
+		ArrayList<Fornecedor> Fornecedores = new ArrayList<>();
 
 		String Query = "SELECT * FROM fornecedores";
 
@@ -79,7 +123,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 				Long telefoneFornecedor = rs.getLong("telefoneFornecedor");
 				String Empresa = rs.getString("Empresa");
 				String Marca = rs.getString("Marca");
-				Long Cep = rs.getLong("Cep");
+				// Long Cep = rs.getLong("Cep");
 
 				Fornecedor F = new Fornecedor();
 
@@ -88,16 +132,16 @@ public class FornecedorDAO implements IFornecedorDAO {
 				F.setTelefoneFornecedor(telefoneFornecedor);
 				F.setEmpresa(Empresa);
 				F.setMarca(Marca);
-				//F.setCep(Cep);
-				
+				// F.setCep(Cep);
+
 				Fornecedores.add(F);
 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-		
-		c.fecharConexao();
 
 		return Fornecedores;
 	}

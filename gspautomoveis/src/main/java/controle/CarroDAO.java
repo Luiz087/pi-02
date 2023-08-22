@@ -38,37 +38,85 @@ public class CarroDAO implements ICarroDAO {
 
 			ps.executeUpdate();
 
-			c.fecharConexao();
-
 			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
 
 		return false;
 	}
 
-	@Override
-	public boolean alterar() {
-		// TODO Auto-generated method stub
+	public boolean atualizar(Carro ca) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE Carros SET marca = ?, " + "modelo = ?, " + "novo = ?, " + "ano = ?, " + "cor = ?, "
+				+ "tipo = ?, " + "combustivel = ?, " + "quilometragem = ?, " + "potencia = ?, " + "abs = ?, "
+				+ "precoCarro = ?, " + "promocao = ? WHERE id_carro = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, ca.getModelo());
+			ps.setBoolean(2, ca.getNovo());
+			ps.setInt(3, ca.getAno());
+			ps.setString(4, ca.getCor());
+			ps.setString(5, ca.getTipo());
+			ps.setString(6, ca.getCombustivel());
+			ps.setLong(7, ca.getQuilometragem());
+			ps.setString(8, ca.getPotencia());
+			ps.setBoolean(9, ca.getAbs());
+			ps.setDouble(10, ca.getPrecoCarro());
+			ps.setBoolean(11, ca.getPromocao());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
-	public boolean excluir() {
-		// TODO Auto-generated method stub
+	public boolean excluir(Carro ca) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "DELETE FROM Carros WHERE id_carro";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, ca.getId_carro());
+
+			ps.executeUpdate();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return false;
 	}
 
-	@Override
 	public ArrayList<Carro> ListarCarros() {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Carro> Carros = new ArrayList();
+		ArrayList<Carro> Carros = new ArrayList<>();
 
 		String query = "SELECT * FROM Carros";
 
@@ -111,9 +159,10 @@ public class CarroDAO implements ICarroDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-		}
+		} finally {
+			c.fecharConexao();
 
-		c.fecharConexao();
+		}
 
 		return Carros;
 	}

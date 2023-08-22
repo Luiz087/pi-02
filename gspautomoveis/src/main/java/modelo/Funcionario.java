@@ -2,6 +2,7 @@ package modelo;
 
 public class Funcionario {
 
+	private Integer matricula;
 	private String nome;
 	private Long cpf;
 	private String usuario;
@@ -100,5 +101,13 @@ public class Funcionario {
 
 	public void setComissao(Double comissao) {
 		this.comissao = comissao;
+	}
+
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
 	}
 }

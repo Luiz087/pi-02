@@ -27,7 +27,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) values ('?', ?, ?, '?', '?', '?', '?', ?, ?, ?, ?)";
+		String query = "INSERT INTO funcionarios " + "(nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) " + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -42,7 +42,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
-			//ps.setLong(11, f.getCep());
+			ps.setLong(11, f.getEndereco().getCep());
 
 			ps.executeUpdate();
 
@@ -97,7 +97,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
-				Long Cep = rs.getLong("Cep");
+				//Long Cep = rs.getLong("Cep");
 
 				Funcionario F = new Funcionario();
 

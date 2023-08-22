@@ -42,6 +42,8 @@ public class TelaFuncionarios extends JFrame {
 	private JTextField textCep;
 	private JTextField textCidade;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
+	private JTextField textComissao;
+	private JTextField textSalario;
 
 	/**
 	 * Launch the application.
@@ -200,6 +202,9 @@ public class TelaFuncionarios extends JFrame {
 				String cidade = textCidade.getText(); 
 				String bairro = textBairro.getText();
 				Long cep = Long.valueOf(textCep.getText());
+				Double salario = Double.valueOf(textSalario.getText());
+				Double comissao = Double.valueOf(textComissao.getText());
+				
 
 				func1.setNome(nome);
 				func1.setCpf(cpf);
@@ -209,6 +214,8 @@ public class TelaFuncionarios extends JFrame {
 				func1.setTelefone(telefone);
 				func1.setNivelCargo(cargo);
 				func1.setDataDeNasc(dataNascimento);
+				func1.setSalario(salario);
+				func1.setComissao(comissao);
 
 				Endereco end = new Endereco();
 				end.setRua(rua);
@@ -221,15 +228,16 @@ public class TelaFuncionarios extends JFrame {
 
 				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
 						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
-						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")) {
+						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")||comissao.equals("")||salario.equals("")) {
 					System.out.print("mal");
 				} else {
 					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
 
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
-
+					System.out.println("Até aqui sim");
 					funcdao.inserir(func1);
+					System.out.println("Passou");
 					
 					textNome.setText("");
 					textCPF.setText("");
@@ -239,6 +247,13 @@ public class TelaFuncionarios extends JFrame {
 					textTelefone.setText("");
 					textCargo.setText("");
 					textDataNasc.setText("");
+					textRua.setText("");
+					textCidade.setText("");
+					textEstado.setText("");
+					textCep.setText("");
+					textBairro.setText("");
+					textComissao.setText("");
+					textSalario.setText("");
 					
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
@@ -304,6 +319,26 @@ public class TelaFuncionarios extends JFrame {
 		textCidade.setColumns(10);
 		textCidade.setBounds(542, 331, 196, 38);
 		contentPane.add(textCidade);
+		
+		textComissao = new JTextField();
+		textComissao.setColumns(10);
+		textComissao.setBounds(1300, 271, 196, 38);
+		contentPane.add(textComissao);
+		
+		JLabel lblCpf_2_2_1 = new JLabel("Comissão:");
+		lblCpf_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_2_1.setBounds(1078, 271, 212, 38);
+		contentPane.add(lblCpf_2_2_1);
+		
+		JLabel lblCpf_2_1_1 = new JLabel("Salário:");
+		lblCpf_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_1_1.setBounds(1134, 211, 156, 38);
+		contentPane.add(lblCpf_2_1_1);
+		
+		textSalario = new JTextField();
+		textSalario.setColumns(10);
+		textSalario.setBounds(1300, 211, 196, 38);
+		contentPane.add(textSalario);
 
 		// Mudando o tamanho da coluna 7 (Ações)
 		table.getColumnModel().getColumn(6).setPreferredWidth(1);

@@ -11,6 +11,9 @@ import javax.swing.table.DefaultTableModel;
 import controle.FuncionarioDAO;
 import modelo.Endereco;
 import modelo.Funcionario;
+import raven.cell.TableActionCellEditor;
+import raven.cell.TableActionCellRender;
+import raven.cell.TableActionEvent;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -74,13 +77,13 @@ public class TelaFuncionarios extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Veículos");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4.setBounds(85, 401, 265, 35);
 		contentPane.add(lblNewLabel_4);
-		
+
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -94,13 +97,13 @@ public class TelaFuncionarios extends JFrame {
 		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(39, 928, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("GSP");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
 		lblNewLabel_3.setBounds(85, 34, 166, 72);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -114,29 +117,30 @@ public class TelaFuncionarios extends JFrame {
 		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
 		lblNewLabel_2_1_1_1_1.setBounds(39, 708, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
-		
+
 		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Sistema");
 		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_1_1_1.setBounds(85, 791, 265, 35);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1);
-		
+
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carrinho compras.png")));
+		lblNewLabel_2_1_1_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carrinho compras.png")));
 		lblNewLabel_2_1_1_1.setBounds(39, 636, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1);
-		
+
 		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
 		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_1.setBounds(85, 636, 265, 35);
 		contentPane.add(lblNewLabel_4_1_1_1);
-		
+
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
 		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_2_1_2.setBounds(39, 401, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
-		
+
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
 		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -151,32 +155,33 @@ public class TelaFuncionarios extends JFrame {
 		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblNewLabel_4_1_1_1_1_1_1.setBounds(85, 927, 93, 35);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
-		
+
 		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
 		lblNewLabel_4_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaFuncionarios telafunc = new TelaFuncionarios(); 
+				TelaFuncionarios telafunc = new TelaFuncionarios();
 				dispose();
-			    telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);	
-			    telafunc.setVisible(true);
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
 			}
 		});
 		lblNewLabel_4_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1.setBounds(85, 561, 265, 35);
 		contentPane.add(lblNewLabel_4_1_1);
-		
+
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_2_1.setBounds(39, 481, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
-		
+
 		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Sistema.png")));
+		lblNewLabel_2_1_1_1_1_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Sistema.png")));
 		lblNewLabel_2_1_1_1_1_1.setBounds(39, 791, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1);
-		
+
 		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("Fornecedores");
 		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -191,27 +196,27 @@ public class TelaFuncionarios extends JFrame {
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_1_1.setBounds(85, 708, 265, 35);
 		contentPane.add(lblNewLabel_4_1_1_1_1);
-		
+
 		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
 		lblNewLabel_4_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1.setBounds(85, 481, 265, 35);
 		contentPane.add(lblNewLabel_4_1);
-		
+
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
 		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaFuncionarios telafunc = new TelaFuncionarios(); 
+				TelaFuncionarios telafunc = new TelaFuncionarios();
 				dispose();
-			    telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);	
-			    telafunc.setVisible(true);
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
 			}
 		});
 		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Pessoa.png")));
 		lblNewLabel_2_1_1.setBounds(39, 561, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_1.setBounds(85, 132, 175, 190);
@@ -229,7 +234,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCpf.setBounds(1553, 239, 93, 38);
+		lblCpf.setBounds(1196, 99, 93, 38);
 		contentPane.add(lblCpf);
 
 		JLabel lblUsurio = new JLabel("Usuário:");
@@ -269,7 +274,7 @@ public class TelaFuncionarios extends JFrame {
 
 		textCPF = new JTextField();
 		textCPF.setColumns(10);
-		textCPF.setBounds(1679, 239, 196, 38);
+		textCPF.setBounds(1299, 99, 196, 38);
 		contentPane.add(textCPF);
 
 		textUsuario = new JTextField();
@@ -299,7 +304,7 @@ public class TelaFuncionarios extends JFrame {
 
 		textCargo = new JTextField();
 		textCargo.setColumns(10);
-		textCargo.setBounds(928, 99, 567, 38);
+		textCargo.setBounds(923, 99, 258, 38);
 		contentPane.add(textCargo);
 
 		// Criação do ScrollPane, JFrame vai dentro
@@ -309,6 +314,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação da JTable
 		table = new JTable();
+		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -326,6 +332,12 @@ public class TelaFuncionarios extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Usu\u00E1rio", "Telefone",
 				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
+		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
+			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+			String data[] = { funcs.getNome(), funcs.getUsuario(), String.valueOf(funcs.getTelefone()),
+					funcs.getNivelCargo(), funcs.getDataDeNasc(), funcs.getEmail()};
+			tblModel.addRow(data);
+		}
 
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.addActionListener(new ActionListener() {
@@ -339,14 +351,13 @@ public class TelaFuncionarios extends JFrame {
 				Long telefone = Long.parseLong(textTelefone.getText());
 				String cargo = textCargo.getText();
 				String dataNascimento = textDataNasc.getText();
-				String rua = textRua.getText(); 
+				String rua = textRua.getText();
 				String estado = textEstado.getText();
-				String cidade = textCidade.getText(); 
+				String cidade = textCidade.getText();
 				String bairro = textBairro.getText();
 				Long cep = Long.valueOf(textCep.getText());
 				Double salario = Double.valueOf(textSalario.getText());
 				Double comissao = Double.valueOf(textComissao.getText());
-				
 
 				func1.setNome(nome);
 				func1.setCpf(cpf);
@@ -370,7 +381,8 @@ public class TelaFuncionarios extends JFrame {
 
 				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
 						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
-						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")||comissao.equals("")||salario.equals("")) {
+						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")
+						|| comissao.equals("") || salario.equals("")) {
 					System.out.print("mal");
 				} else {
 					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
@@ -380,7 +392,7 @@ public class TelaFuncionarios extends JFrame {
 					System.out.println("Até aqui sim");
 					funcdao.inserir(func1);
 					System.out.println("Passou");
-					
+
 					textNome.setText("");
 					textCPF.setText("");
 					textEmail.setText("");
@@ -396,7 +408,7 @@ public class TelaFuncionarios extends JFrame {
 					textBairro.setText("");
 					textComissao.setText("");
 					textSalario.setText("");
-					
+
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
@@ -411,72 +423,72 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.setBackground(Color.GREEN);
 		btnAdicionar.setBounds(1069, 357, 251, 35);
 		contentPane.add(btnAdicionar);
-		
+
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblRua.setBounds(439, 211, 93, 38);
 		contentPane.add(lblRua);
-		
+
 		textRua = new JTextField();
 		textRua.setColumns(10);
 		textRua.setBounds(542, 211, 196, 38);
 		contentPane.add(textRua);
-		
+
 		JLabel lblBairro = new JLabel("Bairro:");
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblBairro.setBounds(399, 271, 133, 38);
 		contentPane.add(lblBairro);
-		
+
 		textBairro = new JTextField();
 		textBairro.setColumns(10);
 		textBairro.setBounds(542, 271, 196, 38);
 		contentPane.add(textBairro);
-		
+
 		JLabel lblCpf_2_1 = new JLabel("Estado:");
 		lblCpf_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCpf_2_1.setBounds(762, 211, 151, 38);
 		contentPane.add(lblCpf_2_1);
-		
+
 		textEstado = new JTextField();
 		textEstado.setColumns(10);
 		textEstado.setBounds(928, 211, 196, 38);
 		contentPane.add(textEstado);
-		
+
 		JLabel lblCpf_2_2 = new JLabel("CEP:");
 		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCpf_2_2.setBounds(762, 271, 93, 38);
 		contentPane.add(lblCpf_2_2);
-		
+
 		textCep = new JTextField();
 		textCep.setColumns(10);
 		textCep.setBounds(865, 271, 196, 38);
 		contentPane.add(textCep);
-		
+
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
 		lblCpf_2_3.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCpf_2_3.setBounds(1505, 99, 151, 38);
 		contentPane.add(lblCpf_2_3);
-		
+
 		textCidade = new JTextField();
 		textCidade.setColumns(10);
 		textCidade.setBounds(1666, 99, 196, 38);
 		contentPane.add(textCidade);
-		
+
 		textComissao = new JTextField();
 		textComissao.setColumns(10);
 		textComissao.setBounds(1300, 271, 196, 38);
 		contentPane.add(textComissao);
-		
+
 		JLabel lblCpf_2_2_1 = new JLabel("Comissão:");
 		lblCpf_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCpf_2_2_1.setBounds(1078, 271, 212, 38);
 		contentPane.add(lblCpf_2_2_1);
-		
+
 		JLabel lblCpf_2_1_1 = new JLabel("Salário:");
 		lblCpf_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCpf_2_1_1.setBounds(1134, 211, 156, 38);
 		contentPane.add(lblCpf_2_1_1);
-		
+
 		textSalario = new JTextField();
 		textSalario.setColumns(10);
 		textSalario.setBounds(1300, 211, 196, 38);
@@ -484,6 +496,33 @@ public class TelaFuncionarios extends JFrame {
 
 		// Mudando o tamanho da coluna 7 (Ações)
 		table.getColumnModel().getColumn(6).setPreferredWidth(1);
+
+		TableActionEvent event = new TableActionEvent() {
+
+			@Override
+			public void onEdit(int row) {
+				System.out.print("Edite a linha: " + row);
+			}
+
+			@Override
+			public void onDelete(int row) {
+				if (table.isEditing()) {
+					table.getCellEditor().stopCellEditing();
+				}
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				
+				model.removeRow(row);
+			}
+
+			@Override
+			public void onView(int row) {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
+		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
+		table.setRowHeight(60);
 
 	}
 }

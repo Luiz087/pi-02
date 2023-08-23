@@ -271,7 +271,7 @@ public class TelaPrincipal extends JFrame {
 		text_nome.setBounds(546, 159, 239, 35);
 		contentPane.add(text_nome);
 		text_nome.setColumns(10);
-		text_nome.setText();
+		/*text_nome.setText();*/
 		
 		
 		JLabel lblNewLabel_nome = new JLabel("Nome:");

@@ -219,10 +219,10 @@ SELECT Carros.marca,
     funcionarios.nivelCargo,
     funcionarios.salario,
     funcionarios.comissao,
-    funcionarios.enderecos_cep
+    funcionarios.enderecos_id_endereco
     FROM Vendas
 INNER JOIN funcionarios ON Vendas.funcionarios_matricula = funcionarios.matricula
-INNER JOIN Carros ON Vendas.carro = Carros.carro;
+INNER JOIN Carros ON Vendas.Carros_id_carro = Carros.id_carro;
 
 -- UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
 -- UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
@@ -235,16 +235,16 @@ INNER JOIN Carros ON Vendas.carro = Carros.carro;
 -- UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
 -- UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
 
-UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
-UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;
-UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", endereco_cep=24971323 WHERE id_fornecedor= 3;
-UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", endereco_cep=32813459 WHERE id_fornecedor= 4;
-UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", endereco_cep=33395580 WHERE id_fornecedor= 5;
-UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", endereco_cep=66575921 WHERE id_fornecedor= 6;
-UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", endereco_cep=18853418 WHERE id_fornecedor= 7;
-UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", endereco_cep=77727522 WHERE id_fornecedor= 8;
-UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", endereco_cep=53015239 WHERE id_fornecedor= 9;
-UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", endereco_cep=53015239 WHERE id_fornecedor= 10;
+-- UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
+-- UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;
+-- UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", endereco_cep=24971323 WHERE id_fornecedor= 3;
+-- UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", endereco_cep=32813459 WHERE id_fornecedor= 4;
+-- UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", endereco_cep=33395580 WHERE id_fornecedor= 5;
+-- UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", endereco_cep=66575921 WHERE id_fornecedor= 6;
+-- UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", endereco_cep=18853418 WHERE id_fornecedor= 7;
+-- UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", endereco_cep=77727522 WHERE id_fornecedor= 8;
+-- UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", endereco_cep=53015239 WHERE id_fornecedor= 9;
+-- UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", endereco_cep=53015239 WHERE id_fornecedor= 10;
 
 -- UPDATE funcionarios SET nome = "Lindy", cpf = "51267649003	", telefone ="95937385512", salario = "435345", enderecos_cep = 98860771 WHERE matricula = 1;
 -- UPDATE funcionarios SET nome = "Jarret", cpf = "73775878068", telefone ="92935526593", salario = "435435", enderecos_cep = 98860771 WHERE matricula = 2;

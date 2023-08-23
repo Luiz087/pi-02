@@ -228,42 +228,42 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblNome.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblNome.setBounds(399, 32, 133, 38);
 		contentPane.add(lblNome);
 
 		JLabel lblCpf = new JLabel("CPF:");
-		lblCpf.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf.setBounds(1196, 99, 93, 38);
 		contentPane.add(lblCpf);
 
 		JLabel lblUsurio = new JLabel("Usuário:");
-		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsurio.setBounds(862, 32, 163, 38);
 		contentPane.add(lblUsurio);
 
 		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblSenha.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblSenha.setBounds(389, 92, 143, 38);
 		contentPane.add(lblSenha);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblTelefone.setBounds(1355, 32, 188, 38);
 		contentPane.add(lblTelefone);
 
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblEmail.setBounds(409, 152, 123, 38);
 		contentPane.add(lblEmail);
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
-		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblDataDeNascimento.setBounds(1241, 152, 415, 38);
 		contentPane.add(lblDataDeNascimento);
 
 		JLabel lblCargo = new JLabel("Cargo:");
-		lblCargo.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCargo.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCargo.setBounds(780, 99, 133, 38);
 		contentPane.add(lblCargo);
 
@@ -417,7 +417,7 @@ public class TelaFuncionarios extends JFrame {
 			}
 		});
 		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
+		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
 		btnAdicionar.setFocusPainted(false);
 		btnAdicionar.setBorder(new RoundedBorder(10));
 		btnAdicionar.setBackground(Color.GREEN);
@@ -425,7 +425,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(btnAdicionar);
 
 		JLabel lblRua = new JLabel("Rua:");
-		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblRua.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblRua.setBounds(439, 211, 93, 38);
 		contentPane.add(lblRua);
 
@@ -435,7 +435,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textRua);
 
 		JLabel lblBairro = new JLabel("Bairro:");
-		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblBairro.setBounds(399, 271, 133, 38);
 		contentPane.add(lblBairro);
 
@@ -445,7 +445,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textBairro);
 
 		JLabel lblCpf_2_1 = new JLabel("Estado:");
-		lblCpf_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_1.setBounds(762, 211, 151, 38);
 		contentPane.add(lblCpf_2_1);
 
@@ -455,7 +455,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textEstado);
 
 		JLabel lblCpf_2_2 = new JLabel("CEP:");
-		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_2.setBounds(762, 271, 93, 38);
 		contentPane.add(lblCpf_2_2);
 
@@ -465,7 +465,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textCep);
 
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
-		lblCpf_2_3.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_3.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_3.setBounds(1505, 99, 151, 38);
 		contentPane.add(lblCpf_2_3);
 
@@ -480,12 +480,12 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textComissao);
 
 		JLabel lblCpf_2_2_1 = new JLabel("Comissão:");
-		lblCpf_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_2_1.setBounds(1078, 271, 212, 38);
 		contentPane.add(lblCpf_2_2_1);
 
 		JLabel lblCpf_2_1_1 = new JLabel("Salário:");
-		lblCpf_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblCpf_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_1_1.setBounds(1134, 211, 156, 38);
 		contentPane.add(lblCpf_2_1_1);
 

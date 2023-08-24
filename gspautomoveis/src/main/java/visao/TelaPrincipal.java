@@ -5,15 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
+
 import java.awt.Font;
 import javax.swing.JToggleButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 public class TelaPrincipal extends JFrame {
 
@@ -309,11 +314,20 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_telefone.setBounds(1482, 159, 154, 35);
 		contentPane.add(lblNewLabel_telefone);
 		
-		text_telefone = new JTextField();
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		text_telefone = new JFormattedTextField(mascaraTel);
 		text_telefone.setEditable(false);
 		text_telefone.setColumns(10);
 		text_telefone.setBounds(1646, 159, 239, 35);
 		contentPane.add(text_telefone);
+		
+	
 		
 		JLabel lblNewLabel_cargo = new JLabel("Cargo:");
 		lblNewLabel_cargo.setForeground(Color.BLACK);

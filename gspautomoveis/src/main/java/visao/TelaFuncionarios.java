@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import controle.FuncionarioDAO;
 import modelo.Endereco;
@@ -22,10 +23,13 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -272,8 +276,15 @@ public class TelaFuncionarios extends JFrame {
 		textNome.setBounds(542, 32, 292, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
+		
+		MaskFormatter mascaraCPF = null;
+		try {
+			mascaraCPF = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-		textCPF = new JTextField();
+		textCPF = new JFormattedTextField(mascaraCPF);
 		textCPF.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCPF.setColumns(10);
 		textCPF.setBounds(1299, 99, 196, 38);
@@ -284,8 +295,15 @@ public class TelaFuncionarios extends JFrame {
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(1035, 32, 292, 38);
 		contentPane.add(textUsuario);
+		
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-		textTelefone = new JTextField();
+		textTelefone = new JFormattedTextField(mascaraTel);
 		textTelefone.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTelefone.setColumns(10);
 		textTelefone.setBounds(1553, 32, 309, 38);
@@ -469,8 +487,16 @@ public class TelaFuncionarios extends JFrame {
 		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_2.setBounds(762, 271, 93, 38);
 		contentPane.add(lblCpf_2_2);
+		
+		MaskFormatter mascaraCEP = null;
+		try {
+			mascaraCEP = new MaskFormatter("#####-### ");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 
-		textCep = new JTextField();
+		textCep =  new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
 		textCep.setBounds(865, 271, 196, 38);

@@ -14,13 +14,17 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.Border;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import modelo.Endereco;
 import modelo.Fornecedor;
@@ -120,13 +124,28 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
-		textTel = new JTextField();
+		MaskFormatter mascaraCPF= null;
+		try {
+			mascaraCPF = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		textTel = new JFormattedTextField(mascaraCPF);
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textTel.setColumns(10);
 		textTel.setBounds(1042, 40, 335, 50);
 		contentPane.add(textTel);
 		
-		textCNPJ = new JTextField();
+		MaskFormatter mascaraCNPJ = null;
+		try {
+			mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		textCNPJ = new JFormattedTextField(mascaraCNPJ);
 		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCNPJ.setColumns(10);
 		textCNPJ.setBounds(497, 219, 335, 50);
@@ -388,7 +407,14 @@ public class TelaFornecedores extends JFrame {
 		textRua.setBounds(1559, 225, 335, 50);
 		contentPane.add(textRua);
 		
-		textCep = new JTextField();
+		MaskFormatter mascaraCEP = null;
+		try {
+			mascaraCEP = new MaskFormatter("#####-### ");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		textCep = new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCep.setColumns(10);
 		textCep.setBounds(1042, 218, 335, 50);

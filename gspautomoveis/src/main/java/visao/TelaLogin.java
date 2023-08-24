@@ -147,14 +147,25 @@ public class TelaLogin extends JFrame {
 		btnEntrar.setFont(new Font("Krona One", Font.PLAIN, 30));
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				//Pega a string senha do TextField
 				String login = textLogin.getText();
+				
+				//Pega o vetor de senha do TextField
 				char[] pass = passwordSenha.getPassword();
+				
+				//Cria uma variável senha pra colocar o vetor
 				String senha = "";
+				
+				//Se o vetor de senha não for nulo e maior do que 0...
 				if (pass != null && pass.length > 0) {
+					//Atribui o vetor pra uma variavel senha
 					senha = String.valueOf(pass);
 				}
+				
+				//Se login ou senha são vazios...
 				if (senha.isEmpty() || login.isEmpty()) {
+					//Exibe mensagem de erro
 					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
 					dadosIncorretos.setLocationRelativeTo(null);
 					dadosIncorretos.setVisible(true);
@@ -162,13 +173,17 @@ public class TelaLogin extends JFrame {
 					textLogin.setText(null);
 
 				} else {
+					//Cria obj Funcionário para atribuir login e senha
 					Funcionario testelogin = new Funcionario();
 					testelogin.setUsuario(login);
 					testelogin.setSenha(senha);
 					
+					//Cria uma variavel boolean login1 que verifica se há o usuário no banco
 					boolean login1 = funcdao.login(testelogin);
 					
+					//Se o valor retornado pela função ser true
 					if(login1) {
+						//Passa para a proxima tela
 						TelaPrincipal telaPrincip = new TelaPrincipal();
 						dispose();
 						telaPrincip.setExtendedState(MAXIMIZED_BOTH);
@@ -177,6 +192,7 @@ public class TelaLogin extends JFrame {
 						sucesso.setLocationRelativeTo(null);
 						sucesso.setVisible(true);
 					} else {
+						//Exibe mensagem de erro
 						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
 						dadosIncorretos.setLocationRelativeTo(null);
 						dadosIncorretos.setVisible(true);
@@ -186,7 +202,7 @@ public class TelaLogin extends JFrame {
 
 			}
 		});
-		btnEntrar.setBounds(601, 383, 202, 60);
+		btnEntrar.setBounds(561, 383, 202, 60);
 		btnEntrar.setBorder(new RoundedBorder(20));
 		contentPane.add(btnEntrar);
 

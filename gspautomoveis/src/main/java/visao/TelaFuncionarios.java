@@ -276,15 +276,16 @@ public class TelaFuncionarios extends JFrame {
 		textNome.setBounds(542, 32, 292, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
-		
-		MaskFormatter mascaraCPF = null;
-		try {
-			mascaraCPF = new MaskFormatter("###.###.###-##");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		textCPF = new JFormattedTextField(mascaraCPF);
+//		
+//		MaskFormatter mascaraCPF = null;
+//		try {
+//			mascaraCPF = new MaskFormatter("###.###.###-##");
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//
+//		textCPF = new JFormattedTextField(mascaraCPF);
+		textCPF = new JTextField();
 		textCPF.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCPF.setColumns(10);
 		textCPF.setBounds(1299, 99, 196, 38);
@@ -295,15 +296,16 @@ public class TelaFuncionarios extends JFrame {
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(1035, 32, 292, 38);
 		contentPane.add(textUsuario);
-		
-		MaskFormatter mascaraTel = null;
-		try {
-			mascaraTel = new MaskFormatter("(##)#####-####");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-
-		textTelefone = new JFormattedTextField(mascaraTel);
+//		
+//		MaskFormatter mascaraTel = null;
+//		try {
+//			mascaraTel = new MaskFormatter("(##)#####-####");
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//
+//		textTelefone = new JFormattedTextField(mascaraTel);
+		textTelefone =  new JTextField();
 		textTelefone.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTelefone.setColumns(10);
 		textTelefone.setBounds(1553, 32, 309, 38);
@@ -495,15 +497,15 @@ public class TelaFuncionarios extends JFrame {
 		lblCpf_2_2.setBounds(762, 271, 93, 38);
 		contentPane.add(lblCpf_2_2);
 		
-		MaskFormatter mascaraCEP = null;
-		try {
-			mascaraCEP = new MaskFormatter("#####-### ");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
+//		MaskFormatter mascaraCEP = null;
+//		try {
+//			mascaraCEP = new MaskFormatter("#####-### ");
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		textCep =  new JFormattedTextField(mascaraCEP);
 
-		textCep =  new JFormattedTextField(mascaraCEP);
+		textCep =  new JTextField();
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
 		textCep.setBounds(865, 271, 196, 38);

@@ -124,14 +124,14 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
-		MaskFormatter mascaraCPF= null;
+		MaskFormatter mascaraTel = null;
 		try {
-			mascaraCPF = new MaskFormatter("###.###.###-##");
+			mascaraTel = new MaskFormatter("(##)#####-####");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
-		textTel = new JFormattedTextField(mascaraCPF);
+		textTel = new JFormattedTextField(mascaraTel);
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textTel.setColumns(10);
 		textTel.setBounds(1042, 40, 335, 50);

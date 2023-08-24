@@ -320,8 +320,15 @@ public class TelaFuncionarios extends JFrame {
 		textEmail.setColumns(10);
 		textEmail.setBounds(542, 152, 675, 38);
 		contentPane.add(textEmail);
+		
+		MaskFormatter mascaraData= null;
+		try {
+			mascaraData = new MaskFormatter("##/##/####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-		textDataNasc = new JTextField();
+		textDataNasc = new JFormattedTextField(mascaraData);
 		textDataNasc.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textDataNasc.setColumns(10);
 		textDataNasc.setBounds(1666, 152, 196, 38);

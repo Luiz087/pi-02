@@ -224,7 +224,7 @@ public class TelaLogin extends JFrame {
 		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
 		showPasswordCheckBox.setBackground(new Color(255,255,255));
 		showPasswordCheckBox.setFont(new Font("Krona One", Font.PLAIN, 13));
-		showPasswordCheckBox.setBounds(629, 323, 154, 14);
+		showPasswordCheckBox.setBounds(751, 323, 154, 14);
 		contentPane.add(showPasswordCheckBox);
 
 		showPasswordCheckBox.addActionListener(new ActionListener() {

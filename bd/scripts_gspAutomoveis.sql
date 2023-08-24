@@ -196,7 +196,7 @@ SELECT * FROM enderecos order by cep;
 SELECT * FROM fornecedores order by id_fornecedor;
 SELECT * FROM Carros order by id_carro;
 SELECT * FROM funcionarios order by matricula;
-SELECT * FROM vendidos order by id_venda;
+SELECT * FROM Vendas order by id_venda;
 
 SELECT Carros.marca,
     Carros.modelo,

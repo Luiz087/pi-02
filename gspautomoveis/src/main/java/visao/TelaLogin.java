@@ -203,6 +203,26 @@ public class TelaLogin extends JFrame {
 		btnNewButton.setBorder(null);
 		btnNewButton.setFocusPainted(false);
 		contentPane.add(btnNewButton);
+		
+
+		JCheckBox showPasswordCheckBox = new JCheckBox("Mostrar senha");
+		showPasswordCheckBox.setBackground(new Color(255,255,255));
+		showPasswordCheckBox.setFont(new Font("Krona One", Font.PLAIN, 13));
+		showPasswordCheckBox.setBounds(629, 323, 154, 14);
+		contentPane.add(showPasswordCheckBox);
+
+		showPasswordCheckBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				if (showPasswordCheckBox.isSelected()) {
+					passwordSenha.setEchoChar((char) 0);
+				} else {
+					passwordSenha.setEchoChar('\u2022');
+				}
+			}
+		});
 
 	}
 }

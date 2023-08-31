@@ -1,15 +1,18 @@
 package visao;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
+import java.awt.RenderingHints;
 
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class RoundedBorder implements Border {
 
 	private int radius;
-
 
     RoundedBorder(int radius) {
         this.radius = radius;
@@ -29,4 +32,6 @@ public class RoundedBorder implements Border {
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         g.drawRoundRect(x, y, width-1, height-1, radius, radius);
     }
+    
+  
 }

@@ -353,7 +353,7 @@ public class TelaFuncionarios extends JFrame {
 				textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
 				textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
 				textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
-				textCargo.setText(table.getModel().getValueAt(setar, 3).toString());
+				CBCargo.setText(table.getModel().getValueAt(setar, 3).toString());
 				textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
 
 			}
@@ -378,7 +378,7 @@ public class TelaFuncionarios extends JFrame {
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
 				Long telefone = Long.parseLong(textTelefone.getText());
-				String cargo = textCargo.getText();
+				String cargo = CBCargo.getItem();
 				String dataNascimento = textDataNasc.getText();
 				String rua = textRua.getText();
 				String estado = textEstado.getText();
@@ -428,7 +428,7 @@ public class TelaFuncionarios extends JFrame {
 					textUsuario.setText("");
 					textSenha.setText("");
 					textTelefone.setText("");
-					textCargo.setText("");
+					CBCargo.setItem("");
 					textDataNasc.setText("");
 					textRua.setText("");
 					textCidade.setText("");

@@ -116,13 +116,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	public boolean excluir(Funcionario f) {
 		Conexao c = Conexao.getInstancia();
 
-		Connection con = c.conectar();
-		
-		String usuario = f.getUsuario();
-		
-		String matricula = "SELECT matricula FROM funcionarios where usuario = " + usuario;
+		Connection con = c.conectar();		
 
-		String query = "DELETE FROM funcionarios WHERE matricula = " + matricula;
+		String query = "DELETE FROM funcionarios WHERE matricula = " + f.getMatricula();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

@@ -383,7 +383,7 @@ public class TelaFuncionarios extends JFrame {
 				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-			String data[] = { funcs.getNome(), funcs.getUsuario(), String.valueOf(funcs.getTelefone()),
+			String data[] = {String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(), String.valueOf(funcs.getTelefone()),
 					funcs.getNivelCargo(), funcs.getDataDeNasc(), funcs.getEmail() };
 			tblModel.addRow(data);
 		}
@@ -594,8 +594,8 @@ public class TelaFuncionarios extends JFrame {
 
 			}
 		};
-		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
-		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
+		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
 
 	}

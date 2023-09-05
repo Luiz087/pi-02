@@ -397,7 +397,7 @@ public class TelaFuncionarios extends JFrame {
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
 				Long telefone = Long.parseLong(textTelefone.getText());
-				String cargo = CBCargo.getName();
+				String cargo = (String) CBCargo.getSelectedItem();
 				String dataNascimento = textDataNasc.getText();
 				String rua = textRua.getText();
 				String estado = textEstado.getText();
@@ -573,6 +573,8 @@ public class TelaFuncionarios extends JFrame {
 					table.getCellEditor().stopCellEditing();
 				}
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				
+				
 				
 				model.removeRow(row);
 			}

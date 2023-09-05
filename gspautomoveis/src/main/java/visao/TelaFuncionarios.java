@@ -31,6 +31,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -260,6 +261,11 @@ public class TelaFuncionarios extends JFrame {
 		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblEmail.setBounds(430, 152, 98, 38);
 		contentPane.add(lblEmail);
+		
+		JComboBox CBCargo = new JComboBox();
+		CBCargo.setModel(new DefaultComboBoxModel(new String[] {"", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque"}));
+		CBCargo.setBounds(876, 93, 305, 38);
+		contentPane.add(CBCargo);
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 24));
@@ -345,19 +351,32 @@ public class TelaFuncionarios extends JFrame {
 		table = new JTable();
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		table.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int setar = table.getSelectedRow();
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        int setar = table.getSelectedRow();
 
-				textNome.setText(table.getModel().getValueAt(setar, 0).toString());
-				textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
-				textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
-				textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
-				CBCargo.setText(table.getModel().getValueAt(setar, 3).toString());
-				textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
-
-			}
+		        textNome.setText(table.getModel().getValueAt(setar, 0).toString());
+		        textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
+		        textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
+		        String combobox = table.getModel().getValueAt(setar, 3).toString();
+		        
+		        if (combobox.equals("Administrador")) {
+		            CBCargo.setSelectedIndex(1);
+		        } else if (combobox.equals("Gerente de Vendas")) {
+		            CBCargo.setSelectedIndex(2);
+		        } else if (combobox.equals("Vendedor")) {
+		            CBCargo.setSelectedIndex(3);
+		        } else if (combobox.equals("Gerente de Estoque")) {
+		            CBCargo.setSelectedIndex(4);
+		        } else {
+		            CBCargo.setSelectedIndex(0);
+		        }
+		        
+		        textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
+		        textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
+		    }
 		});
+
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Usu\u00E1rio", "Telefone",
 				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
@@ -378,7 +397,7 @@ public class TelaFuncionarios extends JFrame {
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
 				Long telefone = Long.parseLong(textTelefone.getText());
-				String cargo = CBCargo.getItem();
+				String cargo = CBCargo.getName();
 				String dataNascimento = textDataNasc.getText();
 				String rua = textRua.getText();
 				String estado = textEstado.getText();
@@ -428,7 +447,7 @@ public class TelaFuncionarios extends JFrame {
 					textUsuario.setText("");
 					textSenha.setText("");
 					textTelefone.setText("");
-					CBCargo.setItem("");
+					CBCargo.setSelectedIndex(0);
 					textDataNasc.setText("");
 					textRua.setText("");
 					textCidade.setText("");
@@ -568,9 +587,7 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
 		
-		JComboBox CBCargo = new JComboBox();
-		CBCargo.setBounds(876, 93, 305, 38);
-		contentPane.add(CBCargo);
+		
 
 	}
 }

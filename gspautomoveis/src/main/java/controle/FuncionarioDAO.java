@@ -157,6 +157,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
+				
+				Integer matricula = rs.getInt("matricula");
 				String Nome = rs.getString("Nome");
 				Long Cpf = rs.getLong("Cpf");
 				Long Telefone = rs.getLong("Telefone");
@@ -171,6 +173,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 				Funcionario F = new Funcionario();
 
+				F.setMatricula(matricula);
 				F.setNome(Nome);
 				F.setCpf(Cpf);
 				F.setTelefone(Telefone);

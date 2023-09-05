@@ -378,7 +378,7 @@ public class TelaFuncionarios extends JFrame {
 		});
 
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "Usu\u00E1rio", "Telefone",
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] {"Matrícula", "Nome", "Usu\u00E1rio", "Telefone",
 				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();

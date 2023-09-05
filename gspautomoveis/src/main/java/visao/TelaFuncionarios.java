@@ -261,9 +261,10 @@ public class TelaFuncionarios extends JFrame {
 		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblEmail.setBounds(430, 152, 98, 38);
 		contentPane.add(lblEmail);
-		
+
 		JComboBox CBCargo = new JComboBox();
-		CBCargo.setModel(new DefaultComboBoxModel(new String[] {"", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque"}));
+		CBCargo.setModel(new DefaultComboBoxModel(
+				new String[] { "", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque" }));
 		CBCargo.setBounds(876, 93, 305, 38);
 		contentPane.add(CBCargo);
 
@@ -311,7 +312,7 @@ public class TelaFuncionarios extends JFrame {
 //		}
 //
 //		textTelefone = new JFormattedTextField(mascaraTel);
-		textTelefone =  new JTextField();
+		textTelefone = new JTextField();
 		textTelefone.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTelefone.setColumns(10);
 		textTelefone.setBounds(1517, 32, 345, 38);
@@ -328,8 +329,8 @@ public class TelaFuncionarios extends JFrame {
 		textEmail.setColumns(10);
 		textEmail.setBounds(542, 152, 675, 38);
 		contentPane.add(textEmail);
-		
-		MaskFormatter mascaraData= null;
+
+		MaskFormatter mascaraData = null;
 		try {
 			mascaraData = new MaskFormatter("##/##/####");
 		} catch (ParseException e) {
@@ -351,30 +352,30 @@ public class TelaFuncionarios extends JFrame {
 		table = new JTable();
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		table.addMouseListener(new MouseAdapter() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        int setar = table.getSelectedRow();
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int setar = table.getSelectedRow();
 
-		        textNome.setText(table.getModel().getValueAt(setar, 0).toString());
-		        textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
-		        textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
-		        String combobox = table.getModel().getValueAt(setar, 3).toString();
-		        
-		        if (combobox.equals("Administrador")) {
-		            CBCargo.setSelectedIndex(1);
-		        } else if (combobox.equals("Gerente de Vendas")) {
-		            CBCargo.setSelectedIndex(2);
-		        } else if (combobox.equals("Vendedor")) {
-		            CBCargo.setSelectedIndex(3);
-		        } else if (combobox.equals("Gerente de Estoque")) {
-		            CBCargo.setSelectedIndex(4);
-		        } else {
-		            CBCargo.setSelectedIndex(0);
-		        }
-		        
-		        textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
-		        textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
-		    }
+				textNome.setText(table.getModel().getValueAt(setar, 0).toString());
+				textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
+				textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
+				String combobox = table.getModel().getValueAt(setar, 3).toString();
+
+				if (combobox.equals("Administrador")) {
+					CBCargo.setSelectedIndex(1);
+				} else if (combobox.equals("Gerente de Vendas")) {
+					CBCargo.setSelectedIndex(2);
+				} else if (combobox.equals("Vendedor")) {
+					CBCargo.setSelectedIndex(3);
+				} else if (combobox.equals("Gerente de Estoque")) {
+					CBCargo.setSelectedIndex(4);
+				} else {
+					CBCargo.setSelectedIndex(0);
+				}
+
+				textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
+				textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
+			}
 		});
 
 		scrollPane.setViewportView(table);
@@ -383,7 +384,7 @@ public class TelaFuncionarios extends JFrame {
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			String data[] = { funcs.getNome(), funcs.getUsuario(), String.valueOf(funcs.getTelefone()),
-					funcs.getNivelCargo(), funcs.getDataDeNasc(), funcs.getEmail()};
+					funcs.getNivelCargo(), funcs.getDataDeNasc(), funcs.getEmail() };
 			tblModel.addRow(data);
 		}
 
@@ -509,7 +510,7 @@ public class TelaFuncionarios extends JFrame {
 		lblCpf_2_2.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblCpf_2_2.setBounds(1505, 93, 79, 38);
 		contentPane.add(lblCpf_2_2);
-		
+
 //		MaskFormatter mascaraCEP = null;
 //		try {
 //			mascaraCEP = new MaskFormatter("#####-### ");
@@ -518,7 +519,7 @@ public class TelaFuncionarios extends JFrame {
 //		}
 //		textCep =  new JFormattedTextField(mascaraCEP);
 
-		textCep =  new JTextField();
+		textCep = new JTextField();
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
 		textCep.setBounds(1588, 93, 274, 38);
@@ -569,13 +570,21 @@ public class TelaFuncionarios extends JFrame {
 
 			@Override
 			public void onDelete(int row) {
-				if (table.isEditing()) {
-					table.getCellEditor().stopCellEditing();
-				}
+
+				int linhaSelecionada = table.getSelectedRow();
+				String matricula = (String) table.getValueAt(linhaSelecionada, 0);
+
+				// select no banco só pelo nome da matricula
+				// buscaFuncionarioPorMatricula(matricula);
+				// metodo retorna um Funcionario
+
+				Funcionario funcDelete = new Funcionario();
+
+				// quer excluir mesmo?
+
+				funcdao.excluir(funcDelete);
+				// remove a linha da tabela (visualmente)
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				
-				
-				
 				model.removeRow(row);
 			}
 
@@ -588,8 +597,6 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
 		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
-		
-		
 
 	}
 }

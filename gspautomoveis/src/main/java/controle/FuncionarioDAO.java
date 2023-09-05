@@ -28,7 +28,17 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		Connection con = c.conectar();
 
 		String query = "INSERT INTO funcionarios "
-				+ "(nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_cep) "
+				+ "(nome, "
+				+ "cpf, "
+				+ "telefone, "
+				+ "email, "
+				+ "dataDeNasc, "
+				+ "usuario, "
+				+ "senha, "
+				+ "NivelCargo, "
+				+ "salario, "
+				+ "comissao, "
+				+ "enderecos_id_endereco) "
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -44,7 +54,6 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
-			ps.setLong(11, f.getEndereco().getCep());
 
 			ps.executeUpdate();
 
@@ -66,8 +75,16 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET nome = ?" + "cpf = ?" + "telefone = ?" + "email = ?" + "dataDeNasc = ?"
-				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ?";
+		String query = "UPDATE funcionarios SET nome = ?" 
+		+ "cpf = ?" 
+		+ "telefone = ?" 
+		+ "email = ?" 
+		+ "dataDeNasc = ?"
+		+ "usuario = ?" 
+		+ "senha = ?" 
+		+ "nivelCargo = ?" 
+		+ "salario = ?" 
+		+ "comissao = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -100,8 +117,12 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
+		
+		String usuario = f.getUsuario();
+		
+		String matricula = "SELECT matricula FROM funcionarios where usuario = " + usuario;
 
-		String query = "DELETE FROM funcionarios WHERE matricula = ?";
+		String query = "DELETE FROM funcionarios WHERE matricula = " + matricula;
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

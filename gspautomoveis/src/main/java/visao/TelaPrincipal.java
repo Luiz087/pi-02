@@ -33,7 +33,7 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
-
+	public TelaLogin login;
 	/**
 	 * Launch the application.
 	 */
@@ -54,6 +54,8 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		
+		TelaLogin login = new TelaLogin();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -403,6 +405,8 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2.setBounds(920, 535, 440, 46);
 		contentPane.add(lblNewLabel_2);
 		
+		
+		
 		textField_7 = new JTextField();
 		textField_7.setEnabled(false);
 		textField_7.setEditable(false);
@@ -427,6 +431,8 @@ public class TelaPrincipal extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
+
+		
 		lblNewLabel_2_1_2_1_1_1_2.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_2_1_1_1_2.setBounds(1845, 12, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2_1_1_1_2);
@@ -442,6 +448,15 @@ public class TelaPrincipal extends JFrame {
 		lblNomeFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblNomeFunc.setBounds(1562, 12, 273, 35);
 		contentPane.add(lblNomeFunc);
+		
+		text_nome.setText("");
+		text_telefone.setText("");
+		text_matricula.setText("");
+		text_cargo.setText("");
+		text_comissao.setText("");
+		text_metas.setText("");
+		text_email.setText("");
+		
 		
 	}
 }

@@ -9,10 +9,15 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaVeiculos extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -152,6 +157,22 @@ public class TelaVeiculos extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setBounds(89, 166, 175, 190);
 		contentPane.add(lblNewLabel_1_1);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(391, 145, 1167, 388);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Fornecedor", "Promo\u00E7\u00E3o", "Pre\u00E7o", "ABS", "Pot\u00EAncia", "Quilometragem", "Combust\u00EDvel", "Tipo", "Cor", "Ano", "Novo", "Modelo", "Marca", "ID"
+			}
+		));
+		table.getColumnModel().getColumn(5).setPreferredWidth(85);
+		table.setFont(new Font("Krona One", Font.PLAIN, 11));
+		scrollPane.setViewportView(table);
 		
 		
 	}

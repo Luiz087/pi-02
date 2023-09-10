@@ -52,6 +52,7 @@ public class TelaLogin extends JFrame {
 			}
 		});
 	}
+	
 
 	public TelaLogin() {
 
@@ -179,10 +180,10 @@ public class TelaLogin extends JFrame {
 					testelogin.setSenha(senha);
 					
 					//Cria uma variavel boolean login1 que verifica se há o usuário no banco
-					boolean login1 = funcdao.login(testelogin);
+					Funcionario funcTesteLogin = funcdao.login(testelogin);
 					
 					//Se o valor retornado pela função ser true
-					if(login1) {
+					if(funcTesteLogin != null) {
 						//Passa para a proxima tela
 						TelaPrincipal telaPrincip = new TelaPrincipal();
 						dispose();
@@ -191,6 +192,7 @@ public class TelaLogin extends JFrame {
 						TelaSucesso sucesso = new TelaSucesso();
 						sucesso.setLocationRelativeTo(null);
 						sucesso.setVisible(true);
+						
 					} else {
 						//Exibe mensagem de erro
 						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
@@ -241,4 +243,5 @@ public class TelaLogin extends JFrame {
 		});
 
 	}
+	
 }

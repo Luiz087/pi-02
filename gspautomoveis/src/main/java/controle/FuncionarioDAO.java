@@ -21,24 +21,16 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return instancia;
 	}
 
+	public Funcionario funcAchado = null;
+
 	public boolean inserir(Funcionario f) {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO funcionarios "
-				+ "(nome, "
-				+ "cpf, "
-				+ "telefone, "
-				+ "email, "
-				+ "dataDeNasc, "
-				+ "usuario, "
-				+ "senha, "
-				+ "NivelCargo, "
-				+ "salario, "
-				+ "comissao, "
-				+ "enderecos_id_endereco) "
+		String query = "INSERT INTO funcionarios " + "(nome, " + "cpf, " + "telefone, " + "email, " + "dataDeNasc, "
+				+ "usuario, " + "senha, " + "NivelCargo, " + "salario, " + "comissao, " + "enderecos_id_endereco) "
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -75,16 +67,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET nome = ?" 
-		+ "cpf = ?" 
-		+ "telefone = ?" 
-		+ "email = ?" 
-		+ "dataDeNasc = ?"
-		+ "usuario = ?" 
-		+ "senha = ?" 
-		+ "nivelCargo = ?" 
-		+ "salario = ?" 
-		+ "comissao = ?";
+		String query = "UPDATE funcionarios SET nome = ?" + "cpf = ?" + "telefone = ?" + "email = ?" + "dataDeNasc = ?"
+				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -116,7 +100,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	public boolean excluir(Funcionario f) {
 		Conexao c = Conexao.getInstancia();
 
-		Connection con = c.conectar();		
+		Connection con = c.conectar();
 
 		String query = "DELETE FROM funcionarios WHERE matricula = " + f.getMatricula();
 
@@ -153,7 +137,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				
+
 				Integer matricula = rs.getInt("matricula");
 				String Nome = rs.getString("Nome");
 				Long Cpf = rs.getLong("Cpf");
@@ -194,14 +178,25 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return Funcionarios;
 	}
 
-	public boolean login(Funcionario f) {
-
+	public Funcionario login(Funcionario f) {
+		funcAchado = null;
 		for (Funcionario func : ListarFuncionarios()) {
 			if (func.getUsuario().equals(f.getUsuario()) && func.getSenha().equals(f.getSenha())) {
-				return true;
+
+				funcAchado = func;
+
+				return funcAchado;
 			}
 		}
-		return false;
+		return funcAchado;
+	}
+
+	public Funcionario logoff() {
+		return funcAchado = null;
+	}
+
+	public Funcionario passaLogado() {
+		return funcAchado;
 	}
 
 

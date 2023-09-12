@@ -21,10 +21,11 @@ import java.awt.event.ActionEvent;
 
 public class Configuracao extends JFrame {
 
+	protected static Object textSenha;
 	private JPanel contentPane;
-	private JTextField textField;
+	public static JTextField textUsuario;
 	private JTextField textField_1;
-	private JTextField textField_2;
+	JTextField textSen;
 	private JTextField textField_3;
 
 	/**
@@ -76,11 +77,11 @@ public class Configuracao extends JFrame {
 		lblUsurio.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsurio);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Krona One", Font.PLAIN, 12));
-		textField.setColumns(10);
-		textField.setBounds(193, 248, 321, 38);
-		contentPane.add(textField);
+		textUsuario = new JTextField();
+		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textUsuario.setColumns(10);
+		textUsuario.setBounds(193, 248, 321, 38);
+		contentPane.add(textUsuario);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 24));
@@ -98,11 +99,11 @@ public class Configuracao extends JFrame {
 		lblSenha.setBounds(26, 426, 114, 38);
 		contentPane.add(lblSenha);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Krona One", Font.PLAIN, 12));
-		textField_2.setColumns(10);
-		textField_2.setBounds(193, 431, 196, 38);
-		contentPane.add(textField_2);
+		textSen = new JTextField();
+		textSen.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textSen.setColumns(10);
+		textSen.setBounds(193, 431, 196, 38);
+		contentPane.add(textSen);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 24));

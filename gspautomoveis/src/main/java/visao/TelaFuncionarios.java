@@ -37,9 +37,9 @@ public class TelaFuncionarios extends JFrame {
 	private JPanel contentPane;
 	private JTextField textNome;
 	private JTextField textCPF;
-	private JTextField textUsuario;
+	public static JTextField textUsuario;
 	private JTextField textTelefone;
-	private JTextField textSenha;
+	public static JTextField textSenha;
 	private JTextField textEmail;
 	private JTextField textDataNasc;
 	private JTable table;
@@ -480,7 +480,11 @@ public class TelaFuncionarios extends JFrame {
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
 				}
-
+					
+				//Configuracao configuracao = new Configuracao();
+				//Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
+				//((JLabel) Configuracao.textSenha).setText(TelaFuncionarios.textSenha.getText());
+				//configuracao.setVisible(true);
 			}
 		});
 		btnAdicionar.setForeground(Color.BLACK);

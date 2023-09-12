@@ -52,36 +52,6 @@ public class TelaHistoricoVeiculos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Histórico Fornec");
-		lblNewLabel_4_1_1_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaHistoricoFornecedores telaHF = new TelaHistoricoFornecedores();
-				dispose();
-				telaHF.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHF.setVisible(true);
-				
-			}
-		});
-		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1_1_1_1.setBounds(49, 783, 282, 35);
-		contentPane.add(lblNewLabel_4_1_1_1_1_1);
-		
-		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaHistoricoFornecedores telaHF = new TelaHistoricoFornecedores();
-				dispose();
-				telaHF.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHF.setVisible(true);
-			}
-		});
-		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
-		lblNewLabel_2_1_1_1_1_1.setBounds(17, 783, 40, 35);
-		contentPane.add(lblNewLabel_2_1_1_1_1_1);
-		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 22));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecionar Marca", "Agrale", "Aston Martin", "Audi", "BMW", "BYD", "CAOA Chery", "Chevrolet", "Citroën", "Effa", "Ferrari", "Fiat", "Ford", "Foton", "Haval", "Honda", "Hyundai", "Iveco", "JAC", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Maserati", "McLaren", "Mercedes-AMG", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Peugeot", "Porsche", "RAM", "Renault", "Rolls-Royce", "Seres", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Volvo"}));
@@ -101,7 +71,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_1.setBounds(63, 141, 175, 190);
 		contentPane.add(lblNewLabel_1);
 		
@@ -115,7 +85,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				telaveic.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_2_1_2.setBounds(17, 410, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
 		
@@ -144,7 +114,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				telaconfig.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_2_1.setBounds(17, 490, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 		
@@ -172,7 +142,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);			}
 		});
-		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Pessoa.png")));
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/Pessoa.png")));
 		lblNewLabel_2_1_1.setBounds(17, 570, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1);
 		
@@ -201,7 +171,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				telaHV.setVisible(true);	
 			}
 		});
-		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/carrinho compras.png")));
+		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
 		lblNewLabel_2_1_1_1.setBounds(17, 645, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1);
 		
@@ -229,7 +199,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/carro +.png")));
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/carro +.png")));
 		lblNewLabel_2_1_1_1_1.setBounds(17, 717, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
@@ -249,12 +219,12 @@ public class TelaHistoricoVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(17, 937, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/bglateral.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/bglateral.png")));
 		lblNewLabel.setBounds(-14, -47, 361, 1141);
 		contentPane.add(lblNewLabel);
 		

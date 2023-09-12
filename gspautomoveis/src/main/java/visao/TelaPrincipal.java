@@ -280,6 +280,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_2_1_2_1);
 
 		text_nome = new JTextField();
+		text_nome.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_nome.setEditable(false);
 		text_nome.setBounds(546, 159, 239, 35);
 		contentPane.add(text_nome);
@@ -305,6 +306,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_matricula);
 
 		text_matricula = new JTextField();
+		text_matricula.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_matricula.setEditable(false);
 		text_matricula.setColumns(10);
 		text_matricula.setBounds(1081, 159, 239, 35);
@@ -330,6 +332,7 @@ public class TelaPrincipal extends JFrame {
 		}
 
 		text_telefone = new JFormattedTextField(mascaraTel);
+		text_telefone.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_telefone.setEditable(false);
 		text_telefone.setColumns(10);
 		text_telefone.setBounds(1646, 159, 239, 35);
@@ -342,6 +345,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_cargo);
 
 		text_cargo = new JTextField();
+		text_cargo.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_cargo.setEditable(false);
 		text_cargo.setColumns(10);
 		text_cargo.setBounds(546, 304, 239, 35);
@@ -355,6 +359,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_comissao);
 
 		text_comissao = new JTextField();
+		text_comissao.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_comissao.setEditable(false);
 		text_comissao.setColumns(10);
 		text_comissao.setBounds(1121, 304, 239, 35);
@@ -368,6 +373,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_metas);
 
 		text_metas = new JTextField();
+		text_metas.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_metas.setEditable(false);
 		text_metas.setColumns(10);
 		text_metas.setBounds(1646, 304, 239, 35);
@@ -380,6 +386,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_email);
 
 		text_email = new JTextField();
+		text_email.setFont(new Font("Krona One", Font.PLAIN, 20));
 		text_email.setEditable(false);
 		text_email.setColumns(10);
 		text_email.setBounds(561, 423, 799, 35);

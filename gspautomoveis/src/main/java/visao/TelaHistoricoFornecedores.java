@@ -5,14 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class TelaHistoricoFornecedores extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -56,10 +61,12 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_1.setBounds(63, 141, 175, 190);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_2_1_2.setBounds(17, 410, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
 		
@@ -70,6 +77,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_2_1.setBounds(17, 490, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 		
@@ -80,6 +88,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Pessoa.png")));
 		lblNewLabel_2_1_1.setBounds(17, 570, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1);
 		
@@ -90,6 +99,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/carrinho compras.png")));
 		lblNewLabel_2_1_1_1.setBounds(17, 645, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1);
 		
@@ -100,6 +110,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/carro +.png")));
 		lblNewLabel_2_1_1_1_1.setBounds(17, 717, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
@@ -110,6 +121,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 		
 		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/Sistema.png")));
 		lblNewLabel_2_1_1_1_1_1.setBounds(17, 800, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1);
 		
@@ -128,5 +140,20 @@ public class TelaHistoricoFornecedores extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(TelaHistoricoFornecedores.class.getResource("/visao/imagens/bglateral.png")));
 		lblNewLabel.setBounds(-14, -47, 361, 1141);
 		contentPane.add(lblNewLabel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(484, 432, 1271, 544);
+		contentPane.add(scrollPane);
+		//cadastrar nome das colunas
+		table = new JTable();
+		table.setFont(new Font("Krona One", Font.PLAIN, 11));
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Nome", "Telefone", "CNPJ", "Marca", "Cidade", "A\u00E7\u00F5es"
+			}
+		));
 	}
 }

@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class TelaHistoricoFornecedores extends JFrame {
 
@@ -47,6 +49,12 @@ public class TelaHistoricoFornecedores extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Krona One", Font.PLAIN, 22));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecionar Marca", "Agrale", "Aston Martin", "Audi", "BMW", "BYD", "CAOA Chery", "Chevrolet", "Citroën", "Effa", "Ferrari", "Fiat", "Ford", "Foton", "Haval", "Honda", "Hyundai", "Iveco", "JAC", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Maserati", "McLaren", "Mercedes-AMG", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Peugeot", "Porsche", "RAM", "Renault", "Rolls-Royce", "Seres", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Volvo"}));
+		comboBox.setBounds(614, 70, 929, 44);
+		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
 		lblNewLabel_4_1_1_1_1_1_1.setForeground(Color.WHITE);
@@ -142,7 +150,7 @@ public class TelaHistoricoFornecedores extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(484, 432, 1271, 544);
+		scrollPane.setBounds(478, 253, 1271, 690);
 		contentPane.add(scrollPane);
 		//cadastrar nome das colunas
 		table = new JTable();
@@ -152,8 +160,10 @@ public class TelaHistoricoFornecedores extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nome", "Telefone", "CNPJ", "Marca", "Cidade", "A\u00E7\u00F5es"
+				"Nome", "CNPJ", "Cidade", "Telefone", "Marca"
 			}
 		));
+		
+		
 	}
 }

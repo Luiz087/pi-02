@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Endereco;
@@ -11,26 +12,40 @@ import modelo.IEnderecoDAO;
 
 public class EnderecoDAO implements IEnderecoDAO {
 
-	public boolean inserir(Endereco e) {
+	private static EnderecoDAO instancia;
+
+	public static EnderecoDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new EnderecoDAO();
+		}
+		return instancia;
+	}
+
+	public Integer inserir(Endereco e) {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		String query = "insert into enderecos (cep, rua, bairro, cidade, estado) values (?, '?', '?', '?', '?')";
+		String query = "insert into enderecos (cep, rua, bairro, cidade, estado) values (?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setLong(1, e.getCep());
 			ps.setString(2, e.getRua());
-			ps.setString(2, e.getBairro());
-			ps.setString(2, e.getCidade());
-			ps.setString(2, e.getEstado());
+			ps.setString(3, e.getBairro());
+			ps.setString(4, e.getCidade());
+			ps.setString(5, e.getEstado());
 
 			ps.executeUpdate();
-
-			return true;
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					return generatedKeys.getInt(1);
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
 
 		} catch (SQLException e1) {
 			e1.printStackTrace();
@@ -38,7 +53,7 @@ public class EnderecoDAO implements IEnderecoDAO {
 			c.fecharConexao();
 		}
 
-		return false;
+		return 0;
 
 	}
 
@@ -139,5 +154,40 @@ public class EnderecoDAO implements IEnderecoDAO {
 		}
 
 		return Enderecos;
+	}
+
+	public Endereco buscaEndereco(Endereco end) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM enderecos WHERE cep = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setLong(1, end.getCep());
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Long Cep = rs.getLong("Cep");
+				String Rua = rs.getString("Rua");
+				String Bairro = rs.getString("Bairro");
+				String Cidade = rs.getString("Cidade");
+				String Estado = rs.getString("Estado");
+
+				Endereco E = new Endereco();
+				E.setCep(Cep);
+				E.setRua(Rua);
+				E.setBairro(Bairro);
+				E.setCidade(Cidade);
+				E.setEstado(Estado);
+				return E;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
 	}
 }

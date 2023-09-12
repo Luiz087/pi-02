@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IEnderecoDAO {
 
-	public boolean inserir(Endereco e);
+	public Integer inserir(Endereco e);
 
 	public boolean atualizar(Endereco e);
 

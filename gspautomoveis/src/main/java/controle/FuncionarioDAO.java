@@ -46,6 +46,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
+			ps.setInt(11, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
 
@@ -83,7 +84,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(8, f.getSalario());
 			ps.setDouble(10, f.getComissao());
-
+			// chave estrangeira endereco_id_endereco
+			
 			ps.executeUpdate();
 
 			return true;

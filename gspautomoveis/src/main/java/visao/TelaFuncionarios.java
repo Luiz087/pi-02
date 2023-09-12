@@ -1,37 +1,36 @@
 package visao;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
+import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import modelo.Endereco;
 import modelo.Funcionario;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
-
-import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JTable;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -52,6 +51,7 @@ public class TelaFuncionarios extends JFrame {
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 	private JTextField textComissao;
 	private JTextField textSalario;
+	private EnderecoDAO enddao = EnderecoDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -379,12 +379,13 @@ public class TelaFuncionarios extends JFrame {
 		});
 
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] {"Matrícula", "Nome", "Usu\u00E1rio", "Telefone",
-				"Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Matrícula", "Nome", "Usu\u00E1rio",
+				"Telefone", "Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-			String data[] = {String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(), String.valueOf(funcs.getTelefone()),
-					funcs.getNivelCargo(), funcs.getDataDeNasc(), funcs.getEmail() };
+			String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
+					String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), funcs.getDataDeNasc(),
+					funcs.getEmail() };
 			tblModel.addRow(data);
 		}
 
@@ -439,7 +440,24 @@ public class TelaFuncionarios extends JFrame {
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
 					System.out.println("Até aqui sim");
+
+					Endereco verificacaoEnd = enddao.buscaEndereco(end);
+					if (verificacaoEnd == null) {
+						/*
+						 * Se o endereco for null Significa que nao encontrou nada no BD
+						 */
+						Integer idend = enddao.inserir(end);
+						end.setIdEndereco(idend);
+					} else {
+						/*
+						 * Se o endereco nao eh null significa que ja esta cadastrado
+						 */
+						end.setIdEndereco(verificacaoEnd.getIdEndereco());
+					}
+
+					func1.setEndereco(end);
 					funcdao.inserir(func1);
+
 					System.out.println("Passou");
 
 					textNome.setText("");

@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controle.FuncionarioDAO;
+import modelo.Funcionario;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -25,9 +29,9 @@ public class Configuracao extends JFrame {
 	private JPanel contentPane;
 	public static JTextField textUsuario;
 	private JTextField textField_1;
-	JTextField textSen;
+	public static JTextField textSen;
 	private JTextField textField_3;
-
+	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 	/**
 	 * Launch the application.
 	 */
@@ -48,6 +52,9 @@ public class Configuracao extends JFrame {
 	 * Create the frame.
 	 */
 	public Configuracao() {
+		Funcionario func = new Funcionario();
+		
+		func = funcdao.passaLogado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -81,6 +88,7 @@ public class Configuracao extends JFrame {
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(193, 248, 321, 38);
+		textUsuario.setText(func.getUsuario());
 		contentPane.add(textUsuario);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");

@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 
+import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -481,10 +482,10 @@ public class TelaFuncionarios extends JFrame {
 					sucesso.setVisible(true);
 				}
 					
-				//Configuracao configuracao = new Configuracao();
-				//Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
-				//((JLabel) Configuracao.textSenha).setText(TelaFuncionarios.textSenha.getText());
-				//configuracao.setVisible(true);
+				Configuracao configuracao = new Configuracao();
+				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
+				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
+				configuracao.setVisible(true);
 			}
 		});
 		btnAdicionar.setForeground(Color.BLACK);

@@ -174,9 +174,6 @@ insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Fowyaze', 82863483030, 6738832922, 'Fowyaze@gmail.com', '1996-08-09', 'Fowyaze047', 'Fowyazee123', 'Vendedor', 70.000, 0.5, 14);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Riek', 87327642005, 6323543033, 'Riek@gmail.com', '2002-10-15', 'Riek047', 'Riekk123', 'Gerente de Vendas', 100.000, 1.0, 15);
 
-
-
-
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 2, 25);
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 1, 24);
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Samuel', 00664059040, 8834760058, 57071707,'2023-07-05', 1050000, 3, 23);
@@ -234,27 +231,27 @@ SELECT Carros.marca,
 INNER JOIN funcionarios ON Vendas.funcionarios_matricula = funcionarios.matricula
 INNER JOIN Carros ON Vendas.Carros_id_carro = Carros.id_carro;
 
-UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE id_endereco = 1;
-UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE id_endereco = 2;
-UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE id_endereco = 3;
-UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE id_endereco = 4;
-UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE id_endereco = 5;
-UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE id_endereco = 6;
-UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE id_endereco = 7;
-UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE id_endereco = 8;
-UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE id_endereco = 9;
-UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE id_endereco = 10;
+-- UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE id_endereco = 1;
+-- UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE id_endereco = 2;
+-- UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE id_endereco = 3;
+-- UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE id_endereco = 4;
+-- UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE id_endereco = 5;
+-- UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE id_endereco = 6;
+-- UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE id_endereco = 7;
+-- UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE id_endereco = 8;
+-- UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE id_endereco = 9;
+-- UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE id_endereco = 10;
 
-UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", enderecos_id_endereco=5 WHERE id_fornecedor= 1;
-UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", enderecos_id_endereco=6 WHERE id_fornecedor= 2;
-UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", enderecos_id_endereco=7 WHERE id_fornecedor= 3;
-UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", enderecos_id_endereco=8 WHERE id_fornecedor= 4;
-UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", enderecos_id_endereco=9 WHERE id_fornecedor= 5;
-UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", enderecos_id_endereco=10 WHERE id_fornecedor= 6;
-UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", enderecos_id_endereco=11 WHERE id_fornecedor= 7;
-UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", enderecos_id_endereco=12 WHERE id_fornecedor= 8;
-UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", enderecos_id_endereco=13 WHERE id_fornecedor= 9;
-UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", enderecos_id_endereco=14 WHERE id_fornecedor= 10;
+-- UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", enderecos_id_endereco=5 WHERE id_fornecedor= 1;
+-- UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", enderecos_id_endereco=6 WHERE id_fornecedor= 2;
+-- UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", enderecos_id_endereco=7 WHERE id_fornecedor= 3;
+-- UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", enderecos_id_endereco=8 WHERE id_fornecedor= 4;
+-- UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", enderecos_id_endereco=9 WHERE id_fornecedor= 5;
+-- UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", enderecos_id_endereco=10 WHERE id_fornecedor= 6;
+-- UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", enderecos_id_endereco=11 WHERE id_fornecedor= 7;
+-- UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", enderecos_id_endereco=12 WHERE id_fornecedor= 8;
+-- UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", enderecos_id_endereco=13 WHERE id_fornecedor= 9;
+-- UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", enderecos_id_endereco=14 WHERE id_fornecedor= 10;
 
 -- UPDATE funcionarios SET nome = "Lindy", cpf = "51267649003	", telefone ="95937385512", salario = "435345", enderecos_cep = 98860771 WHERE matricula = 6;
 -- UPDATE funcionarios SET nome = "Jarret", cpf = "73775878068", telefone ="92935526593", salario = "435435", enderecos_cep = 98860771 WHERE matricula = 7;
@@ -289,17 +286,17 @@ UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, t
 -- UPDATE Vendas SET nome = "Robson", cpf=90190269766, usuario='Eric.sa', ipva_pago=true, modelo='Camaro', funcionarios_matricula=9, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 9 ;
 -- UPDATE Vendas SET nome = "Welliton", cpf=94642174800, usuario='luiz.s', ipva_pago=false, modelo='Navigator', funcionarios_matricula=10, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 10;
 
-DELETE FROM Vendas WHERE id_venda = 1;
-DELETE FROM Vendas WHERE id_venda = 2;
-DELETE FROM Vendas WHERE id_venda = 3;
-DELETE FROM Vendas WHERE id_venda = 4;
-DELETE FROM Vendas WHERE id_venda = 5;
+-- DELETE FROM Vendas WHERE id_venda = 1;
+-- DELETE FROM Vendas WHERE id_venda = 2;
+-- DELETE FROM Vendas WHERE id_venda = 3;
+-- DELETE FROM Vendas WHERE id_venda = 4;
+-- DELETE FROM Vendas WHERE id_venda = 5;
 
-DELETE FROM funcionarios WHERE matricula = 10;
-DELETE FROM funcionarios WHERE matricula = 11;
-DELETE FROM funcionarios WHERE matricula = 12;
-DELETE FROM funcionarios WHERE matricula = 13;
-DELETE FROM funcionarios WHERE matricula = 14;
+-- DELETE FROM funcionarios WHERE matricula = 10;
+-- DELETE FROM funcionarios WHERE matricula = 11;
+-- DELETE FROM funcionarios WHERE matricula = 12;
+-- DELETE FROM funcionarios WHERE matricula = 13;
+-- DELETE FROM funcionarios WHERE matricula = 14;
 
 -- DELETE FROM fornecedores WHERE id_fornecedor = 1;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 2;
@@ -307,17 +304,17 @@ DELETE FROM funcionarios WHERE matricula = 14;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 4;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 5;
 
-DELETE FROM Carros WHERE id_carro = 1;
-DELETE FROM Carros WHERE id_carro = 2;
-DELETE FROM Carros WHERE id_carro = 3;
-DELETE FROM Carros WHERE id_carro = 4;
-DELETE FROM Carros WHERE id_carro = 5;
+-- DELETE FROM Carros WHERE id_carro = 1;
+-- DELETE FROM Carros WHERE id_carro = 2;
+-- DELETE FROM Carros WHERE id_carro = 3;
+-- DELETE FROM Carros WHERE id_carro = 4;
+-- DELETE FROM Carros WHERE id_carro = 5;
 
-DELETE FROM Vendas WHERE id_venda = 3;
-DELETE FROM Vendas WHERE id_venda = 8;
-DELETE FROM Vendas WHERE id_venda = 13;
-DELETE FROM Vendas WHERE id_venda = 14;
-DELETE FROM Vendas WHERE id_venda = 15;
+-- DELETE FROM Vendas WHERE id_venda = 3;
+-- DELETE FROM Vendas WHERE id_venda = 8;
+-- DELETE FROM Vendas WHERE id_venda = 13;
+-- DELETE FROM Vendas WHERE id_venda = 14;
+-- DELETE FROM Vendas WHERE id_venda = 15;
 
 -- DELETE FROM enderecos WHERE id_endereco = 13;
 -- DELETE FROM enderecos WHERE id_endereco = 12;

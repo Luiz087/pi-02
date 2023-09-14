@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.cj.xdevapi.Table;
 
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
@@ -88,12 +91,21 @@ public class Configuracao extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/bgcima.png")));
 		lblNewLabel.setBounds(0, 0, 884, 208);
 		contentPane.add(lblNewLabel);
+<<<<<<< Updated upstream
 
 		JLabel lblUsurio = new JLabel("Usuário:");
 		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsurio.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsurio);
 
+=======
+		
+		JLabel lblUsuario = new JLabel("Usuário:");
+		lblUsuario.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblUsuario.setBounds(26, 243, 163, 38);
+		contentPane.add(lblUsuario);
+		
+>>>>>>> Stashed changes
 		textUsuario = new JTextField();
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);
@@ -140,8 +152,10 @@ public class Configuracao extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+						
+				}
 			}
-		});
+		);
 		btnAtualizar.setForeground(Color.BLACK);
 		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
 		btnAtualizar.setFocusPainted(false);

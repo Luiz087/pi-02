@@ -208,7 +208,6 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Configuracao telaconfig = new Configuracao();
-				dispose();
 				telaconfig.setLocationRelativeTo(null);
 				telaconfig.setVisible(true);
 

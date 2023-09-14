@@ -10,6 +10,15 @@ import modelo.Fornecedor;
 import modelo.IFornecedorDAO;
 
 public class FornecedorDAO implements IFornecedorDAO {
+	
+	private static FornecedorDAO instancia;
+
+	public static FornecedorDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new FornecedorDAO();
+		}
+		return instancia;
+	}
 
 	public boolean inserir(Fornecedor f) {
 
@@ -17,7 +26,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, endereco_cep) values ('?', ?, ?, '?', '?', ?)";
+		String query = "INSERT INTO fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values (?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -27,10 +36,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setLong(3, f.getTelefoneFornecedor());
 			ps.setString(4, f.getEmpresa());
 			ps.setString(5, f.getMarca());
-			// ps.setLong(6, f.getEndereco.getCep());
-			// chave estrangeira endereco_ce
-
-			ps.setLong(6, f.getEndereco().getCep());
+			ps.setInt(6, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
 

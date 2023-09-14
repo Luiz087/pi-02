@@ -481,7 +481,7 @@ public class TelaFuncionarios extends JFrame {
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
 				}
-					
+
 				Configuracao configuracao = new Configuracao();
 				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
 				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());

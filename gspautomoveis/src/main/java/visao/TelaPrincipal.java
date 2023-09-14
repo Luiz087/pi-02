@@ -76,7 +76,7 @@ public class TelaPrincipal extends JFrame {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);	
+				telaHV.setVisible(true);
 			}
 		});
 		lblNewLabel_6_1_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -121,7 +121,7 @@ public class TelaPrincipal extends JFrame {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);	
+				telaHV.setVisible(true);
 			}
 		});
 		lblNewLabel_5_1_1
@@ -269,7 +269,7 @@ public class TelaPrincipal extends JFrame {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);		
+				telaHV.setVisible(true);
 			}
 		});
 		lblNewLabel_2_1_1_1.setBounds(28, 653, 40, 35);
@@ -284,7 +284,7 @@ public class TelaPrincipal extends JFrame {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);		
+				telaHV.setVisible(true);
 			}
 		});
 		lblNewLabel_4_1_1_1.setBounds(74, 653, 265, 35);
@@ -538,7 +538,7 @@ public class TelaPrincipal extends JFrame {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);	
+				telaHV.setVisible(true);
 			}
 		});
 		textField_9.setEnabled(false);

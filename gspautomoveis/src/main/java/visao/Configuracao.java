@@ -22,15 +22,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class Configuracao extends JFrame {
 
 	protected static Object textSenha;
 	private JPanel contentPane;
 	public static JTextField textUsuario;
-	private JTextField textField_1;
+	private JTextField textTel;
 	public static JTextField textSen;
-	private JTextField textField_3;
+	private JTextField textEmail;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 	/**
 	 * Launch the application.
@@ -63,15 +64,23 @@ public class Configuracao extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_3_1 = new JLabel("AUTOMÓVEIS");
+		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setFont(new Font("Krona One", Font.PLAIN, 33));
+		lblNewLabel_3_1.setBounds(320, 113, 288, 72);
+		contentPane.add(lblNewLabel_3_1);
+		
 		JLabel lblNewLabel_3 = new JLabel("GSP");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(71, 67, 181, 72);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 99));
+		lblNewLabel_3.setBounds(315, 22, 298, 80);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/Logo sem fundo.png")));
-		lblNewLabel_1.setBounds(348, 11, 175, 190);
+		lblNewLabel_1.setBounds(59, 11, 175, 190);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -96,11 +105,12 @@ public class Configuracao extends JFrame {
 		lblTelefone.setBounds(26, 334, 163, 38);
 		contentPane.add(lblTelefone);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Krona One", Font.PLAIN, 12));
-		textField_1.setColumns(10);
-		textField_1.setBounds(193, 334, 345, 38);
-		contentPane.add(textField_1);
+		textTel = new JTextField();
+		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textTel.setColumns(10);
+		textTel.setBounds(193, 334, 345, 38);
+		textTel.setText(String.valueOf(func.getTelefone()));
+		contentPane.add(textTel);
 		
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setFont(new Font("Krona One", Font.PLAIN, 24));
@@ -111,6 +121,7 @@ public class Configuracao extends JFrame {
 		textSen.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textSen.setColumns(10);
 		textSen.setBounds(193, 431, 196, 38);
+		textSen.setText(func.getSenha());
 		contentPane.add(textSen);
 		
 		JLabel lblEmail = new JLabel("Email:");
@@ -118,24 +129,25 @@ public class Configuracao extends JFrame {
 		lblEmail.setBounds(26, 492, 98, 38);
 		contentPane.add(lblEmail);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Krona One", Font.PLAIN, 12));
-		textField_3.setColumns(10);
-		textField_3.setBounds(199, 497, 675, 38);
-		contentPane.add(textField_3);
+		textEmail = new JTextField();
+		textEmail.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textEmail.setColumns(10);
+		textEmail.setBounds(193, 497, 675, 38);
+		textEmail.setText(func.getEmail());
+		contentPane.add(textEmail);
 		
-		JButton btnAdicionar = new JButton("Adicionar\r\n");
-		btnAdicionar.addActionListener(new ActionListener() {
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
-		btnAdicionar.setFocusPainted(false);
-		btnAdicionar.setBorder(new RoundedBorder(10));
-		btnAdicionar.setBackground(Color.BLUE);
-		btnAdicionar.setBounds(348, 576, 251, 35);
-		contentPane.add(btnAdicionar);
+		btnAtualizar.setForeground(Color.BLACK);
+		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
+		btnAtualizar.setFocusPainted(false);
+		btnAtualizar.setBorder(new RoundedBorder(10));
+		btnAtualizar.setBackground(new Color(255, 218, 70));
+		btnAtualizar.setBounds(348, 576, 251, 35);
+		contentPane.add(btnAtualizar);
 		
 		  
 	}

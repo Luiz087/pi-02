@@ -15,6 +15,23 @@ public class Carro {
 	private Double precoCarro;
 	private Long quilometragem;
 	private Boolean promocao;
+	private Fornecedor fornecedor;
+
+	public Integer getIdCarro() {
+		return idCarro;
+	}
+
+	public void setIdCarro(Integer idCarro) {
+		this.idCarro = idCarro;
+	}
+
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
 
 	public String getModelo() {
 		return modelo;

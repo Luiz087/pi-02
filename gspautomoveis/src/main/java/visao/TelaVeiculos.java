@@ -13,23 +13,30 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.Carro;
+import modelo.Funcionario;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ScrollPaneConstants;
 
 public class TelaVeiculos extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField_12;
-	private JTextField textField_1;
-	private JTextField textField_5;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField txt_marca;
+	private JTextField txt_modelo;
+	private JTextField txt_combustivel;
+	private JTextField txt_cor;
+	private JTextField txt_tipo;
+	private JTextField txt_quilometragem;
+	private JTextField txt_potencia;
+	private JTextField txt_preco;
 
 	/**
 	 * Launch the application.
@@ -60,15 +67,20 @@ public class TelaVeiculos extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JComboBox cbAbs = new JComboBox();
+		cbAbs.setFont(new Font("Krona One", Font.PLAIN, 24));
+		cbAbs.setBounds(1724, 49, 120, 28);
+		contentPane.add(cbAbs);
+		
 		JLabel lblNewLabel_2_1_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/sair.png")));
-		lblNewLabel_2_1_1_1_1_1_1_1.setBounds(85, 912, 40, 35);
+		lblNewLabel_2_1_1_1_1_1_1_1.setBounds(39, 894, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_4_1_1_1_1_1_1_1 = new JLabel("Sair");
 		lblNewLabel_4_1_1_1_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_1_1_1_1_1_1_1.setBounds(122, 912, 93, 35);
+		lblNewLabel_4_1_1_1_1_1_1_1.setBounds(76, 894, 93, 35);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1_1);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("GSP");
@@ -171,6 +183,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(480, 309, 1291, 610);
 		contentPane.add(scrollPane);
 		
@@ -186,144 +199,194 @@ public class TelaVeiculos extends JFrame {
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
 		
-		JLabel lblPromoo = new JLabel("Marca:");
-		lblPromoo.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblPromoo.setBounds(371, 58, 109, 23);
-		contentPane.add(lblPromoo);
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblMarca.setBounds(371, 58, 109, 23);
+		contentPane.add(lblMarca);
 		
-		JLabel lblNewLabel_2_2_1 = new JLabel("Ano:");
-		lblNewLabel_2_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1.setBounds(1459, 49, 85, 27);
-		contentPane.add(lblNewLabel_2_2_1);
+		JLabel lblAno = new JLabel("Ano:");
+		lblAno.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblAno.setBounds(1459, 49, 85, 27);
+		contentPane.add(lblAno);
 		
-		JLabel lblNewLabel_2_2_1_1 = new JLabel("Cor:");
-		lblNewLabel_2_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1.setBounds(1249, 201, 72, 23);
-		contentPane.add(lblNewLabel_2_2_1_1);
+		JLabel lblCor = new JLabel("Cor:");
+		lblCor.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblCor.setBounds(1249, 201, 72, 23);
+		contentPane.add(lblCor);
 		
-		JLabel lblNewLabel_2_2_1_1_1 = new JLabel("Novo:");
-		lblNewLabel_2_2_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_1.setBounds(382, 185, 98, 35);
-		contentPane.add(lblNewLabel_2_2_1_1_1);
+		JLabel lblNovo = new JLabel("Novo:");
+		lblNovo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblNovo.setBounds(382, 185, 98, 35);
+		contentPane.add(lblNovo);
 		
-		JLabel lblNewLabel_2_2_1_1_1_1 = new JLabel("Tipo:");
-		lblNewLabel_2_2_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_1_1.setBounds(768, 49, 85, 35);
-		contentPane.add(lblNewLabel_2_2_1_1_1_1);
+		JLabel lblTipo = new JLabel("Tipo:");
+		lblTipo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblTipo.setBounds(768, 49, 85, 35);
+		contentPane.add(lblTipo);
 		
-		JLabel lblNewLabel_2_2_1_1_2 = new JLabel("Combustível:");
-		lblNewLabel_2_2_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2.setBounds(768, 132, 214, 25);
-		contentPane.add(lblNewLabel_2_2_1_1_2);
+		JLabel lblCombustivel = new JLabel("Combustível:");
+		lblCombustivel.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblCombustivel.setBounds(768, 132, 214, 25);
+		contentPane.add(lblCombustivel);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1 = new JLabel("Quilometragem:");
-		lblNewLabel_2_2_1_1_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1.setBounds(768, 189, 407, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1);
+		JLabel lblQuilometragem = new JLabel("Quilometragem:");
+		lblQuilometragem.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblQuilometragem.setBounds(768, 189, 265, 35);
+		contentPane.add(lblQuilometragem);
 		
-		textField_12 = new JTextField();
-		textField_12.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_12.setColumns(10);
-		textField_12.setBounds(482, 58, 199, 26);
-		contentPane.add(textField_12);
+		txt_marca = new JTextField();
+		txt_marca.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_marca.setColumns(10);
+		txt_marca.setBounds(482, 58, 199, 26);
+		contentPane.add(txt_marca);
 		
 		JLabel lblModelo = new JLabel("Modelo:");
 		lblModelo.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblModelo.setBounds(371, 131, 132, 23);
 		contentPane.add(lblModelo);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_1.setColumns(10);
-		textField_1.setBounds(504, 129, 199, 26);
-		contentPane.add(textField_1);
+		txt_modelo = new JTextField();
+		txt_modelo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_modelo.setColumns(10);
+		txt_modelo.setBounds(504, 129, 199, 26);
+		contentPane.add(txt_modelo);
 		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_5.setColumns(10);
-		textField_5.setBounds(976, 131, 199, 26);
-		contentPane.add(textField_5);
+		txt_combustivel = new JTextField();
+		txt_combustivel.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_combustivel.setColumns(10);
+		txt_combustivel.setBounds(976, 131, 199, 26);
+		contentPane.add(txt_combustivel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Krona One", Font.PLAIN, 24));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Sim", "Não"}));
-		comboBox.setBounds(487, 188, 116, 28);
-		contentPane.add(comboBox);
+		JComboBox comboBoxNovo = new JComboBox();
+		comboBoxNovo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		comboBoxNovo.setModel(new DefaultComboBoxModel(new String[] {"", "Sim", "Não"}));
+		comboBoxNovo.setBounds(487, 188, 116, 28);
+		contentPane.add(comboBoxNovo);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(1543, 49, 85, 23);
-		contentPane.add(comboBox_1);
+		JComboBox comboBoxAno = new JComboBox();
+		comboBoxAno.setBounds(1543, 49, 85, 23);
+		contentPane.add(comboBoxAno);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_2.setColumns(10);
-		textField_2.setBounds(1317, 199, 199, 26);
-		contentPane.add(textField_2);
+		txt_cor = new JTextField();
+		txt_cor.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_cor.setColumns(10);
+		txt_cor.setBounds(1317, 199, 199, 26);
+		contentPane.add(txt_cor);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_3.setColumns(10);
-		textField_3.setBounds(847, 53, 199, 26);
-		contentPane.add(textField_3);
+		txt_tipo = new JTextField();
+		txt_tipo.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_tipo.setColumns(10);
+		txt_tipo.setBounds(847, 53, 199, 26);
+		contentPane.add(txt_tipo);
 		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_4.setColumns(10);
-		textField_4.setBounds(1030, 189, 145, 26);
-		contentPane.add(textField_4);
+		txt_quilometragem = new JTextField();
+		txt_quilometragem.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_quilometragem.setColumns(10);
+		txt_quilometragem.setBounds(1030, 193, 145, 26);
+		contentPane.add(txt_quilometragem);
 		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_6.setColumns(10);
-		textField_6.setBounds(1385, 125, 132, 26);
-		contentPane.add(textField_6);
+		txt_potencia = new JTextField();
+		txt_potencia.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_potencia.setColumns(10);
+		txt_potencia.setBounds(1385, 125, 132, 26);
+		contentPane.add(txt_potencia);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1_1 = new JLabel("Potência:");
-		lblNewLabel_2_2_1_1_2_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1_1.setBounds(1230, 125, 150, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1_1);
+		JLabel lblPotencia = new JLabel("Potência:");
+		lblPotencia.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblPotencia.setBounds(1230, 125, 150, 27);
+		contentPane.add(lblPotencia);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1_1_1 = new JLabel("ABS:");
-		lblNewLabel_2_2_1_1_2_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1_1_1.setBounds(1638, 50, 85, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1_1_1);
+		JLabel lblABS = new JLabel("ABS:");
+		lblABS.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblABS.setBounds(1638, 50, 85, 27);
+		contentPane.add(lblABS);
 		
-		textField_7 = new JTextField();
-		textField_7.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_7.setColumns(10);
-		textField_7.setBounds(1719, 50, 125, 26);
-		contentPane.add(textField_7);
+		txt_preco = new JTextField();
+		txt_preco.setFont(new Font("Krona One", Font.PLAIN, 24));
+		txt_preco.setColumns(10);
+		txt_preco.setBounds(1724, 125, 120, 26);
+		contentPane.add(txt_preco);
 		
-		textField_8 = new JTextField();
-		textField_8.setFont(new Font("Krona One", Font.PLAIN, 24));
-		textField_8.setColumns(10);
-		textField_8.setBounds(1724, 125, 120, 26);
-		contentPane.add(textField_8);
+		JLabel lblPreco = new JLabel("Preço:");
+		lblPreco.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblPreco.setBounds(1615, 126, 102, 27);
+		contentPane.add(lblPreco);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1_1_1_1 = new JLabel("Preço:");
-		lblNewLabel_2_2_1_1_2_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1_1_1_1.setBounds(1615, 126, 102, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1_1_1_1);
+		JLabel lblPromocao = new JLabel("Promoção:");
+		lblPromocao.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblPromocao.setBounds(1545, 197, 175, 27);
+		contentPane.add(lblPromocao);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1_1_1_1_1 = new JLabel("Promoção:");
-		lblNewLabel_2_2_1_1_2_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1_1_1_1_1.setBounds(1545, 197, 175, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1_1_1_1_1);
+		JComboBox comboBoxPromocao = new JComboBox();
+		comboBoxPromocao.setFont(new Font("Krona One", Font.PLAIN, 24));
+		comboBoxPromocao.setBounds(1724, 196, 120, 28);
+		contentPane.add(comboBoxPromocao);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		comboBox_2.setBounds(1724, 196, 120, 28);
-		contentPane.add(comboBox_2);
+		JLabel lblFornecedor = new JLabel("Fornecedor:");
+		lblFornecedor.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblFornecedor.setBounds(1071, 49, 192, 27);
+		contentPane.add(lblFornecedor);
 		
-		JLabel lblNewLabel_2_2_1_1_2_1_2 = new JLabel("Fornecedor:");
-		lblNewLabel_2_2_1_1_2_1_2.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_2_2_1_1_2_1_2.setBounds(1071, 49, 192, 27);
-		contentPane.add(lblNewLabel_2_2_1_1_2_1_2);
+		JComboBox comboBoxFornecedor = new JComboBox();
+		comboBoxFornecedor.setFont(new Font("Krona One", Font.PLAIN, 24));
+		comboBoxFornecedor.setBounds(1272, 49, 150, 28);
+		contentPane.add(comboBoxFornecedor);
 		
-		JComboBox comboBox_2_1 = new JComboBox();
-		comboBox_2_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		comboBox_2_1.setBounds(1272, 49, 150, 28);
-		contentPane.add(comboBox_2_1);
+		JButton btnAdicionar = new JButton("Adicionar\r\n");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Carro carro = new Carro();
+				String marca = txt_marca.getText();
+				String modelo = txt_modelo.getText();
+				Boolean novo = (Boolean)comboBoxNovo.getSelectedItem();
+				String tipo = txt_tipo.getText(); 
+				String combustivel = txt_combustivel.getText();
+				Long quilometragem = Long.valueOf(txt_quilometragem.getText());
+				String fornecedor = (String)comboBoxFornecedor.getSelectedItem();
+				String potencia = txt_potencia.getText();
+				String cor = txt_cor.getText();
+				Integer ano = Integer.valueOf((String)comboBoxAno.getSelectedItem());
+				Boolean abs = (Boolean)cbAbs.getSelectedItem();
+				Double precoCarro = Double.valueOf(txt_preco.getText());
+				Boolean promocao = (Boolean)comboBoxPromocao.getSelectedItem();
+				
+				carro.setMarca(marca);
+				carro.setModelo(modelo);
+				carro.setNovo(novo);
+				carro.setTipo(tipo);
+				carro.setCombustivel(combustivel);
+				carro.setQuilometragem(quilometragem);
+				//carro.setFornecedor(fornecedor);
+				carro.setPotencia(potencia);
+				carro.setCor(cor);
+				carro.setAno(ano);
+				carro.setAbs(abs);
+				carro.setPrecoCarro(precoCarro);
+				carro.setPromocao(promocao);
+				
+			if (marca.equals("") || modelo.equals("") || novo.equals("") || tipo.equals("")|| combustivel.equals("") || quilometragem.equals("") 
+					|| potencia.equals("")|| cor.equals("") ||ano.equals("") || abs.equals("") || abs.equals("") || precoCarro.equals("") || promocao.equals("")){
+				TelaErro erro = new TelaErro();
+				erro.setLocationRelativeTo(null);
+				erro.setVisible(true);
+			}else {
+				String liborio[] = {marca, modelo,String.valueOf(novo), tipo,combustivel, String.valueOf(quilometragem) , potencia, cor,String.valueOf(ano), String.valueOf(abs), String.valueOf(precoCarro), String.valueOf(promocao) };
+				DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+				tbltable.addRow(liborio);
+				System.out.println("Até aqui sim");
+			}
+			}
+		});
+		
+		btnAdicionar.setForeground(Color.BLACK);
+		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
+		btnAdicionar.setFocusPainted(false);
+		btnAdicionar.setBorder(new RoundedBorder(10));
+		btnAdicionar.setBackground(Color.GREEN);
+		btnAdicionar.setBounds(940, 250, 251, 35);
+		contentPane.add(btnAdicionar);
+		
+		
 		
 		
 	}

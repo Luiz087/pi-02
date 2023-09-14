@@ -126,6 +126,15 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Veículos");
+		lblNewLabel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
+			}
+		});
 		lblNewLabel_4.setBounds(74, 418, 265, 35);
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
 		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -135,7 +144,10 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// IMPLEMENTAR O DISPOSE QUANDO A TELA FOR CRIADA
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
 
 			}
 		});
@@ -144,6 +156,15 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
+		lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
 		lblNewLabel_4_1.setBounds(74, 498, 265, 35);
 		lblNewLabel_4_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -179,12 +200,30 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1);
 
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);		
+			}
+		});
 		lblNewLabel_2_1_1_1.setBounds(28, 653, 40, 35);
 		lblNewLabel_2_1_1_1
 				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carrinho compras.png")));
 		contentPane.add(lblNewLabel_2_1_1_1);
 
 		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
+		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);		
+			}
+		});
 		lblNewLabel_4_1_1_1.setBounds(74, 653, 265, 35);
 		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -219,17 +258,6 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 
-		JLabel lblNewLabel_2_1_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1_1.setBounds(28, 808, 40, 35);
-		lblNewLabel_2_1_1_1_1_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Sistema.png")));
-		contentPane.add(lblNewLabel_2_1_1_1_1_1);
-
-		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Sistema");
-		lblNewLabel_4_1_1_1_1_1.setBounds(74, 808, 265, 35);
-		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		contentPane.add(lblNewLabel_4_1_1_1_1_1);
-
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -263,7 +291,10 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_2_1_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// IMPLEMENTAR O DISPOSE QUANDO A TELA FOR CRIADA
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
 			}
 		});
 		lblNewLabel_2_1_2.setBounds(28, 418, 40, 35);

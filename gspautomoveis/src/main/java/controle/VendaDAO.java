@@ -51,7 +51,7 @@ public class VendaDAO implements IVendaDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE vendas SET nomeCliente = ?" + "cpfCliente = ?" + "telefoneCliente = ?"
-				+ "enderecoCliente = ?" + "dataVenda = ?";
+				+ "enderecoCliente = ?" + "dataVenda = ? WHERE id_venda = ?";
 		// chave estrangeira funcionarios_matricula
 		// chave estrangeira Carros_id_carro
 
@@ -63,6 +63,7 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
 			ps.setString(5, v.getDataVenda());
+			ps.setInt(6, v.getIdVenda());
 
 			ps.executeUpdate();
 

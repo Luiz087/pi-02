@@ -74,6 +74,7 @@ public class EnderecoDAO implements IEnderecoDAO {
 			ps.setString(3, e.getBairro());
 			ps.setString(4, e.getCidade());
 			ps.setString(5, e.getEstado());
+			ps.setInt(6, e.getIdEndereco());
 
 			ps.executeUpdate();
 

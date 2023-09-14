@@ -69,7 +69,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE funcionarios SET nome = ?" + "cpf = ?" + "telefone = ?" + "email = ?" + "dataDeNasc = ?"
-				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ?";
+				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ? WHERE id_funcionario = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -85,6 +85,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setDouble(8, f.getSalario());
 			ps.setDouble(10, f.getComissao());
 			// chave estrangeira endereco_id_endereco
+			ps.setInt(12, f.getMatricula());
 			
 			ps.executeUpdate();
 

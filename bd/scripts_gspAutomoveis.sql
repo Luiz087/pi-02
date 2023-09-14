@@ -166,6 +166,16 @@ insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Eric', 17541062722, 53964108953, 'Eric@gmail.com' , '2005-10-06', 'Eric047', 'Ericc123', 'Administrador', 500.000, 2.5, 3);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Sabel', 06352419784, 7327146365, 'Sabel@gmail.com', '2005-12-31', 'Sabel047', 'Sabell123', 'Administrador', 500.000, 2.5, 4);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('João', 53435501431, 4006755218, 'João@gmail.com', '2005-12-08', 'João047', 'joaoo123', 'Administrador', 500.000, 2.5, 5);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Puopi', 01907683046, 4926166947, 'Puopi@gmail.com', '2002-05-04', 'Puopi047', 'Puopii123', 'Vendedor', 70.000, 0.5, 9);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Batay', 67459166065, 8433195843, 'Batay@gmail.com', '1999-12-28', 'Batay047', 'Batayy123', 'Gerente de Estoque', 50.000, 0.3, 10);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Lohad', 43206516005, 8132386314, 'Lohad@gmail.com', '2003-11-10', 'Lohad047', 'Lohadd123', 'Gerente de Estoque', 50.000, 0.3, 11);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Faerion', 58749084046, 1833291657, 'Faerion@gmail.com', '1998-01-02', 'Faerion047', 'Faerionn123', 'Gerente de Vendas', 70.000, 1.0, 12);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Geagorod', 06723877004, 6332618715, 'Geagorod@gmail.com', '2000-03-25', 'Geagorod047', 'Geagorod123', 'Vendedor', 70.000, 0.5, 13);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Fowyaze', 82863483030, 6738832922, 'Fowyaze@gmail.com', '1996-08-09', 'Fowyaze047', 'Fowyazee123', 'Vendedor', 70.000, 0.5, 14);
+insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Riek', 87327642005, 6323543033, 'Riek@gmail.com', '2002-10-15', 'Riek047', 'Riekk123', 'Gerente de Vendas', 100.000, 1.0, 15);
+
+
+
 
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 2, 25);
 insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 1, 24);
@@ -224,38 +234,38 @@ SELECT Carros.marca,
 INNER JOIN funcionarios ON Vendas.funcionarios_matricula = funcionarios.matricula
 INNER JOIN Carros ON Vendas.Carros_id_carro = Carros.id_carro;
 
--- UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE cep = 98860771;
--- UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE cep = 26360149;
--- UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE cep = 26360149;
--- UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE cep = 32813459;
--- UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE cep = 33395580;
--- UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE cep = 18853418;
--- UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE cep = 66575921;
--- UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE cep = 77727522;
--- UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE cep = 53015239;
--- UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE cep = 90807252;
+UPDATE enderecos SET rua ="Rua dos bobos",bairro="Velha",cidade="Jaragua",estado="SC" WHERE id_endereco = 1;
+UPDATE enderecos SET rua ="Blumenau",bairro="Velha",cidade="Blumenau",estado="SC" WHERE id_endereco = 2;
+UPDATE enderecos SET rua ="Arthur Gieseler",bairro="Nova",cidade="Joinville",estado="SC" WHERE id_endereco = 3;
+UPDATE enderecos SET rua ="XV",bairro="Centro",cidade="Presidente Getulio",estado="SC" WHERE id_endereco = 4;
+UPDATE enderecos SET rua ="Rua 7",bairro="Conconhas",cidade="Florianopolis",estado="SC" WHERE id_endereco = 5;
+UPDATE enderecos SET rua ="Getulio Branco",bairro="Vila Nova",cidade="São Bento do Sul",estado="SC" WHERE id_endereco = 6;
+UPDATE enderecos SET rua ="Bela Mur",bairro="Bela Vista",cidade="Gaspar",estado="SC" WHERE id_endereco = 7;
+UPDATE enderecos SET rua ="7 de Novembro",bairro="Velha Nova",cidade="Blumenau",estado="SC" WHERE id_endereco = 8;
+UPDATE enderecos SET rua ="Rua Steves",bairro="Ponta Aguda",cidade="Springfield",estado="Texas" WHERE id_endereco = 9;
+UPDATE enderecos SET rua ="Rua Joinville",bairro="Passo Manso",cidade="Blumenau",estado="SC" WHERE id_endereco = 10;
 
--- UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", endereco_cep=98860771 WHERE id_fornecedor= 1;
--- UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", endereco_cep=26360149 WHERE id_fornecedor= 2;
--- UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", endereco_cep=24971323 WHERE id_fornecedor= 3;
--- UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", endereco_cep=32813459 WHERE id_fornecedor= 4;
--- UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", endereco_cep=33395580 WHERE id_fornecedor= 5;
--- UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", endereco_cep=66575921 WHERE id_fornecedor= 6;
--- UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", endereco_cep=18853418 WHERE id_fornecedor= 7;
--- UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", endereco_cep=77727522 WHERE id_fornecedor= 8;
--- UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", endereco_cep=53015239 WHERE id_fornecedor= 9;
--- UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", endereco_cep=53015239 WHERE id_fornecedor= 10;
+UPDATE fornecedores SET nomeFornecedor = "ASTOLFO", cnpjFornecedor = 5646765373, telefoneFornecedor = 25254564364, empresa = "slefd", enderecos_id_endereco=5 WHERE id_fornecedor= 1;
+UPDATE fornecedores SET nomeFornecedor = "RODRIGO", cnpjFornecedor = 7583939404, telefoneFornecedor = 46543364653, empresa = "rolú", enderecos_id_endereco=6 WHERE id_fornecedor= 2;
+UPDATE fornecedores SET nomeFornecedor = "LUÍS", cnpjFornecedor =9605054839, telefoneFornecedor = 86940285032, empresa = "plasvale", enderecos_id_endereco=7 WHERE id_fornecedor= 3;
+UPDATE fornecedores SET nomeFornecedor = "GABRIEL", cnpjFornecedor = 0950402819, telefoneFornecedor = 8694031257, empresa = "CIRCULO", enderecos_id_endereco=8 WHERE id_fornecedor= 4;
+UPDATE fornecedores SET nomeFornecedor = "jOÃO", cnpjFornecedor = 8684938289, telefoneFornecedor = 96847302839, empresa = "OTTO", enderecos_id_endereco=9 WHERE id_fornecedor= 5;
+UPDATE fornecedores SET nomeFornecedor = "SABEL", cnpjFornecedor = 9437439975, telefoneFornecedor = 95837259392, empresa = "TOP", enderecos_id_endereco=10 WHERE id_fornecedor= 6;
+UPDATE fornecedores SET nomeFornecedor = "FERNANDO",cnpjFornecedor = 8963986379, telefoneFornecedor = 05695845944, empresa = "PRECEIRO", enderecos_id_endereco=11 WHERE id_fornecedor= 7;
+UPDATE fornecedores SET nomeFornecedor = "ERIC", cnpjFornecedor = 5676765735, telefoneFornecedor = 575454745754, empresa = "AVON", enderecos_id_endereco=12 WHERE id_fornecedor= 8;
+UPDATE fornecedores SET nomeFornecedor = "PEDRO", cnpjFornecedor = 9584930295, telefoneFornecedor = 65858496943, empresa = "OBOTICARIO", enderecos_id_endereco=13 WHERE id_fornecedor= 9;
+UPDATE fornecedores SET nomeFornecedor = "LUCAS", cnpjFornecedor = 5754774567, telefoneFornecedor = 57578474737, empresa = "BARÃO", enderecos_id_endereco=14 WHERE id_fornecedor= 10;
 
--- UPDATE funcionarios SET nome = "Lindy", cpf = "51267649003	", telefone ="95937385512", salario = "435345", enderecos_cep = 98860771 WHERE matricula = 1;
--- UPDATE funcionarios SET nome = "Jarret", cpf = "73775878068", telefone ="92935526593", salario = "435435", enderecos_cep = 98860771 WHERE matricula = 2;
--- UPDATE funcionarios SET nome = "Arthur", cpf = "80662784030", telefone ="67936405836", salario = "123123", enderecos_cep = 26360149 WHERE matricula = 3;
--- UPDATE funcionarios SET nome = "Gieseler", cpf = "19870824005", telefone ="67936405836", salario = "43141", enderecos_cep = 26360149 WHERE matricula = 4;
--- UPDATE funcionarios SET nome = "Lari", cpf = "40007889062", telefone ="95937385525", salario = "768678", enderecos_cep = 26360149 WHERE matricula = 5;
--- UPDATE funcionarios SET nome = "Getulio", cpf = "73765807001", telefone ="92935526500", salario = "876867", enderecos_cep = 26360149 WHERE matricula = 6;
--- UPDATE funcionarios SET nome = "Lara", cpf = "25627834099", telefone ="67936405823", salario = "45654", enderecos_cep = 33395580 WHERE matricula = 7;
--- UPDATE funcionarios SET nome = "Luiz", cpf = "04223201026", telefone ="67936405889", salario = "654654", enderecos_cep = 33395580 WHERE matricula = 8;
--- UPDATE funcionarios SET nome = "Luis", cpf = "36257549086", telefone ="95937385512", salario = "234567", enderecos_cep = 90807252 WHERE matricula = 9;
--- UPDATE funcionarios SET nome = "Eric", cpf = "54985014044", telefone ="95937385511", salario = "498654", enderecos_cep = 90807252 WHERE matricula = 10;
+-- UPDATE funcionarios SET nome = "Lindy", cpf = "51267649003	", telefone ="95937385512", salario = "435345", enderecos_cep = 98860771 WHERE matricula = 6;
+-- UPDATE funcionarios SET nome = "Jarret", cpf = "73775878068", telefone ="92935526593", salario = "435435", enderecos_cep = 98860771 WHERE matricula = 7;
+-- UPDATE funcionarios SET nome = "Arthur", cpf = "80662784030", telefone ="67936405836", salario = "123123", enderecos_cep = 26360149 WHERE matricula = 8;
+-- UPDATE funcionarios SET nome = "Gieseler", cpf = "19870824005", telefone ="67936405836", salario = "43141", enderecos_cep = 26360149 WHERE matricula = 9;
+-- UPDATE funcionarios SET nome = "Lari", cpf = "40007889062", telefone ="95937385525", salario = "768678", enderecos_cep = 26360149 WHERE matricula = 10;
+-- UPDATE funcionarios SET nome = "Getulio", cpf = "73765807001", telefone ="92935526500", salario = "876867", enderecos_cep = 26360149 WHERE matricula = 11;
+-- UPDATE funcionarios SET nome = "Lara", cpf = "25627834099", telefone ="67936405823", salario = "45654", enderecos_cep = 33395580 WHERE matricula = 12;
+-- UPDATE funcionarios SET nome = "Dirku", cpf = "04223201026", telefone ="67936405889", salario = "654654", enderecos_cep = 33395580 WHERE matricula = 13;
+-- UPDATE funcionarios SET nome = "Gizayon", cpf = "36257549086", telefone ="95937385512", salario = "234567", enderecos_cep = 90807252 WHERE matricula = 14;
+-- UPDATE funcionarios SET nome = "Fior", cpf = "54985014044", telefone ="95937385511", salario = "498654", enderecos_cep = 90807252 WHERE matricula = 15;
 
 -- UPDATE Carros SET marca = "Ford", modelo = "Ka", potencia = 95, quilometragem = 30000, novos = true, eletrico = true, esportivo = false, picape = true, ano = 2008, cor = "Azul", abs = false, preco = 47000, fornecedor_id_fornecedor = 2 WHERE id_veiculo = 1;
 -- UPDATE Carros SET marca = "Chevrolet", modelo = "Camaro", potencia = 340, quilometragem = 20000, novos = false, eletrico = false, esportivo = true, picape = false, ano = 2015, cor = "Amarelo", abs = true, preco = 320000, fornecedor_id_fornecedor = 1 WHERE id_veiculo = 2;
@@ -279,17 +289,17 @@ INNER JOIN Carros ON Vendas.Carros_id_carro = Carros.id_carro;
 -- UPDATE Vendas SET nome = "Robson", cpf=90190269766, usuario='Eric.sa', ipva_pago=true, modelo='Camaro', funcionarios_matricula=9, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 9 ;
 -- UPDATE Vendas SET nome = "Welliton", cpf=94642174800, usuario='luiz.s', ipva_pago=false, modelo='Navigator', funcionarios_matricula=10, tipo_veiculo='Picape' WHERE Carros_id_veiculo = 10;
 
--- DELETE FROM Vendas WHERE Carros_id_veiculo = 1;
--- DELETE FROM Vendas WHERE Carros_id_veiculo = 2;
--- DELETE FROM Vendas WHERE Carros_id_veiculo = 3;
--- DELETE FROM Vendas WHERE Carros_id_veiculo = 4;
--- DELETE FROM Vendas WHERE Carros_id_veiculo = 5;
+DELETE FROM Vendas WHERE id_venda = 1;
+DELETE FROM Vendas WHERE id_venda = 2;
+DELETE FROM Vendas WHERE id_venda = 3;
+DELETE FROM Vendas WHERE id_venda = 4;
+DELETE FROM Vendas WHERE id_venda = 5;
 
--- DELETE FROM funcionarios WHERE matricula = 1;
--- DELETE FROM funcionarios WHERE matricula = 2;
--- DELETE FROM funcionarios WHERE matricula = 3;
--- DELETE FROM funcionarios WHERE matricula = 4;
--- DELETE FROM funcionarios WHERE matricula = 5;
+DELETE FROM funcionarios WHERE matricula = 10;
+DELETE FROM funcionarios WHERE matricula = 11;
+DELETE FROM funcionarios WHERE matricula = 12;
+DELETE FROM funcionarios WHERE matricula = 13;
+DELETE FROM funcionarios WHERE matricula = 14;
 
 -- DELETE FROM fornecedores WHERE id_fornecedor = 1;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 2;
@@ -297,20 +307,20 @@ INNER JOIN Carros ON Vendas.Carros_id_carro = Carros.id_carro;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 4;
 -- DELETE FROM fornecedores WHERE id_fornecedor = 5;
 
--- DELETE FROM Carros WHERE id_veiculo = 1;
--- DELETE FROM Carros WHERE id_veiculo = 2;
--- DELETE FROM Carros WHERE id_veiculo = 3;
--- DELETE FROM Carros WHERE id_veiculo = 4;
--- DELETE FROM Carros WHERE id_veiculo = 5;
+DELETE FROM Carros WHERE id_carro = 1;
+DELETE FROM Carros WHERE id_carro = 2;
+DELETE FROM Carros WHERE id_carro = 3;
+DELETE FROM Carros WHERE id_carro = 4;
+DELETE FROM Carros WHERE id_carro = 5;
 
--- DELETE FROM clientes WHERE id_cliente = 3;
--- DELETE FROM clientes WHERE id_cliente = 8;
--- DELETE FROM clientes WHERE id_cliente = 13;
--- DELETE FROM clientes WHERE id_cliente = 14;
--- DELETE FROM clientes WHERE id_cliente = 15;
+DELETE FROM Vendas WHERE id_venda = 3;
+DELETE FROM Vendas WHERE id_venda = 8;
+DELETE FROM Vendas WHERE id_venda = 13;
+DELETE FROM Vendas WHERE id_venda = 14;
+DELETE FROM Vendas WHERE id_venda = 15;
 
--- DELETE FROM enderecos WHERE cep = 18853418;
--- DELETE FROM enderecos WHERE cep = 77727522;
--- DELETE FROM enderecos WHERE cep = 6131187;
--- DELETE FROM enderecos WHERE cep = 72792903;
--- DELETE FROM enderecos WHERE cep = 90000298;
+-- DELETE FROM enderecos WHERE id_endereco = 13;
+-- DELETE FROM enderecos WHERE id_endereco = 12;
+-- DELETE FROM enderecos WHERE id_endereco = 11;
+-- DELETE FROM enderecos WHERE id_endereco = 10;
+-- DELETE FROM enderecos WHERE id_endereco = 14;

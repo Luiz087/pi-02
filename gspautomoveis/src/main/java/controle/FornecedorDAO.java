@@ -52,7 +52,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE fornecedores SET nomeFornecedor = ?" + "cnpjFornecedor = ?" + "telefoneFornecedor = ?"
-				+ "empresa = ?" + "marca = ?";
+				+ "empresa = ?" + "marca = ? WHERE id_fornecedor = ?";
 		// chave estrangeira + "Endereco_id_endereco";
 
 		try {
@@ -63,6 +63,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setLong(3, f.getTelefoneFornecedor());
 			ps.setString(4, f.getEmpresa());
 			ps.setString(5, f.getMarca());
+			ps.setInt(6, f.getIdFornecedor());
 
 			ps.executeUpdate();
 

@@ -61,17 +61,20 @@ public class CarroDAO implements ICarroDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setString(1, ca.getModelo());
-			ps.setBoolean(2, ca.getNovo());
-			ps.setInt(3, ca.getAno());
-			ps.setString(4, ca.getCor());
-			ps.setString(5, ca.getTipo());
-			ps.setString(6, ca.getCombustivel());
-			ps.setLong(7, ca.getQuilometragem());
-			ps.setString(8, ca.getPotencia());
-			ps.setBoolean(9, ca.getAbs());
-			ps.setDouble(10, ca.getPrecoCarro());
-			ps.setBoolean(11, ca.getPromocao());
+			
+			ps.setString(1, ca.getMarca());
+			ps.setString(2, ca.getModelo());
+			ps.setBoolean(3, ca.getNovo());
+			ps.setInt(4, ca.getAno());
+			ps.setString(5, ca.getCor());
+			ps.setString(6, ca.getTipo());
+			ps.setString(7, ca.getCombustivel());
+			ps.setLong(8, ca.getQuilometragem());
+			ps.setString(9, ca.getPotencia());
+			ps.setBoolean(10, ca.getAbs());
+			ps.setDouble(11, ca.getPrecoCarro());
+			ps.setBoolean(12, ca.getPromocao());
+			ps.setInt(13, ca.getId_carro());
 
 			ps.executeUpdate();
 
@@ -91,7 +94,7 @@ public class CarroDAO implements ICarroDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM Carros WHERE id_carro";
+		String query = "DELETE FROM Carros WHERE id_carro = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

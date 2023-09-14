@@ -70,24 +70,60 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel_6_1_1 = new JLabel("Histórico");
+		lblNewLabel_6_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);	
+			}
+		});
 		lblNewLabel_6_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6_1_1.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6_1_1.setBounds(1432, 945, 279, 35);
 		contentPane.add(lblNewLabel_6_1_1);
 
 		JLabel lblNewLabel_6_1 = new JLabel("Configurações");
+		lblNewLabel_6_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
 		lblNewLabel_6_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6_1.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6_1.setBounds(1041, 945, 279, 35);
 		contentPane.add(lblNewLabel_6_1);
 
-		JLabel lblNewLabel_6 = new JLabel("Sistema");
+		JLabel lblNewLabel_6 = new JLabel("Veículos");
+		lblNewLabel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
+			}
+		});
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setFont(new Font("Krona One", Font.BOLD, 22));
 		lblNewLabel_6.setBounds(639, 945, 279, 35);
 		contentPane.add(lblNewLabel_6);
 
 		JLabel lblNewLabel_5_1_1 = new JLabel("");
+		lblNewLabel_5_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);	
+			}
+		});
 		lblNewLabel_5_1_1
 				.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/carrinho compras.png")));
 		lblNewLabel_5_1_1.setFont(new Font("Krona One", Font.BOLD, 20));
@@ -95,18 +131,45 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_5_1_1);
 
 		JLabel lblNewLabel_5_1 = new JLabel("");
+		lblNewLabel_5_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
 		lblNewLabel_5_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_5_1.setFont(new Font("Krona One", Font.BOLD, 20));
 		lblNewLabel_5_1.setBounds(1167, 706, 40, 35);
 		contentPane.add(lblNewLabel_5_1);
 
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Sistema.png")));
+		lblNewLabel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
+			}
+		});
+		lblNewLabel_5.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_5.setFont(new Font("Krona One", Font.BOLD, 20));
 		lblNewLabel_5.setBounds(760, 706, 30, 35);
 		contentPane.add(lblNewLabel_5);
 
 		textField_8 = new JTextField();
+		textField_8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
 		textField_8.setForeground(new Color(0, 0, 0));
 		textField_8.setEnabled(false);
 		textField_8.setEditable(false);
@@ -453,6 +516,15 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(lblNewLabel_2);
 
 		textField_7 = new JTextField();
+		textField_7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
+			}
+		});
 		textField_7.setEnabled(false);
 		textField_7.setEditable(false);
 		textField_7.setBounds(639, 616, 279, 378);
@@ -460,6 +532,15 @@ public class TelaPrincipal extends JFrame {
 		textField_7.setColumns(10);
 
 		textField_9 = new JTextField();
+		textField_9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);	
+			}
+		});
 		textField_9.setEnabled(false);
 		textField_9.setEditable(false);
 		textField_9.setColumns(10);

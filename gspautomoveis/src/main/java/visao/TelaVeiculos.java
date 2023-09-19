@@ -14,7 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controle.FornecedorDAO;
 import modelo.Carro;
+import modelo.Fornecedor;
 import modelo.Funcionario;
 
 import javax.swing.JComboBox;
@@ -36,6 +38,7 @@ public class TelaVeiculos extends JFrame {
 	private JTextField txt_tipo;
 	private JTextField txt_quilometragem;
 	private JTextField txt_potencia;
+	private FornecedorDAO forndao = FornecedorDAO.getInstancia();
 	private JTextField txt_preco;
 
 	/**
@@ -353,7 +356,8 @@ public class TelaVeiculos extends JFrame {
 				carro.setTipo(tipo);
 				carro.setCombustivel(combustivel);
 				carro.setQuilometragem(quilometragem);
-				// carro.setFornecedor(fornecedor);
+				Fornecedor forn = forndao.pegarForn(fornecedor);
+				carro.setFornecedor(forn);
 				carro.setPotencia(potencia);
 				carro.setCor(cor);
 				carro.setAno(ano);

@@ -191,7 +191,7 @@ public class TelaVeiculos extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "Fornecedor", "Promo\u00E7\u00E3o", "Pre\u00E7o", "ABS", "Pot\u00EAncia",
-						"Quilometragem", "Combust\u00EDvel", "Tipo", "Cor", "Ano", "Novo", "Modelo", "Marca", "ID" }));
+						"Quilometragem", "Combust\u00EDvel", "Tipo", "Cor", "Ano", "Novo", "Modelo", "Marca"}));
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);

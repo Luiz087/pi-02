@@ -91,21 +91,21 @@ public class Configuracao extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/bgcima.png")));
 		lblNewLabel.setBounds(0, 0, 884, 208);
 		contentPane.add(lblNewLabel);
-<<<<<<< Updated upstream
+
 
 		JLabel lblUsurio = new JLabel("Usuário:");
 		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsurio.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsurio);
 
-=======
+
 		
 		JLabel lblUsuario = new JLabel("Usuário:");
 		lblUsuario.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsuario.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsuario);
 		
->>>>>>> Stashed changes
+
 		textUsuario = new JTextField();
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);

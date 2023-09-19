@@ -239,7 +239,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Marca", "Quilometragem", "Ano", "ABS", "Valor"
+				"Cliente", "Cpf", "Telefone", "Endereço", "Data Venda", "Preço venda"
 			}
 		));
 		

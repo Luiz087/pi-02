@@ -153,4 +153,15 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return Fornecedores;
 	}
 
+	public Fornecedor pegarForn(String Fornecedor) {
+		Fornecedor fornecedorPego = new Fornecedor();
+		for (Fornecedor forn : ListarFornecedores()) {
+			if(forn.getNomeFornecedor().equals(Fornecedor)) {
+				fornecedorPego = forn;
+				return fornecedorPego;
+			}
+		}
+		return fornecedorPego;
+	}
+
 }

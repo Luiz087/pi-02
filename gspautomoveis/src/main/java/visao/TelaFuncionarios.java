@@ -53,6 +53,7 @@ public class TelaFuncionarios extends JFrame {
 	private JTextField textComissao;
 	private JTextField textSalario;
 	private EnderecoDAO enddao = EnderecoDAO.getInstancia();
+	private JTextField textId;
 
 	/**
 	 * Launch the application.
@@ -78,11 +79,142 @@ public class TelaFuncionarios extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1940, 1119);
 		contentPane = new JPanel();
+		JButton btnAdicionar = new JButton("Adicionar\r\n");
+		JButton btnAtualizar = new JButton("Atualizar");
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnAdicionar.setVisible(true);
+				btnAtualizar.setVisible(false);
+			}
+		});
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		JComboBox CBCargo = new JComboBox();
+		CBCargo.setModel(new DefaultComboBoxModel(
+				new String[] { "", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque" }));
+		CBCargo.setBounds(876, 93, 305, 38);
+		contentPane.add(CBCargo);
+		
+		
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Funcionario func1 = new Funcionario();
+				String nome = textNome.getText();
+				Long cpf = Long.parseLong(textCPF.getText());
+				String email = textEmail.getText();
+				String usuario = textUsuario.getText();
+				String senha = textSenha.getText();
+				Long telefone = Long.parseLong(textTelefone.getText());
+				String cargo = (String) CBCargo.getSelectedItem();
+				String dataNascimento = textDataNasc.getText();
+				String rua = textRua.getText();
+				String estado = textEstado.getText();
+				String cidade = textCidade.getText();
+				String bairro = textBairro.getText();
+				Long cep = Long.valueOf(textCep.getText());
+				Double salario = Double.valueOf(textSalario.getText());
+				Double comissao = Double.valueOf(textComissao.getText());
+
+				func1.setNome(nome);
+				func1.setCpf(cpf);
+				func1.setEmail(email);
+				func1.setUsuario(usuario);
+				func1.setSenha(senha);
+				func1.setTelefone(telefone);
+				func1.setNivelCargo(cargo);
+				func1.setDataDeNasc(dataNascimento);
+				func1.setSalario(salario);
+				func1.setComissao(comissao);
+
+				Endereco end = new Endereco();
+				end.setRua(rua);
+				end.setCidade(cidade);
+				end.setEstado(estado);
+				end.setCep(cep);
+				end.setBairro(bairro);
+
+				func1.setEndereco(end);
+
+				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
+						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
+						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")
+						|| comissao.equals("") || salario.equals("")) {
+					System.out.print("mal");
+				} else {
+					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
+
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+					tbltable.addRow(data);
+					System.out.println("Até aqui sim");
+
+					Endereco verificacaoEnd = enddao.buscaEndereco(end);
+					if (verificacaoEnd == null) {
+						/*
+						 * Se o endereco for null Significa que nao encontrou nada no BD
+						 */
+						Integer idend = enddao.inserir(end);
+						end.setIdEndereco(idend);
+					} else {
+						/*
+						 * Se o endereco nao eh null significa que ja esta cadastrado
+						 */
+						end.setIdEndereco(verificacaoEnd.getIdEndereco());
+					}
+
+					func1.setEndereco(end);
+					funcdao.inserir(func1);
+
+					System.out.println("Passou");
+
+					textNome.setText("");
+					textCPF.setText("");
+					textEmail.setText("");
+					textUsuario.setText("");
+					textSenha.setText("");
+					textTelefone.setText("");
+					CBCargo.setSelectedIndex(0);
+					textDataNasc.setText("");
+					textRua.setText("");
+					textCidade.setText("");
+					textEstado.setText("");
+					textCep.setText("");
+					textBairro.setText("");
+					textComissao.setText("");
+					textSalario.setText("");
+
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				}
+
+				Configuracao configuracao = new Configuracao();
+				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
+				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
+				configuracao.setVisible(true);
+			}
+		});
+
+		
+		btnAdicionar.setForeground(Color.BLACK);
+		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
+		btnAdicionar.setFocusPainted(false);
+		btnAdicionar.setBorder(new RoundedBorder(10));
+		btnAdicionar.setBackground(Color.GREEN);
+		btnAdicionar.setBounds(1069, 357, 251, 35);
+		contentPane.add(btnAdicionar);
+
+		btnAtualizar.setForeground(Color.BLACK);
+		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
+		btnAtualizar.setFocusPainted(false);
+		btnAtualizar.setBorder(new RoundedBorder(10));
+		btnAtualizar.setBackground(new Color(255, 249, 0));
+		btnAtualizar.setBounds(1069, 357, 251, 35);
+		contentPane.add(btnAtualizar);
 
 		JLabel lblNewLabel_4 = new JLabel("Veículos");
 		lblNewLabel_4.setForeground(Color.WHITE);
@@ -263,12 +395,6 @@ public class TelaFuncionarios extends JFrame {
 		lblEmail.setBounds(430, 152, 98, 38);
 		contentPane.add(lblEmail);
 
-		JComboBox CBCargo = new JComboBox();
-		CBCargo.setModel(new DefaultComboBoxModel(
-				new String[] { "", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque" }));
-		CBCargo.setBounds(876, 93, 305, 38);
-		contentPane.add(CBCargo);
-
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblDataDeNascimento.setBounds(1241, 152, 415, 38);
@@ -357,10 +483,10 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int setar = table.getSelectedRow();
 
-				textNome.setText(table.getModel().getValueAt(setar, 0).toString());
-				textUsuario.setText(table.getModel().getValueAt(setar, 1).toString());
-				textTelefone.setText(table.getModel().getValueAt(setar, 2).toString());
-				String combobox = table.getModel().getValueAt(setar, 3).toString();
+				textNome.setText(table.getModel().getValueAt(setar, 1).toString());
+				textUsuario.setText(table.getModel().getValueAt(setar, 2).toString());
+				textTelefone.setText(table.getModel().getValueAt(setar, 3).toString());
+				String combobox = table.getModel().getValueAt(setar, 4).toString();
 
 				if (combobox.equals("Administrador")) {
 					CBCargo.setSelectedIndex(1);
@@ -374,8 +500,11 @@ public class TelaFuncionarios extends JFrame {
 					CBCargo.setSelectedIndex(0);
 				}
 
-				textDataNasc.setText(table.getModel().getValueAt(setar, 4).toString());
-				textEmail.setText(table.getModel().getValueAt(setar, 5).toString());
+				textDataNasc.setText(table.getModel().getValueAt(setar, 5).toString());
+				textEmail.setText(table.getModel().getValueAt(setar, 6).toString());
+
+				btnAtualizar.setVisible(true);
+				btnAdicionar.setVisible(false);
 			}
 		});
 
@@ -389,112 +518,6 @@ public class TelaFuncionarios extends JFrame {
 					funcs.getEmail() };
 			tblModel.addRow(data);
 		}
-
-		JButton btnAdicionar = new JButton("Adicionar\r\n");
-		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Funcionario func1 = new Funcionario();
-				String nome = textNome.getText();
-				Long cpf = Long.parseLong(textCPF.getText());
-				String email = textEmail.getText();
-				String usuario = textUsuario.getText();
-				String senha = textSenha.getText();
-				Long telefone = Long.parseLong(textTelefone.getText());
-				String cargo = (String) CBCargo.getSelectedItem();
-				String dataNascimento = textDataNasc.getText();
-				String rua = textRua.getText();
-				String estado = textEstado.getText();
-				String cidade = textCidade.getText();
-				String bairro = textBairro.getText();
-				Long cep = Long.valueOf(textCep.getText());
-				Double salario = Double.valueOf(textSalario.getText());
-				Double comissao = Double.valueOf(textComissao.getText());
-
-				func1.setNome(nome);
-				func1.setCpf(cpf);
-				func1.setEmail(email);
-				func1.setUsuario(usuario);
-				func1.setSenha(senha);
-				func1.setTelefone(telefone);
-				func1.setNivelCargo(cargo);
-				func1.setDataDeNasc(dataNascimento);
-				func1.setSalario(salario);
-				func1.setComissao(comissao);
-
-				Endereco end = new Endereco();
-				end.setRua(rua);
-				end.setCidade(cidade);
-				end.setEstado(estado);
-				end.setCep(cep);
-				end.setBairro(bairro);
-
-				func1.setEndereco(end);
-
-				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
-						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
-						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")
-						|| comissao.equals("") || salario.equals("")) {
-					System.out.print("mal");
-				} else {
-					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
-
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
-					System.out.println("Até aqui sim");
-
-					Endereco verificacaoEnd = enddao.buscaEndereco(end);
-					if (verificacaoEnd == null) {
-						/*
-						 * Se o endereco for null Significa que nao encontrou nada no BD
-						 */
-						Integer idend = enddao.inserir(end);
-						end.setIdEndereco(idend);
-					} else {
-						/*
-						 * Se o endereco nao eh null significa que ja esta cadastrado
-						 */
-						end.setIdEndereco(verificacaoEnd.getIdEndereco());
-					}
-
-					func1.setEndereco(end);
-					funcdao.inserir(func1);
-
-					System.out.println("Passou");
-
-					textNome.setText("");
-					textCPF.setText("");
-					textEmail.setText("");
-					textUsuario.setText("");
-					textSenha.setText("");
-					textTelefone.setText("");
-					CBCargo.setSelectedIndex(0);
-					textDataNasc.setText("");
-					textRua.setText("");
-					textCidade.setText("");
-					textEstado.setText("");
-					textCep.setText("");
-					textBairro.setText("");
-					textComissao.setText("");
-					textSalario.setText("");
-
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
-				}
-
-				Configuracao configuracao = new Configuracao();
-				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
-				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
-				configuracao.setVisible(true);
-			}
-		});
-		btnAdicionar.setForeground(Color.BLACK);
-		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
-		btnAdicionar.setFocusPainted(false);
-		btnAdicionar.setBorder(new RoundedBorder(10));
-		btnAdicionar.setBackground(Color.GREEN);
-		btnAdicionar.setBounds(1069, 357, 251, 35);
-		contentPane.add(btnAdicionar);
 
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 24));
@@ -620,6 +643,18 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
 		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
+		
+		JLabel lblIdFunc = new JLabel("Id:");
+		lblIdFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblIdFunc.setBounds(1154, 271, 40, 38);
+		contentPane.add(lblIdFunc);
+		
+		textId = new JTextField();
+		textId.setEditable(false);
+		textId.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textId.setColumns(10);
+		textId.setBounds(1196, 271, 98, 38);
+		contentPane.add(textId);
 
 	}
 }

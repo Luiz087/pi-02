@@ -201,6 +201,19 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	public Funcionario passaLogado() {
 		return funcAchado;
 	}
+	
+	public Funcionario clicado(Funcionario f) {
+		Funcionario funcClicado = new Funcionario();
+		for (Funcionario func : ListarFuncionarios()) {
+			if (func.getUsuario().equals(f.getUsuario()) && func.getEmail().equals(f.getEmail()) && func.getTelefone().equals(f.getTelefone()) && func.getUsuario().equals(f.getUsuario())) {
+
+				funcClicado = func;
+
+				return funcClicado;
+			}
+		}
+		return funcClicado;
+	}
 
 
 }

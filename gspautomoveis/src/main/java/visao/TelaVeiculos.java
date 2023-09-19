@@ -193,8 +193,8 @@ public class TelaVeiculos extends JFrame {
 
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Fornecedor", "Promo\u00E7\u00E3o", "Pre\u00E7o", "ABS", "Pot\u00EAncia",
-						"Quilometragem", "Combust\u00EDvel", "Tipo", "Cor", "Ano", "Novo", "Modelo", "Marca"}));
+				new String[] { "Marca", "Modelo", "Fornecedor", "Promo\u00E7\u00E3o", "ABS", "Pot\u00EAncia",
+						"Quilometragem", "Combust\u00EDvel", "Tipo", "Cor", "Ano", "Novo", "Pre\u00E7o"}));
 		table.getColumnModel().getColumn(5).setPreferredWidth(85);
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
@@ -374,14 +374,16 @@ public class TelaVeiculos extends JFrame {
 					erro.setVisible(true);
 				} else {
 					// Colocar na ordem da tabela
-					String liborio[] = { marca, modelo, String.valueOf(novo), tipo, combustivel,
-							String.valueOf(quilometragem), potencia, cor, String.valueOf(ano), String.valueOf(abs),
-							String.valueOf(precoCarro), String.valueOf(promocao) };
+					String liborio[] = { marca, modelo,String.valueOf(promocao),forn.getNomeFornecedor(), 
+					String.valueOf(abs), potencia,String.valueOf(quilometragem),combustivel, tipo,
+					cor, String.valueOf(ano), String.valueOf(novo), String.valueOf(precoCarro) };
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(liborio);
 				}
 			}
 		});
+		
+		//
 
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));

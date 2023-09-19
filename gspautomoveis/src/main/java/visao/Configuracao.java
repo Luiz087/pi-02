@@ -9,10 +9,12 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.xdevapi.Table;
 
+import controle.Conexao;
 import controle.FuncionarioDAO;
 import modelo.Funcionario;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -24,6 +26,8 @@ import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -92,19 +96,15 @@ public class Configuracao extends JFrame {
 		lblNewLabel.setBounds(0, 0, 884, 208);
 		contentPane.add(lblNewLabel);
 
-
 		JLabel lblUsurio = new JLabel("Usuário:");
 		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsurio.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsurio);
 
-
-		
 		JLabel lblUsuario = new JLabel("Usuário:");
 		lblUsuario.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblUsuario.setBounds(26, 243, 163, 38);
 		contentPane.add(lblUsuario);
-		
 
 		textUsuario = new JTextField();
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
@@ -152,10 +152,16 @@ public class Configuracao extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-						
-				}
+				Funcionario func = new Funcionario();
+
+				func.setUsuario(textUsuario.getText());
+				func.setTelefone(Long.valueOf(textTel.getText()));
+				func.setEmail(textEmail.getText());
+				func.setSenha(textSen.getText());
+
+				funcdao.atualizar(func);
 			}
-		);
+		});
 		btnAtualizar.setForeground(Color.BLACK);
 		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
 		btnAtualizar.setFocusPainted(false);

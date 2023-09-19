@@ -33,7 +33,6 @@ public class TelaVeiculos extends JFrame {
 	private JTable table;
 	private JTextField txt_marca;
 	private JTextField txt_modelo;
-	private JTextField txt_combustivel;
 	private JTextField txt_cor;
 	private JTextField txt_tipo;
 	private JTextField txt_quilometragem;
@@ -71,6 +70,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.setLayout(null);
 
 		JComboBox cbAbs = new JComboBox();
+		cbAbs.setModel(new DefaultComboBoxModel(new String[] {"", "Sim", "Não"}));
 		cbAbs.setFont(new Font("Krona One", Font.PLAIN, 24));
 		cbAbs.setBounds(1724, 49, 120, 28);
 		contentPane.add(cbAbs);
@@ -188,7 +188,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(480, 309, 1291, 610);
+		scrollPane.setBounds(492, 296, 1291, 610);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -208,6 +208,12 @@ public class TelaVeiculos extends JFrame {
 		lblAno.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblAno.setBounds(1459, 49, 85, 27);
 		contentPane.add(lblAno);
+		
+		JComboBox Cbcombustivel = new JComboBox();
+		Cbcombustivel.setModel(new DefaultComboBoxModel(new String[] {"", "Gasolina", "Alcool", "Diesel", "Gasolina e Alcool", "Gasolina e Eletrico"}));
+		Cbcombustivel.setBounds(978, 132, 164, 25);
+		contentPane.add(Cbcombustivel);
+
 
 		JLabel lblCor = new JLabel("Cor:");
 		lblCor.setFont(new Font("Krona One", Font.PLAIN, 24));
@@ -251,12 +257,6 @@ public class TelaVeiculos extends JFrame {
 		txt_modelo.setBounds(504, 129, 199, 26);
 		contentPane.add(txt_modelo);
 
-		txt_combustivel = new JTextField();
-		txt_combustivel.setFont(new Font("Krona One", Font.PLAIN, 24));
-		txt_combustivel.setColumns(10);
-		txt_combustivel.setBounds(976, 131, 199, 26);
-		contentPane.add(txt_combustivel);
-
 		JComboBox comboBoxNovo = new JComboBox();
 		comboBoxNovo.setFont(new Font("Krona One", Font.PLAIN, 24));
 		comboBoxNovo.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
@@ -264,6 +264,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(comboBoxNovo);
 
 		JComboBox comboBoxAno = new JComboBox();
+		comboBoxAno.setModel(new DefaultComboBoxModel(new String[] {"", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990"}));
 		comboBoxAno.setBounds(1543, 49, 85, 23);
 		contentPane.add(comboBoxAno);
 
@@ -318,6 +319,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblPromocao);
 
 		JComboBox comboBoxPromocao = new JComboBox();
+		comboBoxPromocao.setModel(new DefaultComboBoxModel(new String[] {"", "Sim", "Não"}));
 		comboBoxPromocao.setFont(new Font("Krona One", Font.PLAIN, 24));
 		comboBoxPromocao.setBounds(1724, 196, 120, 28);
 		contentPane.add(comboBoxPromocao);
@@ -328,6 +330,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblFornecedor);
 
 		JComboBox comboBoxFornecedor = new JComboBox();
+		comboBoxFornecedor.setModel(new DefaultComboBoxModel(new String[] {"", "Kristofor", "Marrilee", "Mag", "Almire", "Deedee", "Billie", "Minny", "Melinda", "Benedikta", "Myra", "Catlaina", "Peggie", "Dedra", "Sarette", "Deanne", "Merill", "Orbadiah", "Wolfgang", "Sanderson", "Sula"}));
 		comboBoxFornecedor.setFont(new Font("Krona One", Font.PLAIN, 24));
 		comboBoxFornecedor.setBounds(1272, 49, 150, 28);
 		contentPane.add(comboBoxFornecedor);
@@ -338,17 +341,17 @@ public class TelaVeiculos extends JFrame {
 				Carro carro = new Carro();
 				String marca = txt_marca.getText();
 				String modelo = txt_modelo.getText();
-				Boolean novo = (Boolean) comboBoxNovo.getSelectedItem();
+				Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
 				String tipo = txt_tipo.getText();
-				String combustivel = txt_combustivel.getText();
+				String combustivel = (String) Cbcombustivel.getSelectedItem();
 				Long quilometragem = Long.valueOf(txt_quilometragem.getText());
 				String fornecedor = (String) comboBoxFornecedor.getSelectedItem();
 				String potencia = txt_potencia.getText();
 				String cor = txt_cor.getText();
 				Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
-				Boolean abs = (Boolean) cbAbs.getSelectedItem();
+				Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
 				Double precoCarro = Double.valueOf(txt_preco.getText());
-				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem();
+				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;;
 
 				carro.setMarca(marca);
 				carro.setModelo(modelo);
@@ -373,8 +376,7 @@ public class TelaVeiculos extends JFrame {
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
 				} else {
-					// Colocar na ordem da tabela
-					String liborio[] = { marca, modelo,String.valueOf(promocao),forn.getNomeFornecedor(), 
+					String liborio[] = { marca, modelo,forn.getNomeFornecedor(),String.valueOf(promocao), 
 					String.valueOf(abs), potencia,String.valueOf(quilometragem),combustivel, tipo,
 					cor, String.valueOf(ano), String.valueOf(novo), String.valueOf(precoCarro) };
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
@@ -392,6 +394,7 @@ public class TelaVeiculos extends JFrame {
 		btnAdicionar.setBackground(Color.GREEN);
 		btnAdicionar.setBounds(940, 250, 251, 35);
 		contentPane.add(btnAdicionar);
-
+		
+		
 	}
 }

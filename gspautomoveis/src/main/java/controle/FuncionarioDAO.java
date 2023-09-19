@@ -61,6 +61,35 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return false;
 
 	}
+	
+	public boolean atualizarFunc(Funcionario f) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE funcionarios SET telefone = ?" + "email = ?" + "usuario = ?" + "senha = ?" + "WHERE id_funcionario = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setLong(1, f.getTelefone());
+			ps.setString(2, f.getEmail());
+			ps.setString(3, f.getUsuario());
+			ps.setString(4, f.getSenha());
+			ps.setInt(5, f.getMatricula());
+			
+			ps.executeUpdate();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false;
+	}	
 
 	public boolean atualizar(Funcionario f) {
 

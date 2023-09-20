@@ -79,28 +79,71 @@ public class TelaFuncionarios extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1940, 1119);
 		contentPane = new JPanel();
-		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		JButton btnAtualizar = new JButton("Atualizar");
+		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnAdicionar.setVisible(true);
 				btnAtualizar.setVisible(false);
+				textSenha.setEditable(true);
+				textCPF.setEditable(true);
 			}
 		});
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
 		JComboBox CBCargo = new JComboBox();
 		CBCargo.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Administrador", "Gerente de Vendas", "Vendedor", "Gerente de Estoque" }));
 		CBCargo.setBounds(876, 93, 305, 38);
 		contentPane.add(CBCargo);
-		
-		
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaContinuar telaContinua = new TelaContinuar();
+				telaContinua.setLocationRelativeTo(null);
+				telaContinua.setVisible(true);
+				if (telaContinua.confirmacao) {
+					Funcionario func1 = new Funcionario();
+					Integer matricula = Integer.valueOf(textId.getText());
+					String nome = textNome.getText();
+					String email = textEmail.getText();
+					String usuario = textUsuario.getText();
+					Long telefone = Long.parseLong(textTelefone.getText());
+					String cargo = (String) CBCargo.getSelectedItem();
+					Double comissao = Double.valueOf(textComissao.getText());
+					Double salario = Double.valueOf(textSalario.getText());
+
+					func1.setMatricula(matricula);
+					func1.setNome(nome);
+					func1.setEmail(email);
+					func1.setUsuario(usuario);
+					func1.setTelefone(telefone);
+					func1.setNivelCargo(cargo);
+					func1.setSalario(salario);
+					func1.setComissao(comissao);
+
+					funcdao.atualizar(func1);
+
+					// tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				}
+			}
+		});
+
+		btnAtualizar.setForeground(Color.BLACK);
+		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
+		btnAtualizar.setFocusPainted(false);
+		btnAtualizar.setBorder(new RoundedBorder(10));
+		btnAtualizar.setBackground(new Color(255, 249, 0));
+		btnAtualizar.setBounds(1069, 357, 251, 35);
+		contentPane.add(btnAtualizar);
+
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Funcionario func1 = new Funcionario();
@@ -199,7 +242,6 @@ public class TelaFuncionarios extends JFrame {
 			}
 		});
 
-		
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
 		btnAdicionar.setFocusPainted(false);
@@ -207,14 +249,6 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.setBackground(Color.GREEN);
 		btnAdicionar.setBounds(1069, 357, 251, 35);
 		contentPane.add(btnAdicionar);
-
-		btnAtualizar.setForeground(Color.BLACK);
-		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
-		btnAtualizar.setFocusPainted(false);
-		btnAtualizar.setBorder(new RoundedBorder(10));
-		btnAtualizar.setBackground(new Color(255, 249, 0));
-		btnAtualizar.setBounds(1069, 357, 251, 35);
-		contentPane.add(btnAtualizar);
 
 		JLabel lblNewLabel_4 = new JLabel("Veículos");
 		lblNewLabel_4.setForeground(Color.WHITE);
@@ -483,28 +517,41 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int setar = table.getSelectedRow();
 
-				textNome.setText(table.getModel().getValueAt(setar, 1).toString());
-				textUsuario.setText(table.getModel().getValueAt(setar, 2).toString());
-				textTelefone.setText(table.getModel().getValueAt(setar, 3).toString());
-				String combobox = table.getModel().getValueAt(setar, 4).toString();
+				Funcionario funcC = new Funcionario();
+				Integer matricula = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
+				funcC = funcdao.clicado(matricula);
 
-				if (combobox.equals("Administrador")) {
+				textNome.setText(funcC.getNome());
+				textUsuario.setText(funcC.getUsuario());
+				textTelefone.setText(String.valueOf(funcC.getTelefone()));
+
+				if (funcC.getNivelCargo().equals("Administrador")) {
 					CBCargo.setSelectedIndex(1);
-				} else if (combobox.equals("Gerente de Vendas")) {
+				} else if (funcC.getNivelCargo().equals("Gerente de Vendas")) {
 					CBCargo.setSelectedIndex(2);
-				} else if (combobox.equals("Vendedor")) {
+				} else if (funcC.getNivelCargo().equals("Vendedor")) {
 					CBCargo.setSelectedIndex(3);
-				} else if (combobox.equals("Gerente de Estoque")) {
+				} else if (funcC.getNivelCargo().equals("Gerente de Estoque")) {
 					CBCargo.setSelectedIndex(4);
 				} else {
 					CBCargo.setSelectedIndex(0);
 				}
 
-				textDataNasc.setText(table.getModel().getValueAt(setar, 5).toString());
-				textEmail.setText(table.getModel().getValueAt(setar, 6).toString());
+				textDataNasc.setText(funcC.getDataDeNasc());
+				textEmail.setText(funcC.getEmail());
+				textSalario.setText(String.valueOf(funcC.getSalario()));
+				textComissao.setText(String.valueOf(funcC.getComissao()));
+				/*
+				 * textRua.setText(funcC.getEndereco().getRua());
+				 * textCidade.setText(funcC.getEndereco().getCidade());
+				 * textEstado.setText(funcC.getEndereco().getEstado());
+				 * textCep.setText(String.valueOf(funcC.getEndereco().getCep()));
+				 * textBairro.setText(funcC.getEndereco().getBairro());
+				 */
+				textSenha.setEditable(false);
+				textCPF.setEditable(false);
+				textId.setText(String.valueOf(funcC.getMatricula()));
 
-				btnAtualizar.setVisible(true);
-				btnAdicionar.setVisible(false);
 			}
 		});
 
@@ -611,27 +658,40 @@ public class TelaFuncionarios extends JFrame {
 
 			@Override
 			public void onEdit(int row) {
-				System.out.print("Edite a linha: " + row);
+				btnAtualizar.setVisible(true);
+				btnAdicionar.setVisible(false);
 			}
 
 			@Override
 			public void onDelete(int row) {
 
 				int linhaSelecionada = table.getSelectedRow();
-				String matricula = (String) table.getValueAt(linhaSelecionada, 0);
+				Integer matricula = (Integer) table.getValueAt(linhaSelecionada, 0);
 
 				// select no banco só pelo nome da matricula
 				// buscaFuncionarioPorMatricula(matricula);
 				// metodo retorna um Funcionario
 
 				Funcionario funcDelete = new Funcionario();
+				funcDelete = funcdao.clicado(matricula);
 
 				// quer excluir mesmo?
+				TelaContinuar telaContinua = new TelaContinuar();
+				telaContinua.setLocationRelativeTo(null);
+				telaContinua.setVisible(true);
 
-				funcdao.excluir(funcDelete);
-				// remove a linha da tabela (visualmente)
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.removeRow(row);
+				if (telaContinua.confirmacao) {
+					funcdao.excluir(funcDelete);
+					// remove a linha da tabela (visualmente)
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					model.removeRow(row);
+					// tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				} else {
+					System.out.println("Não removeu");
+				}
 			}
 
 			@Override
@@ -643,12 +703,12 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
 		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
-		
+
 		JLabel lblIdFunc = new JLabel("Id:");
 		lblIdFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblIdFunc.setBounds(1154, 271, 40, 38);
 		contentPane.add(lblIdFunc);
-		
+
 		textId = new JTextField();
 		textId.setEditable(false);
 		textId.setFont(new Font("Krona One", Font.PLAIN, 12));

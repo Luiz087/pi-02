@@ -61,13 +61,14 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return false;
 
 	}
-	
+
 	public boolean atualizarFunc(Funcionario f) {
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET telefone = ?" + "email = ?" + "usuario = ?" + "senha = ?" + "WHERE id_funcionario = ?";
+		String query = "UPDATE funcionarios SET telefone = ?" + "email = ?" + "usuario = ?" + "senha = ?"
+				+ "WHERE id_funcionario = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -77,7 +78,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(3, f.getUsuario());
 			ps.setString(4, f.getSenha());
 			ps.setInt(5, f.getMatricula());
-			
+
 			ps.executeUpdate();
 
 			return true;
@@ -89,7 +90,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		}
 
 		return false;
-	}	
+	}
 
 	public boolean atualizar(Funcionario f) {
 
@@ -97,25 +98,22 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET nome = ?" + "cpf = ?" + "telefone = ?" + "email = ?" + "dataDeNasc = ?"
-				+ "usuario = ?" + "senha = ?" + "nivelCargo = ?" + "salario = ?" + "comissao = ? WHERE id_funcionario = ?";
+		String query = "UPDATE funcionarios SET nome = ?" + "telefone = ?" + "email = ?" + "usuario = ?"
+				+ "nivelCargo = ?" + "salario = ?" + "comissao = ? WHERE id_funcionario = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
 			ps.setString(1, f.getNome());
-			ps.setLong(2, f.getCpf());
-			ps.setLong(3, f.getTelefone());
-			ps.setString(4, f.getEmail());
-			ps.setString(5, f.getDataDeNasc());
-			ps.setString(6, f.getUsuario());
-			ps.setString(7, f.getSenha());
-			ps.setString(8, f.getNivelCargo());
-			ps.setDouble(8, f.getSalario());
-			ps.setDouble(10, f.getComissao());
+			ps.setLong(2, f.getTelefone());
+			ps.setString(3, f.getEmail());
+			ps.setString(4, f.getUsuario());
+			ps.setString(5, f.getNivelCargo());
+			ps.setDouble(6, f.getSalario());
+			ps.setDouble(7, f.getComissao());
 			// chave estrangeira endereco_id_endereco
-			ps.setInt(12, f.getMatricula());
-			
+			ps.setInt(8, f.getMatricula());
+
 			ps.executeUpdate();
 
 			return true;
@@ -230,11 +228,11 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	public Funcionario passaLogado() {
 		return funcAchado;
 	}
-	
-	public Funcionario clicado(Funcionario f) {
+
+	public Funcionario clicado(Integer f) {
 		Funcionario funcClicado = new Funcionario();
 		for (Funcionario func : ListarFuncionarios()) {
-			if (func.getUsuario().equals(f.getUsuario()) && func.getEmail().equals(f.getEmail()) && func.getTelefone().equals(f.getTelefone()) && func.getUsuario().equals(f.getUsuario())) {
+			if (func.getMatricula().equals(f)) {
 
 				funcClicado = func;
 
@@ -243,6 +241,5 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		}
 		return funcClicado;
 	}
-
 
 }

@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class TelaContinuar extends JFrame {
 
 	private JPanel contentPane;
+	public boolean confirmacao;
 
 	/**
 	 * Launch the application.
@@ -46,23 +47,23 @@ public class TelaContinuar extends JFrame {
 		setUndecorated(true);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		
+
 		JLabel lblNewLabel_1 = new JLabel("DESEJA CONTINUAR?");
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(91, 145, 305, 77);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
 		lblNewLabel.setBounds(178, 23, 143, 100);
 		contentPane.add(lblNewLabel);
-		
+
 		JButton btnNewButton_1 = new JButton("VOLTAR");
 		btnNewButton_1.setBackground(new Color(255, 255, 255));
 		btnNewButton_1.addActionListener(new ActionListener() {
-		
+
 			public void actionPerformed(ActionEvent e) {
+				confirmacao = false;
 				dispose();
 			}
 		});
@@ -70,15 +71,18 @@ public class TelaContinuar extends JFrame {
 		btnNewButton_1.setBounds(32, 233, 143, 36);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.setBorder(new RoundedBorder(20));
-		
+
 		JButton btnNewButton_1_1 = new JButton("SIM");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				confirmacao = true;
+			}
+		});
 		btnNewButton_1_1.setBackground(new Color(255, 255, 255));
 		btnNewButton_1_1.setFont(new Font("Krona One", Font.PLAIN, 11));
 		btnNewButton_1_1.setBounds(275, 233, 143, 36);
 		contentPane.add(btnNewButton_1_1);
 		btnNewButton_1_1.setBorder(new RoundedBorder(20));
-		
-		
-		
+
 	}
 }

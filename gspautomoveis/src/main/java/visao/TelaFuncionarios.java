@@ -81,6 +81,8 @@ public class TelaFuncionarios extends JFrame {
 		contentPane = new JPanel();
 		JButton btnAtualizar = new JButton("Atualizar");
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
+		btnAdicionar.setVisible(true);
+		btnAtualizar.setVisible(false);
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -106,7 +108,7 @@ public class TelaFuncionarios extends JFrame {
 				TelaContinuar telaContinua = new TelaContinuar();
 				telaContinua.setLocationRelativeTo(null);
 				telaContinua.setVisible(true);
-				if (telaContinua.confirmacao) {
+				if (telaContinua.confirmado) {
 					Funcionario func1 = new Funcionario();
 					Integer matricula = Integer.valueOf(textId.getText());
 					String nome = textNome.getText();
@@ -680,11 +682,13 @@ public class TelaFuncionarios extends JFrame {
 				telaContinua.setLocationRelativeTo(null);
 				telaContinua.setVisible(true);
 
-				if (telaContinua.confirmacao) {
+				if (telaContinua.confirmado) {
 					funcdao.excluir(funcDelete);
+
 					// remove a linha da tabela (visualmente)
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					model.removeRow(row);
+
 					// tela de sucesso de ação
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);

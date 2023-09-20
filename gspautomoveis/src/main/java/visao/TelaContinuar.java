@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class TelaContinuar extends JFrame {
 
 	private JPanel contentPane;
+	public boolean confirmado;
 
 	/**
 	 * Launch the application.
@@ -38,47 +39,42 @@ public class TelaContinuar extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaContinuar() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setUndecorated(true);
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
-		JLabel lblNewLabel_1 = new JLabel("DESEJA CONTINUAR?");
-		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(91, 145, 305, 77);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
-		lblNewLabel.setBounds(178, 23, 143, 100);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnNewButton_1 = new JButton("VOLTAR");
-		btnNewButton_1.setBackground(new Color(255, 255, 255));
-		btnNewButton_1.addActionListener(new ActionListener() {
-		
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		btnNewButton_1.setFont(new Font("Krona One", Font.PLAIN, 11));
-		btnNewButton_1.setBounds(32, 233, 143, 36);
-		contentPane.add(btnNewButton_1);
-		btnNewButton_1.setBorder(new RoundedBorder(20));
-		
-		JButton btnNewButton_1_1 = new JButton("SIM");
-		btnNewButton_1_1.setBackground(new Color(255, 255, 255));
-		btnNewButton_1_1.setFont(new Font("Krona One", Font.PLAIN, 11));
-		btnNewButton_1_1.setBounds(275, 233, 143, 36);
-		contentPane.add(btnNewButton_1_1);
-		btnNewButton_1_1.setBorder(new RoundedBorder(20));
-		
-		
+        // ... Código anterior ...
+
+        JButton btnVoltar = new JButton("VOLTAR");
+        btnVoltar.setBackground(new Color(255, 255, 255));
+        btnVoltar.setFont(new Font("Krona One", Font.PLAIN, 11));
+        btnVoltar.setBounds(32, 233, 143, 36);
+        contentPane.add(btnVoltar);
+        btnVoltar.setBorder(new RoundedBorder(20));
+        btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	confirmado = false;
+                dispose();
+            }
+        });
+
+        JButton btnSim = new JButton("SIM");
+        btnSim.setBackground(new Color(255, 255, 255));
+        btnSim.setFont(new Font("Krona One", Font.PLAIN, 11));
+        btnSim.setBounds(275, 233, 143, 36);
+        contentPane.add(btnSim);
+        btnSim.setBorder(new RoundedBorder(20));
+        btnSim.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Ação ao clicar em SIM
+                // Adicione aqui a lógica para continuar a execução
+                // Exemplo: chamarMetodoParaContinuar();
+            	confirmado = true;
+            	dispose();
+            }
+        });
+    }
+	
+	public boolean retornaConfirmado() {
+		return confirmado;
 		
 	}
 }

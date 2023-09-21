@@ -40,7 +40,15 @@ public class TelaContinuar extends JFrame {
 	 */
 	public TelaContinuar() {
         // ... Código anterior ...
-
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setUndecorated(true);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
         JButton btnVoltar = new JButton("VOLTAR");
         btnVoltar.setBackground(new Color(255, 255, 255));
         btnVoltar.setFont(new Font("Krona One", Font.PLAIN, 11));
@@ -54,6 +62,15 @@ public class TelaContinuar extends JFrame {
                 dispose();
             }
         });
+        
+		JLabel lblNewLabel_1 = new JLabel("DESEJA CONTINUAR?");
+		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
+		lblNewLabel_1.setBounds(91, 145, 305, 77);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
+		lblNewLabel.setBounds(178, 23, 143, 100);
 
         JButton btnSim = new JButton("SIM");
         btnSim.setBackground(new Color(255, 255, 255));
@@ -61,6 +78,11 @@ public class TelaContinuar extends JFrame {
         btnSim.setBounds(275, 233, 143, 36);
         contentPane.add(btnSim);
         btnSim.setBorder(new RoundedBorder(20));
+        
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
+        lblNewLabel_2.setBounds(173, 37, 100, 100);
+        contentPane.add(lblNewLabel_2);
         btnSim.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +93,9 @@ public class TelaContinuar extends JFrame {
             	dispose();
             }
         });
+		
+		
+
     }
 	
 	public boolean retornaConfirmado() {

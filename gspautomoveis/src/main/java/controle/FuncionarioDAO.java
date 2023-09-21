@@ -98,8 +98,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET nome = ?" + "telefone = ?" + "email = ?" + "usuario = ?"
-				+ "nivelCargo = ?" + "salario = ?" + "comissao = ? WHERE id_funcionario = ?";
+		String query = "UPDATE funcionarios SET nome = ?," + "telefone = ?," + "email = ?," + "usuario = ?,"
+				+ "nivelCargo = ?," + "salario = ?," + "comissao = ? WHERE matricula = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -132,7 +132,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM funcionarios WHERE matricula = " + f.getMatricula();
+		String query = "DELETE FROM funcionarios WHERE matricula = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

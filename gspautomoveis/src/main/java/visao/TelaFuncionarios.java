@@ -105,36 +105,32 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.setLayout(null);
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaContinuar telaContinua = new TelaContinuar();
-				telaContinua.setLocationRelativeTo(null);
-				telaContinua.setVisible(true);
-				if (telaContinua.confirmado) {
-					Funcionario func1 = new Funcionario();
-					Integer matricula = Integer.valueOf(textId.getText());
-					String nome = textNome.getText();
-					String email = textEmail.getText();
-					String usuario = textUsuario.getText();
-					Long telefone = Long.parseLong(textTelefone.getText());
-					String cargo = (String) CBCargo.getSelectedItem();
-					Double comissao = Double.valueOf(textComissao.getText());
-					Double salario = Double.valueOf(textSalario.getText());
+				Funcionario func1 = new Funcionario();
+				Integer matricula = Integer.valueOf(textId.getText());
+				String nome = textNome.getText();
+				String email = textEmail.getText();
+				String usuario = textUsuario.getText();
+				Long telefone = Long.parseLong(textTelefone.getText());
+				String cargo = (String) CBCargo.getSelectedItem();
+				Double comissao = Double.valueOf(textComissao.getText());
+				Double salario = Double.valueOf(textSalario.getText());
 
-					func1.setMatricula(matricula);
-					func1.setNome(nome);
-					func1.setEmail(email);
-					func1.setUsuario(usuario);
-					func1.setTelefone(telefone);
-					func1.setNivelCargo(cargo);
-					func1.setSalario(salario);
-					func1.setComissao(comissao);
+				func1.setMatricula(matricula);
+				func1.setNome(nome);
+				func1.setEmail(email);
+				func1.setUsuario(usuario);
+				func1.setTelefone(telefone);
+				func1.setNivelCargo(cargo);
+				func1.setSalario(salario);
+				func1.setComissao(comissao);
 
-					funcdao.atualizar(func1);
+				funcdao.atualizar(func1);
 
-					// tela de sucesso de ação
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
-				}
+				// tela de sucesso de ação
+				TelaSucesso sucesso = new TelaSucesso();
+				sucesso.setLocationRelativeTo(null);
+				sucesso.setVisible(true);
+				System.out.println("DEU CERTO");
 			}
 		});
 
@@ -237,10 +233,10 @@ public class TelaFuncionarios extends JFrame {
 					sucesso.setVisible(true);
 				}
 
-				Configuracao configuracao = new Configuracao();
+				/*Configuracao configuracao = new Configuracao();
 				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
 				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
-				configuracao.setVisible(true);
+				configuracao.setVisible(true);*/
 			}
 		});
 
@@ -508,7 +504,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(399, 414, 1463, 593);
+		scrollPane.setBounds(-122, 443, 1463, 593);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -668,7 +664,7 @@ public class TelaFuncionarios extends JFrame {
 			public void onDelete(int row) {
 
 				int linhaSelecionada = table.getSelectedRow();
-				Integer matricula = (Integer) table.getValueAt(linhaSelecionada, 0);
+				Integer matricula = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
 
 				// select no banco só pelo nome da matricula
 				// buscaFuncionarioPorMatricula(matricula);
@@ -678,24 +674,18 @@ public class TelaFuncionarios extends JFrame {
 				funcDelete = funcdao.clicado(matricula);
 
 				// quer excluir mesmo?
-				TelaContinuar telaContinua = new TelaContinuar();
-				telaContinua.setLocationRelativeTo(null);
-				telaContinua.setVisible(true);
+				// FALTA COLOCAR CONFIRMAÇÃO
 
-				if (telaContinua.confirmado) {
-					funcdao.excluir(funcDelete);
+				funcdao.excluir(funcDelete);
 
-					// remove a linha da tabela (visualmente)
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					model.removeRow(row);
+				// remove a linha da tabela (visualmente)
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.removeRow(row);
 
-					// tela de sucesso de ação
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
-				} else {
-					System.out.println("Não removeu");
-				}
+				// tela de sucesso de ação
+				TelaSucesso sucesso = new TelaSucesso();
+				sucesso.setLocationRelativeTo(null);
+				sucesso.setVisible(true);
 			}
 
 			@Override

@@ -114,6 +114,7 @@ public class TelaFuncionarios extends JFrame {
 				String cargo = (String) CBCargo.getSelectedItem();
 				Double comissao = Double.valueOf(textComissao.getText());
 				Double salario = Double.valueOf(textSalario.getText());
+				
 
 				func1.setMatricula(matricula);
 				func1.setNome(nome);
@@ -187,10 +188,7 @@ public class TelaFuncionarios extends JFrame {
 						|| comissao.equals("") || salario.equals("")) {
 					System.out.print("mal");
 				} else {
-					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
-
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
+					
 					System.out.println("Até aqui sim");
 
 					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
@@ -209,6 +207,11 @@ public class TelaFuncionarios extends JFrame {
 
 					func1.setEndereco(end);
 					funcdao.inserir(func1);
+					
+					String data[] = {nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
+
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+					tbltable.addRow(data);
 
 					System.out.println("Passou");
 
@@ -431,7 +434,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblDataDeNascimento.setBounds(1241, 152, 415, 38);
+		lblDataDeNascimento.setBounds(1241, 152, 332, 38);
 		contentPane.add(lblDataDeNascimento);
 
 		JLabel lblCargo = new JLabel("Cargo:");
@@ -537,7 +540,6 @@ public class TelaFuncionarios extends JFrame {
 				} else {
 					CBCargo.setSelectedIndex(0);
 				}
-
 				textCPF.setText(trocarPorAsteriscos(String.valueOf(funcC.getCpf())));
 				textSenha.setText(trocarPorAsteriscos(String.valueOf(funcC.getSenha())));
 				textDataNasc.setText(funcC.getDataDeNasc());
@@ -561,6 +563,8 @@ public class TelaFuncionarios extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Matrícula", "Nome", "Usu\u00E1rio",
 				"Telefone", "Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
+		
+		
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),

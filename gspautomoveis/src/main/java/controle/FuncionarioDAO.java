@@ -50,7 +50,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setInt(11, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
-
+			
 			return true;
 
 		} catch (SQLException e) {

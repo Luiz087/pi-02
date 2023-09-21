@@ -506,7 +506,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(-122, 443, 1463, 593);
+		scrollPane.setBounds(399, 414, 1463, 593);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable

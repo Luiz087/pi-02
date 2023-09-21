@@ -126,7 +126,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 			while (rs.next()) {
 				String NomeFornecedor = rs.getString("NomeFornecedor");
-				Long cnpjFornecedor = rs.getLong("cnpjFonecedor");
+				Long cnpjFornecedor = rs.getLong("cnpjFornecedor");
 				Long telefoneFornecedor = rs.getLong("telefoneFornecedor");
 				String Empresa = rs.getString("Empresa");
 				String Marca = rs.getString("Marca");
@@ -153,10 +153,10 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return Fornecedores;
 	}
 
-	public Fornecedor pegarForn(String Fornecedor) {
+	public Fornecedor pegarForn(String fornecedor) {
 		Fornecedor fornecedorPego = new Fornecedor();
 		for (Fornecedor forn : ListarFornecedores()) {
-			if(forn.getNomeFornecedor().equals(Fornecedor)) {
+			if(forn.getNomeFornecedor().equals(fornecedor)) {
 				fornecedorPego = forn;
 				return fornecedorPego;
 			}

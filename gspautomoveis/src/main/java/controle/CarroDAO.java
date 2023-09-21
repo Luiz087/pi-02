@@ -10,6 +10,15 @@ import modelo.Carro;
 import modelo.ICarroDAO;
 
 public class CarroDAO implements ICarroDAO {
+	
+	private static CarroDAO instancia;
+
+	public static CarroDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new CarroDAO();
+		}
+		return instancia;
+	}
 
 	@Override
 	public boolean inserir(Carro ca) {
@@ -17,7 +26,7 @@ public class CarroDAO implements ICarroDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values ('?', '?', '?', ?, '?', '?,' '?', ?, '?', ?, ?, ?, ?);";
+		String query = "INSERT INTO Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

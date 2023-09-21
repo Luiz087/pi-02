@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controle.CarroDAO;
 import controle.FornecedorDAO;
 import modelo.Carro;
 import modelo.Fornecedor;
@@ -39,6 +40,7 @@ public class TelaVeiculos extends JFrame {
 	private JTextField txt_potencia;
 	private FornecedorDAO forndao = FornecedorDAO.getInstancia();
 	private JTextField txt_preco;
+	private CarroDAO carrodao = CarroDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -352,15 +354,16 @@ public class TelaVeiculos extends JFrame {
 				Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
 				Double precoCarro = Double.valueOf(txt_preco.getText());
 				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;;
-
+				
+				Fornecedor forn = forndao.pegarForn(fornecedor);
+				
+				carro.setFornecedor(forn);
 				carro.setMarca(marca);
 				carro.setModelo(modelo);
 				carro.setNovo(novo);
 				carro.setTipo(tipo);
 				carro.setCombustivel(combustivel);
 				carro.setQuilometragem(quilometragem);
-				Fornecedor forn = forndao.pegarForn(fornecedor);
-				carro.setFornecedor(forn);
 				carro.setPotencia(potencia);
 				carro.setCor(cor);
 				carro.setAno(ano);
@@ -381,6 +384,33 @@ public class TelaVeiculos extends JFrame {
 					cor, String.valueOf(ano), String.valueOf(novo), String.valueOf(precoCarro) };
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(liborio);
+					
+					carrodao.inserir(carro);
+					
+					txt_marca.setText("");
+					txt_modelo.setText("");
+					txt_tipo.setText("");
+					txt_quilometragem.setText("");
+					txt_potencia.setText("");
+					txt_cor.setText("");
+					txt_preco.setText("");
+					comboBoxNovo.setSelectedIndex(0);
+					Cbcombustivel.setSelectedIndex(0);
+					comboBoxFornecedor.setSelectedIndex(0);
+					comboBoxAno.setSelectedIndex(0);
+					cbAbs.setSelectedIndex(0);
+					comboBoxPromocao.setSelectedIndex(0);
+					
+					
+					
+					
+					
+					
+					
+					
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
 				}
 			}
 		});

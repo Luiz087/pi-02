@@ -212,7 +212,7 @@ public class TelaFornecedores extends JFrame {
 					end.setCep(Long.valueOf(textCep.getText()));
 					fornec.setEndereco(end);
 
-					Endereco verificacaoEnd = enddao.buscaEndereco(end);
+					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
 					if (verificacaoEnd == null) {
 						/*
 						 * Se o endereco for null Significa que nao encontrou nada no BD

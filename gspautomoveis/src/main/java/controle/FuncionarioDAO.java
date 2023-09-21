@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.IFuncionarioDAO;
 
@@ -179,7 +180,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
-				// Long Cep = rs.getLong("Cep");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
 				Funcionario F = new Funcionario();
 
@@ -194,7 +195,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setNivelCargo(NivelCargo);
 				F.setSalario(Salario);
 				F.setComissao(Comissao);
-				// F.setCep(Cep);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
 
 				Funcionarios.add(F);
 			}

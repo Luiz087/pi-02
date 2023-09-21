@@ -193,7 +193,7 @@ public class TelaFuncionarios extends JFrame {
 					tbltable.addRow(data);
 					System.out.println("Até aqui sim");
 
-					Endereco verificacaoEnd = enddao.buscaEndereco(end);
+					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
 					if (verificacaoEnd == null) {
 						/*
 						 * Se o endereco for null Significa que nao encontrou nada no BD
@@ -233,10 +233,12 @@ public class TelaFuncionarios extends JFrame {
 					sucesso.setVisible(true);
 				}
 
-				/*Configuracao configuracao = new Configuracao();
-				Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
-				Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
-				configuracao.setVisible(true);*/
+				/*
+				 * Configuracao configuracao = new Configuracao();
+				 * Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
+				 * Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
+				 * configuracao.setVisible(true);
+				 */
 			}
 		});
 
@@ -518,7 +520,8 @@ public class TelaFuncionarios extends JFrame {
 				Funcionario funcC = new Funcionario();
 				Integer matricula = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
 				funcC = funcdao.clicado(matricula);
-
+				funcC.setEndereco(enddao.buscaEndereco(funcC.getEndereco().getIdEndereco()));
+				
 				textNome.setText(funcC.getNome());
 				textUsuario.setText(funcC.getUsuario());
 				textTelefone.setText(String.valueOf(funcC.getTelefone()));
@@ -535,17 +538,19 @@ public class TelaFuncionarios extends JFrame {
 					CBCargo.setSelectedIndex(0);
 				}
 
+				textCPF.setText(trocarPorAsteriscos(String.valueOf(funcC.getCpf())));
+				textSenha.setText(trocarPorAsteriscos(String.valueOf(funcC.getSenha())));
 				textDataNasc.setText(funcC.getDataDeNasc());
 				textEmail.setText(funcC.getEmail());
 				textSalario.setText(String.valueOf(funcC.getSalario()));
 				textComissao.setText(String.valueOf(funcC.getComissao()));
-				/*
-				 * textRua.setText(funcC.getEndereco().getRua());
-				 * textCidade.setText(funcC.getEndereco().getCidade());
-				 * textEstado.setText(funcC.getEndereco().getEstado());
-				 * textCep.setText(String.valueOf(funcC.getEndereco().getCep()));
-				 * textBairro.setText(funcC.getEndereco().getBairro());
-				 */
+
+				textRua.setText(funcC.getEndereco().getRua());
+				textCidade.setText(funcC.getEndereco().getCidade());
+				textEstado.setText(funcC.getEndereco().getEstado());
+				textCep.setText(String.valueOf(funcC.getEndereco().getCep()));
+				textBairro.setText(funcC.getEndereco().getBairro());
+
 				textSenha.setEditable(false);
 				textCPF.setEditable(false);
 				textId.setText(String.valueOf(funcC.getMatricula()));
@@ -710,5 +715,15 @@ public class TelaFuncionarios extends JFrame {
 		textId.setBounds(1196, 271, 98, 38);
 		contentPane.add(textId);
 
+	}
+
+	public static String trocarPorAsteriscos(String palavra) {
+		StringBuilder resultado = new StringBuilder();
+
+		for (int i = 0; i < palavra.length(); i++) {
+			resultado.append('*');
+		}
+
+		return resultado.toString();
 	}
 }

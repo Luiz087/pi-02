@@ -40,6 +40,7 @@ public class Configuracao extends JFrame {
 	public static JTextField textSen;
 	private JTextField textEmail;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
+	private JTextField textID;
 
 	/**
 	 * Launch the application.
@@ -98,30 +99,25 @@ public class Configuracao extends JFrame {
 
 		JLabel lblUsurio = new JLabel("Usuário:");
 		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblUsurio.setBounds(26, 243, 163, 38);
+		lblUsurio.setBounds(25, 314, 163, 38);
 		contentPane.add(lblUsurio);
-
-		JLabel lblUsuario = new JLabel("Usuário:");
-		lblUsuario.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblUsuario.setBounds(26, 243, 163, 38);
-		contentPane.add(lblUsuario);
 
 		textUsuario = new JTextField();
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);
-		textUsuario.setBounds(193, 248, 321, 38);
+		textUsuario.setBounds(192, 319, 321, 38);
 		textUsuario.setText(func.getUsuario());
 		contentPane.add(textUsuario);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefone.setBounds(26, 334, 163, 38);
+		lblTelefone.setBounds(27, 373, 163, 38);
 		contentPane.add(lblTelefone);
 
 		textTel = new JTextField();
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
-		textTel.setBounds(193, 334, 345, 38);
+		textTel.setBounds(194, 373, 345, 38);
 		textTel.setText(String.valueOf(func.getTelefone()));
 		contentPane.add(textTel);
 
@@ -152,14 +148,15 @@ public class Configuracao extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Funcionario func = new Funcionario();
+				Funcionario func1 = new Funcionario();
+				
+				func1.setMatricula(Integer.valueOf(textID.getText()));
+				func1.setUsuario(textUsuario.getText());
+				func1.setTelefone(Long.valueOf(textTel.getText()));
+				func1.setEmail(textEmail.getText());
+				func1.setSenha(textSen.getText());
 
-				func.setUsuario(textUsuario.getText());
-				func.setTelefone(Long.valueOf(textTel.getText()));
-				func.setEmail(textEmail.getText());
-				func.setSenha(textSen.getText());
-
-				funcdao.atualizar(func);
+				funcdao.atualizarFunc(func1);
 			}
 		});
 		btnAtualizar.setForeground(Color.BLACK);
@@ -169,6 +166,20 @@ public class Configuracao extends JFrame {
 		btnAtualizar.setBackground(new Color(255, 218, 70));
 		btnAtualizar.setBounds(348, 576, 251, 35);
 		contentPane.add(btnAtualizar);
+		
+		JLabel lblId = new JLabel("Id:");
+		lblId.setFont(new Font("Krona One", Font.PLAIN, 24));
+		lblId.setBounds(25, 242, 147, 38);
+		contentPane.add(lblId);
+		
+		textID = new JTextField();
+		textID.setEditable(false);
+		textID.setText((String) null);
+		textID.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textID.setColumns(10);
+		textID.setBounds(192, 242, 321, 38);
+		contentPane.add(textID);
+		textID.setText(String.valueOf(func.getMatricula()));
 
 	}
 }

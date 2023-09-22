@@ -86,10 +86,13 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				// Quando clicar na página, os botões e textFields desativados voltam a ser
+				// ativos e editaveis
 				btnAdicionar.setVisible(true);
 				btnAtualizar.setVisible(false);
 				textSenha.setEditable(true);
 				textCPF.setEditable(true);
+				textDataNasc.setEditable(true);
 			}
 		});
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -105,22 +108,58 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.setLayout(null);
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Botão atualizar
 				Funcionario func1 = new Funcionario();
+				Endereco end = new Endereco();
 				Integer matricula = Integer.valueOf(textId.getText());
 				String nome = textNome.getText();
 				String email = textEmail.getText();
 				String usuario = textUsuario.getText();
-				Long telefone = Long.parseLong(textTelefone.getText());
+				String telefoneErrado = textTelefone.getText();
+				String rua = textRua.getText();
+				String bairro = textBairro.getText();
+				String cidade = textCidade.getText();
+				String estado = textEstado.getText();
+				String cepErrado = textCep.getText();
+				Long cep = Long.valueOf(cepErrado.replaceAll("-", ""));
+			    
+				end.setBairro(bairro);
+				end.setCep(cep);
+				end.setCidade(cidade);
+				end.setEstado(estado);
+				end.setRua(rua);
+				
+				
+			    // Remove parênteses, traços e espaços em branco
+			    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+			    
+			    // Verifica se o telefoneLimpo possui apenas dígitos e tem um tamanho apropriado
+			    if (telefoneLimpo.matches("\\d{10,11}")) { // Pode ajustar o intervalo de tamanho conforme necessário
+			        Long telefone = Long.valueOf(telefoneLimpo);
+			        // Faça algo com o telefone (por exemplo, armazene em um banco de dados)
+			    } else {
+			        System.out.println("Número de telefone inválido");
+			        // Trate o erro de acordo com sua aplicação
+			    }
 				String cargo = (String) CBCargo.getSelectedItem();
 				Double comissao = Double.valueOf(textComissao.getText());
 				Double salario = Double.valueOf(textSalario.getText());
-				
 
+				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+	            tableModel.setRowCount(0); // Remove todas as linhas da tabela
+				for (Funcionario funcs : funcdao.ListarFuncionarios()) {
+					String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
+							String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), funcs.getDataDeNasc(),
+							funcs.getEmail() };
+					tableModel.addRow(data);
+				}
+				
+				func1.setEndereco(end);
 				func1.setMatricula(matricula);
 				func1.setNome(nome);
 				func1.setEmail(email);
 				func1.setUsuario(usuario);
-				func1.setTelefone(telefone);
+				func1.setTelefone(Long.valueOf(telefoneLimpo));
 				func1.setNivelCargo(cargo);
 				func1.setSalario(salario);
 				func1.setComissao(comissao);
@@ -132,6 +171,7 @@ public class TelaFuncionarios extends JFrame {
 				sucesso.setLocationRelativeTo(null);
 				sucesso.setVisible(true);
 				System.out.println("DEU CERTO");
+
 			}
 		});
 
@@ -145,20 +185,31 @@ public class TelaFuncionarios extends JFrame {
 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Botão adicionar
 				Funcionario func1 = new Funcionario();
 				String nome = textNome.getText();
-				Long cpf = Long.parseLong(textCPF.getText());
+				String cpfErrado = textCPF.getText();
+				String cpfSemHifens = cpfErrado.replaceAll("-", "");
+				Long cpf = Long.valueOf(cpfSemHifens.replaceAll(".", ""));
 				String email = textEmail.getText();
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
-				Long telefone = Long.parseLong(textTelefone.getText());
+				String telefoneErrado = textTelefone.getText();
+				String telefoneSemParentese = telefoneErrado.replaceAll("(", "");
+				String telefoneSemParentese2 = telefoneSemParentese.replaceAll(")", "");
+				Long telefone = Long.valueOf(telefoneSemParentese2.replaceAll("-", ""));
+				
 				String cargo = (String) CBCargo.getSelectedItem();
 				String dataNascimento = textDataNasc.getText();
+				String dataNascimentoSemTraco = dataNascimento.replaceAll("-", "");
+				String dataNascimentoCorreta = dataNascimentoSemTraco.replaceAll("\\.", "");
+
 				String rua = textRua.getText();
 				String estado = textEstado.getText();
 				String cidade = textCidade.getText();
 				String bairro = textBairro.getText();
-				Long cep = Long.valueOf(textCep.getText());
+				String cepErrado = textCep.getText();
+				Long cep = Long.valueOf(cepErrado.replaceAll("-", ""));
 				Double salario = Double.valueOf(textSalario.getText());
 				Double comissao = Double.valueOf(textComissao.getText());
 
@@ -169,7 +220,7 @@ public class TelaFuncionarios extends JFrame {
 				func1.setSenha(senha);
 				func1.setTelefone(telefone);
 				func1.setNivelCargo(cargo);
-				func1.setDataDeNasc(dataNascimento);
+				func1.setDataDeNasc(dataNascimentoCorreta);
 				func1.setSalario(salario);
 				func1.setComissao(comissao);
 
@@ -188,7 +239,7 @@ public class TelaFuncionarios extends JFrame {
 						|| comissao.equals("") || salario.equals("")) {
 					System.out.print("mal");
 				} else {
-					
+
 					System.out.println("Até aqui sim");
 
 					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
@@ -207,8 +258,8 @@ public class TelaFuncionarios extends JFrame {
 
 					func1.setEndereco(end);
 					funcdao.inserir(func1);
-					
-					String data[] = {nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
+
+					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
 
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
@@ -447,16 +498,15 @@ public class TelaFuncionarios extends JFrame {
 		textNome.setBounds(542, 32, 292, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
-//		
-//		MaskFormatter mascaraCPF = null;
-//		try {
-//			mascaraCPF = new MaskFormatter("###.###.###-##");
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//
-//		textCPF = new JFormattedTextField(mascaraCPF);
-		textCPF = new JTextField();
+		
+		MaskFormatter mascaraCPF = null;
+		try {
+			mascaraCPF = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textCPF = new JFormattedTextField(mascaraCPF);
 		textCPF.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCPF.setColumns(10);
 		textCPF.setBounds(1281, 93, 214, 38);
@@ -467,19 +517,18 @@ public class TelaFuncionarios extends JFrame {
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(1006, 32, 321, 38);
 		contentPane.add(textUsuario);
-//		
-//		MaskFormatter mascaraTel = null;
-//		try {
-//			mascaraTel = new MaskFormatter("(##)#####-####");
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//
-//		textTelefone = new JFormattedTextField(mascaraTel);
-		textTelefone = new JTextField();
+
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textTelefone = new JFormattedTextField(mascaraTel);
 		textTelefone.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTelefone.setColumns(10);
-		textTelefone.setBounds(1517, 32, 345, 38);
+		textTelefone.setBounds(420, 345, 345, 38);
 		contentPane.add(textTelefone);
 
 		textSenha = new JTextField();
@@ -504,12 +553,12 @@ public class TelaFuncionarios extends JFrame {
 		textDataNasc = new JFormattedTextField(mascaraData);
 		textDataNasc.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textDataNasc.setColumns(10);
-		textDataNasc.setBounds(1588, 152, 274, 38);
+		textDataNasc.setBounds(784, 345, 274, 38);
 		contentPane.add(textDataNasc);
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(399, 414, 1463, 593);
+		scrollPane.setBounds(-103, 403, 1463, 593);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -519,16 +568,15 @@ public class TelaFuncionarios extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int setar = table.getSelectedRow();
-
-				Funcionario funcC = new Funcionario();
 				Integer matricula = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
+				Funcionario funcC = new Funcionario();
+
 				funcC = funcdao.clicado(matricula);
 				funcC.setEndereco(enddao.buscaEndereco(funcC.getEndereco().getIdEndereco()));
-				
+
 				textNome.setText(funcC.getNome());
 				textUsuario.setText(funcC.getUsuario());
 				textTelefone.setText(String.valueOf(funcC.getTelefone()));
-
 				if (funcC.getNivelCargo().equals("Administrador")) {
 					CBCargo.setSelectedIndex(1);
 				} else if (funcC.getNivelCargo().equals("Gerente de Vendas")) {
@@ -542,7 +590,6 @@ public class TelaFuncionarios extends JFrame {
 				}
 				textCPF.setText(trocarPorAsteriscos(String.valueOf(funcC.getCpf())));
 				textSenha.setText(trocarPorAsteriscos(String.valueOf(funcC.getSenha())));
-				textDataNasc.setText(funcC.getDataDeNasc());
 				textEmail.setText(funcC.getEmail());
 				textSalario.setText(String.valueOf(funcC.getSalario()));
 				textComissao.setText(String.valueOf(funcC.getComissao()));
@@ -555,7 +602,19 @@ public class TelaFuncionarios extends JFrame {
 
 				textSenha.setEditable(false);
 				textCPF.setEditable(false);
+				textDataNasc.setEditable(false);
 				textId.setText(String.valueOf(funcC.getMatricula()));
+
+				String[] partes = funcC.getDataDeNasc().split("-"); // Divide a string em partes usando o caractere "-"
+
+				String primeiroParte = partes[0];
+				String segundaParte = partes[1];
+				String terceiroParte = partes[2];
+
+				// Reorganiza as partes da string no formato desejado
+				String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
+
+				textDataNasc.setText(resultado);
 
 			}
 		});
@@ -563,8 +622,7 @@ public class TelaFuncionarios extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Matrícula", "Nome", "Usu\u00E1rio",
 				"Telefone", "Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
-		
-		
+
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
@@ -611,18 +669,16 @@ public class TelaFuncionarios extends JFrame {
 		lblCpf_2_2.setBounds(1505, 93, 79, 38);
 		contentPane.add(lblCpf_2_2);
 
-//		MaskFormatter mascaraCEP = null;
-//		try {
-//			mascaraCEP = new MaskFormatter("#####-### ");
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		textCep =  new JFormattedTextField(mascaraCEP);
-
-		textCep = new JTextField();
+		MaskFormatter mascaraCEP = null;
+		try {
+			mascaraCEP = new MaskFormatter("#####-###");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		textCep =  new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
-		textCep.setBounds(1588, 93, 274, 38);
+		textCep.setBounds(725, 307, 274, 38);
 		contentPane.add(textCep);
 
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");

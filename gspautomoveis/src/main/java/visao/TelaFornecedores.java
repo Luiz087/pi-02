@@ -51,6 +51,7 @@ public class TelaFornecedores extends JFrame {
 	private EnderecoDAO enddao = EnderecoDAO.getInstancia();
 	private FornecedorDAO forndao = FornecedorDAO.getInstancia();
 	private JTextField textEmpresa;
+	private JTextField textId;
 
 	/**
 	 * Launch the application.
@@ -396,15 +397,45 @@ public class TelaFornecedores extends JFrame {
 
 		// posição do Jpanel
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(484, 432, 1271, 544);
+		scrollPane.setBounds(420, 441, 863, 535);
 		contentPane.add(scrollPane);
 		// cadastrar nome das colunas
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int setar = table.getSelectedRow();
+				
+				Fornecedor fornC = new Fornecedor();
+				Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
+				fornC = forndao.clicado(IdFornecedor);
+				
+				textId.setText(String.valueOf(fornC.getIdFornecedor()));
+				
+				textNome.setText(fornC.getNomeFornecedor());
+				textTel.setText(String.valueOf(fornC.getTelefoneFornecedor()));
+				textMarca.setText(fornC.getMarca());
+				textCidade.setText(fornC.getEndereco().getCidade());
+				textCNPJ.setText(String.valueOf(fornC.getCnpjfornecedor()));
+				textEmpresa.setText(fornC.getEmpresa());
+				
+				textBairro.setText(fornC.getEndereco().getBairro());
+				textEstado.setText(fornC.getEndereco().getEstado());
+				textRua.setText(fornC.getEndereco().getRua());
+				textCep.setText(String.valueOf(fornC.getEndereco().getCep()));
+				
+			}
+		});
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", "A\u00E7\u00F5es" }));
-		table.getColumnModel().getColumn(5).setPreferredWidth(15);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", "A\u00E7\u00F5es"
+			}
+		));
+		table.getColumnModel().getColumn(6).setPreferredWidth(15);
 
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
@@ -505,6 +536,12 @@ public class TelaFornecedores extends JFrame {
 				Fornecedor fornDelete = new Fornecedor();
 				fornDelete = forndao.clicado(IdFornecedor);
 				
+				// quer excluir mesmo?
+				TelaContinuar telaContinua = new TelaContinuar();
+				telaContinua.setLocationRelativeTo(null);
+				telaContinua.setVisible(true);
+				
+				if (telaContinua.confirmado) {
 				forndao.excluir(fornDelete);
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -514,6 +551,9 @@ public class TelaFornecedores extends JFrame {
 				TelaSucesso sucesso = new TelaSucesso();
 				sucesso.setLocationRelativeTo(null);
 				sucesso.setVisible(true);
+			} else {
+				System.out.println("Não removeu");
+			}
 			}
 
 			@Override
@@ -522,9 +562,19 @@ public class TelaFornecedores extends JFrame {
 
 			}
 		};
-		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
-		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
+		
+		JLabel lblID = new JLabel("ID:");
+		lblID.setFont(new Font("Krona One", Font.PLAIN, 30));
+		lblID.setBounds(369, 313, 116, 70);
+		contentPane.add(lblID);
+		
+		textId = new JTextField();
+		textId.setEditable(false);
+		textId.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textId.setColumns(10);
+		textId.setBounds(497, 330, 127, 50);
+		contentPane.add(textId);
 
 	}
 }

@@ -428,14 +428,18 @@ public class TelaFornecedores extends JFrame {
 		});
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"ID", "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", "A\u00E7\u00F5es"
-			}
-		));
-		table.getColumnModel().getColumn(6).setPreferredWidth(15);
+		table.setModel(new DefaultTableModel(new Object[][] {},	new String[] {"ID", "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", 
+				"A\u00E7\u00F5es"}));
+		for(Fornecedor forncs : forndao.ListarFornecedores()){
+			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+			String data[] = { String.valueOf(forncs.getIdFornecedor()), forncs.getNomeFornecedor(),
+					String.valueOf(forncs.getTelefoneFornecedor()), String.valueOf(forncs.getCnpjfornecedor()), forncs.getMarca(),
+					forncs.getEndereco().getCidade(), forncs.getEmpresa()};
+			//forncs.getEndereco n está funcionando, arruma no fornecedorDAO
+			tblModel.addRow(data);
+		}
+		
+		table.getColumnModel().getColumn(7).setPreferredWidth(15);
 
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
@@ -562,6 +566,8 @@ public class TelaFornecedores extends JFrame {
 
 			}
 		};
+		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
 		
 		JLabel lblID = new JLabel("ID:");

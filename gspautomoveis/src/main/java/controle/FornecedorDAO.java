@@ -131,6 +131,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 				Long telefoneFornecedor = rs.getLong("telefoneFornecedor");
 				String Empresa = rs.getString("Empresa");
 				String Marca = rs.getString("Marca");
+				String Endereco = rs.getString("Cidade");
 				// Long Cep = rs.getLong("Cep");
 
 				Fornecedor F = new Fornecedor();
@@ -140,6 +141,8 @@ public class FornecedorDAO implements IFornecedorDAO {
 				F.setTelefoneFornecedor(telefoneFornecedor);
 				F.setEmpresa(Empresa);
 				F.setMarca(Marca);
+				//arrumar
+				F.setEndereco(Endereco);
 				// F.setCep(Cep);
 
 				Fornecedores.add(F);

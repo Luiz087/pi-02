@@ -697,10 +697,10 @@ public class TelaFuncionarios extends JFrame {
 					System.out.println("Não removeu");
 				}
 			}
-
-			@Override
+ 
+		@Override
 			public void onView(int row) {
-				// TODO Auto-generated method stub
+			// TODO Auto-generated method stub
 
 			}
 		};

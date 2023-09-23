@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Fornecedor;
+import modelo.Funcionario;
 import modelo.IFornecedorDAO;
 
 public class FornecedorDAO implements IFornecedorDAO {
@@ -89,7 +90,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM fornecedores WHERE id_fornecedor";
+		String query = "DELETE FROM fornecedores WHERE id_fornecedor" +f.getIdFornecedor();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -164,4 +165,18 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return fornecedorPego;
 	}
 
+	
+	public Fornecedor clicado(Integer f) {
+		Fornecedor fornClicado = new Fornecedor();
+		for (Fornecedor forn : ListarFornecedores()) {
+			if (forn.getMarca().equals(f)) {
+
+				fornClicado = forn;
+
+				return fornClicado;
+			}
+		}
+		return fornClicado;
+	}
+	
 }

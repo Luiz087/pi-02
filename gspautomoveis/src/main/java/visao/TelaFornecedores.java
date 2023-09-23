@@ -30,6 +30,7 @@ import controle.EnderecoDAO;
 import controle.FornecedorDAO;
 import modelo.Endereco;
 import modelo.Fornecedor;
+import modelo.Funcionario;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
@@ -461,15 +462,58 @@ public class TelaFornecedores extends JFrame {
 			@Override
 			public void onEdit(int row) {
 				System.out.print("Edite a linha: " + row);
+				
+				Fornecedor forn = new Fornecedor();
+					
+				 String nome = textNome.getName();
+				 Long telefone = Long.parseLong(textTel.getText());
+				 String empresa = textEmpresa.getText();
+				 Long Cep = Long.parseLong(textCep.getText());
+				 Long Cnpj = Long.parseLong(textCNPJ.getText());
+				 String estado = textEstado.getText();
+				 String cidade = textCidade.getText();
+				 String rua = textRua.getText();				 
+				 
+				 
+				 
+				 forn.setNomeFornecedor(nome);
+				 forn.setTelefoneFornecedor(telefone);
+				 forn.setEmpresa(empresa);
+				 forn.setCnpjfornecedor(Cnpj);
+				 forn.setEndereco(end);
+				 
+				 
+				 
+				 forndao.atualizar(forn);
+				 
+				// tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
 			}
 
 			@Override
-			public void onDelete(int row) {
-				if (table.isEditing()) {
-					table.getCellEditor().stopCellEditing();
-				}
+			public void onDelete(int row) {				
+				
+				int linhaSelecionada = table.getSelectedRow();
+				Integer IdFornecedor = (Integer) table.getValueAt(linhaSelecionada, 0);
+				
+				// select no banco só pelo nome da IdFornecedor
+				// buscaFuncionarioPorIdFornecedor(IdFornecedor);
+				// metodo retorna um Fornecedor
+				
+				Fornecedor fornDelete = new Fornecedor();
+				fornDelete = forndao.clicado(IdFornecedor);
+				
+				forndao.excluir(fornDelete);
+				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.removeRow(row);
+				
+				// tela de sucesso de ação
+				TelaSucesso sucesso = new TelaSucesso();
+				sucesso.setLocationRelativeTo(null);
+				sucesso.setVisible(true);
 			}
 
 			@Override

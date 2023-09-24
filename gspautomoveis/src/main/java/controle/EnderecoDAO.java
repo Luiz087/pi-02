@@ -157,11 +157,48 @@ public class EnderecoDAO implements IEnderecoDAO {
 		return Enderecos;
 	}
 
-	public Endereco buscaEndereco(Endereco end) {
+	public Endereco buscaEndereco(Integer integer) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
-		String query = "SELECT * FROM enderecos WHERE cep = ?";
+		String query = "SELECT * FROM enderecos WHERE id_endereco = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, integer);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Long Cep = rs.getLong("Cep");
+				String Rua = rs.getString("Rua");
+				String Bairro = rs.getString("Bairro");
+				String Cidade = rs.getString("Cidade");
+				String Estado = rs.getString("Estado");
+				Integer IdEndereco = rs.getInt("id_endereco");
+
+				Endereco E = new Endereco();
+				E.setCep(Cep);
+				E.setRua(Rua);
+				E.setBairro(Bairro);
+				E.setCidade(Cidade);
+				E.setEstado(Estado);
+				E.setIdEndereco(IdEndereco);
+				return E;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
+	}
+
+	public Endereco buscaEnderecoByAtributo(Endereco end) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM enderecos WHERE id_endereco = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setLong(1, end.getCep());
@@ -173,6 +210,7 @@ public class EnderecoDAO implements IEnderecoDAO {
 				String Bairro = rs.getString("Bairro");
 				String Cidade = rs.getString("Cidade");
 				String Estado = rs.getString("Estado");
+				Integer IdEndereco = rs.getInt("id_endereco");
 
 				Endereco E = new Endereco();
 				E.setCep(Cep);
@@ -180,6 +218,7 @@ public class EnderecoDAO implements IEnderecoDAO {
 				E.setBairro(Bairro);
 				E.setCidade(Cidade);
 				E.setEstado(Estado);
+				E.setIdEndereco(IdEndereco);
 				return E;
 			}
 		} catch (SQLException e) {

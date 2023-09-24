@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.IFuncionarioDAO;
 
@@ -49,7 +50,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setInt(11, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
-
+			
 			return true;
 
 		} catch (SQLException e) {
@@ -67,8 +68,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET telefone = ?" + "email = ?" + "usuario = ?" + "senha = ?"
-				+ "WHERE id_funcionario = ?";
+		String query = "UPDATE funcionarios SET telefone = ?," + "email = ?," + "usuario = ?," + "senha = ? "
+				+ "WHERE matricula = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -98,8 +99,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE funcionarios SET nome = ?" + "telefone = ?" + "email = ?" + "usuario = ?"
-				+ "nivelCargo = ?" + "salario = ?" + "comissao = ? WHERE id_funcionario = ?";
+		String query = "UPDATE funcionarios SET nome = ?," + "telefone = ?," + "email = ?," + "usuario = ?,"
+				+ "nivelCargo = ?," + "salario = ?," + "comissao = ? WHERE matricula = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -132,7 +133,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM funcionarios WHERE matricula = " + f.getMatricula();
+		String query = "DELETE FROM funcionarios WHERE matricula = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -179,7 +180,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
-				// Long Cep = rs.getLong("Cep");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
 				Funcionario F = new Funcionario();
 
@@ -194,7 +195,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setNivelCargo(NivelCargo);
 				F.setSalario(Salario);
 				F.setComissao(Comissao);
-				// F.setCep(Cep);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
 
 				Funcionarios.add(F);
 			}

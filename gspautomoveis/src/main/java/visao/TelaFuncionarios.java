@@ -93,6 +93,11 @@ public class TelaFuncionarios extends JFrame {
 				textSenha.setEditable(true);
 				textCPF.setEditable(true);
 				textDataNasc.setEditable(true);
+				textRua.setEditable(true);
+				textCidade.setEditable(true);
+				textCep.setEditable(true);
+				textEstado.setEditable(true);
+				textBairro.setEditable(true);
 			}
 		});
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -120,8 +125,18 @@ public class TelaFuncionarios extends JFrame {
 				String bairro = textBairro.getText();
 				String cidade = textCidade.getText();
 				String estado = textEstado.getText();
-				String cepErrado = textCep.getText();
-				Long cep = Long.valueOf(cepErrado.replaceAll("-", ""));
+				Long cep = null;
+				try {
+				    String cepErrado = textCep.getText();
+				    
+				    String cepString = cepErrado.replaceAll("-", "");
+				    
+				    cep = Long.valueOf(cepString);
+				    
+				    
+				} catch (NumberFormatException e1) {
+				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+				}
 			    
 				end.setBairro(bairro);
 				end.setCep(cep);
@@ -129,48 +144,50 @@ public class TelaFuncionarios extends JFrame {
 				end.setEstado(estado);
 				end.setRua(rua);
 				
-				
-			    // Remove parênteses, traços e espaços em branco
-			    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
-			    
-			    // Verifica se o telefoneLimpo possui apenas dígitos e tem um tamanho apropriado
-			    if (telefoneLimpo.matches("\\d{10,11}")) { // Pode ajustar o intervalo de tamanho conforme necessário
-			        Long telefone = Long.valueOf(telefoneLimpo);
-			        // Faça algo com o telefone (por exemplo, armazene em um banco de dados)
-			    } else {
-			        System.out.println("Número de telefone inválido");
-			        // Trate o erro de acordo com sua aplicação
-			    }
+				String telefone = textTelefone.getText();
+				try {
+				    telefoneErrado = textTelefone.getText();
+				    
+				    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+				    telefone = telefoneLimpo;
+				    if (telefoneLimpo.matches("\\d{10,11}")) {
+				        telefone = telefoneLimpo;
+				    } else {
+				        System.out.println("Número de telefone inválido");
+				    }
+				} catch (NumberFormatException e1) {
+				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+				}
 				String cargo = (String) CBCargo.getSelectedItem();
 				Double comissao = Double.valueOf(textComissao.getText());
 				Double salario = Double.valueOf(textSalario.getText());
 
-				DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
-	            tableModel.setRowCount(0); // Remove todas as linhas da tabela
-				for (Funcionario funcs : funcdao.ListarFuncionarios()) {
-					String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
-							String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), funcs.getDataDeNasc(),
-							funcs.getEmail() };
-					tableModel.addRow(data);
-				}
-				
 				func1.setEndereco(end);
 				func1.setMatricula(matricula);
 				func1.setNome(nome);
 				func1.setEmail(email);
 				func1.setUsuario(usuario);
-				func1.setTelefone(Long.valueOf(telefoneLimpo));
+				func1.setTelefone(Long.valueOf(telefone));
 				func1.setNivelCargo(cargo);
 				func1.setSalario(salario);
 				func1.setComissao(comissao);
 
 				funcdao.atualizar(func1);
+				
+				int linhaSelecionada = table.getSelectedRow();
+		        if (linhaSelecionada != -1) {
+		            DefaultTableModel model = (DefaultTableModel) table.getModel();
+		            model.setValueAt(nome, linhaSelecionada, 1);
+		            model.setValueAt(usuario, linhaSelecionada, 2);
+		            model.setValueAt(telefone, linhaSelecionada, 3);
+		            model.setValueAt(cargo, linhaSelecionada, 4);
+		            model.setValueAt(email, linhaSelecionada, 6);
 
-				// tela de sucesso de ação
-				TelaSucesso sucesso = new TelaSucesso();
-				sucesso.setLocationRelativeTo(null);
-				sucesso.setVisible(true);
-				System.out.println("DEU CERTO");
+		            // Tela de sucesso de ação
+		            TelaSucesso sucesso = new TelaSucesso();
+		            sucesso.setLocationRelativeTo(null);
+		            sucesso.setVisible(true);
+		        }
 
 			}
 		});
@@ -190,14 +207,26 @@ public class TelaFuncionarios extends JFrame {
 				String nome = textNome.getText();
 				String cpfErrado = textCPF.getText();
 				String cpfSemHifens = cpfErrado.replaceAll("-", "");
-				Long cpf = Long.valueOf(cpfSemHifens.replaceAll(".", ""));
+				String cpfstring = cpfSemHifens.replaceAll("\\.", "");
+				Long cpf = Long.valueOf(cpfstring);
+				
 				String email = textEmail.getText();
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
-				String telefoneErrado = textTelefone.getText();
-				String telefoneSemParentese = telefoneErrado.replaceAll("(", "");
-				String telefoneSemParentese2 = telefoneSemParentese.replaceAll(")", "");
-				Long telefone = Long.valueOf(telefoneSemParentese2.replaceAll("-", ""));
+				String telefone = textTelefone.getText();
+				try {
+				    String telefoneErrado = textTelefone.getText();
+				    
+				    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+				    
+				    if (telefoneLimpo.matches("\\d{10,11}")) {
+				        telefone = telefoneLimpo;
+				    } else {
+				        System.out.println("Número de telefone inválido");
+				    }
+				} catch (NumberFormatException e1) {
+				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+				}
 				
 				String cargo = (String) CBCargo.getSelectedItem();
 				String dataNascimento = textDataNasc.getText();
@@ -208,8 +237,19 @@ public class TelaFuncionarios extends JFrame {
 				String estado = textEstado.getText();
 				String cidade = textCidade.getText();
 				String bairro = textBairro.getText();
-				String cepErrado = textCep.getText();
-				Long cep = Long.valueOf(cepErrado.replaceAll("-", ""));
+				Long cep = null;
+				try {
+				    String cepErrado = textCep.getText();
+				    
+				    String cepString = cepErrado.replaceAll("-", "");
+				    
+				    cep = Long.valueOf(cepString);
+				    
+				    
+				} catch (NumberFormatException e1) {
+				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+				}
+
 				Double salario = Double.valueOf(textSalario.getText());
 				Double comissao = Double.valueOf(textComissao.getText());
 
@@ -218,7 +258,7 @@ public class TelaFuncionarios extends JFrame {
 				func1.setEmail(email);
 				func1.setUsuario(usuario);
 				func1.setSenha(senha);
-				func1.setTelefone(telefone);
+				func1.setTelefone(Long.valueOf(telefone));
 				func1.setNivelCargo(cargo);
 				func1.setDataDeNasc(dataNascimentoCorreta);
 				func1.setSalario(salario);
@@ -259,7 +299,7 @@ public class TelaFuncionarios extends JFrame {
 					func1.setEndereco(end);
 					funcdao.inserir(func1);
 
-					String data[] = { nome, usuario, String.valueOf(telefone), cargo, dataNascimento, email };
+					String data[] = { nome, usuario, telefone, cargo, dataNascimento, email };
 
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
@@ -558,7 +598,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(-103, 403, 1463, 593);
+		scrollPane.setBounds(-103, 426, 1463, 593);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -588,7 +628,7 @@ public class TelaFuncionarios extends JFrame {
 				} else {
 					CBCargo.setSelectedIndex(0);
 				}
-				textCPF.setText(trocarPorAsteriscos(String.valueOf(funcC.getCpf())));
+				textCPF.setText(getName());
 				textSenha.setText(trocarPorAsteriscos(String.valueOf(funcC.getSenha())));
 				textEmail.setText(funcC.getEmail());
 				textSalario.setText(String.valueOf(funcC.getSalario()));
@@ -597,15 +637,21 @@ public class TelaFuncionarios extends JFrame {
 				textRua.setText(funcC.getEndereco().getRua());
 				textCidade.setText(funcC.getEndereco().getCidade());
 				textEstado.setText(funcC.getEndereco().getEstado());
+				textCPF.setText(String.valueOf(funcC.getCpf()));
 				textCep.setText(String.valueOf(funcC.getEndereco().getCep()));
 				textBairro.setText(funcC.getEndereco().getBairro());
 
 				textSenha.setEditable(false);
 				textCPF.setEditable(false);
 				textDataNasc.setEditable(false);
+				textRua.setEditable(false);
+				textBairro.setEditable(false);
+				textCidade.setEditable(false);
+				textEstado.setEditable(false);
+				textCep.setEditable(false);
 				textId.setText(String.valueOf(funcC.getMatricula()));
 
-				String[] partes = funcC.getDataDeNasc().split("-"); // Divide a string em partes usando o caractere "-"
+				String[] partes = funcC.getDataDeNasc().split("-");
 
 				String primeiroParte = partes[0];
 				String segundaParte = partes[1];

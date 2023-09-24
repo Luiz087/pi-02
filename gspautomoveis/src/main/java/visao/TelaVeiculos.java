@@ -400,14 +400,7 @@ public class TelaVeiculos extends JFrame {
 					comboBoxAno.setSelectedIndex(0);
 					cbAbs.setSelectedIndex(0);
 					comboBoxPromocao.setSelectedIndex(0);
-					
-					
-					
-					
-					
-					
-					
-					
+
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
@@ -416,7 +409,6 @@ public class TelaVeiculos extends JFrame {
 		});
 		
 		//
-
 		btnAdicionar.setForeground(Color.BLACK);
 		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 18));
 		btnAdicionar.setFocusPainted(false);
@@ -425,6 +417,69 @@ public class TelaVeiculos extends JFrame {
 		btnAdicionar.setBounds(940, 250, 251, 35);
 		contentPane.add(btnAdicionar);
 		
+		JButton btnEditar = new JButton("Atualizar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			TelaContinuar telaContinua = new TelaContinuar();
+			telaContinua.setLocationRelativeTo(null);
+			telaContinua.setVisible(true);
+			if (telaContinua.confirmado) {
+				Carro carro = new Carro();
+				String marca = txt_marca.getText();
+				String modelo = txt_modelo.getText();
+				Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
+				String tipo = txt_tipo.getText();
+				String combustivel = (String) Cbcombustivel.getSelectedItem();
+				Long quilometragem = Long.valueOf(txt_quilometragem.getText());
+				String fornecedor = (String) comboBoxFornecedor.getSelectedItem();
+				String potencia = txt_potencia.getText();
+				String cor = txt_cor.getText();
+				Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
+				Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
+				Double precoCarro = Double.valueOf(txt_preco.getText());
+				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;;
+			
+	
+				carro.setMarca(marca);
+				carro.setModelo(modelo);
+				carro.setNovo(novo);
+				carro.setAno(ano);
+				carro.setCor(cor);
+				carro.setTipo(tipo);
+				carro.setCombustivel(combustivel);
+				carro.setQuilometragem(quilometragem);
+				carro.setPotencia(potencia);
+				carro.setAbs(abs);
+				carro.setPrecoCarro(precoCarro);
+				carro.setPromocao(promocao);
+				
+				carrodao.atualizar(carro);
+				
+				TelaSucesso sucesso = new TelaSucesso();
+				sucesso.setLocationRelativeTo(null);
+				sucesso.setVisible(true);
+				
+			}
+			}
+		});
+		btnEditar.setForeground(Color.BLACK);
+		btnEditar.setFont(new Font("Dialog", Font.PLAIN, 18));
+		btnEditar.setFocusPainted(false);
+		btnEditar.setBorder(new RoundedBorder(10));
+		btnEditar.setBackground(new Color(255, 255, 0));
+		btnEditar.setBounds(679, 250, 251, 35);
+		contentPane.add(btnEditar);
+		
+		JButton btnExcluir_1 = new JButton("Excluir\r\n");
+		btnExcluir_1.setForeground(Color.BLACK);
+		btnExcluir_1.setFont(new Font("Dialog", Font.PLAIN, 18));
+		btnExcluir_1.setFocusPainted(false);
+		btnExcluir_1.setBorder(new RoundedBorder(10));
+		btnExcluir_1.setBackground(new Color(255, 0, 0));
+		btnExcluir_1.setBounds(778, 204, 251, 35);
+		contentPane.add(btnExcluir_1);
+		
 		
 	}
 }
+

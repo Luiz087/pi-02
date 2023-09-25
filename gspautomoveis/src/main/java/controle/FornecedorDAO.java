@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Endereco;
 import modelo.Fornecedor;
 import modelo.Funcionario;
 import modelo.IFornecedorDAO;
@@ -58,9 +59,8 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE fornecedores SET nomeFornecedor = ?" + "cnpjFornecedor = ?" + "telefoneFornecedor = ?"
-				+ "empresa = ?" + "marca = ? WHERE id_fornecedor = ?";
-		// chave estrangeira + "Endereco_id_endereco";
+		String query = "UPDATE fornecedores SET nomeFornecedor = ?," + "cnpjFornecedor = ?," + "telefoneFornecedor = ?,"
+				+ "empresa = ?," + "marca = ? WHERE id_fornecedor = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -90,7 +90,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		Connection con = c.conectar();
 
-		String query = "DELETE FROM fornecedores WHERE id_fornecedor" +f.getIdFornecedor();
+		String query = "DELETE FROM fornecedores WHERE id_fornecedor = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -126,24 +126,26 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
+				Integer idFornecedor = rs.getInt("id_fornecedor");
 				String NomeFornecedor = rs.getString("NomeFornecedor");
 				Long cnpjFornecedor = rs.getLong("cnpjFornecedor");
 				Long telefoneFornecedor = rs.getLong("telefoneFornecedor");
 				String Empresa = rs.getString("Empresa");
 				String Marca = rs.getString("Marca");
-				String Endereco = rs.getString("Cidade");
-				// Long Cep = rs.getLong("Cep");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
 				Fornecedor F = new Fornecedor();
-
+				
+				F.setIdFornecedor(idFornecedor);
 				F.setNomeFornecedor(NomeFornecedor);
 				F.setCnpjfornecedor(cnpjFornecedor);
 				F.setTelefoneFornecedor(telefoneFornecedor);
 				F.setEmpresa(Empresa);
 				F.setMarca(Marca);
 				//arrumar
-				F.setEndereco(Endereco);
-				// F.setCep(Cep);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
 
 				Fornecedores.add(F);
 
@@ -172,7 +174,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 	public Fornecedor clicado(Integer f) {
 		Fornecedor fornClicado = new Fornecedor();
 		for (Fornecedor forn : ListarFornecedores()) {
-			if (forn.getMarca().equals(f)) {
+			if (forn.getIdFornecedor().equals(f)) {
 
 				fornClicado = forn;
 
@@ -180,6 +182,47 @@ public class FornecedorDAO implements IFornecedorDAO {
 			}
 		}
 		return fornClicado;
+	}
+	
+	public Fornecedor buscaFornecedor(Fornecedor f) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM fornecedores WHERE id_fornecedor = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, f.getIdFornecedor());
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Long cnpj = rs.getLong("cnpjFornecedor");
+				String empresa = rs.getString("empresa");
+				Integer idEnd = rs.getInt("enderecos_id_endereco");
+				Integer idForn = rs.getInt("id_fornecedor");
+				String marca = rs.getString("marca");
+				String nomeForn = rs.getString("nomeFornecedor");
+				Long telefone = rs.getLong("telefoneFornecedor");
+
+				Endereco end = new Endereco();
+				end.setIdEndereco(idEnd);
+				Fornecedor F = new Fornecedor();
+				F.setCnpjfornecedor(cnpj);
+				F.setEmpresa(empresa);
+				F.setEndereco(end);
+				F.setIdFornecedor(idForn);
+				F.setMarca(marca);
+				F.setNomeFornecedor(nomeForn);
+				F.setTelefoneFornecedor(telefone);
+				return F;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
 	}
 	
 }

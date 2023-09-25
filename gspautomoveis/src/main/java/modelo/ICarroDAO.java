@@ -8,7 +8,7 @@ public interface ICarroDAO {
 
 	public boolean atualizar(Carro ca);
 
-	public boolean excluir(Carro ca);
+	public boolean excluir(Integer ca);
 
 	public ArrayList<Carro> ListarCarros();
 

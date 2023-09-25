@@ -82,11 +82,154 @@ public class TelaFornecedores extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
+		
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fornecedor forn1 = new Fornecedor();
+				Endereco end1 = new Endereco();
+
+				Integer id = Integer.valueOf(textId.getText());
+				String nome = textNome.getText();
+				Long telefone = Long.parseLong(textTel.getText());
+				String empresa = textEmpresa.getText();
+				Long Cep = Long.parseLong(textCep.getText());
+				Long Cnpj = Long.parseLong(textCNPJ.getText());
+				String estado = textEstado.getText();
+				String cidade = textCidade.getText();
+				String rua = textRua.getText();
+				String bairro = textBairro.getText();
+				String marca = textMarca.getText();
+
+				end1.setBairro(bairro);
+				end1.setCep(Cep);
+				end1.setCidade(cidade);
+				end1.setEstado(estado);
+				end1.setRua(rua);
+
+				forn1.setMarca(marca);
+				forn1.setIdFornecedor(id);
+				forn1.setNomeFornecedor(nome);
+				forn1.setTelefoneFornecedor(telefone);
+				forn1.setEmpresa(empresa);
+				forn1.setCnpjfornecedor(Cnpj);
+				forn1.setEndereco(end1);
+
+				forndao.atualizar(forn1);
+
+				int linhaSelecionada = table.getSelectedRow();
+		        if (linhaSelecionada != -1) {
+		            DefaultTableModel model = (DefaultTableModel) table.getModel();
+		            model.setValueAt(nome, linhaSelecionada, 1);
+		            model.setValueAt(telefone, linhaSelecionada, 2);
+		            model.setValueAt(Cnpj, linhaSelecionada, 3);
+		            model.setValueAt(marca, linhaSelecionada, 4);
+		            model.setValueAt(empresa, linhaSelecionada, 6);
+
+		            // Tela de sucesso de ação
+		            TelaSucesso sucesso = new TelaSucesso();
+		            sucesso.setLocationRelativeTo(null);
+		            sucesso.setVisible(true);
+		        }
+			}
+		});
+		btnAtualizar.setForeground(Color.BLACK);
+		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 20));
+		btnAtualizar.setFocusPainted(false);
+		btnAtualizar.setBorder(new RoundedBorder(10));
+		btnAtualizar.setBackground(new Color(255, 255, 0));
+		btnAtualizar.setBounds(982, 360, 251, 35);
+		contentPane.add(btnAtualizar);
+		
+		JButton btnAdicionar = new JButton("Adicionar\r\n");
+		btnAdicionar.setBackground(new Color(0, 255, 0));
+		btnAdicionar.setForeground(new Color(0, 0, 0));
+		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
+
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (textNome.getText().equals("") || textTel.getText().equals("") || textCNPJ.getText().equals("")
+						|| textMarca.getText().equals("") || textCidade.getText().equals("")
+						|| textBairro.getText().equals("") || textEstado.getText().equals("")
+						|| textCep.getText().equals("") || textRua.getText().equals("")) {
+					TelaErro telaErro = new TelaErro();
+					telaErro.setLocationRelativeTo(null);
+					telaErro.setVisible(true);
+				} else {
+					String data[] = { textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(),
+							textCidade.getText(), textEmpresa.getText() };
+
+					// criar as linhas quando adicionar o fornecedor
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+					tbltable.addRow(data);
+
+					fornec.setNomeFornecedor(textNome.getText());
+					fornec.setEmpresa(textEmpresa.getText());
+					fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
+					fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
+					fornec.setMarca(textMarca.getText());
+					end.setCidade(textCidade.getText());
+					end.setRua(textRua.getText());
+					end.setBairro(textBairro.getText());
+					end.setEstado(textEstado.getText());
+					end.setCep(Long.valueOf(textCep.getText()));
+					fornec.setEndereco(end);
+
+					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+					if (verificacaoEnd == null) {
+						/*
+						 * Se o endereco for null Significa que nao encontrou nada no BD
+						 */
+						Integer idend = enddao.inserir(end);
+						end.setIdEndereco(idend);
+					} else {
+						/*
+						 * Se o endereco nao eh null significa que ja esta cadastrado
+						 */
+						end.setIdEndereco(verificacaoEnd.getIdEndereco());
+					}
+
+					fornec.setEndereco(end);
+					forndao.inserir(fornec);
+
+					System.out.println("Passou");
+
+					System.out.print("Deu boa");
+					// limpar apos clicar no botão
+					textNome.setText("");
+					textTel.setText("");
+					textCNPJ.setText("");
+					textMarca.setText("");
+					textCidade.setText("");
+					textBairro.setText("");
+					textEstado.setText("");
+					textRua.setText("");
+					textCep.setText("");
+					textEmpresa.setText("");
+
+				}
+			}
+		});
+
+		btnAdicionar.setBounds(982, 360, 251, 35);
+		btnAdicionar.setFocusPainted(false);
+		btnAdicionar.setBorder(new RoundedBorder(10));
+
+		contentPane.add(btnAdicionar);
+		
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnAtualizar.setVisible(false);
+				btnAdicionar.setVisible(true);
+			}
+		});
 
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Logo sem fundo.png")));
@@ -179,82 +322,7 @@ public class TelaFornecedores extends JFrame {
 		textCidade.setBounds(1284, 130, 195, 50);
 		contentPane.add(textCidade);
 
-		JButton btnAdicionar = new JButton("Adicionar\r\n");
-		btnAdicionar.setBackground(new Color(0, 255, 0));
-		btnAdicionar.setForeground(new Color(0, 0, 0));
-		btnAdicionar.setFont(new Font("Krona One", Font.PLAIN, 20));
-
-		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (textNome.getText().equals("") || textTel.getText().equals("") || textCNPJ.getText().equals("")
-						|| textMarca.getText().equals("") || textCidade.getText().equals("")
-						|| textBairro.getText().equals("") || textEstado.getText().equals("")
-						|| textCep.getText().equals("") || textRua.getText().equals("")) {
-					TelaErro telaErro = new TelaErro();
-					telaErro.setLocationRelativeTo(null);
-					telaErro.setVisible(true);
-				} else {
-					String data[] = { textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(),
-							textCidade.getText(), textBairro.getText(), textEstado.getText(), textCep.getText(),
-							textRua.getText() };
-
-					// criar as linhas quando adicionar o fornecedor
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
-
-					fornec.setNomeFornecedor(textNome.getText());
-					fornec.setEmpresa(textEmpresa.getText());
-					fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
-					fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
-					fornec.setMarca(textMarca.getText());
-					end.setCidade(textCidade.getText());
-					end.setRua(textRua.getText());
-					end.setBairro(textBairro.getText());
-					end.setEstado(textEstado.getText());
-					end.setCep(Long.valueOf(textCep.getText()));
-					fornec.setEndereco(end);
-
-					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-					if (verificacaoEnd == null) {
-						/*
-						 * Se o endereco for null Significa que nao encontrou nada no BD
-						 */
-						Integer idend = enddao.inserir(end);
-						end.setIdEndereco(idend);
-					} else {
-						/*
-						 * Se o endereco nao eh null significa que ja esta cadastrado
-						 */
-						end.setIdEndereco(verificacaoEnd.getIdEndereco());
-					}
-
-					fornec.setEndereco(end);
-					forndao.inserir(fornec);
-
-					System.out.println("Passou");
-
-					System.out.print("Deu boa");
-					// limpar apos clicar no botão
-					textNome.setText("");
-					textTel.setText("");
-					textCNPJ.setText("");
-					textMarca.setText("");
-					textCidade.setText("");
-					textBairro.setText("");
-					textEstado.setText("");
-					textRua.setText("");
-					textCep.setText("");
-					textEmpresa.setText("");
-
-				}
-			}
-		});
-
-		btnAdicionar.setBounds(982, 360, 251, 35);
-		btnAdicionar.setFocusPainted(false);
-		btnAdicionar.setBorder(new RoundedBorder(10));
-
-		contentPane.add(btnAdicionar);
+		
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
@@ -397,7 +465,7 @@ public class TelaFornecedores extends JFrame {
 
 		// posição do Jpanel
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(420, 441, 863, 535);
+		scrollPane.setBounds(435, 422, 925, 535);
 		contentPane.add(scrollPane);
 		// cadastrar nome das colunas
 		table = new JTable();
@@ -405,41 +473,41 @@ public class TelaFornecedores extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int setar = table.getSelectedRow();
-				
+
 				Fornecedor fornC = new Fornecedor();
 				Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
 				fornC = forndao.clicado(IdFornecedor);
-				
+				fornC.setEndereco(enddao.buscaEndereco(fornC.getEndereco().getIdEndereco()));
+
 				textId.setText(String.valueOf(fornC.getIdFornecedor()));
-				
 				textNome.setText(fornC.getNomeFornecedor());
 				textTel.setText(String.valueOf(fornC.getTelefoneFornecedor()));
 				textMarca.setText(fornC.getMarca());
 				textCidade.setText(fornC.getEndereco().getCidade());
 				textCNPJ.setText(String.valueOf(fornC.getCnpjfornecedor()));
 				textEmpresa.setText(fornC.getEmpresa());
-				
+
 				textBairro.setText(fornC.getEndereco().getBairro());
 				textEstado.setText(fornC.getEndereco().getEstado());
 				textRua.setText(fornC.getEndereco().getRua());
 				textCep.setText(String.valueOf(fornC.getEndereco().getCep()));
-				
+
 			}
 		});
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(new Object[][] {},	new String[] {"ID", "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", 
-				"A\u00E7\u00F5es"}));
-		for(Fornecedor forncs : forndao.ListarFornecedores()){
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "ID", "Nome", "Telefone", "CNPJ", "Marca", "Cidade", "Empresa", "A\u00E7\u00F5es" }));
+		for (Fornecedor forncs : forndao.ListarFornecedores()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+			Endereco endF = enddao.buscaEndereco(forncs.getIdFornecedor());
 			String data[] = { String.valueOf(forncs.getIdFornecedor()), forncs.getNomeFornecedor(),
-					String.valueOf(forncs.getTelefoneFornecedor()), String.valueOf(forncs.getCnpjfornecedor()), forncs.getMarca(),
-					forncs.getEndereco().getCidade(), forncs.getEmpresa()};
-			//forncs.getEndereco n está funcionando, arruma no fornecedorDAO
+					String.valueOf(forncs.getTelefoneFornecedor()), String.valueOf(forncs.getCnpjfornecedor()),
+					forncs.getMarca(), endF.getCidade(), forncs.getEmpresa() };
 			tblModel.addRow(data);
 		}
-		
-		table.getColumnModel().getColumn(7).setPreferredWidth(15);
+
+		table.getColumnModel().getColumn(7).setPreferredWidth(155);
 
 		JLabel lblRua = new JLabel("Rua");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
@@ -496,68 +564,53 @@ public class TelaFornecedores extends JFrame {
 
 			@Override
 			public void onEdit(int row) {
-				System.out.print("Edite a linha: " + row);
-				
-				Fornecedor forn = new Fornecedor();
-					
-				 String nome = textNome.getName();
-				 Long telefone = Long.parseLong(textTel.getText());
-				 String empresa = textEmpresa.getText();
-				 Long Cep = Long.parseLong(textCep.getText());
-				 Long Cnpj = Long.parseLong(textCNPJ.getText());
-				 String estado = textEstado.getText();
-				 String cidade = textCidade.getText();
-				 String rua = textRua.getText();				 
-				 
-				 
-				 
-				 forn.setNomeFornecedor(nome);
-				 forn.setTelefoneFornecedor(telefone);
-				 forn.setEmpresa(empresa);
-				 forn.setCnpjfornecedor(Cnpj);
-				 forn.setEndereco(end);
-				 
-				 
-				 
-				 forndao.atualizar(forn);
-				 
-				// tela de sucesso de ação
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
+				btnAtualizar.setVisible(true);
+				btnAdicionar.setVisible(false);
+				textRua.setEditable(false);
+				textBairro.setEditable(false);
+				textCidade.setEditable(false);
+				textEstado.setEditable(false);
+				textCep.setEditable(false);
 			}
 
 			@Override
-			public void onDelete(int row) {				
-				
-				int linhaSelecionada = table.getSelectedRow();
-				Integer IdFornecedor = (Integer) table.getValueAt(linhaSelecionada, 0);
-				
-				// select no banco só pelo nome da IdFornecedor
-				// buscaFuncionarioPorIdFornecedor(IdFornecedor);
-				// metodo retorna um Fornecedor
-				
-				Fornecedor fornDelete = new Fornecedor();
-				fornDelete = forndao.clicado(IdFornecedor);
-				
-				// quer excluir mesmo?
-				TelaContinuar telaContinua = new TelaContinuar();
-				telaContinua.setLocationRelativeTo(null);
-				telaContinua.setVisible(true);
-				
-				if (telaContinua.confirmado) {
-				forndao.excluir(fornDelete);
-				
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.removeRow(row);
-				
-				// tela de sucesso de ação
-				TelaSucesso sucesso = new TelaSucesso();
-				sucesso.setLocationRelativeTo(null);
-				sucesso.setVisible(true);
-			} else {
-				System.out.println("Não removeu");
-			}
+			public void onDelete(int row) {
+
+				try {
+					int linhaSelecionada = table.getSelectedRow();
+					Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
+
+					// select no banco só pelo nome da IdFornecedor
+					// buscaFuncionarioPorIdFornecedor(IdFornecedor);
+					// metodo retorna um Fornecedor
+
+					Fornecedor fornDelete = new Fornecedor();
+					fornDelete = forndao.clicado(IdFornecedor);
+
+					// quer excluir mesmo?
+					/*TelaContinuar telaContinua = new TelaContinuar();
+					telaContinua.setLocationRelativeTo(null);
+					telaContinua.setVisible(true);*/
+
+					//if (telaContinua.confirmado) {
+						forndao.excluir(fornDelete);
+
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.removeRow(row);
+
+						// tela de sucesso de ação
+						TelaSucesso sucesso = new TelaSucesso();
+						sucesso.setLocationRelativeTo(null);
+						sucesso.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+					TelaErro telaErro = new TelaErro();
+					telaErro.setLocationRelativeTo(null);
+					telaErro.setVisible(true);
+				}
+				//} else {
+				//	System.out.println("Não removeu");
+				//}
 			}
 
 			@Override
@@ -569,18 +622,21 @@ public class TelaFornecedores extends JFrame {
 		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
 		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
-		
+
 		JLabel lblID = new JLabel("ID:");
 		lblID.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblID.setBounds(369, 313, 116, 70);
 		contentPane.add(lblID);
-		
+
 		textId = new JTextField();
 		textId.setEditable(false);
 		textId.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textId.setColumns(10);
 		textId.setBounds(497, 330, 127, 50);
 		contentPane.add(textId);
+		
+		btnAtualizar.setVisible(false);
+		btnAdicionar.setVisible(true);
 
 	}
 }

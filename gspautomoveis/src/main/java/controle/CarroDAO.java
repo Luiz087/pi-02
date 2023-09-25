@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Carro;
+import modelo.Fornecedor;
 import modelo.ICarroDAO;
 
 public class CarroDAO implements ICarroDAO {
@@ -43,8 +44,8 @@ public class CarroDAO implements ICarroDAO {
 			ps.setBoolean(10, ca.getAbs());
 			ps.setDouble(11, ca.getPrecoCarro());
 			ps.setBoolean(12, ca.getPromocao());
-			// chave estrangeira fornecedor_id_fornecedor
-
+			ps.setInt(13, ca.getFornecedor().getIdFornecedor());
+			
 			ps.executeUpdate();
 
 			return true;
@@ -65,7 +66,7 @@ public class CarroDAO implements ICarroDAO {
 
 		String query = "UPDATE Carros SET marca = ?, " + "modelo = ?, " + "novo = ?, " + "ano = ?, " + "cor = ?, "
 				+ "tipo = ?, " + "combustivel = ?, " + "quilometragem = ?, " + "potencia = ?, " + "abs = ?, "
-				+ "precoCarro = ?, " + "promocao = ? WHERE id_carro = ?";
+				+ "precoCarro = ?, " + "promocao = ?," + "fornecedor_id_fornecedor = ? WHERE id_carro = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -83,7 +84,8 @@ public class CarroDAO implements ICarroDAO {
 			ps.setBoolean(10, ca.getAbs());
 			ps.setDouble(11, ca.getPrecoCarro());
 			ps.setBoolean(12, ca.getPromocao());
-			ps.setInt(13, ca.getId_carro());
+			ps.setInt(13, ca.getFornecedor().getIdFornecedor());
+			ps.setInt(14, ca.getId_carro());
 
 			ps.executeUpdate();
 
@@ -97,7 +99,7 @@ public class CarroDAO implements ICarroDAO {
 		return false;
 	}
 
-	public boolean excluir(Carro ca) {
+	public boolean excluir(Integer ca) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -108,7 +110,7 @@ public class CarroDAO implements ICarroDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setInt(1, ca.getId_carro());
+			ps.setInt(1, ca);
 
 			ps.executeUpdate();
 
@@ -138,6 +140,7 @@ public class CarroDAO implements ICarroDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
+				Integer id = rs.getInt("id_carro");
 				String marca = rs.getString("marca");
 				String modelo = rs.getString("modelo");
 				Boolean novo = rs.getBoolean("novo");
@@ -150,8 +153,13 @@ public class CarroDAO implements ICarroDAO {
 				Boolean abs = rs.getBoolean("abs");
 				Double precoCarro = rs.getDouble("precoCarro");
 				Boolean promocao = rs.getBoolean("promocao");
+				Integer idForn = rs.getInt("fornecedor_id_fornecedor");
 
 				Carro C = new Carro();
+				Fornecedor forn = new Fornecedor();
+				forn.setIdFornecedor(idForn);
+				C.setIdCarro(id);
+				C.setFornecedor(forn);
 				C.setMarca(marca);
 				C.setModelo(modelo);
 				C.setNovo(novo);
@@ -177,6 +185,19 @@ public class CarroDAO implements ICarroDAO {
 		}
 
 		return Carros;
+	}
+	
+	public Carro clicado(Integer id) {
+		Carro carroClicado = new Carro();
+		for (Carro carro : ListarCarros()) {
+			if (carro.getIdCarro().equals(id)) {
+
+				carroClicado = carro;
+
+				return carroClicado;
+			}
+		}
+		return carroClicado;
 	}
 
 }

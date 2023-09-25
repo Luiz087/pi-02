@@ -184,4 +184,45 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return fornClicado;
 	}
 	
+	public Fornecedor buscaFornecedor(Fornecedor f) {
+		Conexao c = Conexao.getInstancia();
+		Connection con = c.conectar();
+
+		String query = "SELECT * FROM fornecedores WHERE id_fornecedor = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, f.getIdFornecedor());
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Long cnpj = rs.getLong("cnpjFornecedor");
+				String empresa = rs.getString("empresa");
+				Integer idEnd = rs.getInt("enderecos_id_endereco");
+				Integer idForn = rs.getInt("id_fornecedor");
+				String marca = rs.getString("marca");
+				String nomeForn = rs.getString("nomeFornecedor");
+				Long telefone = rs.getLong("telefoneFornecedor");
+
+				Endereco end = new Endereco();
+				end.setIdEndereco(idEnd);
+				Fornecedor F = new Fornecedor();
+				F.setCnpjfornecedor(cnpj);
+				F.setEmpresa(empresa);
+				F.setEndereco(end);
+				F.setIdFornecedor(idForn);
+				F.setMarca(marca);
+				F.setNomeFornecedor(nomeForn);
+				F.setTelefoneFornecedor(telefone);
+				return F;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return null;
+	}
+	
 }

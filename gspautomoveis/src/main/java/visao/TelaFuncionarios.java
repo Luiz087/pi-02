@@ -83,23 +83,7 @@ public class TelaFuncionarios extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.setVisible(true);
 		btnAtualizar.setVisible(false);
-		contentPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// Quando clicar na página, os botões e textFields desativados voltam a ser
-				// ativos e editaveis
-				btnAdicionar.setVisible(true);
-				btnAtualizar.setVisible(false);
-				textSenha.setEditable(true);
-				textCPF.setEditable(true);
-				textDataNasc.setEditable(true);
-				textRua.setEditable(true);
-				textCidade.setEditable(true);
-				textCep.setEditable(true);
-				textEstado.setEditable(true);
-				textBairro.setEditable(true);
-			}
-		});
+		
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -525,7 +509,7 @@ public class TelaFuncionarios extends JFrame {
 
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblDataDeNascimento.setBounds(1241, 152, 332, 38);
+		lblDataDeNascimento.setBounds(1252, 152, 332, 38);
 		contentPane.add(lblDataDeNascimento);
 
 		JLabel lblCargo = new JLabel("Cargo:");
@@ -568,7 +552,7 @@ public class TelaFuncionarios extends JFrame {
 		textTelefone = new JFormattedTextField(mascaraTel);
 		textTelefone.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTelefone.setColumns(10);
-		textTelefone.setBounds(420, 345, 345, 38);
+		textTelefone.setBounds(1523, 34, 345, 38);
 		contentPane.add(textTelefone);
 
 		textSenha = new JTextField();
@@ -593,12 +577,12 @@ public class TelaFuncionarios extends JFrame {
 		textDataNasc = new JFormattedTextField(mascaraData);
 		textDataNasc.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textDataNasc.setColumns(10);
-		textDataNasc.setBounds(784, 345, 274, 38);
+		textDataNasc.setBounds(1594, 152, 274, 38);
 		contentPane.add(textDataNasc);
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(388, 403, 961, 257);
+		scrollPane.setBounds(414, 403, 1454, 560);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -724,7 +708,7 @@ public class TelaFuncionarios extends JFrame {
 		textCep =  new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
-		textCep.setBounds(725, 307, 274, 38);
+		textCep.setBounds(1594, 93, 274, 38);
 		contentPane.add(textCep);
 
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
@@ -735,7 +719,7 @@ public class TelaFuncionarios extends JFrame {
 		textCidade = new JTextField();
 		textCidade.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCidade.setColumns(10);
-		textCidade.setBounds(1640, 211, 222, 38);
+		textCidade.setBounds(1646, 211, 222, 38);
 		contentPane.add(textCidade);
 
 		textComissao = new JTextField();
@@ -809,6 +793,41 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
 		table.setRowHeight(60);
 
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// Quando clicar na página, os botões e textFields desativados voltam a ser
+				// ativos e editaveis
+				btnAdicionar.setVisible(true);
+				btnAtualizar.setVisible(false);
+				textSenha.setEditable(true);
+				textCPF.setEditable(true);
+				textDataNasc.setEditable(true);
+				textRua.setEditable(true);
+				textCidade.setEditable(true);
+				textCep.setEditable(true);
+				textEstado.setEditable(true);
+				textBairro.setEditable(true);
+				CBCargo.setSelectedIndex(0);
+				
+				textId.setText("");
+				textNome.setText("");
+				textEmail.setText("");
+				textUsuario.setText("");
+				textTelefone.setText("");
+				textRua.setText("");
+				textBairro.setText("");
+				textCidade.setText("");
+				textEstado.setText("");
+				textCep.setText("");
+				textDataNasc.setText("");
+				textCPF.setText("");
+				textSalario.setText("");
+				textComissao.setText("");
+				textSenha.setText("");
+			}
+		});
+		
 		JLabel lblIdFunc = new JLabel("Id:");
 		lblIdFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblIdFunc.setBounds(1154, 271, 40, 38);

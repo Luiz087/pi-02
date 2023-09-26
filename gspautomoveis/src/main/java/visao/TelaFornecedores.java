@@ -82,13 +82,13 @@ public class TelaFornecedores extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
-		
+
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,19 +124,19 @@ public class TelaFornecedores extends JFrame {
 				forndao.atualizar(forn1);
 
 				int linhaSelecionada = table.getSelectedRow();
-		        if (linhaSelecionada != -1) {
-		            DefaultTableModel model = (DefaultTableModel) table.getModel();
-		            model.setValueAt(nome, linhaSelecionada, 1);
-		            model.setValueAt(telefone, linhaSelecionada, 2);
-		            model.setValueAt(Cnpj, linhaSelecionada, 3);
-		            model.setValueAt(marca, linhaSelecionada, 4);
-		            model.setValueAt(empresa, linhaSelecionada, 6);
+				if (linhaSelecionada != -1) {
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					model.setValueAt(nome, linhaSelecionada, 1);
+					model.setValueAt(telefone, linhaSelecionada, 2);
+					model.setValueAt(Cnpj, linhaSelecionada, 3);
+					model.setValueAt(marca, linhaSelecionada, 4);
+					model.setValueAt(empresa, linhaSelecionada, 6);
 
-		            // Tela de sucesso de ação
-		            TelaSucesso sucesso = new TelaSucesso();
-		            sucesso.setLocationRelativeTo(null);
-		            sucesso.setVisible(true);
-		        }
+					// Tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				}
 			}
 		});
 		btnAtualizar.setForeground(Color.BLACK);
@@ -146,7 +146,7 @@ public class TelaFornecedores extends JFrame {
 		btnAtualizar.setBackground(new Color(255, 255, 0));
 		btnAtualizar.setBounds(982, 360, 251, 35);
 		contentPane.add(btnAtualizar);
-		
+
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.setBackground(new Color(0, 255, 0));
 		btnAdicionar.setForeground(new Color(0, 0, 0));
@@ -162,7 +162,6 @@ public class TelaFornecedores extends JFrame {
 					telaErro.setLocationRelativeTo(null);
 					telaErro.setVisible(true);
 				} else {
-					
 
 					fornec.setNomeFornecedor(textNome.getText());
 					fornec.setEmpresa(textEmpresa.getText());
@@ -192,9 +191,9 @@ public class TelaFornecedores extends JFrame {
 
 					fornec.setEndereco(end);
 					Integer id = forndao.inserir(fornec);
-					
-					String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(),
-							textCidade.getText(), textEmpresa.getText() };
+
+					String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(), textCNPJ.getText(),
+							textMarca.getText(), textCidade.getText(), textEmpresa.getText() };
 
 					// criar as linhas quando adicionar o fornecedor
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
@@ -224,12 +223,24 @@ public class TelaFornecedores extends JFrame {
 		btnAdicionar.setBorder(new RoundedBorder(10));
 
 		contentPane.add(btnAdicionar);
-		
+
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnAtualizar.setVisible(false);
 				btnAdicionar.setVisible(true);
+				
+				textId.setText("");
+				textNome.setText("");
+				textTel.setText("");
+				textCep.setText("");
+				textCNPJ.setText("");
+				textEstado.setText("");
+				textCidade.setText("");
+				textRua.setText("");
+				textBairro.setText("");
+				textMarca.setText("");
+				
 			}
 		});
 
@@ -238,7 +249,7 @@ public class TelaFornecedores extends JFrame {
 		lblNewLabel_1_1.setBounds(78, 193, 175, 190);
 		contentPane.add(lblNewLabel_1_1);
 
-		JLabel lblEmpresa = new JLabel("Empresa");
+		JLabel lblEmpresa = new JLabel("Empresa:");
 		lblEmpresa.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblEmpresa.setBounds(859, 205, 199, 70);
 		contentPane.add(lblEmpresa);
@@ -260,14 +271,14 @@ public class TelaFornecedores extends JFrame {
 		lblNome.setBounds(349, 26, 136, 88);
 		contentPane.add(lblNome);
 
-		JLabel lblCnpj = new JLabel("CNPJ");
+		JLabel lblCnpj = new JLabel("CNPJ:");
 		lblCnpj.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCnpj.setBounds(369, 205, 116, 70);
+		lblCnpj.setBounds(371, 205, 116, 70);
 		contentPane.add(lblCnpj);
 
-		JLabel lblCidade = new JLabel("Cidade");
+		JLabel lblCidade = new JLabel("Cidade:");
 		lblCidade.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCidade.setBounds(1140, 116, 143, 70);
+		lblCidade.setBounds(1134, 116, 159, 70);
 		contentPane.add(lblCidade);
 
 		JLabel lblMarca = new JLabel("Marca");
@@ -321,10 +332,8 @@ public class TelaFornecedores extends JFrame {
 		textCidade = new JTextField();
 		textCidade.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCidade.setColumns(10);
-		textCidade.setBounds(1284, 130, 195, 50);
+		textCidade.setBounds(1304, 130, 175, 50);
 		contentPane.add(textCidade);
-
-		
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
@@ -467,7 +476,7 @@ public class TelaFornecedores extends JFrame {
 
 		// posição do Jpanel
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(435, 422, 925, 245);
+		scrollPane.setBounds(369, 422, 1484, 550);
 		contentPane.add(scrollPane);
 		// cadastrar nome das colunas
 		table = new JTable();
@@ -513,42 +522,42 @@ public class TelaFornecedores extends JFrame {
 
 		table.getColumnModel().getColumn(7).setPreferredWidth(155);
 
-		JLabel lblRua = new JLabel("Rua");
+		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblRua.setBounds(1401, 205, 92, 76);
 		contentPane.add(lblRua);
 
-		JLabel lblEstado = new JLabel("Estado");
+		JLabel lblEstado = new JLabel("Estado:");
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblEstado.setBounds(349, 113, 150, 70);
+		lblEstado.setBounds(349, 113, 151, 70);
 		contentPane.add(lblEstado);
 
-		JLabel lblBairro = new JLabel("Bairro");
+		JLabel lblBairro = new JLabel("Bairro:");
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblBairro.setBounds(1501, 116, 118, 70);
+		lblBairro.setBounds(1489, 116, 136, 70);
 		contentPane.add(lblBairro);
 
-		JLabel lblCep = new JLabel("CEP");
+		JLabel lblCep = new JLabel("CEP:");
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCep.setBounds(857, 121, 101, 60);
+		lblCep.setBounds(846, 121, 93, 60);
 		contentPane.add(lblCep);
 
 		textEstado = new JTextField();
 		textEstado.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textEstado.setColumns(10);
-		textEstado.setBounds(497, 126, 335, 50);
+		textEstado.setBounds(508, 126, 324, 50);
 		contentPane.add(textEstado);
 
 		textBairro = new JTextField();
 		textBairro.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textBairro.setColumns(10);
-		textBairro.setBounds(1629, 127, 265, 50);
+		textBairro.setBounds(1629, 127, 224, 50);
 		contentPane.add(textBairro);
 
 		textRua = new JTextField();
 		textRua.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textRua.setColumns(10);
-		textRua.setBounds(1503, 219, 391, 50);
+		textRua.setBounds(1503, 219, 350, 50);
 		contentPane.add(textRua);
 
 		/*
@@ -588,33 +597,36 @@ public class TelaFornecedores extends JFrame {
 					// buscaFuncionarioPorIdFornecedor(IdFornecedor);
 					// metodo retorna um Fornecedor
 
-					/*Fornecedor fornDelete = new Fornecedor();
-					fornDelete = forndao.buscaFornecedor(IdFornecedor);*/
+					/*
+					 * Fornecedor fornDelete = new Fornecedor(); fornDelete =
+					 * forndao.buscaFornecedor(IdFornecedor);
+					 */
 
 					// quer excluir mesmo?
-					/*TelaContinuar telaContinua = new TelaContinuar();
-					telaContinua.setLocationRelativeTo(null);
-					telaContinua.setVisible(true);*/
+					/*
+					 * TelaContinuar telaContinua = new TelaContinuar();
+					 * telaContinua.setLocationRelativeTo(null); telaContinua.setVisible(true);
+					 */
 
-					//if (telaContinua.confirmado) {
-						forndao.excluir(IdFornecedor);
+					// if (telaContinua.confirmado) {
+					forndao.excluir(IdFornecedor);
 
-						DefaultTableModel model = (DefaultTableModel) table.getModel();
-						model.removeRow(row);
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					model.removeRow(row);
 
-						// tela de sucesso de ação
-						TelaSucesso sucesso = new TelaSucesso();
-						sucesso.setLocationRelativeTo(null);
-						sucesso.setVisible(true);
+					// tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 					TelaErro telaErro = new TelaErro();
 					telaErro.setLocationRelativeTo(null);
 					telaErro.setVisible(true);
 				}
-				//} else {
-				//	System.out.println("Não removeu");
-				//}
+				// } else {
+				// System.out.println("Não removeu");
+				// }
 			}
 
 			@Override
@@ -629,7 +641,7 @@ public class TelaFornecedores extends JFrame {
 
 		JLabel lblID = new JLabel("ID:");
 		lblID.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblID.setBounds(369, 313, 116, 70);
+		lblID.setBounds(435, 316, 50, 70);
 		contentPane.add(lblID);
 
 		textId = new JTextField();
@@ -638,7 +650,7 @@ public class TelaFornecedores extends JFrame {
 		textId.setColumns(10);
 		textId.setBounds(497, 330, 127, 50);
 		contentPane.add(textId);
-		
+
 		btnAtualizar.setVisible(false);
 		btnAdicionar.setVisible(true);
 

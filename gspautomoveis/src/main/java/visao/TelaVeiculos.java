@@ -73,6 +73,8 @@ public class TelaVeiculos extends JFrame {
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
 
+		boolean btnAdicionarAtivado = true;
+
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -82,7 +84,7 @@ public class TelaVeiculos extends JFrame {
 		JComboBox cbAbs = new JComboBox();
 		cbAbs.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
 		cbAbs.setFont(new Font("Krona One", Font.PLAIN, 24));
-		cbAbs.setBounds(1009, 92, 120, 28);
+		cbAbs.setBounds(1492, 115, 120, 28);
 		contentPane.add(cbAbs);
 
 		JLabel lblNewLabel_2_1_1_1_1_1_1_1 = new JLabel("");
@@ -198,7 +200,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(371, 285, 989, 440);
+		scrollPane.setBounds(395, 285, 1455, 692);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -212,18 +214,18 @@ public class TelaVeiculos extends JFrame {
 
 		JLabel lblMarca = new JLabel("Marca:");
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca.setBounds(371, 58, 109, 23);
+		lblMarca.setBounds(371, 49, 109, 23);
 		contentPane.add(lblMarca);
 
 		JLabel lblAno = new JLabel("Ano:");
 		lblAno.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblAno.setBounds(1139, 92, 85, 27);
+		lblAno.setBounds(1622, 115, 85, 27);
 		contentPane.add(lblAno);
 
 		JComboBox Cbcombustivel = new JComboBox();
 		Cbcombustivel.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Gasolina", "Alcool", "Diesel", "Gasolina e Alcool", "Gasolina e Eletrico" }));
-		Cbcombustivel.setBounds(923, 133, 164, 25);
+		Cbcombustivel.setBounds(923, 118, 164, 25);
 		contentPane.add(Cbcombustivel);
 
 		JLabel lblCor = new JLabel("Cor:");
@@ -238,12 +240,12 @@ public class TelaVeiculos extends JFrame {
 
 		JLabel lblTipo = new JLabel("Tipo:");
 		lblTipo.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTipo.setBounds(691, 49, 85, 35);
+		lblTipo.setBounds(691, 45, 85, 35);
 		contentPane.add(lblTipo);
 
 		JLabel lblCombustivel = new JLabel("Combustível:");
 		lblCombustivel.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCombustivel.setBounds(713, 133, 214, 25);
+		lblCombustivel.setBounds(713, 118, 214, 25);
 		contentPane.add(lblCombustivel);
 
 		JLabel lblQuilometragem = new JLabel("Quilometragem:");
@@ -254,18 +256,18 @@ public class TelaVeiculos extends JFrame {
 		txt_marca = new JTextField();
 		txt_marca.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_marca.setColumns(10);
-		txt_marca.setBounds(482, 58, 199, 26);
+		txt_marca.setBounds(482, 49, 199, 26);
 		contentPane.add(txt_marca);
 
 		JLabel lblModelo = new JLabel("Modelo:");
 		lblModelo.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblModelo.setBounds(371, 133, 132, 23);
+		lblModelo.setBounds(371, 118, 132, 23);
 		contentPane.add(lblModelo);
 
 		txt_modelo = new JTextField();
 		txt_modelo.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_modelo.setColumns(10);
-		txt_modelo.setBounds(504, 131, 199, 26);
+		txt_modelo.setBounds(504, 116, 199, 26);
 		contentPane.add(txt_modelo);
 
 		JComboBox comboBoxNovo = new JComboBox();
@@ -279,7 +281,7 @@ public class TelaVeiculos extends JFrame {
 				"2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005",
 				"2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992",
 				"1991", "1990" }));
-		comboBoxAno.setBounds(1223, 92, 85, 23);
+		comboBoxAno.setBounds(1706, 115, 85, 23);
 		contentPane.add(comboBoxAno);
 
 		txt_cor = new JTextField();
@@ -291,7 +293,7 @@ public class TelaVeiculos extends JFrame {
 		txt_tipo = new JTextField();
 		txt_tipo.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_tipo.setColumns(10);
-		txt_tipo.setBounds(770, 53, 199, 26);
+		txt_tipo.setBounds(771, 49, 199, 26);
 		contentPane.add(txt_tipo);
 
 		txt_quilometragem = new JTextField();
@@ -303,39 +305,39 @@ public class TelaVeiculos extends JFrame {
 		txt_potencia = new JTextField();
 		txt_potencia.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_potencia.setColumns(10);
-		txt_potencia.setBounds(1252, 131, 132, 26);
+		txt_potencia.setBounds(1252, 116, 132, 26);
 		contentPane.add(txt_potencia);
 
 		JLabel lblPotencia = new JLabel("Potência:");
 		lblPotencia.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblPotencia.setBounds(1097, 131, 150, 27);
+		lblPotencia.setBounds(1097, 116, 150, 27);
 		contentPane.add(lblPotencia);
 
 		JLabel lblABS = new JLabel("ABS:");
 		lblABS.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblABS.setBounds(923, 93, 85, 27);
+		lblABS.setBounds(1406, 116, 85, 27);
 		contentPane.add(lblABS);
 
 		txt_preco = new JTextField();
 		txt_preco.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_preco.setColumns(10);
-		txt_preco.setBounds(483, 92, 120, 26);
+		txt_preco.setBounds(1452, 49, 120, 26);
 		contentPane.add(txt_preco);
 
 		JLabel lblPreco = new JLabel("Preço:");
 		lblPreco.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblPreco.setBounds(374, 93, 102, 27);
+		lblPreco.setBounds(1340, 50, 102, 27);
 		contentPane.add(lblPreco);
 
 		JLabel lblPromocao = new JLabel("Promoção:");
 		lblPromocao.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblPromocao.setBounds(613, 93, 175, 27);
+		lblPromocao.setBounds(1579, 50, 175, 27);
 		contentPane.add(lblPromocao);
 
 		JComboBox comboBoxPromocao = new JComboBox();
 		comboBoxPromocao.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
 		comboBoxPromocao.setFont(new Font("Krona One", Font.PLAIN, 24));
-		comboBoxPromocao.setBounds(792, 92, 120, 28);
+		comboBoxPromocao.setBounds(1758, 49, 120, 28);
 		contentPane.add(comboBoxPromocao);
 
 		JLabel lblFornecedor = new JLabel("Fornecedor:");
@@ -393,10 +395,9 @@ public class TelaVeiculos extends JFrame {
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
 				} else {
-					
 
 					Integer id = carrodao.inserir(carro);
-					
+
 					txt_marca.setText("");
 					txt_modelo.setText("");
 					txt_tipo.setText("");
@@ -428,14 +429,13 @@ public class TelaVeiculos extends JFrame {
 					} else {
 						carroNovo = "Não";
 					}
-					String data[] = {String.valueOf(id), carro.getMarca(), carro.getModelo(),
-							forn.getNomeFornecedor(), carroPromo, carroAbs, carro.getPotencia(),
-							String.valueOf(carro.getQuilometragem()), carro.getCombustivel(), carro.getTipo(),
-							carro.getCor(), String.valueOf(carro.getAno()), carroNovo,
-							String.valueOf(carro.getPrecoCarro()) };
+					String data[] = { String.valueOf(id), carro.getMarca(), carro.getModelo(), forn.getNomeFornecedor(),
+							carroPromo, carroAbs, carro.getPotencia(), String.valueOf(carro.getQuilometragem()),
+							carro.getCombustivel(), carro.getTipo(), carro.getCor(), String.valueOf(carro.getAno()),
+							carroNovo, String.valueOf(carro.getPrecoCarro()) };
 					DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 					tblModel.addRow(data);
-					
+
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);

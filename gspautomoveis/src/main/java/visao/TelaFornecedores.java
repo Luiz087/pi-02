@@ -162,12 +162,7 @@ public class TelaFornecedores extends JFrame {
 					telaErro.setLocationRelativeTo(null);
 					telaErro.setVisible(true);
 				} else {
-					String data[] = { textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(),
-							textCidade.getText(), textEmpresa.getText() };
-
-					// criar as linhas quando adicionar o fornecedor
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
+					
 
 					fornec.setNomeFornecedor(textNome.getText());
 					fornec.setEmpresa(textEmpresa.getText());
@@ -196,7 +191,14 @@ public class TelaFornecedores extends JFrame {
 					}
 
 					fornec.setEndereco(end);
-					forndao.inserir(fornec);
+					Integer id = forndao.inserir(fornec);
+					
+					String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(), textCNPJ.getText(), textMarca.getText(),
+							textCidade.getText(), textEmpresa.getText() };
+
+					// criar as linhas quando adicionar o fornecedor
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+					tbltable.addRow(data);
 
 					System.out.println("Passou");
 
@@ -465,7 +467,7 @@ public class TelaFornecedores extends JFrame {
 
 		// posição do Jpanel
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(435, 422, 925, 535);
+		scrollPane.setBounds(435, 422, 925, 245);
 		contentPane.add(scrollPane);
 		// cadastrar nome das colunas
 		table = new JTable();
@@ -476,7 +478,9 @@ public class TelaFornecedores extends JFrame {
 
 				Fornecedor fornC = new Fornecedor();
 				Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(setar, 0).toString());
-				fornC = forndao.clicado(IdFornecedor);
+				Fornecedor forn = new Fornecedor();
+				forn.setIdFornecedor(IdFornecedor);
+				fornC = forndao.buscaFornecedor(forn);
 				fornC.setEndereco(enddao.buscaEndereco(fornC.getEndereco().getIdEndereco()));
 
 				textId.setText(String.valueOf(fornC.getIdFornecedor()));
@@ -584,8 +588,8 @@ public class TelaFornecedores extends JFrame {
 					// buscaFuncionarioPorIdFornecedor(IdFornecedor);
 					// metodo retorna um Fornecedor
 
-					Fornecedor fornDelete = new Fornecedor();
-					fornDelete = forndao.clicado(IdFornecedor);
+					/*Fornecedor fornDelete = new Fornecedor();
+					fornDelete = forndao.buscaFornecedor(IdFornecedor);*/
 
 					// quer excluir mesmo?
 					/*TelaContinuar telaContinua = new TelaContinuar();
@@ -593,7 +597,7 @@ public class TelaFornecedores extends JFrame {
 					telaContinua.setVisible(true);*/
 
 					//if (telaContinua.confirmado) {
-						forndao.excluir(fornDelete);
+						forndao.excluir(IdFornecedor);
 
 						DefaultTableModel model = (DefaultTableModel) table.getModel();
 						model.removeRow(row);

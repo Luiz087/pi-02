@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Carro;
@@ -11,7 +12,7 @@ import modelo.Fornecedor;
 import modelo.ICarroDAO;
 
 public class CarroDAO implements ICarroDAO {
-	
+
 	private static CarroDAO instancia;
 
 	public static CarroDAO getInstancia() {
@@ -22,7 +23,7 @@ public class CarroDAO implements ICarroDAO {
 	}
 
 	@Override
-	public boolean inserir(Carro ca) {
+	public Integer inserir(Carro ca) {
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
@@ -30,7 +31,7 @@ public class CarroDAO implements ICarroDAO {
 		String query = "INSERT INTO Carros (marca, modelo, novo, ano, cor, tipo, combustivel, quilometragem, potencia, abs, precoCarro, promocao, fornecedor_id_fornecedor) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, ca.getMarca());
 			ps.setString(2, ca.getModelo());
@@ -45,10 +46,22 @@ public class CarroDAO implements ICarroDAO {
 			ps.setDouble(11, ca.getPrecoCarro());
 			ps.setBoolean(12, ca.getPromocao());
 			ps.setInt(13, ca.getFornecedor().getIdFornecedor());
-			
+
 			ps.executeUpdate();
 
-			return true;
+			// Retrieve the auto-generated keys (if any)
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+			    if (generatedKeys.next()) {
+			        // Return the generated ID
+			        return generatedKeys.getInt(1);
+			    } else {
+			        // If no ID was obtained, throw an exception
+			        throw new SQLException("Insertion failed, no ID obtained.");
+			    }
+			} catch (SQLException e) {
+			    // Handle any exceptions that might occur while retrieving generated keys
+			    e.printStackTrace();
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,7 +69,7 @@ public class CarroDAO implements ICarroDAO {
 			c.fecharConexao();
 		}
 
-		return false;
+		return 0;
 	}
 
 	public boolean atualizar(Carro ca) {
@@ -71,7 +84,6 @@ public class CarroDAO implements ICarroDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			
 			ps.setString(1, ca.getMarca());
 			ps.setString(2, ca.getModelo());
 			ps.setBoolean(3, ca.getNovo());
@@ -186,18 +198,66 @@ public class CarroDAO implements ICarroDAO {
 
 		return Carros;
 	}
-	
+
 	public Carro clicado(Integer id) {
-		Carro carroClicado = new Carro();
-		for (Carro carro : ListarCarros()) {
-			if (carro.getIdCarro().equals(id)) {
+		Conexao c = Conexao.getInstancia();
 
-				carroClicado = carro;
+		Connection con = c.conectar();
 
-				return carroClicado;
+		Carro C = new Carro();
+
+		String query = "SELECT * FROM Carros WHERE id_carro = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setInt(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Integer idC = rs.getInt("id_carro");
+				String marca = rs.getString("marca");
+				String modelo = rs.getString("modelo");
+				Boolean novo = rs.getBoolean("novo");
+				Integer ano = rs.getInt("ano");
+				String cor = rs.getString("cor");
+				String tipo = rs.getString("tipo");
+				String combustivel = rs.getString("combustivel");
+				Long quilometragem = rs.getLong("quilometragem");
+				String potencia = rs.getString("potencia");
+				Boolean abs = rs.getBoolean("abs");
+				Double precoCarro = rs.getDouble("precoCarro");
+				Boolean promocao = rs.getBoolean("promocao");
+				Integer idForn = rs.getInt("fornecedor_id_fornecedor");
+
+				Fornecedor forn = new Fornecedor();
+				forn.setIdFornecedor(idForn);
+				C.setIdCarro(idC);
+				C.setFornecedor(forn);
+				C.setMarca(marca);
+				C.setModelo(modelo);
+				C.setNovo(novo);
+				C.setAno(ano);
+				C.setCor(cor);
+				C.setTipo(tipo);
+				C.setCombustivel(combustivel);
+				C.setQuilometragem(quilometragem);
+				C.setPotencia(potencia);
+				C.setAbs(abs);
+				C.setPrecoCarro(precoCarro);
+				C.setPromocao(promocao);
+
 			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+
 		}
-		return carroClicado;
+
+		return C;
 	}
 
 }

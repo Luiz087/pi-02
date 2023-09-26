@@ -198,7 +198,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(371, 285, 989, 621);
+		scrollPane.setBounds(371, 285, 989, 440);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -393,14 +393,10 @@ public class TelaVeiculos extends JFrame {
 					erro.setLocationRelativeTo(null);
 					erro.setVisible(true);
 				} else {
-					String liborio[] = { marca, modelo, forn.getNomeFornecedor(), String.valueOf(promocao),
-							String.valueOf(abs), potencia, String.valueOf(quilometragem), combustivel, tipo, cor,
-							String.valueOf(ano), String.valueOf(novo), String.valueOf(precoCarro) };
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(liborio);
+					
 
-					carrodao.inserir(carro);
-
+					Integer id = carrodao.inserir(carro);
+					
 					txt_marca.setText("");
 					txt_modelo.setText("");
 					txt_tipo.setText("");
@@ -414,7 +410,32 @@ public class TelaVeiculos extends JFrame {
 					comboBoxAno.setSelectedIndex(0);
 					cbAbs.setSelectedIndex(0);
 					comboBoxPromocao.setSelectedIndex(0);
-
+					String carroPromo;
+					String carroAbs;
+					String carroNovo;
+					if (carro.getPromocao() == true) {
+						carroPromo = "Sim";
+					} else {
+						carroPromo = "Não";
+					}
+					if (carro.getAbs() == true) {
+						carroAbs = "Sim";
+					} else {
+						carroAbs = "Não";
+					}
+					if (carro.getNovo() == true) {
+						carroNovo = "Sim";
+					} else {
+						carroNovo = "Não";
+					}
+					String data[] = {String.valueOf(id), carro.getMarca(), carro.getModelo(),
+							forn.getNomeFornecedor(), carroPromo, carroAbs, carro.getPotencia(),
+							String.valueOf(carro.getQuilometragem()), carro.getCombustivel(), carro.getTipo(),
+							carro.getCor(), String.valueOf(carro.getAno()), carroNovo,
+							String.valueOf(carro.getPrecoCarro()) };
+					DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+					tblModel.addRow(data);
+					
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
@@ -459,7 +480,7 @@ public class TelaVeiculos extends JFrame {
 				fornece = forndao.pegarForn(fornecedor);
 				carro.setFornecedor(fornece);
 				carro.setMarca(marca);
-				 carro.setModelo(modelo);
+				carro.setModelo(modelo);
 				carro.setNovo(novo);
 				carro.setAno(ano);
 				carro.setCor(cor);
@@ -511,7 +532,7 @@ public class TelaVeiculos extends JFrame {
 			}
 		});
 
-		table.getColumnModel().getColumn(14).setPreferredWidth(1000);
+		table.getColumnModel().getColumn(14).setPreferredWidth(200);
 
 		TableActionEvent event = new TableActionEvent() {
 
@@ -618,6 +639,7 @@ public class TelaVeiculos extends JFrame {
 				txt_marca.setEditable(true);
 				txt_modelo.setEditable(true);
 
+				textId.setText("");
 				txt_marca.setText("");
 				txt_modelo.setText("");
 				txt_tipo.setText("");
@@ -669,7 +691,9 @@ public class TelaVeiculos extends JFrame {
 				}
 
 				Integer idFornCarro = car.getFornecedor().getIdFornecedor();
-				Fornecedor nomeForn = forndao.clicado(idFornCarro);
+				Fornecedor forn = new Fornecedor();
+				forn.setIdFornecedor(idFornCarro);
+				Fornecedor nomeForn = forndao.buscaFornecedor(forn);
 				for (int i = 0; i < comboBoxFornecedor.getItemCount(); i++) {
 					if (nomeForn.getNomeFornecedor().equals((String) comboBoxFornecedor.getItemAt(i))) {
 						comboBoxFornecedor.setSelectedIndex(i);

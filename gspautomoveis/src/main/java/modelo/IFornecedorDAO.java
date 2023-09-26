@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public interface IFornecedorDAO {
 
-	public boolean inserir(Fornecedor f);
+	public Integer inserir(Fornecedor f);
 
 	public boolean atualizar(Fornecedor f);
 
-	public boolean excluir(Fornecedor f);
+	public boolean excluir(Integer f);
 
 	public ArrayList<Fornecedor> ListarFornecedores();
 

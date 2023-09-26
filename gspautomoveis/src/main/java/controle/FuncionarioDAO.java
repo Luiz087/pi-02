@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Endereco;
@@ -24,7 +25,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 	public Funcionario funcAchado = null;
 
-	public boolean inserir(Funcionario f) {
+	public Integer inserir(Funcionario f) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -35,7 +36,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, f.getNome());
 			ps.setLong(2, f.getCpf());
@@ -50,8 +51,13 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setInt(11, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
-			
-			return true;
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					return generatedKeys.getInt(1);
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,7 +65,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			c.fecharConexao();
 		}
 
-		return false;
+		return 0;
 
 	}
 
@@ -233,16 +239,60 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	}
 
 	public Funcionario clicado(Integer f) {
-		Funcionario funcClicado = new Funcionario();
-		for (Funcionario func : ListarFuncionarios()) {
-			if (func.getMatricula().equals(f)) {
+		Conexao c = Conexao.getInstancia();
 
-				funcClicado = func;
+		Connection con = c.conectar();
 
-				return funcClicado;
+		Funcionario F = new Funcionario();
+
+		String Query = "SELECT * FROM funcionarios WHERE matricula = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ps.setInt(1, f);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Integer matricula = rs.getInt("matricula");
+				String Nome = rs.getString("Nome");
+				Long Cpf = rs.getLong("Cpf");
+				Long Telefone = rs.getLong("Telefone");
+				String Email = rs.getString("Email");
+				String DataDeNasc = rs.getString("DataDeNasc");
+				String Usuario = rs.getString("Usuario");
+				String Senha = rs.getString("Senha");
+				String NivelCargo = rs.getString("NivelCargo");
+				Double Salario = rs.getDouble("Salario");
+				Double Comissao = rs.getDouble("Comissao");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
+
+				F.setMatricula(matricula);
+				F.setNome(Nome);
+				F.setCpf(Cpf);
+				F.setTelefone(Telefone);
+				F.setEmail(Email);
+				F.setDataDeNasc(DataDeNasc);
+				F.setUsuario(Usuario);
+				F.setSenha(Senha);
+				F.setNivelCargo(NivelCargo);
+				F.setSalario(Salario);
+				F.setComissao(Comissao);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
+
 			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-		return funcClicado;
+
+		return F;
 	}
 
 }

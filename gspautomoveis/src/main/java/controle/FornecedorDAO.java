@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import modelo.Endereco;
@@ -12,7 +13,7 @@ import modelo.Funcionario;
 import modelo.IFornecedorDAO;
 
 public class FornecedorDAO implements IFornecedorDAO {
-	
+
 	private static FornecedorDAO instancia;
 
 	public static FornecedorDAO getInstancia() {
@@ -22,7 +23,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return instancia;
 	}
 
-	public boolean inserir(Fornecedor f) {
+	public Integer inserir(Fornecedor f) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -31,7 +32,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 		String query = "INSERT INTO fornecedores (nomeFornecedor, cnpjFornecedor, telefoneFornecedor, empresa, marca, enderecos_id_endereco) values (?, ?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
 			ps.setString(1, f.getNomeFornecedor());
 			ps.setLong(2, f.getCnpjfornecedor());
@@ -41,8 +42,13 @@ public class FornecedorDAO implements IFornecedorDAO {
 			ps.setInt(6, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
-
-			return true;
+			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+				if (generatedKeys.next()) {
+					return generatedKeys.getInt(1);
+				} else {
+					throw new SQLException("Creating user failed, no ID obtained.");
+				}
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +56,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 			c.fecharConexao();
 		}
 
-		return false;
+		return 0;
 	}
 
 	public boolean atualizar(Fornecedor f) {
@@ -84,7 +90,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 		return false;
 	}
 
-	public boolean excluir(Fornecedor f) {
+	public boolean excluir(Integer f) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -95,7 +101,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setInt(1, f.getIdFornecedor());
+			ps.setInt(1, f);
 
 			ps.executeUpdate();
 
@@ -135,14 +141,13 @@ public class FornecedorDAO implements IFornecedorDAO {
 				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
 				Fornecedor F = new Fornecedor();
-				
+
 				F.setIdFornecedor(idFornecedor);
 				F.setNomeFornecedor(NomeFornecedor);
 				F.setCnpjfornecedor(cnpjFornecedor);
 				F.setTelefoneFornecedor(telefoneFornecedor);
 				F.setEmpresa(Empresa);
 				F.setMarca(Marca);
-				//arrumar
 				Endereco end = new Endereco();
 				end.setIdEndereco(endFunc);
 				F.setEndereco(end);
@@ -160,38 +165,57 @@ public class FornecedorDAO implements IFornecedorDAO {
 	}
 
 	public Fornecedor pegarForn(String fornecedor) {
-		Fornecedor fornecedorPego = new Fornecedor();
-		for (Fornecedor forn : ListarFornecedores()) {
-			if(forn.getNomeFornecedor().equals(fornecedor)) {
-				fornecedorPego = forn;
-				return fornecedorPego;
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		Fornecedor F = new Fornecedor();
+
+		String Query = "SELECT * FROM fornecedores WHERE nomeFornecedor = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ps.setString(1, fornecedor);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Integer idFornecedor = rs.getInt("id_fornecedor");
+				String NomeFornecedor = rs.getString("NomeFornecedor");
+				Long cnpjFornecedor = rs.getLong("cnpjFornecedor");
+				Long telefoneFornecedor = rs.getLong("telefoneFornecedor");
+				String Empresa = rs.getString("Empresa");
+				String Marca = rs.getString("Marca");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
+
+				F.setIdFornecedor(idFornecedor);
+				F.setNomeFornecedor(NomeFornecedor);
+				F.setCnpjfornecedor(cnpjFornecedor);
+				F.setTelefoneFornecedor(telefoneFornecedor);
+				F.setEmpresa(Empresa);
+				F.setMarca(Marca);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
+
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
 		}
-		return fornecedorPego;
+		return F;
 	}
 
-	
-	public Fornecedor clicado(Integer f) {
-		Fornecedor fornClicado = new Fornecedor();
-		for (Fornecedor forn : ListarFornecedores()) {
-			if (forn.getIdFornecedor().equals(f)) {
-
-				fornClicado = forn;
-
-				return fornClicado;
-			}
-		}
-		return fornClicado;
-	}
-	
-	public Fornecedor buscaFornecedor(Fornecedor f) {
+	public Fornecedor buscaFornecedor(Fornecedor fornecedor) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
 
 		String query = "SELECT * FROM fornecedores WHERE id_fornecedor = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setInt(1, f.getIdFornecedor());
+			ps.setInt(1, fornecedor.getIdFornecedor());
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -224,5 +248,5 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		return null;
 	}
-	
+
 }

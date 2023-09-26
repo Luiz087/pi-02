@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IFuncionarioDAO {
 
-	public boolean inserir(Funcionario f);
+	public Integer inserir(Funcionario f);
 
 	public boolean atualizar(Funcionario f);
 

@@ -297,12 +297,7 @@ public class TelaFuncionarios extends JFrame {
 					}
 
 					func1.setEndereco(end);
-					funcdao.inserir(func1);
-
-					String data[] = { nome, usuario, telefone, cargo, dataNascimento, email };
-
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
+					Integer matricula = funcdao.inserir(func1);
 
 					System.out.println("Passou");
 
@@ -321,6 +316,11 @@ public class TelaFuncionarios extends JFrame {
 					textBairro.setText("");
 					textComissao.setText("");
 					textSalario.setText("");
+					
+					String data[] = {String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento, email };
+
+					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+					tbltable.addRow(data);
 
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
@@ -598,7 +598,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(-103, 426, 1463, 593);
+		scrollPane.setBounds(388, 403, 961, 257);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable

@@ -230,17 +230,6 @@ public class TelaFornecedores extends JFrame {
 				btnAtualizar.setVisible(false);
 				btnAdicionar.setVisible(true);
 				
-				textId.setText("");
-				textNome.setText("");
-				textTel.setText("");
-				textCep.setText("");
-				textCNPJ.setText("");
-				textEstado.setText("");
-				textCidade.setText("");
-				textRua.setText("");
-				textBairro.setText("");
-				textMarca.setText("");
-				
 			}
 		});
 
@@ -255,9 +244,9 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblEmpresa);
 
 		textEmpresa = new JTextField();
-		textEmpresa.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textEmpresa.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEmpresa.setColumns(10);
-		textEmpresa.setBounds(1053, 219, 324, 50);
+		textEmpresa.setBounds(1053, 219, 324, 38);
 		contentPane.add(textEmpresa);
 
 		JLabel lblNewLabel_3 = new JLabel("GSP");
@@ -292,8 +281,8 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblTelefone);
 
 		textNome = new JTextField();
-		textNome.setFont(new Font("Krona One", Font.PLAIN, 20));
-		textNome.setBounds(497, 35, 335, 50);
+		textNome.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textNome.setBounds(497, 35, 335, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 
@@ -305,9 +294,9 @@ public class TelaFornecedores extends JFrame {
 
 		// textTel = new JFormattedTextField(mascaraTel);
 		textTel = new JTextField();
-		textTel.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
-		textTel.setBounds(1042, 40, 335, 50);
+		textTel.setBounds(1042, 40, 335, 38);
 		contentPane.add(textTel);
 
 		/*
@@ -318,21 +307,21 @@ public class TelaFornecedores extends JFrame {
 
 		// textCNPJ = new JFormattedTextField(mascaraCNPJ);
 		textCNPJ = new JTextField();
-		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCNPJ.setColumns(10);
-		textCNPJ.setBounds(497, 219, 335, 50);
+		textCNPJ.setBounds(497, 219, 335, 38);
 		contentPane.add(textCNPJ);
 
 		textMarca = new JTextField();
-		textMarca.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textMarca.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textMarca.setColumns(10);
-		textMarca.setBounds(1559, 36, 335, 50);
+		textMarca.setBounds(1559, 36, 335, 38);
 		contentPane.add(textMarca);
 
 		textCidade = new JTextField();
-		textCidade.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textCidade.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCidade.setColumns(10);
-		textCidade.setBounds(1304, 130, 175, 50);
+		textCidade.setBounds(1304, 130, 175, 38);
 		contentPane.add(textCidade);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
@@ -543,21 +532,21 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblCep);
 
 		textEstado = new JTextField();
-		textEstado.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textEstado.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEstado.setColumns(10);
-		textEstado.setBounds(508, 126, 324, 50);
+		textEstado.setBounds(508, 126, 324, 38);
 		contentPane.add(textEstado);
 
 		textBairro = new JTextField();
-		textBairro.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textBairro.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textBairro.setColumns(10);
-		textBairro.setBounds(1629, 127, 224, 50);
+		textBairro.setBounds(1629, 127, 224, 38);
 		contentPane.add(textBairro);
 
 		textRua = new JTextField();
-		textRua.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textRua.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textRua.setColumns(10);
-		textRua.setBounds(1503, 219, 350, 50);
+		textRua.setBounds(1503, 219, 350, 38);
 		contentPane.add(textRua);
 
 		/*
@@ -568,9 +557,9 @@ public class TelaFornecedores extends JFrame {
 		 * textCep = new JFormattedTextField(mascaraCEP);
 		 */
 		textCep = new JTextField();
-		textCep.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
-		textCep.setBounds(949, 130, 175, 50);
+		textCep.setBounds(949, 130, 175, 38);
 		contentPane.add(textCep);
 
 		TableActionEvent event = new TableActionEvent() {
@@ -593,20 +582,7 @@ public class TelaFornecedores extends JFrame {
 					int linhaSelecionada = table.getSelectedRow();
 					Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
 
-					// select no banco só pelo nome da IdFornecedor
-					// buscaFuncionarioPorIdFornecedor(IdFornecedor);
-					// metodo retorna um Fornecedor
-
-					/*
-					 * Fornecedor fornDelete = new Fornecedor(); fornDelete =
-					 * forndao.buscaFornecedor(IdFornecedor);
-					 */
-
-					// quer excluir mesmo?
-					/*
-					 * TelaContinuar telaContinua = new TelaContinuar();
-					 * telaContinua.setLocationRelativeTo(null); telaContinua.setVisible(true);
-					 */
+					
 
 					// if (telaContinua.confirmado) {
 					forndao.excluir(IdFornecedor);
@@ -646,9 +622,9 @@ public class TelaFornecedores extends JFrame {
 
 		textId = new JTextField();
 		textId.setEditable(false);
-		textId.setFont(new Font("Krona One", Font.PLAIN, 20));
+		textId.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textId.setColumns(10);
-		textId.setBounds(497, 330, 127, 50);
+		textId.setBounds(497, 330, 127, 38);
 		contentPane.add(textId);
 
 		btnAtualizar.setVisible(false);

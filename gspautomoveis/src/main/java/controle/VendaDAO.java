@@ -13,7 +13,7 @@ import modelo.Venda;
 
 public class VendaDAO implements IVendaDAO {
 
-	public boolean inserir(Venda v) {
+	public Integer inserir(Venda v) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -34,7 +34,7 @@ public class VendaDAO implements IVendaDAO {
 
 			ps.executeUpdate();
 
-			return false;
+			return 1;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -42,7 +42,7 @@ public class VendaDAO implements IVendaDAO {
 			c.fecharConexao();
 		}
 
-		return true;
+		return 0;
 	}
 
 	public boolean atualizar(Venda v) {

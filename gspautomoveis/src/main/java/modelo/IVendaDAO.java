@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IVendaDAO {
 	
-	public boolean inserir(Venda v);
+	public Integer inserir(Venda v);
 
 	public boolean atualizar(Venda v);
 

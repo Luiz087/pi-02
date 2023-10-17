@@ -11,5 +11,9 @@ public interface IEnderecoDAO {
 	public boolean excluir(Endereco ed);
 
 	public ArrayList<Endereco> ListarEnderecos();
+	
+	public Endereco buscaEndereco(Integer integer);
+	
+	public Endereco buscaEnderecoByAtributo(Endereco end);
 
 }

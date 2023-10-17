@@ -51,16 +51,16 @@ public class CarroDAO implements ICarroDAO {
 
 			// Retrieve the auto-generated keys (if any)
 			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-			    if (generatedKeys.next()) {
-			        // Return the generated ID
-			        return generatedKeys.getInt(1);
-			    } else {
-			        // If no ID was obtained, throw an exception
-			        throw new SQLException("Insertion failed, no ID obtained.");
-			    }
+				if (generatedKeys.next()) {
+					// Return the generated ID
+					return generatedKeys.getInt(1);
+				} else {
+					// If no ID was obtained, throw an exception
+					throw new SQLException("Insertion failed, no ID obtained.");
+				}
 			} catch (SQLException e) {
-			    // Handle any exceptions that might occur while retrieving generated keys
-			    e.printStackTrace();
+				// Handle any exceptions that might occur while retrieving generated keys
+				e.printStackTrace();
 			}
 
 		} catch (SQLException e) {

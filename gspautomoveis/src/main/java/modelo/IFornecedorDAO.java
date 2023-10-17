@@ -11,5 +11,9 @@ public interface IFornecedorDAO {
 	public boolean excluir(Integer f);
 
 	public ArrayList<Fornecedor> ListarFornecedores();
+	
+	public Fornecedor pegarForn(String fornecedor);
+	
+	public Fornecedor buscaFornecedor(Fornecedor fornecedor);
 
 }

@@ -11,5 +11,7 @@ public interface ICarroDAO {
 	public boolean excluir(Integer ca);
 
 	public ArrayList<Carro> ListarCarros();
+	
+	public Carro clicado(Integer id); 
 
 }

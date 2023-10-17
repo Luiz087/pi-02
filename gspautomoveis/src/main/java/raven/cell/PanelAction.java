@@ -53,25 +53,32 @@ public class PanelAction extends  javax.swing.JPanel {
         cmdEdit.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/edit.png"))); // NOI18N
 
         cmdDelete.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/delete.png")));
+        
+        ActionButton cmdvisu = new ActionButton();
+        cmdvisu.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/moedas (1).png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(148, Short.MAX_VALUE)
         			.addComponent(cmdEdit, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
         			.addComponent(cmdDelete, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-        			.addGap(210))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+        			.addGap(176))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(146, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        				.addComponent(cmdEdit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addComponent(cmdDelete, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE))
-        			.addContainerGap(134, Short.MAX_VALUE))
+        			.addContainerGap(143, Short.MAX_VALUE)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        					.addComponent(cmdEdit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        					.addComponent(cmdDelete, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE)))
+        			.addContainerGap(132, Short.MAX_VALUE))
         );
         this.setLayout(layout);
     }// </editor-fold>//GEN-END:initComponents
@@ -80,5 +87,4 @@ public class PanelAction extends  javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private raven.cell.ActionButton cmdDelete;
     private raven.cell.ActionButton cmdEdit;
-    // End of variables declaration//GEN-END:variables
 }

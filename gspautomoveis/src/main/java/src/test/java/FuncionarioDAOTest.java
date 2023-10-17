@@ -1,6 +1,9 @@
 package src.test.java;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,4 +43,83 @@ public class FuncionarioDAOTest {
 		
 	}
 
+	@Test
+	public void testListarFuncionarios() {
+		FuncionarioDAO dao = new FuncionarioDAO();
+
+		ArrayList<Funcionario> funcList = dao.ListarFuncionarios();
+		
+		assertNotNull(funcList);
+		
+	}
+	
+	@Test
+	public void testAtualizarFuncionario() {
+		Funcionario func = new Funcionario();
+		func.setMatricula(90);
+		func.setNome("Carlos");
+		func.setEmail("Carlos@gmail.com");
+		func.setComissao(1.2);
+		func.setCpf(53296126034l);
+		func.setDataDeNasc("08/10/2005");
+		func.setNivelCargo("Vendedor");
+		func.setSalario(12323.9);
+		func.setSenha("2346");
+		func.setTelefone(47888999999l);
+		func.setUsuario("carlao");
+		Endereco end = new Endereco();
+		end.setBairro("Macuco");
+		end.setRua("Rua da Tristeza");
+		end.setCidade("Blumenau");
+		end.setEstado("Santa Catarina");
+		end.setCep((long) 123175123);
+		end.setIdEndereco(567);
+		func.setEndereco(end);
+		
+		FuncionarioDAO dao = new FuncionarioDAO();
+		boolean fAtualizado = dao.atualizar(func);
+		
+		assertEquals(true, fAtualizado);
+	}
+	
+	@Test
+	public void testListarDepoisFuncionarios() {
+		FuncionarioDAO dao = new FuncionarioDAO();
+
+		ArrayList<Funcionario> funcList = dao.ListarFuncionarios();
+		
+		assertNotNull(funcList);
+		
+	}
+	
+	@Test
+	public void testDeleteFuncionario() {
+		FuncionarioDAO dao = new FuncionarioDAO();
+		Funcionario func = new Funcionario();
+		func.setMatricula(90);
+		func.setNome("Carlos");
+		func.setEmail("Carlos@gmail.com");
+		func.setComissao(1.2);
+		func.setCpf(53296126034l);
+		func.setDataDeNasc("08/10/2005");
+		func.setNivelCargo("Vendedor");
+		func.setSalario(12323.9);
+		func.setSenha("2346");
+		func.setTelefone(47888999999l);
+		func.setUsuario("carlao");
+		Endereco end = new Endereco();
+		end.setBairro("Macuco");
+		end.setRua("Rua da Tristeza");
+		end.setCidade("Blumenau");
+		end.setEstado("Santa Catarina");
+		end.setCep((long) 123175123);
+		end.setIdEndereco(567);
+		func.setEndereco(end);
+		
+		boolean fDeletado = dao.excluir(func);
+		
+		assertEquals(true, fDeletado);
+	}
+	
+	
 }

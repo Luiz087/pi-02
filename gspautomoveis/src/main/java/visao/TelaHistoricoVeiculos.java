@@ -255,8 +255,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_2_1_2.setBounds(17, 410, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Veículos");
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblNewLabel_4 = new JLabel("        Veículos");
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -290,7 +289,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_2_1.setBounds(17, 490, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 		
-		JLabel lblNewLabel_4_1 = new JLabel("        Configurações");
+		JLabel lblNewLabel_4_1 = new JLabel("       Configurações");
 		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -324,7 +323,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_2_1_1.setBounds(17, 570, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1);
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("     Funcionários");
+		JLabel lblNewLabel_4_1_1 = new JLabel("    Funcionários");
 		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -359,8 +358,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_2_1_1_1.setBounds(17, 645, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1);
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
-		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("        Histórico");
 		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -393,7 +391,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_2_1_1_1_1.setBounds(17, 717, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
-		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("      Fornecedores");
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("     Fornecedores");
 		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override

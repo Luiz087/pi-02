@@ -125,13 +125,112 @@ public class TelaVeiculos extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		panel_1.setBounds(0, 721, 350, 61);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_2.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_2.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios();
+				dispose();
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
+			}
+		});
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_3.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_3.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_4.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			
+			}
+		});
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_5.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_5.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
+		
+		panel_5.setBounds(0, 883, 350, 49);
+		contentPane.add(panel_5);
+		panel_4.setBounds(0, 418, 350, 63);
+		contentPane.add(panel_4);
+		panel_3.setBounds(0, 503, 350, 63);
+		contentPane.add(panel_3);
+		panel_2.setBounds(0, 582, 350, 63);
+		contentPane.add(panel_2);
+		panel_1.setBounds(0, 721, 350, 63);
 		contentPane.add(panel_1);
 		panel.setForeground(new Color(0, 0, 0));
-		panel.setBounds(0, 649, 350, 61);
+		panel.setBounds(0, 647, 350, 63);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215,215, 50));
 		panel_1.setBackground(new Color(215, 215,215, 50));
+		panel_2.setBackground(new Color(215, 215,215, 50));
+		panel_3.setBackground(new Color(215, 215,215, 50));
+		panel_4.setBackground(new Color(215, 215,215, 50));
+		panel_5.setBackground(new Color(215, 215,215, 50));
+
+
+
 		
 
 		JComboBox cbAbs = new JComboBox();
@@ -165,6 +264,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Veículos");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -176,10 +276,11 @@ public class TelaVeiculos extends JFrame {
 		});
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4.setBounds(85, 429, 265, 35);
+		lblNewLabel_4.setBounds(0, 418, 339, 63);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2_1_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -194,6 +295,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_2_1_2);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -207,7 +309,8 @@ public class TelaVeiculos extends JFrame {
 		lblNewLabel_2_1.setBounds(39, 509, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 
-		JLabel lblNewLabel_4_1 = new JLabel("Configurações");
+		JLabel lblNewLabel_4_1 = new JLabel("          Configurações");
+		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -219,10 +322,11 @@ public class TelaVeiculos extends JFrame {
 		});
 		lblNewLabel_4_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1.setBounds(85, 509, 265, 35);
+		lblNewLabel_4_1.setBounds(0, 503, 350, 63);
 		contentPane.add(lblNewLabel_4_1);
 
-		JLabel lblNewLabel_4_1_1 = new JLabel("Funcionários");
+		JLabel lblNewLabel_4_1_1 = new JLabel("        Funcionários");
+		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -234,10 +338,11 @@ public class TelaVeiculos extends JFrame {
 		});
 		lblNewLabel_4_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1.setBounds(85, 589, 265, 35);
+		lblNewLabel_4_1_1.setBounds(0, 578, 350, 67);
 		contentPane.add(lblNewLabel_4_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -252,6 +357,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -308,6 +414,7 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

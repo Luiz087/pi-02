@@ -68,6 +68,8 @@ public class TelaPrincipal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
 
 		JLabel lblNewLabel_6_1_1 = new JLabel("Histórico");
 		lblNewLabel_6_1_1.addMouseListener(new MouseAdapter() {

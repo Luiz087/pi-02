@@ -37,6 +37,8 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
+	private JPanel panel;
+
 
 	/**
 	 * Launch the application.
@@ -69,6 +71,151 @@ public class TelaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		panel = new JPanel();
+		panel.setVisible(false);
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setVisible(true);
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel.setVisible(false);
+
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);
+				
+			}
+		});
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setVisible(false);
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_1.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_1.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+		});
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_2.setVisible(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_2.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios();
+				dispose();
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
+			}
+		});
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_3.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_3.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_4.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			
+			}
+		});
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_5.setVisible(true);
+			}
+			
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_5.setVisible(false);
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
+		
+		panel_5.setBounds(0, 931, 340, 63);
+		contentPane.add(panel_5);
+		panel_4.setBounds(0, 407, 340, 63);
+		contentPane.add(panel_4);
+		panel_3.setBounds(0, 493, 340, 56);
+		contentPane.add(panel_3);
+		panel_2.setBounds(0, 576, 340, 52);
+		contentPane.add(panel_2);
+		panel_1.setBounds(0, 718, 340, 52);
+		contentPane.add(panel_1);
+		panel.setForeground(new Color(0, 0, 0));
+		panel.setBounds(0, 647, 340, 52);
+		contentPane.add(panel);
+		panel.setBackground(new Color(215, 215,215, 50));
+		panel_1.setBackground(new Color(215, 215,215, 50));
+		panel_2.setBackground(new Color(215, 215,215, 50));
+		panel_3.setBackground(new Color(215, 215,215, 50));
+		panel_4.setBackground(new Color(215, 215,215, 50));
+		panel_5.setBackground(new Color(215, 215,215, 50));
 		
 
 		JLabel lblNewLabel_6_1_1 = new JLabel("Histórico");

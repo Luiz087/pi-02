@@ -286,6 +286,11 @@ public class TelaVeiculos extends JFrame {
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setVisible(true);
+
+			}
 		});
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -332,6 +337,11 @@ public class TelaVeiculos extends JFrame {
 				telaconfig.setLocationRelativeTo(null);
 				telaconfig.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_3.setVisible(true);
+
+			}
 		});
 		lblNewLabel_4_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -348,10 +358,15 @@ public class TelaVeiculos extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_2.setVisible(true);
+
+			}
 		});
 		lblNewLabel_4_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1.setBounds(0, 578, 350, 67);
+		lblNewLabel_4_1_1.setBounds(0, 582, 350, 63);
 		contentPane.add(lblNewLabel_4_1_1);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
@@ -423,7 +438,7 @@ public class TelaVeiculos extends JFrame {
 		});
 		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1_1_1.setBounds(0, 736, 350, 35);
+		lblNewLabel_4_1_1_1_1.setBounds(0, 721, 350, 63);
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
@@ -448,9 +463,15 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("Sair");
+		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_5.setVisible(true);
+			}
+		});
 		lblNewLabel_4_1_1_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblNewLabel_4_1_1_1_1_1_1.setBounds(58, 956, 93, 35);
+		lblNewLabel_4_1_1_1_1_1_1.setBounds(0, 883, 350, 49);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
 
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");

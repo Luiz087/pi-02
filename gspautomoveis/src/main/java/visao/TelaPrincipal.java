@@ -115,6 +115,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setVisible(false);
 		panel_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -134,6 +135,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -155,6 +157,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setVisible(false);
 		panel_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -177,6 +180,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		
 		JPanel panel_5 = new JPanel();
+		panel_5.setVisible(false);
 		panel_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -208,6 +212,11 @@ public class TelaPrincipal extends JFrame {
 		panel_1.setBounds(0, 718, 340, 52);
 		contentPane.add(panel_1);
 		panel.setForeground(new Color(0, 0, 0));
+		panel_1.setForeground(new Color(0, 0, 0));
+		panel_2.setForeground(new Color(0, 0, 0));
+		panel_3.setForeground(new Color(0, 0, 0));
+		panel_4.setForeground(new Color(0, 0, 0));
+		panel_5.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 647, 340, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215,215, 50));

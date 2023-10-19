@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.text.ParseException;
+import java.util.Iterator;
 
 import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
@@ -24,6 +26,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
@@ -86,7 +92,7 @@ public class TelaFuncionarios extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.setVisible(true);
 		btnAtualizar.setVisible(false);
-		
+
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -273,36 +279,35 @@ public class TelaFuncionarios extends JFrame {
 				String estado = textEstado.getText();
 				Long cep = null;
 				try {
-				    String cepErrado = textCep.getText();
-				    
-				    String cepString = cepErrado.replaceAll("-", "");
-				    
-				    cep = Long.valueOf(cepString);
-				    
-				    
+					String cepErrado = textCep.getText();
+
+					String cepString = cepErrado.replaceAll("-", "");
+
+					cep = Long.valueOf(cepString);
+
 				} catch (NumberFormatException e1) {
-				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+					System.out.println("Erro ao converter para Long: " + e1.getMessage());
 				}
-			    
+
 				end.setBairro(bairro);
 				end.setCep(cep);
 				end.setCidade(cidade);
 				end.setEstado(estado);
 				end.setRua(rua);
-				
+
 				String telefone = textTelefone.getText();
 				try {
-				    telefoneErrado = textTelefone.getText();
-				    
-				    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
-				    telefone = telefoneLimpo;
-				    if (telefoneLimpo.matches("\\d{10,11}")) {
-				        telefone = telefoneLimpo;
-				    } else {
-				        System.out.println("Número de telefone inválido");
-				    }
+					telefoneErrado = textTelefone.getText();
+
+					String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+					telefone = telefoneLimpo;
+					if (telefoneLimpo.matches("\\d{10,11}")) {
+						telefone = telefoneLimpo;
+					} else {
+						System.out.println("Número de telefone inválido");
+					}
 				} catch (NumberFormatException e1) {
-				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+					System.out.println("Erro ao converter para Long: " + e1.getMessage());
 				}
 				String cargo = (String) CBCargo.getSelectedItem();
 				Double comissao = Double.valueOf(textComissao.getText());
@@ -319,21 +324,21 @@ public class TelaFuncionarios extends JFrame {
 				func1.setComissao(comissao);
 
 				funcdao.atualizar(func1);
-				
-				int linhaSelecionada = table.getSelectedRow();
-		        if (linhaSelecionada != -1) {
-		            DefaultTableModel model = (DefaultTableModel) table.getModel();
-		            model.setValueAt(nome, linhaSelecionada, 1);
-		            model.setValueAt(usuario, linhaSelecionada, 2);
-		            model.setValueAt(telefone, linhaSelecionada, 3);
-		            model.setValueAt(cargo, linhaSelecionada, 4);
-		            model.setValueAt(email, linhaSelecionada, 6);
 
-		            // Tela de sucesso de ação
-		            TelaSucesso sucesso = new TelaSucesso();
-		            sucesso.setLocationRelativeTo(null);
-		            sucesso.setVisible(true);
-		        }
+				int linhaSelecionada = table.getSelectedRow();
+				if (linhaSelecionada != -1) {
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					model.setValueAt(nome, linhaSelecionada, 1);
+					model.setValueAt(usuario, linhaSelecionada, 2);
+					model.setValueAt(telefone, linhaSelecionada, 3);
+					model.setValueAt(cargo, linhaSelecionada, 4);
+					model.setValueAt(email, linhaSelecionada, 6);
+
+					// Tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				}
 
 			}
 		});
@@ -355,25 +360,25 @@ public class TelaFuncionarios extends JFrame {
 				String cpfSemHifens = cpfErrado.replaceAll("-", "");
 				String cpfstring = cpfSemHifens.replaceAll("\\.", "");
 				Long cpf = Long.valueOf(cpfstring);
-				
+
 				String email = textEmail.getText();
 				String usuario = textUsuario.getText();
 				String senha = textSenha.getText();
 				String telefone = textTelefone.getText();
 				try {
-				    String telefoneErrado = textTelefone.getText();
-				    
-				    String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
-				    
-				    if (telefoneLimpo.matches("\\d{10,11}")) {
-				        telefone = telefoneLimpo;
-				    } else {
-				        System.out.println("Número de telefone inválido");
-				    }
+					String telefoneErrado = textTelefone.getText();
+
+					String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+
+					if (telefoneLimpo.matches("\\d{10,11}")) {
+						telefone = telefoneLimpo;
+					} else {
+						System.out.println("Número de telefone inválido");
+					}
 				} catch (NumberFormatException e1) {
-				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+					System.out.println("Erro ao converter para Long: " + e1.getMessage());
 				}
-				
+
 				String cargo = (String) CBCargo.getSelectedItem();
 				String dataNascimento = textDataNasc.getText();
 				String dataNascimentoSemTraco = dataNascimento.replaceAll("-", "");
@@ -385,15 +390,14 @@ public class TelaFuncionarios extends JFrame {
 				String bairro = textBairro.getText();
 				Long cep = null;
 				try {
-				    String cepErrado = textCep.getText();
-				    
-				    String cepString = cepErrado.replaceAll("-", "");
-				    
-				    cep = Long.valueOf(cepString);
-				    
-				    
+					String cepErrado = textCep.getText();
+
+					String cepString = cepErrado.replaceAll("-", "");
+
+					cep = Long.valueOf(cepString);
+
 				} catch (NumberFormatException e1) {
-				    System.out.println("Erro ao converter para Long: " + e1.getMessage());
+					System.out.println("Erro ao converter para Long: " + e1.getMessage());
 				}
 
 				Double salario = Double.valueOf(textSalario.getText());
@@ -462,8 +466,9 @@ public class TelaFuncionarios extends JFrame {
 					textBairro.setText("");
 					textComissao.setText("");
 					textSalario.setText("");
-					
-					String data[] = {String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento, email };
+
+					String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento,
+							email };
 
 					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 					tbltable.addRow(data);
@@ -513,7 +518,8 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_1_1_1_1_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(39, 928, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 
@@ -533,7 +539,8 @@ public class TelaFuncionarios extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
+		lblNewLabel_2_1_1_1_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
 		lblNewLabel_2_1_1_1_1.setBounds(39, 708, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 
@@ -556,7 +563,8 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
-		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_2_1_2.setBounds(39, 401, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
 
@@ -601,7 +609,8 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
-		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
+		lblNewLabel_2_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_2_1.setBounds(39, 481, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 
@@ -653,7 +662,8 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1
+				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_1.setBounds(85, 132, 175, 190);
 		contentPane.add(lblNewLabel_1);
 
@@ -707,7 +717,7 @@ public class TelaFuncionarios extends JFrame {
 		textNome.setBounds(542, 32, 292, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
-		
+
 		MaskFormatter mascaraCPF = null;
 		try {
 			mascaraCPF = new MaskFormatter("###.###.###-##");
@@ -890,10 +900,10 @@ public class TelaFuncionarios extends JFrame {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		textCep =  new JFormattedTextField(mascaraCEP);
+		textCep = new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
-		textCep.setBounds(1594, 93, 274, 38);
+		textCep.setBounds(1594, 93, 175, 38);
 		contentPane.add(textCep);
 
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
@@ -967,10 +977,10 @@ public class TelaFuncionarios extends JFrame {
 				sucesso.setLocationRelativeTo(null);
 				sucesso.setVisible(true);
 			}
- 
-		@Override
+
+			@Override
 			public void onView(int row) {
-			// TODO Auto-generated method stub
+				// TODO Auto-generated method stub
 
 			}
 		};
@@ -994,7 +1004,7 @@ public class TelaFuncionarios extends JFrame {
 				textEstado.setEditable(true);
 				textBairro.setEditable(true);
 				CBCargo.setSelectedIndex(0);
-				
+
 				textId.setText("");
 				textNome.setText("");
 				textEmail.setText("");
@@ -1012,7 +1022,7 @@ public class TelaFuncionarios extends JFrame {
 				textSenha.setText("");
 			}
 		});
-		
+
 		JLabel lblIdFunc = new JLabel("Id:");
 		lblIdFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblIdFunc.setBounds(1154, 271, 40, 38);
@@ -1025,6 +1035,18 @@ public class TelaFuncionarios extends JFrame {
 		textId.setBounds(1196, 271, 98, 38);
 		contentPane.add(textId);
 
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Krona One", Font.PLAIN, 12));
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				buscarCep();
+			}
+		});
+		btnBuscar.setBounds(1779, 93, 89, 38);
+		btnBuscar.setBorder(new RoundedBorder(20));
+		btnBuscar.setBackground(Color.WHITE);
+		contentPane.add(btnBuscar);
+
 	}
 
 	public static String trocarPorAsteriscos(String palavra) {
@@ -1036,4 +1058,58 @@ public class TelaFuncionarios extends JFrame {
 
 		return resultado.toString();
 	}
+
+	private void buscarCep() {
+		String logradouro = "";
+		String tipoLogradoro = "";
+		String resultado = null;
+		Long cepS = null;
+		try {
+			String cepErrado = textCep.getText();
+			String cepString = cepErrado.replaceAll("-", "");
+			cepS = Long.valueOf(cepString);
+		} catch (NumberFormatException e1) {
+			System.out.println("Erro ao converter para Long: " + e1.getMessage());
+		}
+		String cep = String.valueOf(cepS);
+
+		try {
+			URL url = new URL(" http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=xml");
+			SAXReader xml = new SAXReader();
+			Document documento = xml.read(url);
+			Element root = documento.getRootElement();
+			for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+				Element element = it.next();
+				if (element.getQualifiedName().equals("cidade")) {
+					textCidade.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("bairro")) {
+					textBairro.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("uf")) {
+					textEstado.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("tipo_logradouro")) {
+					tipoLogradoro = element.getText();
+				}
+				if (element.getQualifiedName().equals("logradouro")) {
+					logradouro = element.getText();
+				}
+				if (element.getQualifiedName().equals("resultado")){
+				resultado = element.getText();
+				if (resultado.equals("1")) {
+				}else {
+					TelaErro erro = new TelaErro();
+					erro.setLocationRelativeTo(null);
+					erro.setVisible(true);
+				}
+				}
+				textRua.setText(tipoLogradoro + " " + logradouro);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 }

@@ -183,10 +183,10 @@ public class TelaVeiculos extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Configuracao telaconfig = new Configuracao();
+				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
-				telaconfig.setLocationRelativeTo(null);
-				telaconfig.setVisible(true);
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
 			
 			}
 		});
@@ -229,10 +229,6 @@ public class TelaVeiculos extends JFrame {
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
-
-
-
-
 		panel.setBounds(0, 647, 350, 63);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215,215, 50));

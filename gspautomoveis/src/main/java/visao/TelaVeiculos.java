@@ -183,10 +183,10 @@ public class TelaVeiculos extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Configuracao telaconfig = new Configuracao();
+				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
-				telaconfig.setLocationRelativeTo(null);
-				telaconfig.setVisible(true);
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
 			
 			}
 		});

@@ -201,15 +201,15 @@ public class TelaPrincipal extends JFrame {
 			}
 		});
 		
-		panel_5.setBounds(0, 931, 340, 63);
+		panel_5.setBounds(0, 931, 339, 63);
 		contentPane.add(panel_5);
-		panel_4.setBounds(0, 407, 340, 63);
+		panel_4.setBounds(0, 407, 339, 63);
 		contentPane.add(panel_4);
-		panel_3.setBounds(0, 493, 340, 56);
+		panel_3.setBounds(0, 490, 339, 63);
 		contentPane.add(panel_3);
-		panel_2.setBounds(0, 576, 340, 52);
+		panel_2.setBounds(0, 564, 339, 63);
 		contentPane.add(panel_2);
-		panel_1.setBounds(0, 718, 340, 52);
+		panel_1.setBounds(0, 712, 339, 63);
 		contentPane.add(panel_1);
 		panel.setForeground(new Color(0, 0, 0));
 		panel_1.setForeground(new Color(0, 0, 0));
@@ -217,7 +217,7 @@ public class TelaPrincipal extends JFrame {
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
-		panel.setBounds(0, 647, 340, 52);
+		panel.setBounds(0, 638, 339, 63);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215,215, 50));
 		panel_1.setBackground(new Color(215, 215,215, 50));
@@ -365,6 +365,10 @@ public class TelaPrincipal extends JFrame {
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setVisible(true);
+			}
 		});
 		lblNewLabel_4.setBounds(0, 407, 339, 63);
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
@@ -436,7 +440,7 @@ public class TelaPrincipal extends JFrame {
 
 			}
 		});
-		lblNewLabel_4_1_1.setBounds(0, 578, 339, 50);
+		lblNewLabel_4_1_1.setBounds(0, 564, 339, 63);
 		lblNewLabel_4_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel_4_1_1);
@@ -465,8 +469,12 @@ public class TelaPrincipal extends JFrame {
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
 			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setVisible(true);
+			}
 		});
-		lblNewLabel_4_1_1_1.setBounds(0, 647, 339, 52);
+		lblNewLabel_4_1_1_1.setBounds(0, 638, 339, 61);
 		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel_4_1_1_1);
@@ -501,7 +509,7 @@ public class TelaPrincipal extends JFrame {
 
 			}
 		});
-		lblNewLabel_4_1_1_1_1.setBounds(0, 718, 339, 52);
+		lblNewLabel_4_1_1_1_1.setBounds(0, 712, 339, 63);
 		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel_4_1_1_1_1);

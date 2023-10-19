@@ -20,7 +20,7 @@ import modelo.Funcionario;
 
 
 @TestMethodOrder(OrderAnnotation.class)
-public class CarroDAOteste {
+public class CarroDAOTest {
     private static StringBuilder output = new StringBuilder("");
 	// annotation
 	@Test
@@ -89,7 +89,8 @@ public class CarroDAOteste {
 
 	
 	@Test
-	public void clicado(Integer id) {
+	@Order(4) 
+	public void clicado() {
 		CarroDAO dao = new CarroDAO();
 
 		Carro CarroList = dao.clicado(5);
@@ -99,7 +100,7 @@ public class CarroDAOteste {
 		
 	}
 	@Test
-	@AfterAll
+	@Order(5) 
 	public void testDeleteCarro() {
 		Carro carro = new Carro();
 		carro.setMarca("chevrolet");

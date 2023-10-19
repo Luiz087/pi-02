@@ -1,4 +1,4 @@
-package raven.cell;
+package ravenD.cell;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import raven.cell.TableActionEvent;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,26 +17,26 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class PanelAction extends  javax.swing.JPanel {
+public class PanelActionD extends  javax.swing.JPanel {
 
 	   /**
      * Creates new form PanelAction
      */
-    public PanelAction() {
+    public PanelActionD() {
         initComponents();
     }
 
-    public void initEvent(TableActionEvent event, int row) {
+    public void initEvent(TableActionEventD eventD, int row) {
         cmdEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                event.onEdit(row);
+                eventD.onEdit(row);
             }
         });
         cmdDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                event.onDelete(row);
+                eventD.onDelete(row);
             }
         });
     }
@@ -50,9 +53,12 @@ public class PanelAction extends  javax.swing.JPanel {
         cmdEdit = new raven.cell.ActionButton();
         cmdDelete = new raven.cell.ActionButton();
 
-        cmdEdit.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/edit.png"))); // NOI18N
+        cmdEdit.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/edit.png"))); // NOI18N
 
-        cmdDelete.setIcon(new ImageIcon(PanelAction.class.getResource("/visao/imagens/delete.png")));
+        cmdDelete.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/delete.png")));
+        
+        ActionButtonD cmdvisu = new ActionButtonD();
+        cmdvisu.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/moedas (1).png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
@@ -62,15 +68,19 @@ public class PanelAction extends  javax.swing.JPanel {
         			.addComponent(cmdEdit, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
         			.addGap(18)
         			.addComponent(cmdDelete, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-        			.addGap(210))
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+        			.addGap(176))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(143, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        				.addComponent(cmdEdit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addComponent(cmdDelete, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE))
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+        				.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        					.addComponent(cmdEdit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        					.addComponent(cmdDelete, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE)))
         			.addContainerGap(132, Short.MAX_VALUE))
         );
         this.setLayout(layout);

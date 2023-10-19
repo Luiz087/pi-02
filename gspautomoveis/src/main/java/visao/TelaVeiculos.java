@@ -20,9 +20,9 @@ import modelo.Carro;
 import modelo.Endereco;
 import modelo.Fornecedor;
 import modelo.Funcionario;
-import raven.cell.TableActionCellEditor;
-import raven.cell.TableActionCellRender;
-import raven.cell.TableActionEvent;
+import ravenD.cell.TableActionCellEditorD;
+import ravenD.cell.TableActionCellRenderD;
+import ravenD.cell.TableActionEventD;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -816,7 +816,7 @@ public class TelaVeiculos extends JFrame {
 
 		table.getColumnModel().getColumn(14).setPreferredWidth(200);
 
-		TableActionEvent event = new TableActionEvent() {
+		TableActionEventD eventD = new TableActionEventD() {
 
 			@Override
 			public void onEdit(int row) {
@@ -858,8 +858,8 @@ public class TelaVeiculos extends JFrame {
 
 			}
 		};
-		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRender());
-		table.getColumnModel().getColumn(14).setCellEditor(new TableActionCellEditor(event));
+		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());
+		table.getColumnModel().getColumn(14).setCellEditor(new TableActionCellEditorD(eventD));
 		table.setRowHeight(60);
 
 		btnAtualizar.setForeground(Color.BLACK);

@@ -83,13 +83,32 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
-	public void testListarDepoisFuncionarios() {
+	public void testAualizarFunc() {
+		Funcionario func = new Funcionario();
+		func.setMatricula(90);
+		func.setNome("Carlos");
+		func.setEmail("Carlos@gmail.com");
+		func.setComissao(1.2);
+		func.setCpf(53296126034l);
+		func.setDataDeNasc("08/10/2005");
+		func.setNivelCargo("Vendedor");
+		func.setSalario(12323.9);
+		func.setSenha("2346");
+		func.setTelefone(47888999999l);
+		func.setUsuario("carlao");
+		Endereco end = new Endereco();
+		end.setBairro("Macuco");
+		end.setRua("Rua da Tristeza");
+		end.setCidade("Blumenau");
+		end.setEstado("Santa Catarina");
+		end.setCep((long) 123175123);
+		end.setIdEndereco(567);
+		func.setEndereco(end);
+		
 		FuncionarioDAO dao = new FuncionarioDAO();
-
-		ArrayList<Funcionario> funcList = dao.ListarFuncionarios();
+		boolean fAtualizado = dao.atualizar(func);
 		
-		assertNotNull(funcList);
-		
+		assertEquals(true, fAtualizado);
 	}
 	
 	@Test
@@ -120,6 +139,7 @@ public class FuncionarioDAOTest {
 		
 		assertEquals(true, fDeletado);
 	}
+	
 	
 	
 }

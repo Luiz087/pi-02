@@ -837,7 +837,7 @@ public class TelaFuncionarios extends JFrame {
 				String terceiroParte = partes[2];
 
 				// Reorganiza as partes da string no formato desejado
-				String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
+				String resultado = terceiroParte + segundaParte + primeiroParte;
 
 				textDataNasc.setText(resultado);
 
@@ -903,7 +903,7 @@ public class TelaFuncionarios extends JFrame {
 		textCep = new JFormattedTextField(mascaraCEP);
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
-		textCep.setBounds(1594, 93, 175, 38);
+		textCep.setBounds(1582, 93, 175, 38);
 		contentPane.add(textCep);
 
 		JLabel lblCpf_2_3 = new JLabel("Cidade:");
@@ -1042,7 +1042,7 @@ public class TelaFuncionarios extends JFrame {
 				buscarCep();
 			}
 		});
-		btnBuscar.setBounds(1779, 93, 89, 38);
+		btnBuscar.setBounds(1767, 93, 101, 38);
 		btnBuscar.setBorder(new RoundedBorder(20));
 		btnBuscar.setBackground(Color.WHITE);
 		contentPane.add(btnBuscar);

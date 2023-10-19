@@ -19,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class TelaVendas extends JFrame {
 
@@ -33,6 +34,7 @@ public class TelaVendas extends JFrame {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
+	private JTextField textField_9;
 
 
 	/**
@@ -424,104 +426,121 @@ public class TelaVendas extends JFrame {
 		lblNewLabel.setBounds(-14, -47, 361, 1141);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblMarca = new JLabel("Nome Cliente:");
+		JLabel lblMarca = new JLabel("Nome:");
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca.setBounds(378, 212, 233, 38);
+		lblMarca.setBounds(483, 177, 114, 38);
 		contentPane.add(lblMarca);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Krona One", Font.PLAIN, 14));
-		textField.setBounds(630, 212, 233, 38);
+		textField.setBounds(607, 177, 233, 38);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblCpfCliente = new JLabel("Cpf Cliente:");
+		JLabel lblCpfCliente = new JLabel("CPF:");
 		lblCpfCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCpfCliente.setBounds(916, 212, 185, 38);
+		lblCpfCliente.setBounds(1002, 177, 74, 38);
 		contentPane.add(lblCpfCliente);
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_1.setColumns(10);
-		textField_1.setBounds(1111, 212, 233, 38);
+		textField_1.setBounds(1086, 177, 233, 38);
 		contentPane.add(textField_1);
 		
-		JLabel lblTelefoneCliente = new JLabel("Telefone Cliente:");
+		JLabel lblTelefoneCliente = new JLabel("Telefone:");
 		lblTelefoneCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefoneCliente.setBounds(1379, 212, 279, 38);
+		lblTelefoneCliente.setBounds(1428, 177, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_2.setColumns(10);
-		textField_2.setBounds(1661, 212, 233, 38);
+		textField_2.setBounds(1595, 177, 233, 38);
 		contentPane.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_3.setColumns(10);
-		textField_3.setBounds(507, 487, 196, 38);
+		textField_3.setBounds(1595, 340, 233, 38);
 		contentPane.add(textField_3);
 		
-		JLabel lblBairro = new JLabel("Bairro:");
+		JLabel lblBairro = new JLabel("CEP:");
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblBairro.setBounds(371, 487, 126, 38);
+		lblBairro.setBounds(1492, 340, 93, 38);
 		contentPane.add(lblBairro);
 		
 		JLabel lblCidae = new JLabel("Cidade:");
 		lblCidae.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae.setBounds(791, 487, 143, 38);
+		lblCidae.setBounds(934, 340, 132, 38);
 		contentPane.add(lblCidae);
 		
 		textField_4 = new JTextField();
 		textField_4.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_4.setColumns(10);
-		textField_4.setBounds(931, 487, 196, 38);
+		textField_4.setBounds(1086, 340, 233, 38);
 		contentPane.add(textField_4);
 		
 		JLabel lblEstado = new JLabel("Estado:");
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEstado.setBounds(1190, 487, 143, 38);
+		lblEstado.setBounds(447, 500, 143, 38);
 		contentPane.add(lblEstado);
 		
 		textField_5 = new JTextField();
 		textField_5.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_5.setColumns(10);
-		textField_5.setBounds(1355, 487, 196, 38);
+		textField_5.setBounds(607, 503, 233, 38);
 		contentPane.add(textField_5);
 		
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblRua.setBounds(372, 760, 93, 38);
+		lblRua.setBounds(981, 503, 85, 38);
 		contentPane.add(lblRua);
 		
 		textField_6 = new JTextField();
 		textField_6.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_6.setColumns(10);
-		textField_6.setBounds(465, 760, 292, 38);
+		textField_6.setBounds(1086, 503, 233, 38);
 		contentPane.add(textField_6);
 		
 		JLabel lblData = new JLabel("Data:");
 		lblData.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblData.setBounds(863, 760, 93, 38);
+		lblData.setBounds(497, 665, 93, 38);
 		contentPane.add(lblData);
 		
 		textField_7 = new JTextField();
 		textField_7.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_7.setColumns(10);
-		textField_7.setBounds(976, 760, 166, 38);
+		textField_7.setBounds(607, 670, 233, 38);
 		contentPane.add(textField_7);
 		
 		JLabel lblPreo = new JLabel("Preço:");
 		lblPreo.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblPreo.setBounds(1203, 760, 142, 38);
+		lblPreo.setBounds(940, 665, 126, 38);
 		contentPane.add(lblPreo);
 		
 		textField_8 = new JTextField();
 		textField_8.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textField_8.setColumns(10);
-		textField_8.setBounds(1337, 760, 214, 38);
+		textField_8.setBounds(1086, 665, 233, 38);
 		contentPane.add(textField_8);
+		
+		JLabel lblCep = new JLabel("Bairro:");
+		lblCep.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblCep.setBounds(476, 340, 114, 38);
+		contentPane.add(lblCep);
+		
+		textField_9 = new JTextField();
+		textField_9.setFont(new Font("Krona One", Font.PLAIN, 14));
+		textField_9.setColumns(10);
+		textField_9.setBounds(607, 340, 233, 38);
+		contentPane.add(textField_9);
+		
+		JButton btnNewButton = new JButton("Vender");
+		btnNewButton.setFont(new Font("Krona One", Font.PLAIN, 14));
+		btnNewButton.setBackground(Color.GREEN);
+		btnNewButton.setBounds(940, 842, 251, 35);
+		contentPane.add(btnNewButton);
 
 		
 	}

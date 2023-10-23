@@ -295,4 +295,38 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return F;
 	}
 
+	public ArrayList<Funcionario> ListarUsuarios() {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		ArrayList<Funcionario> Funcionarios = new ArrayList<>();
+
+		String Query = "SELECT usuario FROM funcionarios";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				String Usuario = rs.getString("Usuario");
+
+				Funcionario F = new Funcionario();
+				
+				F.setUsuario(Usuario);
+
+				Funcionarios.add(F);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return Funcionarios;
+	}
 }

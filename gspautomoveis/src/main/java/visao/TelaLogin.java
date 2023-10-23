@@ -162,11 +162,23 @@ public class TelaLogin extends JFrame {
 					// Atribui o vetor pra uma variavel senha
 					senha = String.valueOf(pass);
 				}
-
-				// Se login ou senha são vazios...
-				if (senha.isEmpty() || login.isEmpty()) {
+				
+				if(senha.isEmpty() && login.isEmpty()) {
+					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Insira seus dados!");
+					dadosIncorretos.setLocationRelativeTo(null);
+					dadosIncorretos.setVisible(true);
+					passwordSenha.setText(null);
+					textLogin.setText(null);
+				} else if (senha.isEmpty()) {
 					// Exibe mensagem de erro
-					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
+					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Insira uma senha!");
+					dadosIncorretos.setLocationRelativeTo(null);
+					dadosIncorretos.setVisible(true);
+					passwordSenha.setText(null);
+					textLogin.setText(null);
+				} else if (login.isEmpty()) {
+					// Exibe mensagem de erro
+					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Insira um usuário!");
 					dadosIncorretos.setLocationRelativeTo(null);
 					dadosIncorretos.setVisible(true);
 					passwordSenha.setText(null);
@@ -191,10 +203,9 @@ public class TelaLogin extends JFrame {
 						TelaSucesso sucesso = new TelaSucesso();
 						sucesso.setLocationRelativeTo(null);
 						sucesso.setVisible(true);
-
 					} else {
 						// Exibe mensagem de erro
-						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto();
+						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Usuário não encontrado!");
 						dadosIncorretos.setLocationRelativeTo(null);
 						dadosIncorretos.setVisible(true);
 					}

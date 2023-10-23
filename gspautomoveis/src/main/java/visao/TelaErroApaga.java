@@ -5,18 +5,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
 import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Font;
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import java.awt.SystemColor;
-import javax.swing.SwingConstants;
 
-public class telaLoginIncorreto extends JFrame {
+public class TelaErroApaga extends JFrame {
 
 	protected static final String String = null;
 	private JPanel contentPane;
@@ -28,7 +26,7 @@ public class telaLoginIncorreto extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					telaLoginIncorreto frame = new telaLoginIncorreto(String);
+					TelaErroApaga frame = new TelaErroApaga(String);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +38,7 @@ public class telaLoginIncorreto extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public telaLoginIncorreto(String msg) {
+	public TelaErroApaga(String mensagem) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -60,7 +58,7 @@ public class telaLoginIncorreto extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 24));
-		btnNewButton.setBounds(373, 0, 89, 23);
+		btnNewButton.setBounds(376, 11, 74, 23);
 		btnNewButton.setBorder(null);
 		btnNewButton.setFocusPainted(false);
 
@@ -71,17 +69,13 @@ public class telaLoginIncorreto extends JFrame {
 		lblNewLabel.setBounds(178, 23, 143, 100);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("AÇÃO INVÁLIDA");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel lblNewLabel_1 = new JLabel(mensagem);
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(0, 171, 450, 24);
+		lblNewLabel_1.setBounds(93, 134, 600, 77);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblMsg = new JLabel("");
-		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsg.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblMsg.setBounds(0, 201, 450, 23);
-		contentPane.add(lblMsg);
-		lblMsg.setText(msg);
+	
+		
 	}
 }

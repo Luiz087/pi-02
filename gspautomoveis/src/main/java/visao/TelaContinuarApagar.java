@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class TelaContinuar extends JFrame {
+public class TelaContinuarApagar extends JFrame {
 
 	private JPanel contentPane;
 	public boolean confirmado;
@@ -26,7 +26,7 @@ public class TelaContinuar extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaContinuar frame = new TelaContinuar();
+					TelaContinuarApagar frame = new TelaContinuarApagar();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class TelaContinuar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaContinuar() {
+	public TelaContinuarApagar() {
         // ... Código anterior ...
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -69,7 +69,7 @@ public class TelaContinuar extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaContinuarApagar.class.getResource("/visao/imagens/excalama amarelo.png")));
 		lblNewLabel.setBounds(178, 23, 143, 100);
 
         JButton btnSim = new JButton("SIM");
@@ -80,7 +80,7 @@ public class TelaContinuar extends JFrame {
         btnSim.setBorder(new RoundedBorder(20));
         
         JLabel lblNewLabel_2 = new JLabel("");
-        lblNewLabel_2.setIcon(new ImageIcon(TelaContinuar.class.getResource("/visao/imagens/excalama amarelo.png")));
+        lblNewLabel_2.setIcon(new ImageIcon(TelaContinuarApagar.class.getResource("/visao/imagens/excalama amarelo.png")));
         lblNewLabel_2.setBounds(173, 37, 100, 100);
         contentPane.add(lblNewLabel_2);
         btnSim.addActionListener(new ActionListener() {

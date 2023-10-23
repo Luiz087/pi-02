@@ -39,6 +39,8 @@ import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -62,7 +64,6 @@ public class TelaFuncionarios extends JFrame {
 	private EnderecoDAO enddao = EnderecoDAO.getInstancia();
 	private JTextField textId;
 	private JPanel panel;
-
 
 	/**
 	 * Launch the application.
@@ -95,7 +96,7 @@ public class TelaFuncionarios extends JFrame {
 
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		panel = new JPanel();
 		panel.setVisible(false);
 		panel.addMouseListener(new MouseAdapter() {
@@ -104,21 +105,23 @@ public class TelaFuncionarios extends JFrame {
 				panel.setVisible(true);
 
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel.setVisible(false);
 
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
-				
+
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setVisible(false);
 		panel_1.addMouseListener(new MouseAdapter() {
@@ -126,10 +129,12 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_1.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
@@ -138,7 +143,7 @@ public class TelaFuncionarios extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setVisible(false);
 		panel_2.addMouseListener(new MouseAdapter() {
@@ -146,10 +151,12 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_2.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
@@ -158,7 +165,7 @@ public class TelaFuncionarios extends JFrame {
 				telafunc.setVisible(true);
 			}
 		});
-		
+		TelaFuncionarios funcT = new TelaFuncionarios();
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {
@@ -166,12 +173,12 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_3.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Configuracao telaconfig = new Configuracao();
@@ -180,7 +187,7 @@ public class TelaFuncionarios extends JFrame {
 				telaconfig.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setVisible(false);
 		panel_4.addMouseListener(new MouseAdapter() {
@@ -188,22 +195,22 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_4.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
-			
+
 			}
 		});
-		
+
 		JPanel panel_5 = new JPanel();
 		panel_5.setVisible(false);
 		panel_5.addMouseListener(new MouseAdapter() {
@@ -211,12 +218,12 @@ public class TelaFuncionarios extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_5.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaLogin telalogin = new TelaLogin();
@@ -225,7 +232,7 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		panel_5.setBounds(0, 913, 350, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 390, 350, 63);
@@ -244,13 +251,12 @@ public class TelaFuncionarios extends JFrame {
 		panel_5.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 629, 350, 52);
 		contentPane.add(panel);
-		panel.setBackground(new Color(215, 215,215, 50));
-		panel_1.setBackground(new Color(215, 215,215, 50));
-		panel_2.setBackground(new Color(215, 215,215, 50));
-		panel_3.setBackground(new Color(215, 215,215, 50));
-		panel_4.setBackground(new Color(215, 215,215, 50));
-		panel_5.setBackground(new Color(215, 215,215, 50));
-
+		panel.setBackground(new Color(215, 215, 215, 50));
+		panel_1.setBackground(new Color(215, 215, 215, 50));
+		panel_2.setBackground(new Color(215, 215, 215, 50));
+		panel_3.setBackground(new Color(215, 215, 215, 50));
+		panel_4.setBackground(new Color(215, 215, 215, 50));
+		panel_5.setBackground(new Color(215, 215, 215, 50));
 
 		JComboBox CBCargo = new JComboBox();
 		CBCargo.setModel(new DefaultComboBoxModel(
@@ -260,9 +266,7 @@ public class TelaFuncionarios extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 
-		
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Botão atualizar
@@ -354,128 +358,135 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Botão adicionar
-				Funcionario func1 = new Funcionario();
-				String nome = textNome.getText();
-				String cpfErrado = textCPF.getText();
-				String cpfSemHifens = cpfErrado.replaceAll("-", "");
-				String cpfstring = cpfSemHifens.replaceAll("\\.", "");
-				Long cpf = Long.valueOf(cpfstring);
-
-				String email = textEmail.getText();
-				String usuario = textUsuario.getText();
-				String senha = textSenha.getText();
-				String telefone = textTelefone.getText();
-				try {
-					String telefoneErrado = textTelefone.getText();
-
-					String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
-
-					if (telefoneLimpo.matches("\\d{10,11}")) {
-						telefone = telefoneLimpo;
-					} else {
-						System.out.println("Número de telefone inválido");
-					}
-				} catch (NumberFormatException e1) {
-					System.out.println("Erro ao converter para Long: " + e1.getMessage());
-				}
-
-				String cargo = (String) CBCargo.getSelectedItem();
-				String dataNascimento = textDataNasc.getText();
-				String dataNascimentoSemTraco = dataNascimento.replaceAll("-", "");
-				String dataNascimentoCorreta = dataNascimentoSemTraco.replaceAll("\\.", "");
-
-				String rua = textRua.getText();
-				String estado = textEstado.getText();
-				String cidade = textCidade.getText();
-				String bairro = textBairro.getText();
-				Long cep = null;
-				try {
-					String cepErrado = textCep.getText();
-
-					String cepString = cepErrado.replaceAll("-", "");
-
-					cep = Long.valueOf(cepString);
-
-				} catch (NumberFormatException e1) {
-					System.out.println("Erro ao converter para Long: " + e1.getMessage());
-				}
-
-				Double salario = Double.valueOf(textSalario.getText());
-				Double comissao = Double.valueOf(textComissao.getText());
-
-				func1.setNome(nome);
-				func1.setCpf(cpf);
-				func1.setEmail(email);
-				func1.setUsuario(usuario);
-				func1.setSenha(senha);
-				func1.setTelefone(Long.valueOf(telefone));
-				func1.setNivelCargo(cargo);
-				func1.setDataDeNasc(dataNascimentoCorreta);
-				func1.setSalario(salario);
-				func1.setComissao(comissao);
-
-				Endereco end = new Endereco();
-				end.setRua(rua);
-				end.setCidade(cidade);
-				end.setEstado(estado);
-				end.setCep(cep);
-				end.setBairro(bairro);
-
-				func1.setEndereco(end);
-
-				if (nome.equals("") || cpf.equals("") || email.equals("") || usuario.equals("") || senha.equals("")
-						|| telefone.equals("") || cargo.equals("") || dataNascimento.equals("") || rua.equals("")
-						|| cep.equals("") || bairro.equals("") || cidade.equals("") || estado.equals("")
-						|| comissao.equals("") || salario.equals("")) {
-					System.out.print("mal");
+				if (textNome.getText().equals("") || textCPF.getText().equals("") || textEmail.getText().equals("")
+						|| textUsuario.getText().equals("") || textSenha.getText().equals("")
+						|| textTelefone.getText().equals("") || CBCargo.getSelectedIndex() == 0
+						|| textDataNasc.getText().equals("") || textRua.getText().equals("")
+						|| textCep.getText().equals("") || textBairro.getText().equals("")
+						|| textCidade.getText().equals("") || textEstado.getText().equals("")
+						|| textComissao.getText().equals("") || textSalario.getText().equals("")) {
+					erro("Preencha todos os dados!");
 				} else {
+					for (Funcionario funcTeste : funcdao.ListarUsuarios()) {
+						if (!funcTeste.getUsuario().equals(textUsuario.getText())) {
+							Funcionario func1 = new Funcionario();
+							String nome = textNome.getText();
+							String cpfErrado = textCPF.getText();
+							String cpfSemHifens = cpfErrado.replaceAll("-", "");
+							String cpfstring = cpfSemHifens.replaceAll("\\.", "");
+							Long cpf = Long.valueOf(cpfstring);
 
-					System.out.println("Até aqui sim");
+							String email = textEmail.getText();
+							String usuario = textUsuario.getText();
+							String senha = textSenha.getText();
+							String telefone = textTelefone.getText();
+							try {
+								String telefoneErrado = textTelefone.getText();
 
-					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-					if (verificacaoEnd == null) {
-						/*
-						 * Se o endereco for null Significa que nao encontrou nada no BD
-						 */
-						Integer idend = enddao.inserir(end);
-						end.setIdEndereco(idend);
-					} else {
-						/*
-						 * Se o endereco nao eh null significa que ja esta cadastrado
-						 */
-						end.setIdEndereco(verificacaoEnd.getIdEndereco());
+								String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+
+								if (telefoneLimpo.matches("\\d{10,11}")) {
+									telefone = telefoneLimpo;
+								} else {
+									System.out.println("Número de telefone inválido");
+								}
+							} catch (NumberFormatException e1) {
+								System.out.println("Erro ao converter para Long: " + e1.getMessage());
+							}
+
+							String cargo = (String) CBCargo.getSelectedItem();
+							String dataNascimento = textDataNasc.getText();
+							String dataNascimentoSemTraco = dataNascimento.replaceAll("-", "");
+							String dataNascimentoCorreta = dataNascimentoSemTraco.replaceAll("\\.", "");
+
+							String rua = textRua.getText();
+							String estado = textEstado.getText();
+							String cidade = textCidade.getText();
+							String bairro = textBairro.getText();
+							Long cep = null;
+							try {
+								String cepErrado = textCep.getText();
+
+								String cepString = cepErrado.replaceAll("-", "");
+
+								cep = Long.valueOf(cepString);
+
+							} catch (NumberFormatException e1) {
+								System.out.println("Erro ao converter para Long: " + e1.getMessage());
+							}
+
+							Double salario = Double.valueOf(textSalario.getText());
+							Double comissao = Double.valueOf(textComissao.getText());
+
+							func1.setNome(nome);
+							func1.setCpf(cpf);
+							func1.setEmail(email);
+							func1.setUsuario(usuario);
+							func1.setSenha(senha);
+							func1.setTelefone(Long.valueOf(telefone));
+							func1.setNivelCargo(cargo);
+							func1.setDataDeNasc(dataNascimentoCorreta);
+							func1.setSalario(salario);
+							func1.setComissao(comissao);
+
+							Endereco end = new Endereco();
+							end.setRua(rua);
+							end.setCidade(cidade);
+							end.setEstado(estado);
+							end.setCep(cep);
+							end.setBairro(bairro);
+
+							func1.setEndereco(end);
+
+							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+							if (verificacaoEnd == null) {
+								/*
+								 * Se o endereco for null Significa que nao encontrou nada no BD
+								 */
+								Integer idend = enddao.inserir(end);
+								end.setIdEndereco(idend);
+							} else {
+								/*
+								 * Se o endereco nao eh null significa que ja esta cadastrado
+								 */
+								end.setIdEndereco(verificacaoEnd.getIdEndereco());
+							}
+
+							func1.setEndereco(end);
+							Integer matricula = funcdao.inserir(func1);
+
+							System.out.println("Passou");
+
+							textNome.setText("");
+							textCPF.setText("");
+							textEmail.setText("");
+							textUsuario.setText("");
+							textSenha.setText("");
+							textTelefone.setText("");
+							CBCargo.setSelectedIndex(0);
+							textDataNasc.setText("");
+							textRua.setText("");
+							textCidade.setText("");
+							textEstado.setText("");
+							textCep.setText("");
+							textBairro.setText("");
+							textComissao.setText("");
+							textSalario.setText("");
+
+							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento,
+									email };
+
+							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+							tbltable.addRow(data);
+
+							TelaSucesso sucesso = new TelaSucesso();
+							sucesso.setLocationRelativeTo(null);
+							sucesso.setVisible(true);
+						} else {
+							erro("Nome de usuário já cadastrado!");
+						}
+
 					}
-
-					func1.setEndereco(end);
-					Integer matricula = funcdao.inserir(func1);
-
-					System.out.println("Passou");
-
-					textNome.setText("");
-					textCPF.setText("");
-					textEmail.setText("");
-					textUsuario.setText("");
-					textSenha.setText("");
-					textTelefone.setText("");
-					CBCargo.setSelectedIndex(0);
-					textDataNasc.setText("");
-					textRua.setText("");
-					textCidade.setText("");
-					textEstado.setText("");
-					textCep.setText("");
-					textBairro.setText("");
-					textComissao.setText("");
-					textSalario.setText("");
-
-					String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento,
-							email };
-
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
-
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
 				}
 
 				/*
@@ -485,6 +496,7 @@ public class TelaFuncionarios extends JFrame {
 				 * configuracao.setVisible(true);
 				 */
 			}
+
 		});
 
 		btnAdicionar.setForeground(Color.BLACK);
@@ -518,8 +530,7 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_1_1_1_1_1
-				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
+		lblNewLabel_2_1_1_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/sair.png")));
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(39, 928, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 
@@ -539,8 +550,7 @@ public class TelaFuncionarios extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		lblNewLabel_2_1_1_1_1
-				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/carro +.png")));
 		lblNewLabel_2_1_1_1_1.setBounds(39, 708, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 
@@ -563,8 +573,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
-		lblNewLabel_2_1_2
-				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/bau veiculos.png")));
 		lblNewLabel_2_1_2.setBounds(39, 401, 40, 35);
 		contentPane.add(lblNewLabel_2_1_2);
 
@@ -577,6 +586,7 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setLocationRelativeTo(null);
 				telalogin.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
@@ -597,6 +607,7 @@ public class TelaFuncionarios extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
@@ -609,8 +620,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
-		lblNewLabel_2_1
-				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
+		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Engrenagem.png")));
 		lblNewLabel_2_1.setBounds(39, 481, 40, 35);
 		contentPane.add(lblNewLabel_2_1);
 
@@ -623,6 +633,7 @@ public class TelaFuncionarios extends JFrame {
 				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafornec.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
@@ -662,8 +673,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1
-				.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_1.setBounds(85, 132, 175, 190);
 		contentPane.add(lblNewLabel_1);
 
@@ -901,6 +911,12 @@ public class TelaFuncionarios extends JFrame {
 			e.printStackTrace();
 		}
 		textCep = new JFormattedTextField(mascaraCEP);
+		textCep.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				buscarCep();
+			}
+		});
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
 		textCep.setBounds(1582, 93, 175, 38);
@@ -966,21 +982,29 @@ public class TelaFuncionarios extends JFrame {
 				// quer excluir mesmo?
 				// FALTA COLOCAR CONFIRMAÇÃO
 
-				funcdao.excluir(funcDelete);
+				TelaConfirmacao confirma = new TelaConfirmacao(this);
+				if (confirma.getResult() == true) {
+					funcdao.excluir(funcDelete);
 
-				// remove a linha da tabela (visualmente)
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				model.removeRow(row);
+					// remove a linha da tabela (visualmente)
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					model.removeRow(row);
 
-				// tela de sucesso de ação
-				TelaSucesso sucesso = new TelaSucesso();
-				sucesso.setLocationRelativeTo(null);
-				sucesso.setVisible(true);
+					// tela de sucesso de ação
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+				} else {
+					erro("Ação cancelada!");
+				}
 			}
 
 			@Override
 			public void onView(int row) {
-				// TODO Auto-generated method stub
+				TelaVendas vendas = new TelaVendas();
+				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				vendas.setVisible(true);
+				dispose();
 
 			}
 		};
@@ -1003,23 +1027,6 @@ public class TelaFuncionarios extends JFrame {
 				textCep.setEditable(true);
 				textEstado.setEditable(true);
 				textBairro.setEditable(true);
-				CBCargo.setSelectedIndex(0);
-
-				textId.setText("");
-				textNome.setText("");
-				textEmail.setText("");
-				textUsuario.setText("");
-				textTelefone.setText("");
-				textRua.setText("");
-				textBairro.setText("");
-				textCidade.setText("");
-				textEstado.setText("");
-				textCep.setText("");
-				textDataNasc.setText("");
-				textCPF.setText("");
-				textSalario.setText("");
-				textComissao.setText("");
-				textSenha.setText("");
 			}
 		});
 
@@ -1046,6 +1053,33 @@ public class TelaFuncionarios extends JFrame {
 		btnBuscar.setBorder(new RoundedBorder(20));
 		btnBuscar.setBackground(Color.WHITE);
 		contentPane.add(btnBuscar);
+
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textId.setText("");
+				textNome.setText("");
+				textEmail.setText("");
+				textUsuario.setText("");
+				textTelefone.setText("");
+				textRua.setText("");
+				textBairro.setText("");
+				textCidade.setText("");
+				textEstado.setText("");
+				textCep.setText("");
+				textDataNasc.setText("");
+				textCPF.setText("");
+				textSalario.setText("");
+				textComissao.setText("");
+				textSenha.setText("");
+				CBCargo.setSelectedIndex(0);
+
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/419660 (1).png")));
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setBounds(1304, 271, 56, 38);
+		contentPane.add(btnNewButton);
 
 	}
 
@@ -1095,14 +1129,12 @@ public class TelaFuncionarios extends JFrame {
 				if (element.getQualifiedName().equals("logradouro")) {
 					logradouro = element.getText();
 				}
-				if (element.getQualifiedName().equals("resultado")){
-				resultado = element.getText();
-				if (resultado.equals("1")) {
-				}else {
-					TelaErro erro = new TelaErro();
-					erro.setLocationRelativeTo(null);
-					erro.setVisible(true);
-				}
+				if (element.getQualifiedName().equals("resultado")) {
+					resultado = element.getText();
+					if (resultado.equals("1")) {
+					} else {
+						erro("CEP inválido!");
+					}
 				}
 				textRua.setText(tipoLogradoro + " " + logradouro);
 			}
@@ -1112,4 +1144,9 @@ public class TelaFuncionarios extends JFrame {
 		}
 	}
 
+	private void erro(String string) {
+		TelaErro erro = new TelaErro((JFrame) this,string);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
+	}
 }

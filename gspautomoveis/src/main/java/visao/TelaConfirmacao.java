@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -20,7 +19,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TelaErro extends JDialog {
+public class TelaConfirmacao extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 
@@ -29,7 +28,7 @@ public class TelaErro extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			TelaErro dialog = new TelaErro(null, null);
+			TelaConfirmacao dialog = new TelaConfirmacao(null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -45,7 +44,10 @@ public class TelaErro extends JDialog {
 	 * @param tableActionEvent 
 	 */
 	
-	public TelaErro(JFrame asd, String string) {
+	private boolean resultado;
+	
+	
+	public TelaConfirmacao(TableActionEvent tableActionEvent) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 255));
@@ -53,36 +55,54 @@ public class TelaErro extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		this.setUndecorated(true);
+				
+		JButton btnNewButton = new JButton("CONFIRMAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				resultado = true;
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("Krona One", Font.PLAIN, 15));
+		btnNewButton.setBackground(new Color(128, 255, 0));
+		btnNewButton.setForeground(new Color(0, 128, 0));
+		btnNewButton.setBounds(10, 232, 211, 57);
+		contentPanel.add(btnNewButton);
+		btnNewButton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		JButton btnNewButton_1 = new JButton("CANCELAR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				resultado = false;
 				dispose();
 			}
 		});
 		btnNewButton_1.setFont(new Font("Krona One", Font.PLAIN, 15));
 		btnNewButton_1.setBackground(new Color(255, 0, 0));
 		btnNewButton_1.setForeground(new Color(64, 0, 0));
-		btnNewButton_1.setBounds(10, 232, 430, 57);
+		btnNewButton_1.setBounds(229, 232, 211, 57);
 		contentPanel.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaErro.class.getResource("/visao/imagens/exclama.png")));
+		lblNewLabel.setIcon(new ImageIcon(TelaConfirmacao.class.getResource("/visao/imagens/excalama amarelo.png")));
 		lblNewLabel.setBounds(175, 20, 100, 100);
 		contentPanel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ocorreu um erro!");
+		JLabel lblNewLabel_1 = new JLabel("Tem certeza que");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(0, 131, 450, 26);
+		lblNewLabel_1.setBounds(10, 131, 414, 26);
 		contentPanel.add(lblNewLabel_1);
 		
-		JLabel lblMsg = new JLabel("");
-		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMsg.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblMsg.setBounds(0, 170, 450, 26);
-		contentPanel.add(lblMsg);
-		lblMsg.setText(string);
+		JLabel lblNewLabel_1_1 = new JLabel("deseja continuar?");
+		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1.setFont(new Font("Krona One", Font.PLAIN, 20));
+		lblNewLabel_1_1.setBounds(10, 153, 414, 26);
+		contentPanel.add(lblNewLabel_1_1);
 		
+	}
+	
+	public boolean getResult() {
+	    return resultado;
 	}
 }

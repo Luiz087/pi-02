@@ -30,6 +30,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Configuracao extends JFrame {
 
@@ -60,6 +62,7 @@ public class Configuracao extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param princip 
 	 */
 	public Configuracao() {
 		Funcionario func = new Funcionario();
@@ -72,6 +75,13 @@ public class Configuracao extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblSair = new JLabel("");
+		lblSair.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/sair.png")));
+		lblSair.setBounds(828, 22, 40, 35);
+		contentPane.add(lblSair);
+		
+		
 
 		JLabel lblNewLabel_3_1 = new JLabel("AUTOMÓVEIS");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -106,7 +116,6 @@ public class Configuracao extends JFrame {
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(192, 319, 321, 38);
-		textUsuario.setText(func.getUsuario());
 		contentPane.add(textUsuario);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
@@ -118,7 +127,6 @@ public class Configuracao extends JFrame {
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
 		textTel.setBounds(194, 373, 345, 38);
-		textTel.setText(String.valueOf(func.getTelefone()));
 		contentPane.add(textTel);
 
 		JLabel lblSenha = new JLabel("Senha:");
@@ -130,7 +138,6 @@ public class Configuracao extends JFrame {
 		textSen.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textSen.setColumns(10);
 		textSen.setBounds(193, 431, 196, 38);
-		textSen.setText(func.getSenha());
 		contentPane.add(textSen);
 
 		JLabel lblEmail = new JLabel("Email:");
@@ -142,7 +149,6 @@ public class Configuracao extends JFrame {
 		textEmail.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEmail.setColumns(10);
 		textEmail.setBounds(193, 497, 675, 38);
-		textEmail.setText(func.getEmail());
 		contentPane.add(textEmail);
 
 		JButton btnAtualizar = new JButton("Atualizar");
@@ -155,8 +161,20 @@ public class Configuracao extends JFrame {
 				func1.setTelefone(Long.valueOf(textTel.getText()));
 				func1.setEmail(textEmail.getText());
 				func1.setSenha(textSen.getText());
+				
+				Configuracao config = new Configuracao();
+				
+				for (Funcionario func : funcdao.ListarUsuarios()) {
+				    if (!func.getUsuario().equals(func1.getUsuario())) {
+				    	funcdao.atualizarFunc(func1);
+				    } else {
+				    	TelaErro erro = new TelaErro(config, "Usuário já existe no sistema!");
+				        erro.setLocationRelativeTo(null);
+				        erro.setVisible(true);
+				        break;
+				    }
+				}
 
-				funcdao.atualizarFunc(func1);
 			}
 		});
 		btnAtualizar.setForeground(Color.BLACK);
@@ -174,12 +192,21 @@ public class Configuracao extends JFrame {
 		
 		textID = new JTextField();
 		textID.setEditable(false);
-		textID.setText((String) null);
 		textID.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textID.setColumns(10);
 		textID.setBounds(192, 242, 321, 38);
 		contentPane.add(textID);
-		textID.setText(String.valueOf(func.getMatricula()));
+		
+		try {
+			textID.setText(String.valueOf(func.getMatricula()));
+			textEmail.setText(func.getEmail());
+			textTel.setText(String.valueOf(func.getTelefone()));
+			textSen.setText(func.getSenha());
+			textUsuario.setText(func.getUsuario());
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 }

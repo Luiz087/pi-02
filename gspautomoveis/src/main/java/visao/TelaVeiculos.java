@@ -20,6 +20,7 @@ import modelo.Carro;
 import modelo.Endereco;
 import modelo.Fornecedor;
 import modelo.Funcionario;
+import raven.cell.TableActionEvent;
 import ravenD.cell.TableActionCellEditorD;
 import ravenD.cell.TableActionCellRenderD;
 import ravenD.cell.TableActionEventD;
@@ -82,7 +83,7 @@ public class TelaVeiculos extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		panel = new JPanel();
 		panel.setVisible(false);
 		panel.addMouseListener(new MouseAdapter() {
@@ -91,21 +92,23 @@ public class TelaVeiculos extends JFrame {
 				panel.setVisible(true);
 
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel.setVisible(false);
 
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
-				
+
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setVisible(false);
 		panel_1.addMouseListener(new MouseAdapter() {
@@ -113,10 +116,12 @@ public class TelaVeiculos extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_1.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
@@ -125,7 +130,7 @@ public class TelaVeiculos extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setVisible(false);
 		panel_2.addMouseListener(new MouseAdapter() {
@@ -133,10 +138,12 @@ public class TelaVeiculos extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_2.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
@@ -145,6 +152,8 @@ public class TelaVeiculos extends JFrame {
 				telafunc.setVisible(true);
 			}
 		});
+
+		TelaVeiculos veicT = new TelaVeiculos();
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
@@ -153,12 +162,12 @@ public class TelaVeiculos extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_3.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Configuracao telaconfig = new Configuracao();
@@ -167,7 +176,7 @@ public class TelaVeiculos extends JFrame {
 				telaconfig.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setVisible(false);
 		panel_4.addMouseListener(new MouseAdapter() {
@@ -175,22 +184,22 @@ public class TelaVeiculos extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_4.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
-			
+
 			}
 		});
-		
+
 		JPanel panel_5 = new JPanel();
 		panel_5.setVisible(false);
 		panel_5.addMouseListener(new MouseAdapter() {
@@ -198,12 +207,12 @@ public class TelaVeiculos extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_5.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaLogin telalogin = new TelaLogin();
@@ -212,7 +221,7 @@ public class TelaVeiculos extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		panel_5.setBounds(0, 883, 350, 49);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 418, 350, 63);
@@ -231,16 +240,12 @@ public class TelaVeiculos extends JFrame {
 		panel_5.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 647, 350, 63);
 		contentPane.add(panel);
-		panel.setBackground(new Color(215, 215,215, 50));
-		panel_1.setBackground(new Color(215, 215,215, 50));
-		panel_2.setBackground(new Color(215, 215,215, 50));
-		panel_3.setBackground(new Color(215, 215,215, 50));
-		panel_4.setBackground(new Color(215, 215,215, 50));
-		panel_5.setBackground(new Color(215, 215,215, 50));
-
-
-
-		
+		panel.setBackground(new Color(215, 215, 215, 50));
+		panel_1.setBackground(new Color(215, 215, 215, 50));
+		panel_2.setBackground(new Color(215, 215, 215, 50));
+		panel_3.setBackground(new Color(215, 215, 215, 50));
+		panel_4.setBackground(new Color(215, 215, 215, 50));
+		panel_5.setBackground(new Color(215, 215, 215, 50));
 
 		JComboBox cbAbs = new JComboBox();
 		cbAbs.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
@@ -282,6 +287,7 @@ public class TelaVeiculos extends JFrame {
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
@@ -333,6 +339,7 @@ public class TelaVeiculos extends JFrame {
 				telaconfig.setLocationRelativeTo(null);
 				telaconfig.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
@@ -354,6 +361,7 @@ public class TelaVeiculos extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
@@ -406,6 +414,7 @@ public class TelaVeiculos extends JFrame {
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel.setVisible(true);
@@ -426,6 +435,7 @@ public class TelaVeiculos extends JFrame {
 				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafornec.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
@@ -638,45 +648,47 @@ public class TelaVeiculos extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar\r\n");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Carro carro = new Carro();
-				String marca = txt_marca.getText();
-				String modelo = txt_modelo.getText();
-				Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
-				String tipo = txt_tipo.getText();
-				String combustivel = (String) Cbcombustivel.getSelectedItem();
-				Long quilometragem = Long.valueOf(txt_quilometragem.getText());
-				String potencia = txt_potencia.getText();
-				String cor = txt_cor.getText();
-				Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
-				Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
-				Double precoCarro = Double.valueOf(txt_preco.getText());
-				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;
-
-				System.out.println(comboBoxFornecedor.getSelectedItem());
-				Fornecedor forn = forndao.pegarForn(String.valueOf(comboBoxFornecedor.getSelectedItem()));
-
-				carro.setFornecedor(forn);
-				carro.setMarca(marca);
-				carro.setModelo(modelo);
-				carro.setNovo(novo);
-				carro.setTipo(tipo);
-				carro.setCombustivel(combustivel);
-				carro.setQuilometragem(quilometragem);
-				carro.setPotencia(potencia);
-				carro.setCor(cor);
-				carro.setAno(ano);
-				carro.setAbs(abs);
-				carro.setPrecoCarro(precoCarro);
-				carro.setPromocao(promocao);
-
-				if (marca.equals("") || modelo.equals("") || novo.equals("") || tipo.equals("")
-						|| combustivel.equals("") || quilometragem.equals("") || potencia.equals("") || cor.equals("")
-						|| ano.equals("") || abs.equals("") || abs.equals("") || precoCarro.equals("")
-						|| promocao.equals("") || forn.equals("")) {
-					TelaErro erro = new TelaErro();
-					erro.setLocationRelativeTo(null);
-					erro.setVisible(true);
+				if (txt_marca.getText().equals("") || txt_modelo.getText().equals("")
+						|| comboBoxNovo.getSelectedIndex() == 0 || txt_tipo.getText().equals("")
+						|| Cbcombustivel.getSelectedIndex() == 0 || txt_quilometragem.getText().equals("")
+						|| txt_potencia.getText().equals("") || txt_cor.getText().equals("")
+						|| comboBoxAno.getSelectedIndex() == 0 || cbAbs.getSelectedIndex() == 0
+						|| txt_preco.getText().equals("") || comboBoxPromocao.getSelectedIndex() == 0
+						|| comboBoxFornecedor.getSelectedIndex() == 0) {
+					erro("Preencha todos os campos!");
 				} else {
+					Carro carro = new Carro();
+					String marca = txt_marca.getText();
+					String modelo = txt_modelo.getText();
+					Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
+					String tipo = txt_tipo.getText();
+					String combustivel = (String) Cbcombustivel.getSelectedItem();
+					Long quilometragem = Long.valueOf(txt_quilometragem.getText());
+					String potencia = txt_potencia.getText();
+					String cor = txt_cor.getText();
+					Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
+					Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
+					Double precoCarro = Double.valueOf(txt_preco.getText());
+					Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;
+
+					System.out.println(comboBoxFornecedor.getSelectedItem());
+					Fornecedor forn = forndao.pegarForn(String.valueOf(comboBoxFornecedor.getSelectedItem()));
+
+					String fornecedor = forn.getNomeFornecedor();
+
+					carro.setFornecedor(forn);
+					carro.setMarca(marca);
+					carro.setModelo(modelo);
+					carro.setNovo(novo);
+					carro.setTipo(tipo);
+					carro.setCombustivel(combustivel);
+					carro.setQuilometragem(quilometragem);
+					carro.setPotencia(potencia);
+					carro.setCor(cor);
+					carro.setAno(ano);
+					carro.setAbs(abs);
+					carro.setPrecoCarro(precoCarro);
+					carro.setPromocao(promocao);
 
 					Integer id = carrodao.inserir(carro);
 
@@ -881,7 +893,7 @@ public class TelaVeiculos extends JFrame {
 		textId.setColumns(10);
 		textId.setBounds(1380, 173, 62, 38);
 		contentPane.add(textId);
-		
+
 		JLabel lblNewLabel_4_1_1_2 = new JLabel("Funcionários");
 		lblNewLabel_4_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
@@ -996,5 +1008,11 @@ public class TelaVeiculos extends JFrame {
 			}
 		});
 
+	}
+
+	private void erro(String string) {
+		TelaErro erro = new TelaErro(this, string);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
 	}
 }

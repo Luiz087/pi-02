@@ -154,6 +154,7 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 		
+		TelaFornecedores fornT = new TelaFornecedores();
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {
@@ -315,9 +316,7 @@ public class TelaFornecedores extends JFrame {
 						|| textMarca.getText().equals("") || textCidade.getText().equals("")
 						|| textBairro.getText().equals("") || textEstado.getText().equals("")
 						|| textCep.getText().equals("") || textRua.getText().equals("")) {
-					TelaErro telaErro = new TelaErro();
-					telaErro.setLocationRelativeTo(null);
-					telaErro.setVisible(true);
+					erro("Preencha todos os campos!");
 				} else {
 
 					fornec.setNomeFornecedor(textNome.getText());
@@ -776,9 +775,7 @@ public class TelaFornecedores extends JFrame {
 					sucesso.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
-					TelaErro telaErro = new TelaErro();
-					telaErro.setLocationRelativeTo(null);
-					telaErro.setVisible(true);
+					erro("Erro ao deletar funcionário!");
 				}
 				// } else {
 				// System.out.println("Não removeu");
@@ -810,5 +807,11 @@ public class TelaFornecedores extends JFrame {
 		btnAtualizar.setVisible(false);
 		btnAdicionar.setVisible(true);
 
+	}
+	
+	private void erro(String string) {
+		TelaErro erro = new TelaErro(this, null);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
 	}
 }

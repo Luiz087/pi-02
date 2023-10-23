@@ -61,7 +61,7 @@ public class TelaPrincipal extends JFrame {
 	 */
 	public TelaPrincipal() {
 		Funcionario logado = new Funcionario();
-
+		
 		logado = funcdao.passaLogado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -629,6 +629,7 @@ public class TelaPrincipal extends JFrame {
 		text_telefone.setColumns(10);
 		text_telefone.setBounds(1646, 159, 239, 35);
 		contentPane.add(text_telefone);
+		text_telefone.setText(String.valueOf(logado.getTelefone()));
 
 		JLabel lblNewLabel_cargo = new JLabel("Cargo:");
 		lblNewLabel_cargo.setForeground(Color.BLACK);
@@ -670,6 +671,7 @@ public class TelaPrincipal extends JFrame {
 		text_metas.setColumns(10);
 		text_metas.setBounds(1646, 304, 239, 35);
 		contentPane.add(text_metas);
+		text_metas.setText("R$ 30.000");
 
 		JLabel lblNewLabel_email = new JLabel("E-mail:");
 		lblNewLabel_email.setForeground(Color.BLACK);

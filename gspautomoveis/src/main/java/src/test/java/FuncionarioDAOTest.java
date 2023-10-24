@@ -2,7 +2,12 @@ package src.test.java;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -20,7 +25,7 @@ public class FuncionarioDAOTest {
 
 	@Test
 	@Order(1)
-	public void testInserirFuncionarios() {
+	public void testInserirFuncionarios() { // Inserir
 
 		Funcionario func = new Funcionario();
 		func.setNome("Cleyton");
@@ -30,9 +35,9 @@ public class FuncionarioDAOTest {
 		func.setDataDeNasc("08/09/2005");
 		func.setNivelCargo("Gerente de Vendas");
 		func.setSalario(123123.9);
-		func.setSenha("234");
+		func.setSenha("Luizz123");
 		func.setTelefone(47999999999l);
-		func.setUsuario("Cleytin");
+		func.setUsuario("Luiz047");
 		Endereco end = new Endereco();
 		end.setBairro("Figueira");
 		end.setRua("Rua da Felicidade");
@@ -51,7 +56,7 @@ public class FuncionarioDAOTest {
 
 	@Test
 	@Order(2)
-	public void testListarFuncionarios() {
+	public void testListarFuncionarios() { // Listar
 		FuncionarioDAO dao = new FuncionarioDAO();
 
 		ArrayList<Funcionario> funcList = dao.ListarFuncionarios();
@@ -61,12 +66,64 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
-	public void testProcurarFuncionario() {
+	@Order(3)
+	public void testProcurarFuncionario() { // Clicado
+		FuncionarioDAO dao = new FuncionarioDAO();
 
+		Funcionario retorno = dao.clicado(56666666);
+
+		assertNotNull(retorno);
 	}
 
 	@Test
-	public void testAtualizarFuncionario() {
+	public void testLoginFuncionario() { // Login
+		FuncionarioDAO dao = new FuncionarioDAO();
+		Funcionario func = new Funcionario();
+		func.setNome("Cleyton");
+		func.setEmail("funcionario@gmail.com");
+		func.setComissao(1.6);
+		func.setCpf(53296126082l);
+		func.setDataDeNasc("08/09/2005");
+		func.setNivelCargo("Gerente de Vendas");
+		func.setSalario(123123.9);
+		func.setSenha("Luizz123");
+		func.setTelefone(47999999999l);
+		func.setUsuario("Luiz047");
+		Endereco end = new Endereco();
+		end.setBairro("Figueira");
+		end.setRua("Rua da Felicidade");
+		end.setCidade("Gaspar");
+		end.setEstado("Santa Catarina");
+		end.setCep((long) 12312123);
+		end.setIdEndereco(12);
+		func.setEndereco(end);
+
+		Funcionario retorno = dao.login(func);
+
+		assertNotNull(retorno);
+	}
+
+	@Test
+	public void testLoginErroFuncionario() { // Login
+		FuncionarioDAO dao = new FuncionarioDAO();
+		Funcionario f = new Funcionario();
+		f.setUsuario("Cleytin");
+
+		Funcionario retorno = dao.login(f);
+
+		assertNull(retorno);
+	}
+
+	@Test
+	public void testLogoffFuncionario() { // Logoff
+		FuncionarioDAO dao = new FuncionarioDAO();
+		Funcionario retorno = dao.logoff();
+
+		assertNull(retorno);
+	}
+
+	@Test
+	public void testAtualizarFuncionario() { // AtualizarFunc
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
 		func.setNome("Carlos");
@@ -89,14 +146,23 @@ public class FuncionarioDAOTest {
 		func.setEndereco(end);
 
 		FuncionarioDAO dao = new FuncionarioDAO();
-		boolean fAtualizado = dao.atualizar(func);
+		boolean fAtualizado = dao.atualizarFunc(func);
 
 		assertEquals(true, fAtualizado);
 	}
 
+	@Test
+	public void testProcurarErroFuncionario() { // Clicado
+		FuncionarioDAO dao = new FuncionarioDAO();
+
+		Funcionario retorno = dao.clicado(90);
+
+		assertNull(retorno.getMatricula());
+	}
+	
 	@Test
 	@Order(4)
-	public void testAualizarFunc() {
+	public void testAualizarFunc() { // Atualizar
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
 		func.setNome("Carlos");
@@ -125,8 +191,15 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	public void testPasaLogado() {
+		FuncionarioDAO dao = new FuncionarioDAO();
+		assertNull(dao.passaLogado());
+	}
+	
+	
+	@Test
 	@Order(5)
-	public void testDeleteFuncionario() {
+	public void testDeleteFuncionario() { // Delete
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -152,6 +225,16 @@ public class FuncionarioDAOTest {
 		boolean fDeletado = dao.excluir(func);
 
 		assertEquals(true, fDeletado);
+	}
+	
+	@Test
+	public void testListarUsuarios() { // Listar
+		FuncionarioDAO dao = new FuncionarioDAO();
+
+		ArrayList<Funcionario> funcList = dao.ListarUsuarios();
+
+		assertNotNull(funcList);
+
 	}
 
 }

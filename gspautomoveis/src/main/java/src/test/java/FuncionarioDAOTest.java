@@ -54,6 +54,11 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+	public void testProcurarFuncionario() {
+		
+	}
+	
+	@Test
 	public void testAtualizarFuncionario() {
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);

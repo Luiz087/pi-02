@@ -153,8 +153,6 @@ public class TelaVeiculos extends JFrame {
 			}
 		});
 
-		TelaVeiculos veicT = new TelaVeiculos();
-
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {

@@ -39,7 +39,6 @@ public class TelaPrincipal extends JFrame {
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 	private JPanel panel;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -61,7 +60,7 @@ public class TelaPrincipal extends JFrame {
 	 */
 	public TelaPrincipal() {
 		Funcionario logado = new Funcionario();
-		
+
 		logado = funcdao.passaLogado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -70,7 +69,7 @@ public class TelaPrincipal extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		panel = new JPanel();
 		panel.setVisible(false);
 		panel.addMouseListener(new MouseAdapter() {
@@ -79,21 +78,23 @@ public class TelaPrincipal extends JFrame {
 				panel.setVisible(true);
 
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel.setVisible(false);
 
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
-				
+
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setVisible(false);
 		panel_1.addMouseListener(new MouseAdapter() {
@@ -101,10 +102,12 @@ public class TelaPrincipal extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_1.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
@@ -113,7 +116,7 @@ public class TelaPrincipal extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setVisible(false);
 		panel_2.addMouseListener(new MouseAdapter() {
@@ -121,10 +124,12 @@ public class TelaPrincipal extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_2.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
@@ -133,7 +138,7 @@ public class TelaPrincipal extends JFrame {
 				telafunc.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {
@@ -141,12 +146,12 @@ public class TelaPrincipal extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_3.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Configuracao telaconfig = new Configuracao();
@@ -155,7 +160,7 @@ public class TelaPrincipal extends JFrame {
 				telaconfig.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setVisible(false);
 		panel_4.addMouseListener(new MouseAdapter() {
@@ -163,22 +168,22 @@ public class TelaPrincipal extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_4.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
-			
+
 			}
 		});
-		
+
 		JPanel panel_5 = new JPanel();
 		panel_5.setVisible(false);
 		panel_5.addMouseListener(new MouseAdapter() {
@@ -186,12 +191,12 @@ public class TelaPrincipal extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_5.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaLogin telalogin = new TelaLogin();
@@ -200,7 +205,7 @@ public class TelaPrincipal extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		panel_5.setBounds(0, 931, 339, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 407, 339, 63);
@@ -219,13 +224,12 @@ public class TelaPrincipal extends JFrame {
 		panel_5.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 638, 339, 63);
 		contentPane.add(panel);
-		panel.setBackground(new Color(215, 215,215, 50));
-		panel_1.setBackground(new Color(215, 215,215, 50));
-		panel_2.setBackground(new Color(215, 215,215, 50));
-		panel_3.setBackground(new Color(215, 215,215, 50));
-		panel_4.setBackground(new Color(215, 215,215, 50));
-		panel_5.setBackground(new Color(215, 215,215, 50));
-		
+		panel.setBackground(new Color(215, 215, 215, 50));
+		panel_1.setBackground(new Color(215, 215, 215, 50));
+		panel_2.setBackground(new Color(215, 215, 215, 50));
+		panel_3.setBackground(new Color(215, 215, 215, 50));
+		panel_4.setBackground(new Color(215, 215, 215, 50));
+		panel_5.setBackground(new Color(215, 215, 215, 50));
 
 		JLabel lblNewLabel_6_1_1 = new JLabel("Histórico");
 		lblNewLabel_6_1_1.addMouseListener(new MouseAdapter() {
@@ -236,6 +240,7 @@ public class TelaPrincipal extends JFrame {
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel.setVisible(true);
@@ -271,6 +276,7 @@ public class TelaPrincipal extends JFrame {
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
@@ -365,6 +371,7 @@ public class TelaPrincipal extends JFrame {
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
@@ -399,6 +406,7 @@ public class TelaPrincipal extends JFrame {
 				telaconfig.setLocationRelativeTo(null);
 				telaconfig.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
@@ -434,6 +442,7 @@ public class TelaPrincipal extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
@@ -469,6 +478,7 @@ public class TelaPrincipal extends JFrame {
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel.setVisible(true);
@@ -503,6 +513,7 @@ public class TelaPrincipal extends JFrame {
 				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafornec.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
@@ -537,6 +548,7 @@ public class TelaPrincipal extends JFrame {
 				telalogin.setLocationRelativeTo(null);
 				telalogin.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);

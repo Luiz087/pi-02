@@ -260,4 +260,68 @@ public class CarroDAO implements ICarroDAO {
 		return C;
 	}
 
+	public ArrayList<Carro> marca(String selectedItem) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		Carro C = new Carro();
+		ArrayList<Carro> carros = new ArrayList<>();
+
+		String query = "SELECT * FROM Carros WHERE marca = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, selectedItem);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Integer idC = rs.getInt("id_carro");
+				String marca = rs.getString("marca");
+				String modelo = rs.getString("modelo");
+				Boolean novo = rs.getBoolean("novo");
+				Integer ano = rs.getInt("ano");
+				String cor = rs.getString("cor");
+				String tipo = rs.getString("tipo");
+				String combustivel = rs.getString("combustivel");
+				Long quilometragem = rs.getLong("quilometragem");
+				String potencia = rs.getString("potencia");
+				Boolean abs = rs.getBoolean("abs");
+				Double precoCarro = rs.getDouble("precoCarro");
+				Boolean promocao = rs.getBoolean("promocao");
+				Integer idForn = rs.getInt("fornecedor_id_fornecedor");
+
+				Fornecedor forn = new Fornecedor();
+				forn.setIdFornecedor(idForn);
+				C.setIdCarro(idC);
+				C.setFornecedor(forn);
+				C.setMarca(marca);
+				C.setModelo(modelo);
+				C.setNovo(novo);
+				C.setAno(ano);
+				C.setCor(cor);
+				C.setTipo(tipo);
+				C.setCombustivel(combustivel);
+				C.setQuilometragem(quilometragem);
+				C.setPotencia(potencia);
+				C.setAbs(abs);
+				C.setPrecoCarro(precoCarro);
+				C.setPromocao(promocao);
+				
+				carros.add(C);
+
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+
+		}
+
+		return carros;
+	}
+
 }

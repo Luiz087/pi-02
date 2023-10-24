@@ -162,8 +162,8 @@ public class TelaLogin extends JFrame {
 					// Atribui o vetor pra uma variavel senha
 					senha = String.valueOf(pass);
 				}
-				
-				if(senha.isEmpty() && login.isEmpty()) {
+
+				if (senha.isEmpty() && login.isEmpty()) {
 					telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Insira seus dados!");
 					dadosIncorretos.setLocationRelativeTo(null);
 					dadosIncorretos.setVisible(true);

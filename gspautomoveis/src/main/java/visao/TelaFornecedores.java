@@ -54,7 +54,6 @@ public class TelaFornecedores extends JFrame {
 	private JTextField textId;
 	private JPanel panel;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -90,7 +89,7 @@ public class TelaFornecedores extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		panel = new JPanel();
 		panel.setVisible(false);
 		panel.addMouseListener(new MouseAdapter() {
@@ -99,21 +98,23 @@ public class TelaFornecedores extends JFrame {
 				panel.setVisible(true);
 
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel.setVisible(false);
 
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
-				
+
 			}
 		});
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setVisible(false);
 		panel_1.addMouseListener(new MouseAdapter() {
@@ -121,10 +122,12 @@ public class TelaFornecedores extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_1.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
@@ -133,7 +136,7 @@ public class TelaFornecedores extends JFrame {
 				telafornec.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setVisible(false);
 		panel_2.addMouseListener(new MouseAdapter() {
@@ -141,10 +144,12 @@ public class TelaFornecedores extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_2.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
@@ -153,8 +158,7 @@ public class TelaFornecedores extends JFrame {
 				telafunc.setVisible(true);
 			}
 		});
-		
-		TelaFornecedores fornT = new TelaFornecedores();
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {
@@ -162,12 +166,12 @@ public class TelaFornecedores extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_3.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_3.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Configuracao telaconfig = new Configuracao();
@@ -176,7 +180,7 @@ public class TelaFornecedores extends JFrame {
 				telaconfig.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_4 = new JPanel();
 		panel_4.setVisible(false);
 		panel_4.addMouseListener(new MouseAdapter() {
@@ -184,22 +188,22 @@ public class TelaFornecedores extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_4.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_4.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaVeiculos telaveic = new TelaVeiculos();
 				dispose();
 				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaveic.setVisible(true);
-			
+
 			}
 		});
-		
+
 		JPanel panel_5 = new JPanel();
 		panel_5.setVisible(false);
 		panel_5.addMouseListener(new MouseAdapter() {
@@ -207,12 +211,12 @@ public class TelaFornecedores extends JFrame {
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
 			}
-			
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				panel_5.setVisible(false);
 			}
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaLogin telalogin = new TelaLogin();
@@ -221,7 +225,7 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		panel_5.setBounds(0, 967, 340, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 439, 340, 63);
@@ -240,12 +244,12 @@ public class TelaFornecedores extends JFrame {
 		panel_5.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 684, 340, 52);
 		contentPane.add(panel);
-		panel.setBackground(new Color(215, 215,215, 50));
-		panel_1.setBackground(new Color(215, 215,215, 50));
-		panel_2.setBackground(new Color(215, 215,215, 50));
-		panel_3.setBackground(new Color(215, 215,215, 50));
-		panel_4.setBackground(new Color(215, 215,215, 50));
-		panel_5.setBackground(new Color(215, 215,215, 50));
+		panel.setBackground(new Color(215, 215, 215, 50));
+		panel_1.setBackground(new Color(215, 215, 215, 50));
+		panel_2.setBackground(new Color(215, 215, 215, 50));
+		panel_3.setBackground(new Color(215, 215, 215, 50));
+		panel_4.setBackground(new Color(215, 215, 215, 50));
+		panel_5.setBackground(new Color(215, 215, 215, 50));
 
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
@@ -385,7 +389,7 @@ public class TelaFornecedores extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				btnAtualizar.setVisible(false);
 				btnAdicionar.setVisible(true);
-				
+
 			}
 		});
 
@@ -557,6 +561,7 @@ public class TelaFornecedores extends JFrame {
 				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafunc.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setVisible(true);
@@ -577,6 +582,7 @@ public class TelaFornecedores extends JFrame {
 				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telafornec.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_1.setVisible(true);
@@ -611,6 +617,7 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setLocationRelativeTo(null);
 				telalogin.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_5.setVisible(true);
@@ -757,13 +764,13 @@ public class TelaFornecedores extends JFrame {
 			@Override
 			public void onDelete(int row) {
 
-				try {
-					int linhaSelecionada = table.getSelectedRow();
-					Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
+				int linhaSelecionada = table.getSelectedRow();
+				Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
 
-					
-
-					// if (telaContinua.confirmado) {
+				TelaConfirmacao confirma = new TelaConfirmacao(this);
+				confirma.setVisible(true);
+				confirma.setLocationRelativeTo(null);
+				if (confirma.getResult() == true) {
 					forndao.excluir(IdFornecedor);
 
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -773,13 +780,9 @@ public class TelaFornecedores extends JFrame {
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-					erro("Erro ao deletar funcionário!");
+				} else {
+					erro("Ação cancelada!");
 				}
-				// } else {
-				// System.out.println("Não removeu");
-				// }
 			}
 
 			@Override
@@ -808,7 +811,7 @@ public class TelaFornecedores extends JFrame {
 		btnAdicionar.setVisible(true);
 
 	}
-	
+
 	private void erro(String string) {
 		TelaErro erro = new TelaErro(this, null);
 		erro.setLocationRelativeTo(null);

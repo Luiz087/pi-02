@@ -39,12 +39,13 @@ public class TelaErro extends JDialog {
 
 	/**
 	 * Create the dialog.
-	 * @param tableActionEvent 
-	 * @param b 
-	 * @param string 
-	 * @param tableActionEvent 
+	 * 
+	 * @param tableActionEvent
+	 * @param b
+	 * @param string
+	 * @param tableActionEvent
 	 */
-	
+
 	public TelaErro(JFrame asd, String string) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -53,7 +54,7 @@ public class TelaErro extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		this.setUndecorated(true);
-		
+
 		JButton btnNewButton_1 = new JButton("CANCELAR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -65,24 +66,24 @@ public class TelaErro extends JDialog {
 		btnNewButton_1.setForeground(new Color(64, 0, 0));
 		btnNewButton_1.setBounds(10, 232, 430, 57);
 		contentPanel.add(btnNewButton_1);
-		
+
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaErro.class.getResource("/visao/imagens/exclama.png")));
 		lblNewLabel.setBounds(175, 20, 100, 100);
 		contentPanel.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Ocorreu um erro!");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(0, 131, 450, 26);
 		contentPanel.add(lblNewLabel_1);
-		
+
 		JLabel lblMsg = new JLabel("");
 		lblMsg.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMsg.setFont(new Font("Krona One", Font.PLAIN, 20));
 		lblMsg.setBounds(0, 170, 450, 26);
 		contentPanel.add(lblMsg);
 		lblMsg.setText(string);
-		
+
 	}
 }

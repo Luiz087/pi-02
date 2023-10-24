@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 import com.mysql.cj.xdevapi.Table;
 
@@ -17,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -25,9 +27,12 @@ import java.awt.Dimension;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
@@ -62,7 +67,8 @@ public class Configuracao extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param princip 
+	 * 
+	 * @param princip
 	 */
 	public Configuracao() {
 		Funcionario func = new Funcionario();
@@ -75,12 +81,20 @@ public class Configuracao extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblSair = new JLabel("");
+		lblSair.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal princip = new TelaPrincipal();
+				princip.setVisible(true);
+				princip.setExtendedState(MAXIMIZED_BOTH);
+				dispose();
+			}
+		});
 		lblSair.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/sair.png")));
 		lblSair.setBounds(828, 22, 40, 35);
 		contentPane.add(lblSair);
-		
 		
 
 		JLabel lblNewLabel_3_1 = new JLabel("AUTOMÓVEIS");
@@ -123,7 +137,14 @@ public class Configuracao extends JFrame {
 		lblTelefone.setBounds(27, 373, 163, 38);
 		contentPane.add(lblTelefone);
 
-		textTel = new JTextField();
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textTel = new JFormattedTextField(mascaraTel);
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
 		textTel.setBounds(194, 373, 345, 38);
@@ -156,23 +177,40 @@ public class Configuracao extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Funcionario func1 = new Funcionario();
 				
+				String telefone = textTel.getText();
+				try {
+					String telefoneErrado = textTel.getText();
+
+					String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+
+					if (telefoneLimpo.matches("\\d{10,11}")) {
+						telefone = telefoneLimpo;
+					} else {
+						System.out.println("Número de telefone inválido");
+					}
+				} catch (NumberFormatException e1) {
+					System.out.println("Erro ao converter para Long: " + e1.getMessage());
+				}
+				
 				func1.setMatricula(Integer.valueOf(textID.getText()));
 				func1.setUsuario(textUsuario.getText());
-				func1.setTelefone(Long.valueOf(textTel.getText()));
+				func1.setTelefone(Long.valueOf(telefone));
 				func1.setEmail(textEmail.getText());
 				func1.setSenha(textSen.getText());
-				
+
 				Configuracao config = new Configuracao();
 				
+				String usuarioLogado = funcdao.passaLogado().getUsuario();
+
 				for (Funcionario func : funcdao.ListarUsuarios()) {
-				    if (!func.getUsuario().equals(func1.getUsuario())) {
-				    	funcdao.atualizarFunc(func1);
-				    } else {
-				    	TelaErro erro = new TelaErro(config, "Usuário já existe no sistema!");
-				        erro.setLocationRelativeTo(null);
-				        erro.setVisible(true);
-				        break;
-				    }
+					if (!func.getUsuario().equals(func1.getUsuario())||func.getUsuario().equals(usuarioLogado)) {
+						funcdao.atualizarFunc(func1);
+					} else {
+						TelaErro erro = new TelaErro(config, "Usuário já existe no sistema!");
+						erro.setLocationRelativeTo(null);
+						erro.setVisible(true);
+						break;
+					}
 				}
 
 			}
@@ -184,19 +222,19 @@ public class Configuracao extends JFrame {
 		btnAtualizar.setBackground(new Color(255, 218, 70));
 		btnAtualizar.setBounds(348, 576, 251, 35);
 		contentPane.add(btnAtualizar);
-		
+
 		JLabel lblId = new JLabel("Id:");
 		lblId.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblId.setBounds(25, 242, 147, 38);
 		contentPane.add(lblId);
-		
+
 		textID = new JTextField();
 		textID.setEditable(false);
 		textID.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textID.setColumns(10);
 		textID.setBounds(192, 242, 321, 38);
 		contentPane.add(textID);
-		
+
 		try {
 			textID.setText(String.valueOf(func.getMatricula()));
 			textEmail.setText(func.getEmail());

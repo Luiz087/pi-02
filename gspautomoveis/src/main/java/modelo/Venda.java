@@ -9,6 +9,24 @@ public class Venda {
 	private String enderecoCliente;
 	private String dataVenda;
 	private Double precoVenda;
+	private Carro carro;
+	private Funcionario func;
+
+	public Carro getCarro() {
+		return carro;
+	}
+
+	public void setCarro(Carro carro) {
+		this.carro = carro;
+	}
+
+	public Funcionario getFunc() {
+		return func;
+	}
+
+	public void setFunc(Funcionario func) {
+		this.func = func;
+	}
 
 	public String getNomeCliente() {
 		return nomeCliente;

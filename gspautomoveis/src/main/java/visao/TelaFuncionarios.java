@@ -1142,10 +1142,7 @@ public class TelaFuncionarios extends JFrame {
 
 			@Override
 			public void onView(int row) {
-				TelaVendas vendas = new TelaVendas();
-				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				vendas.setVisible(true);
-				dispose();
+				
 
 			}
 		};

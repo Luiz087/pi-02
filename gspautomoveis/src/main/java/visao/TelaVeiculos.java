@@ -864,8 +864,11 @@ public class TelaVeiculos extends JFrame {
 
 			@Override
 			public void onView(int row) {
-				// TODO Auto-generated method stub
-
+				int linhaSelecionada = table.getSelectedRow();
+				TelaVendas vendas = new TelaVendas(Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString()));
+				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				vendas.setVisible(true);
+				dispose();
 			}
 		};
 		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());

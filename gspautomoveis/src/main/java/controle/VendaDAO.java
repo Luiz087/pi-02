@@ -21,7 +21,7 @@ public class VendaDAO implements IVendaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('?', ?, ?, ?, '?', ?, ?, ?)";
+		String query = "INSERT INTO Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 
@@ -33,6 +33,8 @@ public class VendaDAO implements IVendaDAO {
 			ps.setString(4, v.getEnderecoCliente());
 			ps.setString(5, v.getDataVenda());
 			ps.setDouble(6, v.getPrecoVenda());
+			ps.setInt(7, v.getFunc().getMatricula());
+			ps.setInt(8, v.getCarro().getIdCarro());
 
 			ps.executeUpdate();
 

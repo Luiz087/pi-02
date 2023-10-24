@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import controle.CarroDAO;
+import modelo.Carro;
+import modelo.Venda;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -20,6 +24,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaVendas extends JFrame {
 
@@ -35,6 +41,7 @@ public class TelaVendas extends JFrame {
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
+	private CarroDAO cardao = CarroDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -43,7 +50,7 @@ public class TelaVendas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaVendas frame = new TelaVendas();
+					TelaVendas frame = new TelaVendas(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +62,7 @@ public class TelaVendas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaVendas() {
+	public TelaVendas(Integer idCarroRecebido) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -82,7 +89,7 @@ public class TelaVendas extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaVendas telaHV = new TelaVendas();
+				TelaVendas telaHV = new TelaVendas(idCarroRecebido);
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
@@ -134,7 +141,7 @@ public class TelaVendas extends JFrame {
 			}
 		});
 
-		TelaVendas vendasT = new TelaVendas();
+		TelaVendas vendasT = new TelaVendas(idCarroRecebido);
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
@@ -363,7 +370,7 @@ public class TelaVendas extends JFrame {
 		lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaVendas telaHV = new TelaVendas();
+				TelaVendas telaHV = new TelaVendas(idCarroRecebido);
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
@@ -377,7 +384,7 @@ public class TelaVendas extends JFrame {
 		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaVendas telaHV = new TelaVendas();
+				TelaVendas telaHV = new TelaVendas(idCarroRecebido);
 				dispose();
 				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaHV.setVisible(true);
@@ -551,6 +558,14 @@ public class TelaVendas extends JFrame {
 		contentPane.add(textField_9);
 
 		JButton btnNewButton = new JButton("Vender");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Venda venda = new Venda();
+				venda.setCpfCliente(null); //Continuar
+				Carro carro = cardao.clicado(idCarroRecebido);
+				venda.setCarro(carro);
+			}
+		});
 		btnNewButton.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnNewButton.setBackground(Color.GREEN);
 		btnNewButton.setBounds(940, 842, 251, 35);

@@ -16,12 +16,12 @@ import modelo.Funcionario;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class FuncionarioDAOTest {
-	 private static StringBuilder output = new StringBuilder("");
-	
+	private static StringBuilder output = new StringBuilder("");
+
 	@Test
 	@Order(1)
 	public void testInserirFuncionarios() {
-		
+
 		Funcionario func = new Funcionario();
 		func.setNome("Cleyton");
 		func.setEmail("funcionario@gmail.com");
@@ -41,12 +41,12 @@ public class FuncionarioDAOTest {
 		end.setCep((long) 12312123);
 		end.setIdEndereco(56666666);
 		func.setEndereco(end);
-		
+
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Integer fInserido = dao.inserir(func);
-		
+
 		assertNotNull(fInserido);
-		
+
 	}
 
 	@Test
@@ -55,21 +55,17 @@ public class FuncionarioDAOTest {
 		FuncionarioDAO dao = new FuncionarioDAO();
 
 		ArrayList<Funcionario> funcList = dao.ListarFuncionarios();
-		
+
 		assertNotNull(funcList);
-		
+
 	}
-	
+
 	@Test
-<<<<<<< HEAD
-	@Order(3)
-=======
 	public void testProcurarFuncionario() {
-		
+
 	}
-	
+
 	@Test
->>>>>>> telaVendas
 	public void testAtualizarFuncionario() {
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -91,13 +87,13 @@ public class FuncionarioDAOTest {
 		end.setCep((long) 123175123);
 		end.setIdEndereco(567);
 		func.setEndereco(end);
-		
+
 		FuncionarioDAO dao = new FuncionarioDAO();
 		boolean fAtualizado = dao.atualizar(func);
-		
+
 		assertEquals(true, fAtualizado);
 	}
-	
+
 	@Test
 	@Order(4)
 	public void testAualizarFunc() {
@@ -121,13 +117,13 @@ public class FuncionarioDAOTest {
 		end.setCep((long) 123175123);
 		end.setIdEndereco(567);
 		func.setEndereco(end);
-		
+
 		FuncionarioDAO dao = new FuncionarioDAO();
 		boolean fAtualizado = dao.atualizar(func);
-		
+
 		assertEquals(true, fAtualizado);
 	}
-	
+
 	@Test
 	@Order(5)
 	public void testDeleteFuncionario() {
@@ -152,12 +148,10 @@ public class FuncionarioDAOTest {
 		end.setCep((long) 123175123);
 		end.setIdEndereco(567);
 		func.setEndereco(end);
-		
+
 		boolean fDeletado = dao.excluir(func);
-		
+
 		assertEquals(true, fDeletado);
 	}
-	
-	
-	
+
 }

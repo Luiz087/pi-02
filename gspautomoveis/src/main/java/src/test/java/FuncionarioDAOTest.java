@@ -61,7 +61,15 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+<<<<<<< HEAD
 	@Order(3)
+=======
+	public void testProcurarFuncionario() {
+		
+	}
+	
+	@Test
+>>>>>>> telaVendas
 	public void testAtualizarFuncionario() {
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);

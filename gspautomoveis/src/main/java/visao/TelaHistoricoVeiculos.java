@@ -134,7 +134,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 			}
 		});
 
-		TelaHistoricoVeiculos hist = new TelaHistoricoVeiculos();
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setVisible(false);
 		panel_3.addMouseListener(new MouseAdapter() {

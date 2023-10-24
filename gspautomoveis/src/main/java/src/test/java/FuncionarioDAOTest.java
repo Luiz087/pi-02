@@ -6,14 +6,20 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 
 import controle.FuncionarioDAO;
 import modelo.Endereco;
 import modelo.Funcionario;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class FuncionarioDAOTest {
+	 private static StringBuilder output = new StringBuilder("");
 	
 	@Test
+	@Order(1)
 	public void testInserirFuncionarios() {
 		
 		Funcionario func = new Funcionario();
@@ -44,6 +50,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(2)
 	public void testListarFuncionarios() {
 		FuncionarioDAO dao = new FuncionarioDAO();
 
@@ -54,6 +61,7 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+	@Order(3)
 	public void testAtualizarFuncionario() {
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -83,6 +91,7 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+	@Order(4)
 	public void testAualizarFunc() {
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -112,6 +121,7 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+	@Order(5)
 	public void testDeleteFuncionario() {
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario func = new Funcionario();

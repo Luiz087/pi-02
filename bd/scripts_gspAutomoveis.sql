@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `funcionarios` (
   `cpf` BIGINT NOT NULL,
   `telefone` BIGINT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `dataDeNasc` VARCHAR(10) NOT NULL,
+  `dataDeNasc` DATE NOT NULL,
   `usuario` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `nivelCargo` VARCHAR(45) NOT NULL,
@@ -74,8 +74,9 @@ CREATE TABLE IF NOT EXISTS `Vendas` (
   `cpfCliente` BIGINT NOT NULL,
   `telefoneCliente` BIGINT NOT NULL,
   `enderecoCliente` VARCHAR(45) NOT NULL,
-  `dataVenda` VARCHAR(10) NOT NULL,
+  `dataVenda` DATE NOT NULL,
   `precoVenda` DOUBLE NOT NULL,
+  `formaPagamento` VARCHAR(45) NOT NULL,
   `funcionarios_matricula` BIGINT NOT NULL,
   `Carros_id_carro` BIGINT NOT NULL,
   PRIMARY KEY (`id_venda`),
@@ -174,24 +175,24 @@ insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Fowyaze', 82863483030, 6738832922, 'Fowyaze@gmail.com', '1996-08-09', 'Fowyaze047', 'Fowyazee123', 'Vendedor', 70.000, 0.5, 14);
 insert into funcionarios (nome, cpf, telefone, email, dataDeNasc, usuario, senha, NivelCargo, salario, comissao, enderecos_id_endereco) values ('Riek', 87327642005, 6323543033, 'Riek@gmail.com', '2002-10-15', 'Riek047', 'Riekk123', 'Gerente de Vendas', 100.000, 1.0, 15);
 
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 2, 25);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 1, 24);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Samuel', 00664059040, 8834760058, 57071707,'2023-07-05', 1050000, 3, 23);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jorge', 95369554072, 2421330613, 72885095, '2023-07-05', 125990, 4, 22);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Edgar', 32762105099, 7936906457, 80050442,'2023-07-10', 2499990, 5, 21);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Cristiano', 87559312004, 8239385162, 69314704,'2023-07-10', 1790000, 1, 20);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Marcio', 93501152043, 4520117845, 68928054,'2023-07-13', 411500, 2, 19);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jose', 77643116008, 9536854857, 47802094, '2023-07-13', 199900, 3, 18);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Andre', 64791387082, 7936131906, 69915210,'2023-07-17', 189900, 4, 17);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Oscar', 82616317028, 7927835461, 70238400,'2023-07-17', 148990, 5, 16) ;
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luiza', 20478554036, 6825993819, 64049360, '2023-07-17', 65000, 1, 15);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Daiana', 75551524019, 5431073613, 68906474,'2023-07-17', 120000, 2, 14);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Julia', 78452109008, 6833333876, 89233450, '2023-07-22', 380000, 3, 13);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Marcia', 80268354090, 7928136502, 66615778, '2023-07-22', 63000, 4, 12);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Luana', 35260766008, 5539317618, 30411018,'2023-07-24', 489900, 5, 11);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Jaqueline', 88836493033, 6525055047, 95072260,'2023-07-24', 472990, 1, 10);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Helena', 69390733022, 2825562999, 77814400,'2023-07-30', 1250000, 2, 9);
-insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values ('Eliana', 19007426087, 6423656942, 53635185,'2023-07-30', 244900, 3, 8);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Flavio', 84803026076, 8133564535, 69915140, '2023-07-03', 5430000, 'Pix', 2, 25);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Sergio', 27678500009, 3233661334, 69088330, '2023-07-03', 935000, 'Boleto', 1, 24);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Samuel', 00664059040, 8834760058, 57071707,'2023-07-05', 1050000, 'Cartão de Crédito', 3, 23);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Jorge', 95369554072, 2421330613, 72885095, '2023-07-05', 125990, 'Cartão de Débito',4, 22);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Edgar', 32762105099, 7936906457, 80050442,'2023-07-10', 2499990,'Pix', 5, 21);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Cristiano', 87559312004, 8239385162, 69314704,'2023-07-10', 1790000, 'Dinheiro em espécie', 1, 20);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Marcio', 93501152043, 4520117845, 68928054,'2023-07-13', 411500, 'Pix', 2, 19);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Jose', 77643116008, 9536854857, 47802094, '2023-07-13', 199900,'Cartão de Crédito', 3, 18);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Andre', 64791387082, 7936131906, 69915210,'2023-07-17', 189900, 'Pix', 4, 17);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Oscar', 82616317028, 7927835461, 70238400,'2023-07-17', 148990, 'Dinheiro em espécie', 5, 16) ;
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Luiza', 20478554036, 6825993819, 64049360, '2023-07-17', 65000, 'Cartão de Crédito', 1, 15);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Daiana', 75551524019, 5431073613, 68906474,'2023-07-17', 120000, 'Cartão de Débito', 2, 14);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Julia', 78452109008, 6833333876, 89233450, '2023-07-22', 380000, 'Dinheiro em espécie', 3, 13);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Marcia', 80268354090, 7928136502, 66615778, '2023-07-22', 63000,'Cartão de Débito', 4, 12);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Luana', 35260766008, 5539317618, 30411018,'2023-07-24', 489900, 'Pix', 5, 11);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Jaqueline', 88836493033, 6525055047, 95072260,'2023-07-24', 472990,'Dinheiro em espécie', 1, 10);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Helena', 69390733022, 2825562999, 77814400,'2023-07-30', 1250000, 'Pix', 2, 9);
+insert into Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values ('Eliana', 19007426087, 6423656942, 53635185,'2023-07-30', 244900,'Dinheiro em espécie', 3, 8);
 
 SELECT COUNT(*) FROM enderecos;
 SELECT COUNT(*) FROM fornecedores;

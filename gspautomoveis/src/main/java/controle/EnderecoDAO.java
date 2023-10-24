@@ -63,8 +63,8 @@ public class EnderecoDAO implements IEnderecoDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE enderecos SET cep = ?" + "rua = ?" + "bairro = ?" + "cidade = ?"
-				+ "estado = ? WHERE id_endereco = ?";
+		String query = "UPDATE enderecos SET cep = ?, rua = ?, bairro = ?, cidade = ?,"
+				+ " estado = ? WHERE id_endereco = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -160,7 +160,7 @@ public class EnderecoDAO implements IEnderecoDAO {
 	public Endereco buscaEndereco(Integer integer) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-
+		Endereco E = new Endereco();
 		String query = "SELECT * FROM enderecos WHERE id_endereco = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -175,7 +175,6 @@ public class EnderecoDAO implements IEnderecoDAO {
 				String Estado = rs.getString("Estado");
 				Integer IdEndereco = rs.getInt("id_endereco");
 
-				Endereco E = new Endereco();
 				E.setCep(Cep);
 				E.setRua(Rua);
 				E.setBairro(Bairro);
@@ -191,13 +190,13 @@ public class EnderecoDAO implements IEnderecoDAO {
 			c.fecharConexao();
 		}
 
-		return null;
+		return E;
 	}
 
 	public Endereco buscaEnderecoByAtributo(Endereco end) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-
+		Endereco E = new Endereco();
 		String query = "SELECT * FROM enderecos WHERE id_endereco = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -212,7 +211,6 @@ public class EnderecoDAO implements IEnderecoDAO {
 				String Estado = rs.getString("Estado");
 				Integer IdEndereco = rs.getInt("id_endereco");
 
-				Endereco E = new Endereco();
 				E.setCep(Cep);
 				E.setRua(Rua);
 				E.setBairro(Bairro);
@@ -228,6 +226,6 @@ public class EnderecoDAO implements IEnderecoDAO {
 			c.fecharConexao();
 		}
 
-		return null;
+		return E;
 	}
 }

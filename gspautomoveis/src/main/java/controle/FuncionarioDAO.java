@@ -48,6 +48,9 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
 			ps.setDouble(10, f.getComissao());
+			if(f.getEndereco()==null) {
+				throw new SQLException("Erro SQL endereço null");
+			}
 			ps.setInt(11, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
@@ -61,6 +64,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		} finally {
 			c.fecharConexao();
 		}
@@ -218,7 +222,6 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 	}
 
 	public Funcionario login(Funcionario f) {
-		funcAchado = null;
 		for (Funcionario func : ListarFuncionarios()) {
 			if (func.getUsuario().equals(f.getUsuario()) && func.getSenha().equals(f.getSenha())) {
 

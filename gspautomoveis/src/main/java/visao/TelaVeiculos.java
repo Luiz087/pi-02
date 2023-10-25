@@ -13,6 +13,9 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import com.mysql.cj.xdevapi.Table;
 
 import controle.CarroDAO;
 import controle.FornecedorDAO;
@@ -488,7 +491,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(395, 302, 1455, 675);
+		scrollPane.setBounds(395, 302, 916, 410);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -869,6 +872,18 @@ public class TelaVeiculos extends JFrame {
 				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				vendas.setVisible(true);
 				dispose();
+				
+				TelaVendas ven = new TelaVendas();
+				
+				int index = Table.getSelectedRow();
+				TableModel model = Table.getModel();
+				String marca = model.getValueAt(index, 0).toString();
+				String modelo = model.getValueAt(index, 0).toString();
+				
+				
+				ven.setVisible(true);
+				ven.pack();
+				ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);
 			}
 		};
 		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());

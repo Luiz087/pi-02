@@ -627,7 +627,7 @@ public class TelaVendas extends JFrame {
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnVender.setBackground(Color.GREEN);
-		btnVender.setBounds(737, 685, 251, 35);
+		btnVender.setBounds(754, 866, 251, 35);
 		contentPane.add(btnVender);
 
 		JLabel lblNewLabel_2 = new JLabel("Informação do Carro");

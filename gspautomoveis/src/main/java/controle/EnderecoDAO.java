@@ -196,14 +196,15 @@ public class EnderecoDAO implements IEnderecoDAO {
 	public Endereco buscaEnderecoByAtributo(Endereco end) {
 		Conexao c = Conexao.getInstancia();
 		Connection con = c.conectar();
-		Endereco E = new Endereco();
-		String query = "SELECT * FROM enderecos WHERE id_endereco = ?";
+		Endereco E = null;
+		String query = "SELECT * FROM enderecos WHERE cep = ?";
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setLong(1, end.getCep());
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				E = new Endereco();
 				Long Cep = rs.getLong("Cep");
 				String Rua = rs.getString("Rua");
 				String Bairro = rs.getString("Bairro");

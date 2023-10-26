@@ -40,7 +40,7 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(2, v.getCpfCliente());
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
-			ps.setString(5, v.getDataVenda());
+			ps.setDate(5, Date.valueOf(v.getDataVenda()));
 			ps.setDouble(6, v.getPrecoVenda());
 			ps.setInt(7, v.getFunc().getMatricula());
 			ps.setInt(8, v.getCarro().getIdCarro());
@@ -75,7 +75,7 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(2, v.getCpfCliente());
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
-			ps.setString(5, v.getDataVenda());
+			ps.setDate(5, Date.valueOf(v.getDataVenda()));
 			ps.setInt(6, v.getIdVenda());
 
 			ps.executeUpdate();
@@ -133,7 +133,8 @@ public class VendaDAO implements IVendaDAO {
 				Long CpfCliente = rs.getLong("CpfCliente");
 				Long TelefoneCliente = rs.getLong("TelefoneCliente");
 				String EnderecoCliente = rs.getString("EnderecoCliente");
-				String DataVenda = rs.getString("DataVenda");
+				java.sql.Date DataVenda = rs.getDate("DataVenda");
+				LocalDate localDate = DataVenda.toLocalDate();
 				Double PrecoVenda = rs.getDouble("Precovenda");
 
 				Venda V = new Venda();
@@ -142,7 +143,7 @@ public class VendaDAO implements IVendaDAO {
 				V.setCpfCliente(CpfCliente);
 				V.setTelefoneCliente(TelefoneCliente);
 				V.setEnderecoCliente(EnderecoCliente);
-				V.setDataVenda(DataVenda);
+				V.setDataVenda(localDate);
 				V.setPrecoVenda(PrecoVenda);
 
 				Vendas.add(V);

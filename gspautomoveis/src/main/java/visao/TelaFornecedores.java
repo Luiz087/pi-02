@@ -822,7 +822,7 @@ public class TelaFornecedores extends JFrame {
 		textRua.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				textBairro.setBorder(blackBorder);
+				textRua.setBorder(blackBorder);
 			}
 		});
 		textRua.setFont(new Font("Krona One", Font.PLAIN, 12));

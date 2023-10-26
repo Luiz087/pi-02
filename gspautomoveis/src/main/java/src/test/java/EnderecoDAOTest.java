@@ -58,7 +58,6 @@ public class EnderecoDAOTest {
 	public void TestDeleteEnd() {
 
 		Endereco end = new Endereco();
-
 		end.setBairro("Centro");
 		end.setRua("7 de setembro");
 		end.setCidade("Blumenau");

@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,21 @@ public class FuncionarioDAOTest {
 		func.setEmail("funcionario@gmail.com");
 		func.setComissao(1.6);
 		func.setCpf(53296126082l);
-		func.setDataDeNasc("08/09/2005");
+		
+		/*String DataDeNasc = "2005-09-08";
+		LocalDate DataNasc = LocalDate.parse(DataDeNasc);
+		*/
+		
+		String dataNascimento = "05/08/2005";
+
+		String primeiroParte = dataNascimento.substring(0, 2);
+		String segundaParte = dataNascimento.substring(3, 5);
+		String terceiroParte = dataNascimento.substring(6, 10);
+
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Gerente de Vendas");
 		func.setSalario(123123.9);
 		func.setSenha("Luizz123");
@@ -83,7 +98,16 @@ public class FuncionarioDAOTest {
 		func.setEmail("funcionario@gmail.com");
 		func.setComissao(1.6);
 		func.setCpf(53296126082l);
-		func.setDataDeNasc("08/09/2005");
+		String dataNascimento = "05/08/2005";
+
+		String primeiroParte = dataNascimento.substring(0, 2);
+		String segundaParte = dataNascimento.substring(3, 5);
+		String terceiroParte = dataNascimento.substring(6, 10);
+
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Gerente de Vendas");
 		func.setSalario(123123.9);
 		func.setSenha("Luizz123");
@@ -130,7 +154,16 @@ public class FuncionarioDAOTest {
 		func.setEmail("Carlos@gmail.com");
 		func.setComissao(1.2);
 		func.setCpf(53296126034l);
-		func.setDataDeNasc("08/10/2005");
+		String dataNascimento = "05/08/2005";
+
+		String primeiroParte = dataNascimento.substring(0, 2);
+		String segundaParte = dataNascimento.substring(3, 5);
+		String terceiroParte = dataNascimento.substring(6, 10);
+
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Vendedor");
 		func.setSalario(12323.9);
 		func.setSenha("2346");
@@ -169,7 +202,16 @@ public class FuncionarioDAOTest {
 		func.setEmail("Carlos@gmail.com");
 		func.setComissao(1.2);
 		func.setCpf(53296126034l);
-		func.setDataDeNasc("08/10/2005");
+		String dataNascimento = "05/08/2005";
+
+		String primeiroParte = dataNascimento.substring(0, 2);
+		String segundaParte = dataNascimento.substring(3, 5);
+		String terceiroParte = dataNascimento.substring(6, 10);
+
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Vendedor");
 		func.setSalario(12323.9);
 		func.setSenha("2346");
@@ -207,7 +249,16 @@ public class FuncionarioDAOTest {
 		func.setEmail("Carlos@gmail.com");
 		func.setComissao(1.2);
 		func.setCpf(53296126034l);
-		func.setDataDeNasc("08/10/2005");
+		String dataNascimento = "05/08/2005";
+
+		String primeiroParte = dataNascimento.substring(0, 2);
+		String segundaParte = dataNascimento.substring(3, 5);
+		String terceiroParte = dataNascimento.substring(6, 10);
+
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Vendedor");
 		func.setSalario(12323.9);
 		func.setSenha("2346");

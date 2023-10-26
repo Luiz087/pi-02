@@ -5,13 +5,15 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Iterator;
 
-import javax.swing.AbstractButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -39,9 +41,6 @@ import modelo.Funcionario;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
-import javax.swing.SwingConstants;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -355,7 +354,6 @@ public class TelaFuncionarios extends JFrame {
 
 			}
 		});
-		
 
 		btnAtualizar.setForeground(Color.BLACK);
 		btnAtualizar.setFont(new Font("Krona One", Font.PLAIN, 18));
@@ -368,7 +366,7 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Retirar máscaras de CPF, Data de Nascimento e CEP
-				
+
 				if (textNome.getText().equals("") || textCPF.getText().equals("") || textEmail.getText().equals("")
 						|| textUsuario.getText().equals("") || textSenha.getText().equals("")
 						|| textTelefone.getText().equals("") || CBCargo.getSelectedIndex() == 0
@@ -377,49 +375,49 @@ public class TelaFuncionarios extends JFrame {
 						|| textCidade.getText().equals("") || textEstado.getText().equals("")
 						|| textComissao.getText().equals("") || textSalario.getText().equals("")) {
 					erro("Preencha todos os dados!");
-					if(textNome.getText().equals("")) {
+					if (textNome.getText().equals("")) {
 						textNome.setBorder(redBorder);
 					}
-					if(textCPF.getText().equals("")) {
+					if (textCPF.getText().equals("")) {
 						textCPF.setBorder(redBorder);
 					}
-					if(textUsuario.getText().equals("")) {
+					if (textUsuario.getText().equals("")) {
 						textUsuario.setBorder(redBorder);
 					}
-					if(textSenha.getText().equals("")) {
+					if (textSenha.getText().equals("")) {
 						textSenha.setBorder(redBorder);
 					}
-					if(textEmail.getText().equals("")) {
+					if (textEmail.getText().equals("")) {
 						textEmail.setBorder(redBorder);
 					}
-					if(textTelefone.getText().equals("")) {
+					if (textTelefone.getText().equals("")) {
 						textTelefone.setBorder(redBorder);
 					}
-					if(CBCargo.getSelectedIndex() == 0) {
+					if (CBCargo.getSelectedIndex() == 0) {
 						CBCargo.setBorder(redBorder);
 					}
-					if(textDataNasc.getText().equals("")) {
+					if (textDataNasc.getText().equals("")) {
 						textDataNasc.setBorder(redBorder);
 					}
-					if(textRua.getText().equals("")) {
+					if (textRua.getText().equals("")) {
 						textRua.setBorder(redBorder);
 					}
-					if(textCep.getText().equals("")) {
+					if (textCep.getText().equals("")) {
 						textRua.setBorder(redBorder);
 					}
-					if(textBairro.getText().equals("")) {
+					if (textBairro.getText().equals("")) {
 						textBairro.setBorder(redBorder);
 					}
-					if(textCidade.getText().equals("")) {
+					if (textCidade.getText().equals("")) {
 						textCidade.setBorder(redBorder);
 					}
-					if(textEstado.getText().equals("")) {
+					if (textEstado.getText().equals("")) {
 						textEstado.setBorder(redBorder);
 					}
-					if(textComissao.getText().equals("")) {
+					if (textComissao.getText().equals("")) {
 						textComissao.setBorder(redBorder);
 					}
-					if(textSalario.getText().equals("")) {
+					if (textSalario.getText().equals("")) {
 						textSalario.setBorder(redBorder);
 					}
 				} else {
@@ -430,7 +428,11 @@ public class TelaFuncionarios extends JFrame {
 							String cpfErrado = textCPF.getText();
 							String cpfSemHifens = cpfErrado.replaceAll("-", "");
 							String cpfstring = cpfSemHifens.replaceAll("\\.", "");
-							Long cpf = Long.valueOf(cpfstring);
+							cpfstring = cpfstring.trim();
+							Long cpf = null;
+							if (!cpfstring.isEmpty()) {
+								cpf = Long.valueOf(cpfstring);
+							}
 
 							String email = textEmail.getText();
 							String usuario = textUsuario.getText();
@@ -451,9 +453,15 @@ public class TelaFuncionarios extends JFrame {
 							}
 
 							String cargo = (String) CBCargo.getSelectedItem();
+
 							String dataNascimento = textDataNasc.getText();
-							String dataNascimentoSemTraco = dataNascimento.replaceAll("-", "");
-							String dataNascimentoCorreta = dataNascimentoSemTraco.replaceAll("\\.", "");
+
+							String primeiroParte = dataNascimento.substring(0, 2);
+							String segundaParte = dataNascimento.substring(3, 5);
+							String terceiroParte = dataNascimento.substring(6, 10);
+
+							LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+									Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
 
 							String rua = textRua.getText();
 							String estado = textEstado.getText();
@@ -465,7 +473,12 @@ public class TelaFuncionarios extends JFrame {
 
 								String cepString = cepErrado.replaceAll("-", "");
 
-								cep = Long.valueOf(cepString);
+								cepString = cepString.trim();
+
+								if (!cepString.isEmpty()) {
+									cep = Long.valueOf(cepString);
+
+								}
 
 							} catch (NumberFormatException e1) {
 								System.out.println("Erro ao converter para Long: " + e1.getMessage());
@@ -491,8 +504,6 @@ public class TelaFuncionarios extends JFrame {
 							end.setEstado(estado);
 							end.setCep(cep);
 							end.setBairro(bairro);
-
-							func1.setEndereco(end);
 
 							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
 							if (verificacaoEnd == null) {
@@ -939,7 +950,7 @@ public class TelaFuncionarios extends JFrame {
 				textCep.setEditable(false);
 				textId.setText(String.valueOf(funcC.getMatricula()));
 
-				String[] partes = funcC.getDataDeNasc().split("-");
+				String[] partes = String.valueOf(funcC.getDataDeNasc()).split("-");
 
 				String primeiroParte = partes[0];
 				String segundaParte = partes[1];
@@ -958,10 +969,18 @@ public class TelaFuncionarios extends JFrame {
 				"Telefone", "Cargo", "Data de Nascimento", "Email", "A\u00E7\u00F5es" }));
 
 		for (Funcionario funcs : funcdao.ListarFuncionarios()) {
+			String[] partes = String.valueOf(funcs.getDataDeNasc()).split("-");
+
+			String primeiroParte = partes[0];
+			String segundaParte = partes[1];
+			String terceiroParte = partes[2];
+
+			// Reorganiza as partes da string no formato desejado
+			String resultado = terceiroParte + segundaParte + primeiroParte;
+
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
-					String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), funcs.getDataDeNasc(),
-					funcs.getEmail() };
+					String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), resultado, funcs.getEmail() };
 			tblModel.addRow(data);
 		}
 
@@ -1033,6 +1052,7 @@ public class TelaFuncionarios extends JFrame {
 			public void focusLost(FocusEvent e) {
 				buscarCep();
 			}
+
 			@Override
 			public void focusGained(FocusEvent e) {
 				textCep.setBorder(blackBorder);
@@ -1142,7 +1162,6 @@ public class TelaFuncionarios extends JFrame {
 
 			@Override
 			public void onView(int row) {
-				
 
 			}
 		};

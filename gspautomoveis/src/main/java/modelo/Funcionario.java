@@ -1,5 +1,7 @@
 package modelo;
 
+import java.time.LocalDate;
+
 public class Funcionario {
 
 	private Integer matricula;
@@ -10,7 +12,7 @@ public class Funcionario {
 	private Long telefone;
 	private String email;
 	private Double salario;
-	private String dataDeNasc;
+	private LocalDate dataDeNasc;
 	private String nivelCargo;
 	private Double comissao;
 	private Endereco endereco;
@@ -87,11 +89,11 @@ public class Funcionario {
 		this.nivelCargo = nivelCargo;
 	}
 
-	public String getDataDeNasc() {
+	public LocalDate getDataDeNasc() {
 		return dataDeNasc;
 	}
 
-	public void setDataDeNasc(String dataDeNasc) {
+	public void setDataDeNasc(LocalDate dataDeNasc) {
 		this.dataDeNasc = dataDeNasc;
 	}
 

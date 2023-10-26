@@ -3,6 +3,9 @@ package src.test.java;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import controle.FuncionarioDAO;
@@ -14,24 +17,28 @@ public class VendaDAOTest {
 	
 	@Test
 	public void testListarVendas(){
-		Venda venda = new Venda();
-		venda.setCpfCliente(98765432199l);
-		venda.setDataVenda("11111111");
-		venda.setIdVenda(4444);
-		venda.setNomeCliente("jorgringo reidelas");
-		venda.setPrecoVenda(1.11111);
-		venda.setTelefoneCliente(47666699999l);
-		venda.setEnderecoCliente("bla vla 48");
-		
+
 		VendaDAO dao = new VendaDAO();
-		Integer vInserido = dao.inserir(venda);
-		assertNotNull(vInserido);
+		
+		ArrayList<Venda> Vendas = new ArrayList<>();
+		
+		assertNotNull(dao);
 	}
 	
+	@Test
 	public void testInserirVendas() {
 		Venda venda = new Venda();
 		venda.setCpfCliente(123456789111l);
-		venda.setDataVenda("09122005");
+		String dataVenda = "05/08/2005";
+
+		String primeiroParte = dataVenda.substring(0, 2);
+		String segundaParte = dataVenda.substring(3, 5);
+		String terceiroParte = dataVenda.substring(6, 10);
+
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		venda.setDataVenda(dataVendaCorreta);		
 		venda.setIdVenda(11111);
 		venda.setNomeCliente("Gabriel reidelas");
 		venda.setPrecoVenda(1.200000);
@@ -45,11 +52,20 @@ public class VendaDAOTest {
 		assertNotNull(vInserido);
 		
 	}
-	
+	@Test
 	public void testAtualizar() {
 		Venda venda = new Venda();
 		venda.setCpfCliente(98765432198l);
-		venda.setDataVenda("05201209");
+		String dataVenda = "05/08/2005";
+
+		String primeiroParte = dataVenda.substring(0, 2);
+		String segundaParte = dataVenda.substring(3, 5);
+		String terceiroParte = dataVenda.substring(6, 10);
+
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		venda.setDataVenda(dataVendaCorreta);		
 		venda.setIdVenda(2222);
 		venda.setNomeCliente("eric ");
 		venda.setPrecoVenda(1.2002);
@@ -61,11 +77,20 @@ public class VendaDAOTest {
 		
 		assertEquals(true, vAtualizado);
 	}
-	
+	@Test
 	public void testInserir() {
 		Venda venda = new Venda();
 		venda.setCpfCliente(222222222222l);
-		venda.setDataVenda("69696969");
+		String dataVenda = "05/08/2005";
+
+		String primeiroParte = dataVenda.substring(0, 2);
+		String segundaParte = dataVenda.substring(3, 5);
+		String terceiroParte = dataVenda.substring(6, 10);
+
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+		
+		venda.setDataVenda(dataVendaCorreta);		
 		venda.setIdVenda(3333);
 		venda.setNomeCliente("luiz ");
 		venda.setPrecoVenda(7.0000);

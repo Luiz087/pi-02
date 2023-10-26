@@ -1,11 +1,12 @@
 package controle;
 
 import java.sql.Connection;
-
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.Endereco;
@@ -42,7 +43,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setLong(2, f.getCpf());
 			ps.setLong(3, f.getTelefone());
 			ps.setString(4, f.getEmail());
-			ps.setString(5, f.getDataDeNasc());
+			ps.setDate(5, Date.valueOf(f.getDataDeNasc()));
 			ps.setString(6, f.getUsuario());
 			ps.setString(7, f.getSenha());
 			ps.setString(8, f.getNivelCargo());
@@ -184,7 +185,10 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				Long Cpf = rs.getLong("Cpf");
 				Long Telefone = rs.getLong("Telefone");
 				String Email = rs.getString("Email");
-				String DataDeNasc = rs.getString("DataDeNasc");
+				
+				java.sql.Date DataDeNasc = rs.getDate("DataDeNasc");
+				LocalDate localDate = DataDeNasc.toLocalDate();
+				
 				String Usuario = rs.getString("Usuario");
 				String Senha = rs.getString("Senha");
 				String NivelCargo = rs.getString("NivelCargo");
@@ -199,7 +203,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setCpf(Cpf);
 				F.setTelefone(Telefone);
 				F.setEmail(Email);
-				F.setDataDeNasc(DataDeNasc);
+				F.setDataDeNasc(localDate);
 				F.setUsuario(Usuario);
 				F.setSenha(Senha);
 				F.setNivelCargo(NivelCargo);
@@ -264,7 +268,10 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				Long Cpf = rs.getLong("Cpf");
 				Long Telefone = rs.getLong("Telefone");
 				String Email = rs.getString("Email");
-				String DataDeNasc = rs.getString("DataDeNasc");
+				
+				java.sql.Date DataDeNasc = rs.getDate("DataDeNasc");
+				LocalDate localDate = DataDeNasc.toLocalDate();
+				
 				String Usuario = rs.getString("Usuario");
 				String Senha = rs.getString("Senha");
 				String NivelCargo = rs.getString("NivelCargo");
@@ -277,7 +284,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				F.setCpf(Cpf);
 				F.setTelefone(Telefone);
 				F.setEmail(Email);
-				F.setDataDeNasc(DataDeNasc);
+				F.setDataDeNasc(localDate);
 				F.setUsuario(Usuario);
 				F.setSenha(Senha);
 				F.setNivelCargo(NivelCargo);

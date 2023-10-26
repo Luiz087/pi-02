@@ -872,18 +872,6 @@ public class TelaVeiculos extends JFrame {
 				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				vendas.setVisible(true);
 				dispose();
-				
-				TelaVendas ven = new TelaVendas();
-				
-				int index = Table.getSelectedRow();
-				TableModel model = Table.getModel();
-				String marca = model.getValueAt(index, 0).toString();
-				String modelo = model.getValueAt(index, 0).toString();
-				
-				
-				ven.setVisible(true);
-				ven.pack();
-				ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);
 			}
 		};
 		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());

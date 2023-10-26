@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -47,7 +48,9 @@ public class TelaConfirmacao extends JDialog {
 	private boolean resultado;
 	
 	
-	public TelaConfirmacao(TableActionEvent tableActionEvent) {
+	public TelaConfirmacao(JFrame essaJanela) {
+		super(essaJanela, true);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 255));

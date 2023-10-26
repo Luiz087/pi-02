@@ -1096,7 +1096,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Mudando o tamanho da coluna 7 (Ações)
 		table.getColumnModel().getColumn(6).setPreferredWidth(1);
-
+		JFrame essaJanela = this;
 		TableActionEvent event = new TableActionEvent() {
 
 			@Override
@@ -1121,9 +1121,9 @@ public class TelaFuncionarios extends JFrame {
 				// quer excluir mesmo?
 				// FALTA COLOCAR CONFIRMAÇÃO
 
-				TelaConfirmacao confirma = new TelaConfirmacao(this);
+				TelaConfirmacao confirma = new TelaConfirmacao(essaJanela);
+				confirma.setLocationRelativeTo(essaJanela);
 				confirma.setVisible(true);
-				confirma.setLocationRelativeTo(null);
 				if (confirma.getResult() == true) {
 					funcdao.excluir(funcDelete);
 

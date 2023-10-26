@@ -39,6 +39,12 @@ public class PanelActionD extends  javax.swing.JPanel {
                 eventD.onDelete(row);
             }
         });
+        cmdvisu.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent ae) {
+        		eventD.onView(row);
+        	}
+        });
     }
 
     /**
@@ -50,14 +56,16 @@ public class PanelActionD extends  javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmdEdit = new raven.cell.ActionButton();
-        cmdDelete = new raven.cell.ActionButton();
+        cmdEdit = new ravenD.cell.ActionButtonD();
+        cmdDelete = new ravenD.cell.ActionButtonD();
+        cmdvisu = new ravenD.cell.ActionButtonD();
+        
 
         cmdEdit.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/edit.png"))); // NOI18N
 
         cmdDelete.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/delete.png")));
         
-        ActionButtonD cmdvisu = new ActionButtonD();
+        
         cmdvisu.setIcon(new ImageIcon(PanelActionD.class.getResource("/visao/imagens/moedas (1).png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -88,6 +96,7 @@ public class PanelActionD extends  javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private raven.cell.ActionButton cmdDelete;
-    private raven.cell.ActionButton cmdEdit;
+    private ravenD.cell.ActionButtonD cmdDelete;
+    private ravenD.cell.ActionButtonD cmdEdit;
+    private ravenD.cell.ActionButtonD cmdvisu;
 }

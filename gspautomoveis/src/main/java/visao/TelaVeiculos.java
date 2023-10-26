@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
@@ -38,6 +39,8 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class TelaVeiculos extends JFrame {
 
@@ -222,6 +225,9 @@ public class TelaVeiculos extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
+		
+		LineBorder redBorder = new LineBorder(Color.RED);
+		LineBorder blackBorder = new LineBorder(Color.BLACK);
 
 		panel_5.setBounds(0, 883, 350, 49);
 		contentPane.add(panel_5);
@@ -247,8 +253,15 @@ public class TelaVeiculos extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
-
+	
+		
 		JComboBox cbAbs = new JComboBox();
+		cbAbs.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				cbAbs.setBorder(blackBorder);
+			}
+		});
 		cbAbs.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
 		cbAbs.setFont(new Font("Krona One", Font.PLAIN, 12));
 		cbAbs.setBounds(1492, 115, 120, 38);
@@ -514,6 +527,12 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblAno);
 
 		JComboBox Cbcombustivel = new JComboBox();
+		Cbcombustivel.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				Cbcombustivel.setBorder(blackBorder);
+			}
+		});
 		Cbcombustivel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		Cbcombustivel.setModel(new DefaultComboBoxModel(
 				new String[] { "", "Gasolina", "Alcool", "Diesel", "Gasolina e Alcool", "Gasolina e Eletrico" }));
@@ -546,6 +565,12 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblQuilometragem);
 
 		txt_marca = new JTextField();
+		txt_marca.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_marca.setBorder(blackBorder);
+			}
+		});
 		txt_marca.setFont(new Font("Krona One", Font.PLAIN, 24));
 		txt_marca.setColumns(10);
 		txt_marca.setBounds(482, 49, 199, 38);
@@ -557,18 +582,36 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblModelo);
 
 		txt_modelo = new JTextField();
+		txt_modelo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_modelo.setBorder(blackBorder);
+			}
+		});
 		txt_modelo.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_modelo.setColumns(10);
 		txt_modelo.setBounds(504, 116, 199, 38);
 		contentPane.add(txt_modelo);
 
 		JComboBox comboBoxNovo = new JComboBox();
+		comboBoxNovo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				comboBoxNovo.setBorder(blackBorder);
+			}
+		});
 		comboBoxNovo.setFont(new Font("Krona One", Font.PLAIN, 12));
 		comboBoxNovo.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
 		comboBoxNovo.setBounds(477, 173, 116, 38);
 		contentPane.add(comboBoxNovo);
 
 		JComboBox comboBoxAno = new JComboBox();
+		comboBoxAno.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				comboBoxAno.setBorder(blackBorder);
+			}
+		});
 		comboBoxAno.setFont(new Font("Krona One", Font.PLAIN, 12));
 		comboBoxAno.setModel(new DefaultComboBoxModel(new String[] { "", "2023", "2022", "2021", "2020", "2019", "2018",
 				"2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005",
@@ -578,24 +621,48 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(comboBoxAno);
 
 		txt_cor = new JTextField();
+		txt_cor.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_cor.setBorder(blackBorder);
+			}
+		});
 		txt_cor.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_cor.setColumns(10);
 		txt_cor.setBounds(1121, 173, 199, 38);
 		contentPane.add(txt_cor);
 
 		txt_tipo = new JTextField();
+		txt_tipo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_tipo.setBorder(blackBorder);
+			}
+		});
 		txt_tipo.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_tipo.setColumns(10);
 		txt_tipo.setBounds(771, 49, 199, 38);
 		contentPane.add(txt_tipo);
 
 		txt_quilometragem = new JTextField();
+		txt_quilometragem.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_quilometragem.setBorder(blackBorder);
+			}
+		});
 		txt_quilometragem.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_quilometragem.setColumns(10);
 		txt_quilometragem.setBounds(871, 173, 145, 38);
 		contentPane.add(txt_quilometragem);
 
 		txt_potencia = new JTextField();
+		txt_potencia.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_potencia.setBorder(blackBorder);
+			}
+		});
 		txt_potencia.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_potencia.setColumns(10);
 		txt_potencia.setBounds(1252, 116, 132, 38);
@@ -612,6 +679,12 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblABS);
 
 		txt_preco = new JTextField();
+		txt_preco.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				txt_preco.setBorder(blackBorder);
+			}
+		});
 		txt_preco.setFont(new Font("Krona One", Font.PLAIN, 12));
 		txt_preco.setColumns(10);
 		txt_preco.setBounds(1452, 49, 120, 38);
@@ -628,6 +701,12 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblPromocao);
 
 		JComboBox comboBoxPromocao = new JComboBox();
+		comboBoxPromocao.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				comboBoxPromocao.setBorder(blackBorder);
+			}
+		});
 		comboBoxPromocao.setModel(new DefaultComboBoxModel(new String[] { "", "Sim", "Não" }));
 		comboBoxPromocao.setFont(new Font("Krona One", Font.PLAIN, 12));
 		comboBoxPromocao.setBounds(1758, 49, 120, 38);
@@ -639,6 +718,12 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblFornecedor);
 
 		JComboBox comboBoxFornecedor = new JComboBox();
+		comboBoxFornecedor.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				comboBoxFornecedor.setBorder(blackBorder);
+			}
+		});
 		comboBoxFornecedor.setModel(new DefaultComboBoxModel(new String[] { "", "Kristofor", "Marrilee", "Mag",
 				"Almire", "Deedee", "Billie", "Minny", "Melinda", "Benedikta", "Myra", "Catlaina", "Peggie", "Dedra",
 				"Sarette", "Deanne", "Merill", "Orbadiah", "Wolfgang", "Sanderson", "Sula" }));
@@ -657,7 +742,51 @@ public class TelaVeiculos extends JFrame {
 						|| txt_preco.getText().equals("") || comboBoxPromocao.getSelectedIndex() == 0
 						|| comboBoxFornecedor.getSelectedIndex() == 0) {
 					erro("Preencha todos os campos!");
-				} else {
+				} 
+				
+				if(txt_marca.getText().equals("")) {
+					txt_marca.setBorder(redBorder);
+				}
+				if(txt_modelo.getText().equals("")) {
+					txt_modelo.setBorder(redBorder);
+				}
+				if(comboBoxNovo.getSelectedIndex() == 0) {
+					comboBoxNovo.setBorder(redBorder);
+				}
+				if(txt_tipo.getText().equals("")) {
+					txt_tipo.setBorder(redBorder);
+				}
+				if(Cbcombustivel.getSelectedIndex() == 0) {
+					Cbcombustivel.setBorder(redBorder);
+				}
+				if(txt_quilometragem.getText().equals("")) {
+					txt_quilometragem.setBorder(redBorder);
+				}
+				if(comboBoxFornecedor.getSelectedIndex() == 0) {
+					comboBoxFornecedor.setBorder(redBorder);
+				}
+				if(txt_potencia.getText().equals("")) {
+					txt_potencia.setBorder(redBorder);
+				}
+				if(txt_cor.getText().equals("")) {
+					txt_cor.setBorder(redBorder);
+				}
+				if(txt_preco.getText().equals("")) {
+					txt_preco.setBorder(redBorder);
+				}
+				if(cbAbs.getSelectedIndex() == 0) {
+					cbAbs.setBorder(redBorder);
+				}
+				if(textId.getText().equals("")) {
+					textId.setBorder(redBorder);
+				}
+				if(comboBoxPromocao.getSelectedIndex() == 0) {
+					comboBoxPromocao.setBorder(redBorder);
+				}
+				if(comboBoxAno.getSelectedIndex() == 0) {
+					comboBoxAno.setBorder(redBorder);
+				}
+				else {
 					Carro carro = new Carro();
 					String marca = txt_marca.getText();
 					String modelo = txt_modelo.getText();
@@ -904,6 +1033,13 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(lblId);
 
 		textId = new JTextField();
+		textId.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textId.setBorder(blackBorder);
+				
+			}
+		});
 		textId.setEditable(false);
 		textId.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textId.setColumns(10);

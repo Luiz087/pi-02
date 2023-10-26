@@ -11,6 +11,7 @@ import javax.swing.text.MaskFormatter;
 import controle.CarroDAO;
 import controle.FornecedorDAO;
 import controle.FuncionarioDAO;
+import controle.VendaDAO;
 import modelo.Carro;
 import modelo.Endereco;
 import modelo.Fornecedor;
@@ -59,7 +60,7 @@ public class TelaVendas extends JFrame {
 	private JTextField textAno;
 	private JTextField textQuilometragem;
 	private JTextField textFornecedor;
-
+	private VendaDAO vendadao = VendaDAO.getInstancia();
 	/**
 	 * Launch the application.
 	 */
@@ -600,7 +601,8 @@ public class TelaVendas extends JFrame {
 				venda.setNomeCliente(textNomeC.getText());
 				venda.setPrecoVenda(carro.getPrecoCarro());
 				venda.setTelefoneCliente(Long.valueOf((textTelefoneC.getText())));
-
+				
+				
 				/*
 				 * SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 				 * 
@@ -614,15 +616,15 @@ public class TelaVendas extends JFrame {
 				 * venda.setDataVenda();
 				 */
 				
+				vendadao.inserir(venda);
 				
-				TelaHistoricoVeiculos.AddRowToJtable(new Object[] {
-						textMarca.getText(),
-						textModelo.getText(),
-				});
 				
-				TelaHistoricoVeiculos vei = new TelaHistoricoVeiculos();
-				vei.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				vei.setVisible(true);
+					
+				
+				
+				//dispose();
+				//vei.setExtendedState(MAXIMIZED_BOTH);
+				//vei.setVisible(true);
 			}
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));

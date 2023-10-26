@@ -14,6 +14,15 @@ import modelo.IVendaDAO;
 import modelo.Venda;
 
 public class VendaDAO implements IVendaDAO {
+	
+	private static VendaDAO instancia;
+
+	public static VendaDAO getInstancia() {
+		if (instancia == null) {
+			instancia = new VendaDAO();
+		}
+		return instancia;
+	}
 
 	public Integer inserir(Venda v) {
 

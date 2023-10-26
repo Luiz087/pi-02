@@ -439,8 +439,14 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_1_1.setBounds(0, 711, 334, 52);
 		contentPane.add(lblNewLabel_4_1_1_1_1);
-
+		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		scrollPane.setBounds(478, 253, 1271, 690);
 		contentPane.add(scrollPane);
 		// cadastrar nome das colunas

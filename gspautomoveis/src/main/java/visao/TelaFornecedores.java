@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JLayeredPane;
@@ -34,6 +36,8 @@ import modelo.Funcionario;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class TelaFornecedores extends JFrame {
 
@@ -225,6 +229,9 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
+		
+		LineBorder redBorder = new LineBorder(Color.RED);
+		LineBorder blackBorder = new LineBorder(Color.BLACK);
 
 		panel_5.setBounds(0, 967, 340, 63);
 		contentPane.add(panel_5);
@@ -321,7 +328,41 @@ public class TelaFornecedores extends JFrame {
 						|| textBairro.getText().equals("") || textEstado.getText().equals("")
 						|| textCep.getText().equals("") || textRua.getText().equals("")) {
 					erro("Preencha todos os campos!");
-				} else {
+				} 
+				if(textNome.getText().equals("")) {
+					textNome.setBorder(redBorder);
+				}
+				if(textTel.getText().equals("")) {
+					textTel.setBorder(redBorder);
+				}
+				if(textCNPJ.getText().equals("")) {
+					textCNPJ.setBorder(redBorder);
+				}
+				if(textMarca.getText().equals("")) {
+					textMarca.setBorder(redBorder);
+				}
+				if(textCidade.getText().equals("")) {
+					textCidade.setBorder(redBorder);
+				}
+				if(textBairro.getText().equals("")) {
+					textBairro.setBorder(redBorder);
+				}
+				if(textEstado.getText().equals("")) {
+					textEstado.setBorder(redBorder);
+				}
+				if(textCep.getText().equals("")) {
+					textCep.setBorder(redBorder);
+				}
+				if(textRua.getText().equals("")) {
+					textRua.setBorder(redBorder);
+				}
+				if(textCep.getText().equals("")) {
+					textRua.setBorder(redBorder);
+				}
+				if(textEmpresa.getText().equals("")) {
+					textEmpresa.setBorder(redBorder);
+				}
+				else {
 
 					fornec.setNomeFornecedor(textNome.getText());
 					fornec.setEmpresa(textEmpresa.getText());
@@ -404,6 +445,12 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblEmpresa);
 
 		textEmpresa = new JTextField();
+		textEmpresa.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textEmpresa.setBorder(blackBorder);
+			}
+		});
 		textEmpresa.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEmpresa.setColumns(10);
 		textEmpresa.setBounds(1053, 219, 324, 38);
@@ -441,6 +488,12 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblTelefone);
 
 		textNome = new JTextField();
+		textNome.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textNome.setBorder(blackBorder);
+			}
+		});
 		textNome.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textNome.setBounds(497, 35, 335, 38);
 		contentPane.add(textNome);
@@ -454,6 +507,12 @@ public class TelaFornecedores extends JFrame {
 
 		// textTel = new JFormattedTextField(mascaraTel);
 		textTel = new JTextField();
+		textTel.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textTel.setBorder(blackBorder);
+			}
+		});
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
 		textTel.setBounds(1042, 40, 335, 38);
@@ -467,18 +526,36 @@ public class TelaFornecedores extends JFrame {
 
 		// textCNPJ = new JFormattedTextField(mascaraCNPJ);
 		textCNPJ = new JTextField();
+		textCNPJ.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textCNPJ.setBorder(blackBorder);
+			}
+		});
 		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCNPJ.setColumns(10);
 		textCNPJ.setBounds(497, 219, 335, 38);
 		contentPane.add(textCNPJ);
 
 		textMarca = new JTextField();
+		textMarca.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textMarca.setBorder(blackBorder);
+			}
+		});
 		textMarca.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textMarca.setColumns(10);
 		textMarca.setBounds(1559, 36, 335, 38);
 		contentPane.add(textMarca);
 
 		textCidade = new JTextField();
+		textCidade.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textCidade.setBorder(blackBorder);
+			}
+		});
 		textCidade.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCidade.setColumns(10);
 		textCidade.setBounds(1304, 130, 175, 38);
@@ -718,18 +795,36 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblCep);
 
 		textEstado = new JTextField();
+		textEstado.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textEstado.setBorder(blackBorder);
+			}
+		});
 		textEstado.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEstado.setColumns(10);
 		textEstado.setBounds(508, 126, 324, 38);
 		contentPane.add(textEstado);
 
 		textBairro = new JTextField();
+		textBairro.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textBairro.setBorder(blackBorder);
+			}
+		});
 		textBairro.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textBairro.setColumns(10);
 		textBairro.setBounds(1629, 127, 224, 38);
 		contentPane.add(textBairro);
 
 		textRua = new JTextField();
+		textRua.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textBairro.setBorder(blackBorder);
+			}
+		});
 		textRua.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textRua.setColumns(10);
 		textRua.setBounds(1503, 219, 350, 38);
@@ -743,6 +838,12 @@ public class TelaFornecedores extends JFrame {
 		 * textCep = new JFormattedTextField(mascaraCEP);
 		 */
 		textCep = new JTextField();
+		textCep.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textCep.setBorder(blackBorder);
+			}
+		});
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCep.setColumns(10);
 		textCep.setBounds(949, 130, 175, 38);
@@ -801,6 +902,12 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblID);
 
 		textId = new JTextField();
+		textId.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textId.setBorder(blackBorder);
+			}
+		});
 		textId.setEditable(false);
 		textId.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textId.setColumns(10);

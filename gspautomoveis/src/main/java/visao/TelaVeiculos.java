@@ -777,9 +777,6 @@ public class TelaVeiculos extends JFrame {
 				if(cbAbs.getSelectedIndex() == 0) {
 					cbAbs.setBorder(redBorder);
 				}
-				if(textId.getText().equals("")) {
-					textId.setBorder(redBorder);
-				}
 				if(comboBoxPromocao.getSelectedIndex() == 0) {
 					comboBoxPromocao.setBorder(redBorder);
 				}

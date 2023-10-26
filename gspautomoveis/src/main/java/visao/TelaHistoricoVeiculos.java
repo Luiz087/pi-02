@@ -31,7 +31,7 @@ import java.awt.event.ItemEvent;
 public class TelaHistoricoVeiculos extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private static JTable table;
 	private JPanel panel;
 	private CarroDAO carrodao = CarroDAO.getInstancia();
 	//private VendaDAO vendadao = VendaDAO.getInstancia();
@@ -461,5 +461,12 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel.setBounds(-14, -47, 361, 1141);
 		contentPane.add(lblNewLabel);
 
+	}
+
+	public static void AddRowToJtable(Object[] objects) {
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.addRow(objects);
+		
+		
 	}
 }

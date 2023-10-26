@@ -613,11 +613,21 @@ public class TelaVendas extends JFrame {
 				 * 
 				 * venda.setDataVenda();
 				 */
+				
+				
+				TelaHistoricoVeiculos.AddRowToJtable(new Object[] {
+						textMarca.getText(),
+						textModelo.getText(),
+				});
+				
+				TelaHistoricoVeiculos vei = new TelaHistoricoVeiculos();
+				vei.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				vei.setVisible(true);
 			}
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnVender.setBackground(Color.GREEN);
-		btnVender.setBounds(940, 842, 251, 35);
+		btnVender.setBounds(737, 685, 251, 35);
 		contentPane.add(btnVender);
 
 		JLabel lblNewLabel_2 = new JLabel("Informação do Carro");

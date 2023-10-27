@@ -36,6 +36,7 @@ import org.dom4j.io.SAXReader;
 
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
+import controle.SendEmail;
 import modelo.Endereco;
 import modelo.Funcionario;
 import raven.cell.TableActionCellEditor;
@@ -521,7 +522,7 @@ public class TelaFuncionarios extends JFrame {
 
 							func1.setEndereco(end);
 							Integer matricula = funcdao.inserir(func1);
-
+							SendEmail.MandarEmail(func1.getEmail(), func1.getNome());
 							System.out.println("Passou");
 
 							textNome.setText("");
@@ -549,6 +550,7 @@ public class TelaFuncionarios extends JFrame {
 							TelaSucesso sucesso = new TelaSucesso();
 							sucesso.setLocationRelativeTo(null);
 							sucesso.setVisible(true);
+							
 						} else {
 							erro("Nome de usuário já cadastrado!");
 						}

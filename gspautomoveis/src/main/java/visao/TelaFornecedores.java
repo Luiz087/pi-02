@@ -848,6 +848,7 @@ public class TelaFornecedores extends JFrame {
 		textCep.setColumns(10);
 		textCep.setBounds(949, 130, 175, 38);
 		contentPane.add(textCep);
+		JFrame essaJanela = this;
 
 		TableActionEvent event = new TableActionEvent() {
 
@@ -868,7 +869,7 @@ public class TelaFornecedores extends JFrame {
 				int linhaSelecionada = table.getSelectedRow();
 				Integer IdFornecedor = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
 
-				TelaConfirmacao confirma = new TelaConfirmacao(this);
+				TelaConfirmacao confirma = new TelaConfirmacao(essaJanela);
 				confirma.setVisible(true);
 				confirma.setLocationRelativeTo(null);
 				if (confirma.getResult() == true) {

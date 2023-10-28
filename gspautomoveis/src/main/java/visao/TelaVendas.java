@@ -11,6 +11,7 @@ import javax.swing.text.MaskFormatter;
 import controle.CarroDAO;
 import controle.FornecedorDAO;
 import controle.FuncionarioDAO;
+import controle.SendEmail;
 import controle.VendaDAO;
 import modelo.Carro;
 import modelo.Endereco;
@@ -31,6 +32,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -61,6 +63,8 @@ public class TelaVendas extends JFrame {
 	private JTextField textQuilometragem;
 	private JTextField textFornecedor;
 	private VendaDAO vendadao = VendaDAO.getInstancia();
+	private JTextField textEmailC;
+
 	/**
 	 * Launch the application.
 	 */
@@ -89,8 +93,6 @@ public class TelaVendas extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		idCarroRecebido = 1;
 
 		panel = new JPanel();
 		panel.setVisible(false);
@@ -484,7 +486,14 @@ public class TelaVendas extends JFrame {
 		lblCpfCliente.setBounds(1002, 177, 74, 38);
 		contentPane.add(lblCpfCliente);
 
-		textCPFC = new JTextField();
+		MaskFormatter mascaraCPF = null;
+		try {
+			mascaraCPF = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textCPFC = new JFormattedTextField(mascaraCPF);
 		textCPFC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCPFC.setColumns(10);
 		textCPFC.setBounds(1086, 177, 233, 38);
@@ -492,13 +501,13 @@ public class TelaVendas extends JFrame {
 
 		JLabel lblTelefoneCliente = new JLabel("Telefone:");
 		lblTelefoneCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefoneCliente.setBounds(1428, 177, 157, 38);
+		lblTelefoneCliente.setBounds(919, 226, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 
 		textTelefoneC = new JTextField();
 		textTelefoneC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textTelefoneC.setColumns(10);
-		textTelefoneC.setBounds(1595, 177, 233, 38);
+		textTelefoneC.setBounds(1086, 226, 233, 38);
 		contentPane.add(textTelefoneC);
 
 		textCepC = new JTextField();
@@ -592,7 +601,15 @@ public class TelaVendas extends JFrame {
 		btnVender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Venda venda = new Venda();
-				venda.setCpfCliente(Long.valueOf(textCPFC.getText()));
+				String cpfErrado = textCPFC.getText();
+				String cpfSemHifens = cpfErrado.replaceAll("-", "");
+				String cpfstring = cpfSemHifens.replaceAll("\\.", "");
+				cpfstring = cpfstring.trim();
+				Long cpf = null;
+				if (!cpfstring.isEmpty()) {
+					cpf = Long.valueOf(cpfstring);
+				}
+				venda.setCpfCliente(cpf);
 				venda.setCarro(carro);
 				Endereco end = new Endereco();
 				venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText() + ", "
@@ -601,35 +618,33 @@ public class TelaVendas extends JFrame {
 				venda.setNomeCliente(textNomeC.getText());
 				venda.setPrecoVenda(carro.getPrecoCarro());
 				venda.setTelefoneCliente(Long.valueOf((textTelefoneC.getText())));
-				
-				
-				/*
-				 * SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-				 * 
-				 * String dataNascimento = textDataCompra.getText(); String
-				 * dataNascimentoSemTraco = dataNascimento.replaceAll("/", "-");
-				 * 
-				 * try { java.util.Date dataDate = dateFormat.parse(dataNascimentoSemTraco);
-				 * System.out.println("Data convertida: " + dataDate); } catch (ParseException
-				 * e1) { e1.printStackTrace(); }
-				 * 
-				 * venda.setDataVenda();
-				 */
-				
+
+				String dataNascimento = textDataCompra.getText();
+
+				String primeiroParte = dataNascimento.substring(0, 2);
+				String segundaParte = dataNascimento.substring(3, 5);
+				String terceiroParte = dataNascimento.substring(6, 10);
+				LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+						Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+				venda.setDataVenda(dataNascimentoCorreta);
 				vendadao.inserir(venda);
+
+				TelaVeiculos vei = new TelaVeiculos();
+				vei.setExtendedState(MAXIMIZED_BOTH);
+				vei.setVisible(true);
 				
+				TelaSucesso sucesso = new TelaSucesso();
+				sucesso.setLocationRelativeTo(null);
+				sucesso.setVisible(true);
 				
-					
+				SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
 				
-				
-				//dispose();
-				//vei.setExtendedState(MAXIMIZED_BOTH);
-				//vei.setVisible(true);
+				dispose();
 			}
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnVender.setBackground(Color.GREEN);
-		btnVender.setBounds(754, 866, 251, 35);
+		btnVender.setBounds(1068, 711, 251, 35);
 		contentPane.add(btnVender);
 
 		JLabel lblNewLabel_2 = new JLabel("Informação do Carro");
@@ -713,6 +728,18 @@ public class TelaVendas extends JFrame {
 		contentPane.add(textFornecedor);
 		textFornecedor.setText(forn.getNomeFornecedor());
 		textFornecedor.setBackground(Color.WHITE);
+		
+		textEmailC = new JTextField();
+		textEmailC.setFont(new Font("Krona One", Font.PLAIN, 14));
+		textEmailC.setColumns(10);
+		textEmailC.setBounds(1086, 552, 233, 38);
+		contentPane.add(textEmailC);
+		
+		JLabel lblEmailCliente = new JLabel("Email:");
+		lblEmailCliente.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblEmailCliente.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblEmailCliente.setBounds(952, 552, 114, 38);
+		contentPane.add(lblEmailCliente);
 
 	}
 }

@@ -504,7 +504,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(395, 302, 1450, 689);
+		scrollPane.setBounds(-90, 291, 1450, 689);
 		contentPane.add(scrollPane);
 
 		table = new JTable();

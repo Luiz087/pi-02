@@ -522,7 +522,7 @@ public class TelaFuncionarios extends JFrame {
 
 							func1.setEndereco(end);
 							Integer matricula = funcdao.inserir(func1);
-							SendEmail.MandarEmail(func1.getEmail(), func1.getNome());
+							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(),1);
 							System.out.println("Passou");
 
 							textNome.setText("");
@@ -532,7 +532,7 @@ public class TelaFuncionarios extends JFrame {
 							textSenha.setText("");
 							textTelefone.setText("");
 							CBCargo.setSelectedIndex(0);
-							textDataNasc.setText("");
+							
 							textRua.setText("");
 							textCidade.setText("");
 							textEstado.setText("");
@@ -541,15 +541,16 @@ public class TelaFuncionarios extends JFrame {
 							textComissao.setText("");
 							textSalario.setText("");
 
-							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, dataNascimento,
+							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, textDataNasc.getText(),
 									email };
-
+							textDataNasc.setText("");
 							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 							tbltable.addRow(data);
 
 							TelaSucesso sucesso = new TelaSucesso();
 							sucesso.setLocationRelativeTo(null);
 							sucesso.setVisible(true);
+							break;
 							
 						} else {
 							erro("Nome de usuário já cadastrado!");

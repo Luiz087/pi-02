@@ -14,7 +14,7 @@ import modelo.IVendaDAO;
 import modelo.Venda;
 
 public class VendaDAO implements IVendaDAO {
-	
+
 	private static VendaDAO instancia;
 
 	public static VendaDAO getInstancia() {
@@ -64,8 +64,9 @@ public class VendaDAO implements IVendaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "UPDATE vendas SET nomeCliente = ?" + "cpfCliente = ?" + "telefoneCliente = ?"
-				+ "enderecoCliente = ?" + "dataVenda = ?" +"precoVenda = ?" +"formaPagamento = ?  WHERE id_venda = ?";
+		String query = "UPDATE vendas SET nomeCliente = ?," + "cpfCliente = ?," + "telefoneCliente = ?,"
+				+ "enderecoCliente = ?," + "dataVenda = ?," + "precoVenda = ?,"
+				+ "formaPagamento = ?, funcionario_matricula = ?, Carros_id_carro = ?, WHERE id_venda = ?";
 		// chave estrangeira funcionarios_matricula
 		// chave estrangeira Carros_id_carro
 
@@ -79,7 +80,9 @@ public class VendaDAO implements IVendaDAO {
 			ps.setDate(5, Date.valueOf(v.getDataVenda()));
 			ps.setDouble(6, v.getPrecoVenda());
 			ps.setString(7, v.getFormaPagamento());
-			ps.setInt(8, v.getIdVenda());
+			ps.setInt(8, v.getFunc().getMatricula());
+			ps.setInt(9, v.getCarro().getIdCarro());
+			ps.setInt(10, v.getIdVenda());
 
 			ps.executeUpdate();
 
@@ -162,7 +165,7 @@ public class VendaDAO implements IVendaDAO {
 
 		return Vendas;
 	}
-	
+
 	public ArrayList<Carro> marca(String selectedItem) {
 		Conexao c = Conexao.getInstancia();
 
@@ -212,8 +215,10 @@ public class VendaDAO implements IVendaDAO {
 				C.setAbs(abs);
 				C.setPrecoCarro(precoCarro);
 				C.setPromocao(promocao);
-				
+
 				carros.add(C);
+				
+				return carros;
 
 			}
 		} catch (SQLException e) {

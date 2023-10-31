@@ -11,6 +11,7 @@ public class Venda {
 	private String enderecoCliente;
 	private LocalDate dataVenda;
 	private Double precoVenda;
+	private String formaPagamento;
 	private Carro carro;
 	private Funcionario func;
 
@@ -84,6 +85,14 @@ public class Venda {
 
 	public void setIdVenda(Integer idVenda) {
 		this.idVenda = idVenda;
+	}
+
+	public String getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
 	}
 
 }

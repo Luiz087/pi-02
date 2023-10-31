@@ -30,7 +30,7 @@ public class VendaDAO implements IVendaDAO {
 
 		Connection con = c.conectar();
 
-		String query = "INSERT INTO Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, funcionarios_matricula, Carros_id_carro) values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Vendas (nomeCliente, cpfCliente, telefoneCliente, enderecoCliente, dataVenda, precoVenda, formaPagamento, funcionarios_matricula, Carros_id_carro) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 
@@ -42,8 +42,9 @@ public class VendaDAO implements IVendaDAO {
 			ps.setString(4, v.getEnderecoCliente());
 			ps.setDate(5, Date.valueOf(v.getDataVenda()));
 			ps.setDouble(6, v.getPrecoVenda());
-			ps.setInt(7, v.getFunc().getMatricula());
-			ps.setInt(8, v.getCarro().getIdCarro());
+			ps.setString(7, v.getFormaPagamento());
+			ps.setInt(8, v.getFunc().getMatricula());
+			ps.setInt(9, v.getCarro().getIdCarro());
 
 			ps.executeUpdate();
 
@@ -64,7 +65,7 @@ public class VendaDAO implements IVendaDAO {
 		Connection con = c.conectar();
 
 		String query = "UPDATE vendas SET nomeCliente = ?" + "cpfCliente = ?" + "telefoneCliente = ?"
-				+ "enderecoCliente = ?" + "dataVenda = ? WHERE id_venda = ?";
+				+ "enderecoCliente = ?" + "dataVenda = ?" +"precoVenda = ?" +"formaPagamento = ?  WHERE id_venda = ?";
 		// chave estrangeira funcionarios_matricula
 		// chave estrangeira Carros_id_carro
 
@@ -76,7 +77,9 @@ public class VendaDAO implements IVendaDAO {
 			ps.setLong(3, v.getTelefoneCliente());
 			ps.setString(4, v.getEnderecoCliente());
 			ps.setDate(5, Date.valueOf(v.getDataVenda()));
-			ps.setInt(6, v.getIdVenda());
+			ps.setDouble(6, v.getPrecoVenda());
+			ps.setString(7, v.getFormaPagamento());
+			ps.setInt(8, v.getIdVenda());
 
 			ps.executeUpdate();
 
@@ -136,6 +139,7 @@ public class VendaDAO implements IVendaDAO {
 				java.sql.Date DataVenda = rs.getDate("DataVenda");
 				LocalDate localDate = DataVenda.toLocalDate();
 				Double PrecoVenda = rs.getDouble("Precovenda");
+				String formaPagamento = rs.getString("formaPagamento");
 
 				Venda V = new Venda();
 
@@ -145,6 +149,7 @@ public class VendaDAO implements IVendaDAO {
 				V.setEnderecoCliente(EnderecoCliente);
 				V.setDataVenda(localDate);
 				V.setPrecoVenda(PrecoVenda);
+				V.setFormaPagamento(formaPagamento);
 
 				Vendas.add(V);
 

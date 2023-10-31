@@ -7,6 +7,16 @@ GSP Automóveis é um sistema Java desenvolvido para a disciplina Projeto Integr
 
 O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP Automóveis com as opções de gerenciar os carros disponíveis, funcionários da loja, fornecedores além de gerenciar informações sobre as vendas dos carros.
 
+Login
+
+
+Principal
+
+
+Funcionários
+
+Configurações
+
 # Tecnologias utilizadas
 - Java 19.0.2
 - Eclipse IDE for Java Developer

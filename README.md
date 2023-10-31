@@ -9,16 +9,17 @@ O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP
 
 # 🖥️ Principais Telas
 
-Login
+- Login
 ![Captura de tela 2023-10-31 100909](https://github.com/Luiz087/pi-02/assets/111303712/c7511eaf-676e-417d-8ebf-f4ec611bfc08)
 
-Principal
+- Principal
 ![TelaPrincipal](https://github.com/Luiz087/pi-02/assets/111303712/5508112e-2aa0-4b32-8031-dd32eb934da8)
 
-Veículos
+- Veículos
 ![image](https://github.com/Luiz087/pi-02/assets/111303712/b3e13993-b2fd-44f2-8b2f-f90551b34f96)
 
-Configurações
+- Configurações
+![Telavendas](https://github.com/Luiz087/pi-02/assets/111303712/43095fa0-e702-47b8-a7b4-ae993e35eb60)
 
 
 

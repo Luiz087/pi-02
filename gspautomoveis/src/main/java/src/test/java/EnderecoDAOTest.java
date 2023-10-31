@@ -78,7 +78,7 @@ public class EnderecoDAOTest {
 
 		EnderecoDAO dao = new EnderecoDAO();
 
-		ArrayList<Endereco> end = new ArrayList<>();
+		ArrayList<Endereco> end = dao.ListarEnderecos();
 
 		assertNotNull(end);
 	}

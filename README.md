@@ -16,5 +16,5 @@ O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP
 - Apache Maven
 
 # Autores
-Este projeto foi desenvolvido por [Eric de Oliveira ](https://github.com/Erico26), Gabriel Luiz Rothermel](https://github.com/Biell77), [João Lucas Maffezzolli
+Este projeto foi desenvolvido por [Eric de Oliveira ](https://github.com/Erico26), [Gabriel Luiz Rothermel](https://github.com/Biell77), [João Lucas Maffezzolli
 ](https://github.com/omaffezzolli), [Luís Gabriel Sabel](https://github.com/luissabel) e [Luiz Fernando Schmitt](https://github.com/Luiz087)

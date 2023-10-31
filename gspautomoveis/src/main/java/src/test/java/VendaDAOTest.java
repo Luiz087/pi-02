@@ -169,7 +169,7 @@ public class VendaDAOTest {
 		end.setCidade("Gaspar");
 		end.setEstado("Santa Catarina");
 		end.setCep((long) 12312123);
-		end.setIdEndereco(12);
+		end.setIdEndereco(1);
 		func.setEndereco(end);
 
 		venda.setCarro(carro);

@@ -66,7 +66,7 @@ public class VendaDAO implements IVendaDAO {
 
 		String query = "UPDATE vendas SET nomeCliente = ?," + "cpfCliente = ?," + "telefoneCliente = ?,"
 				+ "enderecoCliente = ?," + "dataVenda = ?," + "precoVenda = ?,"
-				+ "formaPagamento = ?, funcionario_matricula = ?, Carros_id_carro = ?, WHERE id_venda = ?";
+				+ "formaPagamento = ?, funcionario_matricula = ?, Carros_id_carro = ? WHERE id_venda = ?";
 		// chave estrangeira funcionarios_matricula
 		// chave estrangeira Carros_id_carro
 

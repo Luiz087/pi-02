@@ -522,7 +522,7 @@ public class TelaFuncionarios extends JFrame {
 
 							func1.setEndereco(end);
 							Integer matricula = funcdao.inserir(func1);
-							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(),1);
+							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1);
 							System.out.println("Passou");
 
 							textNome.setText("");
@@ -532,7 +532,7 @@ public class TelaFuncionarios extends JFrame {
 							textSenha.setText("");
 							textTelefone.setText("");
 							CBCargo.setSelectedIndex(0);
-							
+
 							textRua.setText("");
 							textCidade.setText("");
 							textEstado.setText("");
@@ -541,8 +541,8 @@ public class TelaFuncionarios extends JFrame {
 							textComissao.setText("");
 							textSalario.setText("");
 
-							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo, textDataNasc.getText(),
-									email };
+							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo,
+									textDataNasc.getText(), email };
 							textDataNasc.setText("");
 							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 							tbltable.addRow(data);
@@ -551,7 +551,7 @@ public class TelaFuncionarios extends JFrame {
 							sucesso.setLocationRelativeTo(null);
 							sucesso.setVisible(true);
 							break;
-							
+
 						} else {
 							erro("Nome de usuário já cadastrado!");
 						}
@@ -951,6 +951,14 @@ public class TelaFuncionarios extends JFrame {
 				textCidade.setEditable(false);
 				textEstado.setEditable(false);
 				textCep.setEditable(false);
+				textNome.setEditable(false);
+				textUsuario.setEditable(false);
+				textTelefone.setEditable(false);
+				CBCargo.setEditable(false);
+				textEmail.setEditable(false);
+				textSalario.setEditable(false);
+				textComissao.setEditable(false);
+				
 				textId.setText(String.valueOf(funcC.getMatricula()));
 
 				String[] partes = String.valueOf(funcC.getDataDeNasc()).split("-");

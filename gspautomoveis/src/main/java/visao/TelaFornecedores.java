@@ -38,6 +38,7 @@ import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.SwingConstants;
 
 public class TelaFornecedores extends JFrame {
 
@@ -229,7 +230,7 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
 
@@ -328,93 +329,97 @@ public class TelaFornecedores extends JFrame {
 						|| textBairro.getText().equals("") || textEstado.getText().equals("")
 						|| textCep.getText().equals("") || textRua.getText().equals("")) {
 					erro("Preencha todos os campos!");
-				} 
-				if(textNome.getText().equals("")) {
+				}
+				if (textNome.getText().equals("")) {
 					textNome.setBorder(redBorder);
 				}
-				if(textTel.getText().equals("")) {
+				if (textTel.getText().equals("")) {
 					textTel.setBorder(redBorder);
 				}
-				if(textCNPJ.getText().equals("")) {
+				if (textCNPJ.getText().equals("")) {
 					textCNPJ.setBorder(redBorder);
 				}
-				if(textMarca.getText().equals("")) {
+				if (textMarca.getText().equals("")) {
 					textMarca.setBorder(redBorder);
 				}
-				if(textCidade.getText().equals("")) {
+				if (textCidade.getText().equals("")) {
 					textCidade.setBorder(redBorder);
 				}
-				if(textBairro.getText().equals("")) {
+				if (textBairro.getText().equals("")) {
 					textBairro.setBorder(redBorder);
 				}
-				if(textEstado.getText().equals("")) {
+				if (textEstado.getText().equals("")) {
 					textEstado.setBorder(redBorder);
 				}
-				if(textCep.getText().equals("")) {
+				if (textCep.getText().equals("")) {
 					textCep.setBorder(redBorder);
 				}
-				if(textRua.getText().equals("")) {
+				if (textRua.getText().equals("")) {
 					textRua.setBorder(redBorder);
 				}
-				if(textCep.getText().equals("")) {
+				if (textCep.getText().equals("")) {
 					textRua.setBorder(redBorder);
 				}
-				if(textEmpresa.getText().equals("")) {
+				if (textEmpresa.getText().equals("")) {
 					textEmpresa.setBorder(redBorder);
-				}
-				else {
+				} else {
+					for (Fornecedor forn : forndao.ListarCNPJ()) {
+						if (!forn.getCnpjfornecedor().equals(Long.valueOf(textCNPJ.getText()))) {
+							fornec.setNomeFornecedor(textNome.getText());
+							fornec.setEmpresa(textEmpresa.getText());
+							fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
+							fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
+							fornec.setMarca(textMarca.getText());
+							end.setCidade(textCidade.getText());
+							end.setRua(textRua.getText());
+							end.setBairro(textBairro.getText());
+							end.setEstado(textEstado.getText());
+							end.setCep(Long.valueOf(textCep.getText()));
+							fornec.setEndereco(end);
 
-					fornec.setNomeFornecedor(textNome.getText());
-					fornec.setEmpresa(textEmpresa.getText());
-					fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
-					fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
-					fornec.setMarca(textMarca.getText());
-					end.setCidade(textCidade.getText());
-					end.setRua(textRua.getText());
-					end.setBairro(textBairro.getText());
-					end.setEstado(textEstado.getText());
-					end.setCep(Long.valueOf(textCep.getText()));
-					fornec.setEndereco(end);
+							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+							if (verificacaoEnd == null) {
+								/*
+								 * Se o endereco for null Significa que nao encontrou nada no BD
+								 */
+								Integer idend = enddao.inserir(end);
+								end.setIdEndereco(idend);
+							} else {
+								/*
+								 * Se o endereco nao eh null significa que ja esta cadastrado
+								 */
+								end.setIdEndereco(verificacaoEnd.getIdEndereco());
+							}
 
-					Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-					if (verificacaoEnd == null) {
-						/*
-						 * Se o endereco for null Significa que nao encontrou nada no BD
-						 */
-						Integer idend = enddao.inserir(end);
-						end.setIdEndereco(idend);
-					} else {
-						/*
-						 * Se o endereco nao eh null significa que ja esta cadastrado
-						 */
-						end.setIdEndereco(verificacaoEnd.getIdEndereco());
+							fornec.setEndereco(end);
+							Integer id = forndao.inserir(fornec);
+
+							String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(),
+									textCNPJ.getText(), textMarca.getText(), textCidade.getText(),
+									textEmpresa.getText() };
+
+							// criar as linhas quando adicionar o fornecedor
+							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+							tbltable.addRow(data);
+
+							System.out.println("Passou");
+
+							System.out.print("Deu boa");
+							// limpar apos clicar no botão
+							textNome.setText("");
+							textTel.setText("");
+							textCNPJ.setText("");
+							textMarca.setText("");
+							textCidade.setText("");
+							textBairro.setText("");
+							textEstado.setText("");
+							textRua.setText("");
+							textCep.setText("");
+							textEmpresa.setText("");
+						} else {
+							erro("Nome de usuário já cadastrado!");
+						}
 					}
-
-					fornec.setEndereco(end);
-					Integer id = forndao.inserir(fornec);
-
-					String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(), textCNPJ.getText(),
-							textMarca.getText(), textCidade.getText(), textEmpresa.getText() };
-
-					// criar as linhas quando adicionar o fornecedor
-					DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-					tbltable.addRow(data);
-
-					System.out.println("Passou");
-
-					System.out.print("Deu boa");
-					// limpar apos clicar no botão
-					textNome.setText("");
-					textTel.setText("");
-					textCNPJ.setText("");
-					textMarca.setText("");
-					textCidade.setText("");
-					textBairro.setText("");
-					textEstado.setText("");
-					textRua.setText("");
-					textCep.setText("");
-					textEmpresa.setText("");
-
 				}
 			}
 		});
@@ -440,8 +445,9 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 
 		JLabel lblEmpresa = new JLabel("Empresa:");
+		lblEmpresa.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmpresa.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblEmpresa.setBounds(859, 205, 199, 70);
+		lblEmpresa.setBounds(846, 205, 199, 70);
 		contentPane.add(lblEmpresa);
 
 		textEmpresa = new JTextField();
@@ -462,29 +468,34 @@ public class TelaFornecedores extends JFrame {
 		lblNewLabel_3.setBounds(78, 49, 175, 87);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblNome = new JLabel("Nome");
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNome.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblNome.setBounds(349, 26, 136, 88);
+		lblNome.setBounds(360, 53, 138, 35);
 		contentPane.add(lblNome);
 
 		JLabel lblCnpj = new JLabel("CNPJ:");
+		lblCnpj.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCnpj.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCnpj.setBounds(371, 205, 116, 70);
+		lblCnpj.setBounds(382, 205, 116, 70);
 		contentPane.add(lblCnpj);
 
 		JLabel lblCidade = new JLabel("Cidade:");
+		lblCidade.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCidade.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblCidade.setBounds(1134, 116, 159, 70);
+		lblCidade.setBounds(1143, 113, 151, 70);
 		contentPane.add(lblCidade);
 
-		JLabel lblMarca = new JLabel("Marca");
+		JLabel lblMarca = new JLabel("Marca:");
+		lblMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblMarca.setBounds(1401, 35, 127, 70);
+		lblMarca.setBounds(1411, 26, 138, 70);
 		contentPane.add(lblMarca);
 
-		JLabel lblTelefone = new JLabel("Telefone");
+		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblTelefone.setBounds(857, 26, 175, 70);
+		lblTelefone.setBounds(842, 26, 190, 70);
 		contentPane.add(lblTelefone);
 
 		textNome = new JTextField();
@@ -495,7 +506,7 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 		textNome.setFont(new Font("Krona One", Font.PLAIN, 12));
-		textNome.setBounds(497, 35, 335, 38);
+		textNome.setBounds(508, 49, 324, 38);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 
@@ -534,7 +545,7 @@ public class TelaFornecedores extends JFrame {
 		});
 		textCNPJ.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textCNPJ.setColumns(10);
-		textCNPJ.setBounds(497, 219, 335, 38);
+		textCNPJ.setBounds(508, 219, 324, 38);
 		contentPane.add(textCNPJ);
 
 		textMarca = new JTextField();
@@ -546,7 +557,7 @@ public class TelaFornecedores extends JFrame {
 		});
 		textMarca.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textMarca.setColumns(10);
-		textMarca.setBounds(1559, 36, 335, 38);
+		textMarca.setBounds(1559, 36, 299, 38);
 		contentPane.add(textMarca);
 
 		textCidade = new JTextField();
@@ -775,21 +786,25 @@ public class TelaFornecedores extends JFrame {
 		table.getColumnModel().getColumn(7).setPreferredWidth(155);
 
 		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblRua.setBounds(1401, 205, 92, 76);
+		lblRua.setBounds(1401, 202, 92, 76);
 		contentPane.add(lblRua);
 
 		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblEstado.setBounds(349, 113, 151, 70);
 		contentPane.add(lblEstado);
 
 		JLabel lblBairro = new JLabel("Bairro:");
+		lblBairro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblBairro.setBounds(1489, 116, 136, 70);
+		lblBairro.setBounds(1483, 116, 136, 70);
 		contentPane.add(lblBairro);
 
 		JLabel lblCep = new JLabel("CEP:");
+		lblCep.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 30));
 		lblCep.setBounds(846, 121, 93, 60);
 		contentPane.add(lblCep);
@@ -815,7 +830,7 @@ public class TelaFornecedores extends JFrame {
 		});
 		textBairro.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textBairro.setColumns(10);
-		textBairro.setBounds(1629, 127, 224, 38);
+		textBairro.setBounds(1629, 127, 229, 38);
 		contentPane.add(textBairro);
 
 		textRua = new JTextField();
@@ -827,7 +842,7 @@ public class TelaFornecedores extends JFrame {
 		});
 		textRua.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textRua.setColumns(10);
-		textRua.setBounds(1503, 219, 350, 38);
+		textRua.setBounds(1503, 219, 355, 38);
 		contentPane.add(textRua);
 
 		/*
@@ -898,8 +913,9 @@ public class TelaFornecedores extends JFrame {
 		table.setRowHeight(60);
 
 		JLabel lblID = new JLabel("ID:");
+		lblID.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblID.setFont(new Font("Krona One", Font.PLAIN, 30));
-		lblID.setBounds(435, 316, 50, 70);
+		lblID.setBounds(448, 286, 50, 70);
 		contentPane.add(lblID);
 
 		textId = new JTextField();
@@ -912,7 +928,7 @@ public class TelaFornecedores extends JFrame {
 		textId.setEditable(false);
 		textId.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textId.setColumns(10);
-		textId.setBounds(497, 330, 127, 38);
+		textId.setBounds(508, 298, 127, 38);
 		contentPane.add(textId);
 
 		btnAtualizar.setVisible(false);

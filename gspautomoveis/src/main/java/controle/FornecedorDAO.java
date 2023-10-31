@@ -248,5 +248,40 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		return null;
 	}
+	
+	public ArrayList<Fornecedor> ListarCNPJ() {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		ArrayList<Fornecedor> Fornecedores = new ArrayList<>();
+
+		String Query = "SELECT cnpjFornecedor FROM fornecedores";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				String Cpnj = rs.getString("cnpjFornecedor");
+
+				Fornecedor F = new Fornecedor();
+				
+				F.setCnpjfornecedor(Long.valueOf(Cpnj));
+
+				Fornecedores.add(F);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return Fornecedores;
+	}
 
 }

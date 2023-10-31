@@ -471,19 +471,20 @@ public class TelaVendas extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JLabel lblMarca = new JLabel("Nome:");
+		lblMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca.setBounds(962, 278, 114, 38);
+		lblMarca.setBounds(962, 319, 114, 38);
 		contentPane.add(lblMarca);
 
 		textNomeC = new JTextField();
 		textNomeC.setFont(new Font("Krona One", Font.PLAIN, 14));
-		textNomeC.setBounds(1086, 278, 233, 38);
+		textNomeC.setBounds(1086, 319, 233, 38);
 		contentPane.add(textNomeC);
 		textNomeC.setColumns(10);
 
 		JLabel lblCpfCliente = new JLabel("CPF:");
 		lblCpfCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCpfCliente.setBounds(1002, 177, 74, 38);
+		lblCpfCliente.setBounds(1002, 152, 74, 38);
 		contentPane.add(lblCpfCliente);
 
 		MaskFormatter mascaraCPF = null;
@@ -496,67 +497,79 @@ public class TelaVendas extends JFrame {
 		textCPFC = new JFormattedTextField(mascaraCPF);
 		textCPFC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCPFC.setColumns(10);
-		textCPFC.setBounds(1086, 177, 233, 38);
+		textCPFC.setBounds(1086, 152, 233, 38);
 		contentPane.add(textCPFC);
 
 		JLabel lblTelefoneCliente = new JLabel("Telefone:");
+		lblTelefoneCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefoneCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefoneCliente.setBounds(919, 226, 157, 38);
+		lblTelefoneCliente.setBounds(919, 233, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 
 		textTelefoneC = new JTextField();
 		textTelefoneC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textTelefoneC.setColumns(10);
-		textTelefoneC.setBounds(1086, 226, 233, 38);
+		textTelefoneC.setBounds(1086, 233, 233, 38);
 		contentPane.add(textTelefoneC);
 
 		textCepC = new JTextField();
 		textCepC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCepC.setColumns(10);
-		textCepC.setBounds(1595, 340, 233, 38);
+		textCepC.setBounds(1583, 407, 233, 38);
 		contentPane.add(textCepC);
 
 		JLabel lblBairro = new JLabel("CEP:");
+		lblBairro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblBairro.setBounds(1492, 340, 93, 38);
+		lblBairro.setBounds(1480, 407, 93, 38);
 		contentPane.add(lblBairro);
 
 		JLabel lblCidae = new JLabel("Cidade:");
 		lblCidae.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae.setBounds(934, 340, 132, 38);
+		lblCidae.setBounds(944, 407, 132, 38);
 		contentPane.add(lblCidae);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Krona One", Font.PLAIN, 18));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Pix", "Boleto", "Crédito", "Débito"}));
+		comboBox.setBackground(new Color(255, 255, 255));
+		comboBox.setBounds(1583, 564, 233, 38);
+		contentPane.add(comboBox);
 
 		textCidadeC = new JTextField();
 		textCidadeC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCidadeC.setColumns(10);
-		textCidadeC.setBounds(1086, 340, 233, 38);
+		textCidadeC.setBounds(1086, 407, 233, 38);
 		contentPane.add(textCidadeC);
 
 		JLabel lblEstado = new JLabel("Estado:");
+		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEstado.setBounds(933, 454, 143, 38);
+		lblEstado.setBounds(1430, 487, 143, 38);
 		contentPane.add(lblEstado);
 
 		textEstadoC = new JTextField();
 		textEstadoC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEstadoC.setColumns(10);
-		textEstadoC.setBounds(1086, 454, 233, 38);
+		textEstadoC.setBounds(1583, 487, 233, 38);
 		contentPane.add(textEstadoC);
 
 		JLabel lblRua = new JLabel("Rua:");
+		lblRua.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblRua.setBounds(981, 503, 85, 38);
+		lblRua.setBounds(1478, 152, 95, 38);
 		contentPane.add(lblRua);
 
 		textRuaC = new JTextField();
 		textRuaC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textRuaC.setColumns(10);
-		textRuaC.setBounds(1086, 503, 233, 38);
+		textRuaC.setBounds(1583, 152, 233, 38);
 		contentPane.add(textRuaC);
 
 		JLabel lblData = new JLabel("Data:");
+		lblData.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblData.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblData.setBounds(976, 593, 93, 38);
+		lblData.setBounds(1473, 314, 100, 38);
 		contentPane.add(lblData);
 
 		MaskFormatter mascaraData = null;
@@ -569,7 +582,7 @@ public class TelaVendas extends JFrame {
 		textDataCompra = new JFormattedTextField(mascaraData);
 		textDataCompra.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textDataCompra.setColumns(10);
-		textDataCompra.setBounds(1086, 598, 233, 38);
+		textDataCompra.setBounds(1583, 319, 233, 38);
 		contentPane.add(textDataCompra);
 
 		JLabel lblPreo = new JLabel("Preço:");
@@ -588,63 +601,73 @@ public class TelaVendas extends JFrame {
 
 		JLabel lblCep = new JLabel("Bairro:");
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCep.setBounds(955, 407, 114, 38);
+		lblCep.setBounds(962, 487, 114, 38);
 		contentPane.add(lblCep);
 
 		textBairroC = new JTextField();
 		textBairroC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textBairroC.setColumns(10);
-		textBairroC.setBounds(1086, 407, 233, 38);
+		textBairroC.setBounds(1086, 487, 233, 38);
 		contentPane.add(textBairroC);
 
+		JFrame tela = this;
+		
 		JButton btnVender = new JButton("Vender");
 		btnVender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Venda venda = new Venda();
-				String cpfErrado = textCPFC.getText();
-				String cpfSemHifens = cpfErrado.replaceAll("-", "");
-				String cpfstring = cpfSemHifens.replaceAll("\\.", "");
-				cpfstring = cpfstring.trim();
-				Long cpf = null;
-				if (!cpfstring.isEmpty()) {
-					cpf = Long.valueOf(cpfstring);
+				TelaConfirmacao confirma = new TelaConfirmacao(tela);
+				confirma.setVisible(true);
+				confirma.setLocationRelativeTo(tela);
+				if(confirma.getResult()==true) {
+					Venda venda = new Venda();
+					String cpfErrado = textCPFC.getText();
+					String cpfSemHifens = cpfErrado.replaceAll("-", "");
+					String cpfstring = cpfSemHifens.replaceAll("\\.", "");
+					cpfstring = cpfstring.trim();
+					Long cpf = null;
+					if (!cpfstring.isEmpty()) {
+						cpf = Long.valueOf(cpfstring);
+					}
+					venda.setCpfCliente(cpf);
+					venda.setCarro(carro);
+					Endereco end = new Endereco();
+					venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText() + ", "
+							+ textCidadeC.getText() + ", " + textEstadoC.getText() + ", " + textCepC.getText());
+					venda.setFunc(funcdao.passaLogado());
+					venda.setNomeCliente(textNomeC.getText());
+					venda.setPrecoVenda(carro.getPrecoCarro());
+					venda.setTelefoneCliente(Long.valueOf((textTelefoneC.getText())));
+					venda.setFormaPagamento(String.valueOf(comboBox.getSelectedItem()));
+
+					String dataNascimento = textDataCompra.getText();
+
+					String primeiroParte = dataNascimento.substring(0, 2);
+					String segundaParte = dataNascimento.substring(3, 5);
+					String terceiroParte = dataNascimento.substring(6, 10);
+					LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+							Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+					venda.setDataVenda(dataNascimentoCorreta);
+					vendadao.inserir(venda);
+
+					TelaVeiculos vei = new TelaVeiculos();
+					vei.setExtendedState(MAXIMIZED_BOTH);
+					vei.setVisible(true);
+					
+					TelaSucesso sucesso = new TelaSucesso();
+					sucesso.setLocationRelativeTo(null);
+					sucesso.setVisible(true);
+					
+					SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
+					
+					dispose();
+				} else {
+					erro("Venda cancelada!");
 				}
-				venda.setCpfCliente(cpf);
-				venda.setCarro(carro);
-				Endereco end = new Endereco();
-				venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText() + ", "
-						+ textCidadeC.getText() + ", " + textEstadoC.getText() + ", " + textCepC.getText());
-				venda.setFunc(funcdao.passaLogado());
-				venda.setNomeCliente(textNomeC.getText());
-				venda.setPrecoVenda(carro.getPrecoCarro());
-				venda.setTelefoneCliente(Long.valueOf((textTelefoneC.getText())));
-
-				String dataNascimento = textDataCompra.getText();
-
-				String primeiroParte = dataNascimento.substring(0, 2);
-				String segundaParte = dataNascimento.substring(3, 5);
-				String terceiroParte = dataNascimento.substring(6, 10);
-				LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-						Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-				venda.setDataVenda(dataNascimentoCorreta);
-				vendadao.inserir(venda);
-
-				TelaVeiculos vei = new TelaVeiculos();
-				vei.setExtendedState(MAXIMIZED_BOTH);
-				vei.setVisible(true);
-				
-				TelaSucesso sucesso = new TelaSucesso();
-				sucesso.setLocationRelativeTo(null);
-				sucesso.setVisible(true);
-				
-				SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
-				
-				dispose();
 			}
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnVender.setBackground(Color.GREEN);
-		btnVender.setBounds(1068, 711, 251, 35);
+		btnVender.setBounds(1286, 657, 251, 35);
 		contentPane.add(btnVender);
 
 		JLabel lblNewLabel_2 = new JLabel("Informação do Carro");
@@ -687,7 +710,7 @@ public class TelaVendas extends JFrame {
 
 		JLabel lblCidae_1 = new JLabel("Ano:");
 		lblCidae_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae_1.setBounds(478, 273, 79, 38);
+		lblCidae_1.setBounds(478, 272, 79, 38);
 		contentPane.add(lblCidae_1);
 
 		textAno = new JTextField();
@@ -732,14 +755,28 @@ public class TelaVendas extends JFrame {
 		textEmailC = new JTextField();
 		textEmailC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEmailC.setColumns(10);
-		textEmailC.setBounds(1086, 552, 233, 38);
+		textEmailC.setBounds(1583, 233, 233, 38);
 		contentPane.add(textEmailC);
 		
 		JLabel lblEmailCliente = new JLabel("Email:");
 		lblEmailCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailCliente.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEmailCliente.setBounds(952, 552, 114, 38);
+		lblEmailCliente.setBounds(1449, 233, 124, 38);
 		contentPane.add(lblEmailCliente);
+		
+		JLabel lblPagamento = new JLabel("Pagamento:");
+		lblPagamento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPagamento.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblPagamento.setBounds(1354, 567, 219, 38);
+		contentPane.add(lblPagamento);
+		
+		
 
+	}
+	
+	private void erro(String string) {
+		TelaErro erro = new TelaErro((JFrame) this, string);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
 	}
 }

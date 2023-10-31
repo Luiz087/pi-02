@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `Vendas` (
   `nomeCliente` VARCHAR(45) NOT NULL,
   `cpfCliente` BIGINT NOT NULL,
   `telefoneCliente` BIGINT NOT NULL,
-  `enderecoCliente` VARCHAR(45) NOT NULL,
+  `enderecoCliente` VARCHAR(255) NOT NULL,
   `dataVenda` DATE NOT NULL,
   `precoVenda` DOUBLE NOT NULL,
   `formaPagamento` VARCHAR(45) NOT NULL,

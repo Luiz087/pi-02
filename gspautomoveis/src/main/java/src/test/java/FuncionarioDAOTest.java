@@ -91,6 +91,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(4)
 	public void testLoginFuncionario() { // Login
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario func = new Funcionario();
@@ -128,6 +129,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(5)
 	public void testLoginErroFuncionario() { // Login
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario f = new Funcionario();
@@ -139,6 +141,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(6)
 	public void testLogoffFuncionario() { // Logoff
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario retorno = dao.logoff();
@@ -147,6 +150,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(7)
 	public void testAtualizarFuncionario() { // AtualizarFunc
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -185,6 +189,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(8)
 	public void testProcurarErroFuncionario() { // Clicado
 		FuncionarioDAO dao = new FuncionarioDAO();
 
@@ -194,7 +199,7 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
-	@Order(4)
+	@Order(9)
 	public void testAualizarFunc() { // Atualizar
 		Funcionario func = new Funcionario();
 		func.setMatricula(90);
@@ -233,6 +238,7 @@ public class FuncionarioDAOTest {
 	}
 
 	@Test
+	@Order(10)
 	public void testPasaLogado() {
 		FuncionarioDAO dao = new FuncionarioDAO();
 		assertNull(dao.passaLogado());
@@ -240,7 +246,7 @@ public class FuncionarioDAOTest {
 	
 	
 	@Test
-	@Order(5)
+	@Order(11)
 	public void testDeleteFuncionario() { // Delete
 		FuncionarioDAO dao = new FuncionarioDAO();
 		Funcionario func = new Funcionario();
@@ -279,6 +285,7 @@ public class FuncionarioDAOTest {
 	}
 	
 	@Test
+	@Order(12)
 	public void testListarUsuarios() { // Listar
 		FuncionarioDAO dao = new FuncionarioDAO();
 

@@ -11,6 +11,7 @@ import controle.CarroDAO;
 import controle.VendaDAO;
 import modelo.Carro;
 import modelo.Funcionario;
+import modelo.Venda;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -27,6 +28,13 @@ import java.util.ArrayList;
 import javax.swing.SwingConstants;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 
 public class TelaHistoricoVeiculos extends JFrame {
 
@@ -34,7 +42,8 @@ public class TelaHistoricoVeiculos extends JFrame {
 	private static JTable table;
 	private JPanel panel;
 	private CarroDAO carrodao = CarroDAO.getInstancia();
-	//private VendaDAO vendadao = VendaDAO.getInstancia();
+	private VendaDAO vendadao = VendaDAO.getInstancia();
+	private JTextField comboBox;
 
 	/**
 	 * Launch the application.
@@ -226,12 +235,6 @@ public class TelaHistoricoVeiculos extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
-
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Krona One", Font.PLAIN, 22));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Selecionar Marca", "Agrale", "Aston Martin", "Audi", "BMW", "BYD", "CAOA Chery", "Chevrolet", "Citroën", "Effa", "Ferrari", "Fiat", "Ford", "Foton", "Haval", "Honda", "Hyundai", "Iveco", "JAC", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Maserati", "McLaren", "Mercedes-AMG", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Peugeot", "Porsche", "RAM", "Renault", "Rolls-Royce", "Seres", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Volvo"}));
-		comboBox.setBounds(614, 70, 929, 44);
-		contentPane.add(comboBox);
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("       Sair");
 		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
@@ -466,6 +469,74 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/bglateral.png")));
 		lblNewLabel.setBounds(-14, -47, 361, 1141);
 		contentPane.add(lblNewLabel);
+		
+		for (Venda venda : vendadao.ListarVendas()) {
+			
+			String[] partes = String.valueOf(venda.getDataVenda()).split("-");
+
+			String primeiroParte = partes[0];
+			String segundaParte = partes[1];
+			String terceiroParte = partes[2];
+
+			// Reorganiza as partes da string no formato desejado
+			String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
+
+			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+			String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+					venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
+			tblModel.addRow(data);
+		}
+		table.setRowHeight(60);
+		
+		comboBox = new JTextField();
+		comboBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if(!comboBox.getText().isEmpty()) {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Venda venda : vendadao.buscaNome(String.valueOf(comboBox.getText()))) {
+						String[] partes = String.valueOf(venda.getDataVenda()).split("-");
+
+						String primeiroParte = partes[0];
+						String segundaParte = partes[1];
+						String terceiroParte = partes[2];
+
+						String resultado = terceiroParte + segundaParte + primeiroParte;
+
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+								venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
+						tblModel.addRow(data);
+					}
+				} else {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Venda venda : vendadao.ListarVendas()) {
+						
+						String[] partes = String.valueOf(venda.getDataVenda()).split("-");
+
+						String primeiroParte = partes[0];
+						String segundaParte = partes[1];
+						String terceiroParte = partes[2];
+
+						// Reorganiza as partes da string no formato desejado
+						String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
+
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+								venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
+						tblModel.addRow(data);
+					}
+				}
+			}
+		});
+		
+		comboBox.setHorizontalAlignment(SwingConstants.CENTER);
+		comboBox.setFont(new Font("Krona One", Font.PLAIN, 20));
+		comboBox.setBounds(698, 52, 771, 63);
+		contentPane.add(comboBox);
+		comboBox.setColumns(10);
 
 	}
 

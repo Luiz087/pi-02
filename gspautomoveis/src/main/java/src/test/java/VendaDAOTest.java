@@ -33,7 +33,7 @@ public class VendaDAOTest {
 
 		VendaDAO dao = new VendaDAO();
 		
-		ArrayList<Carro> Vendas = dao.marca("chevrolet");
+		ArrayList<Venda> Vendas = dao.buscaNome("Luiz");
 		
 		assertNotNull(Vendas);
 	}

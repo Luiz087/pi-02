@@ -230,10 +230,46 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setVisible(false);
+		panel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6.setVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_6.setVisible(false);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal prin = new TelaPrincipal();
+				dispose();
+				prin.setLocationRelativeTo(null);
+				prin.setVisible(true);
+			}
+		});
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
+		
+		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
+		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_2.setBounds(61, 835, 278, 52);
+		contentPane.add(lblNewLabel_4_1_1_1_2);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/casa.png")));
+		lblNewLabel.setBounds(22, 842, 40, 35);
+		contentPane.add(lblNewLabel);
 
+		panel_6.setBounds(0, 824, 340, 63);
+		contentPane.add(panel_6);
+		
 		panel_5.setBounds(0, 967, 340, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 439, 340, 63);
@@ -250,6 +286,7 @@ public class TelaFornecedores extends JFrame {
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
+		panel_6.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 684, 340, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
@@ -258,6 +295,7 @@ public class TelaFornecedores extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
+		panel_6.setBackground(new Color(215, 215, 215, 50));
 
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {

@@ -235,6 +235,17 @@ public class TelaFuncionarios extends JFrame {
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
+		
+		JLabel lblNewLabel_4_1_2 = new JLabel("Home");
+		lblNewLabel_4_1_2.setForeground(Color.WHITE);
+		lblNewLabel_4_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_2.setBounds(81, 775, 269, 56);
+		contentPane.add(lblNewLabel_4_1_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/casa.png")));
+		lblNewLabel_2.setBounds(33, 777, 40, 38);
+		contentPane.add(lblNewLabel_2);
 
 		panel_5.setBounds(0, 913, 350, 63);
 		contentPane.add(panel_5);

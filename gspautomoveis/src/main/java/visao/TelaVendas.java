@@ -233,22 +233,66 @@ public class TelaVendas extends JFrame {
 			}
 		});
 
+		JPanel panel_6 = new JPanel();
+		panel_6.setVisible(false);
+		panel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6.setVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_6.setVisible(false);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal prin = new TelaPrincipal();
+				dispose();
+				prin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				prin.setVisible(true);
+			}
+		});
+
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Home");
+		lblNewLabel_4_1_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1_1.setBounds(67, 788, 267, 52);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1);
+
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/casa.png")));
+		lblNewLabel_6.setBounds(17, 794, 40, 35);
+		contentPane.add(lblNewLabel_6);
+
+		panel_6.setBounds(0, 788, 334, 63);
+		contentPane.add(panel_6);
+
 		panel_5.setBounds(0, 931, 334, 63);
 		contentPane.add(panel_5);
+
 		panel_4.setBounds(0, 399, 334, 63);
 		contentPane.add(panel_4);
+
 		panel_3.setBounds(0, 482, 334, 56);
 		contentPane.add(panel_3);
+
 		panel_2.setBounds(0, 564, 334, 52);
 		contentPane.add(panel_2);
+
 		panel_1.setBounds(0, 711, 334, 52);
 		contentPane.add(panel_1);
+
 		panel.setForeground(new Color(0, 0, 0));
 		panel_1.setForeground(new Color(0, 0, 0));
 		panel_2.setForeground(new Color(0, 0, 0));
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
+		panel_6.setForeground(new Color(0, 0, 0));
+		
 		panel.setBounds(0, 640, 334, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
@@ -257,6 +301,7 @@ public class TelaVendas extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
+		panel_6.setBackground(new Color(215, 215, 215, 50));
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("       Sair");
 		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
@@ -528,10 +573,10 @@ public class TelaVendas extends JFrame {
 		lblCidae.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblCidae.setBounds(944, 407, 132, 38);
 		contentPane.add(lblCidae);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 18));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Pix", "Boleto", "Crédito", "Débito"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Pix", "Boleto", "Crédito", "Débito" }));
 		comboBox.setBackground(new Color(255, 255, 255));
 		comboBox.setBounds(1583, 564, 233, 38);
 		contentPane.add(comboBox);
@@ -611,14 +656,14 @@ public class TelaVendas extends JFrame {
 		contentPane.add(textBairroC);
 
 		JFrame tela = this;
-		
+
 		JButton btnVender = new JButton("Vender");
 		btnVender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaConfirmacao confirma = new TelaConfirmacao(tela);
 				confirma.setVisible(true);
 				confirma.setLocationRelativeTo(tela);
-				if(confirma.getResult()==true) {
+				if (confirma.getResult() == true) {
 					Venda venda = new Venda();
 					String cpfErrado = textCPFC.getText();
 					String cpfSemHifens = cpfErrado.replaceAll("-", "");
@@ -652,13 +697,13 @@ public class TelaVendas extends JFrame {
 					TelaVeiculos vei = new TelaVeiculos();
 					vei.setExtendedState(MAXIMIZED_BOTH);
 					vei.setVisible(true);
-					
+
 					TelaSucesso sucesso = new TelaSucesso();
 					sucesso.setLocationRelativeTo(null);
 					sucesso.setVisible(true);
-					
+
 					SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
-					
+
 					dispose();
 				} else {
 					erro("Venda cancelada!");
@@ -751,29 +796,27 @@ public class TelaVendas extends JFrame {
 		contentPane.add(textFornecedor);
 		textFornecedor.setText(forn.getNomeFornecedor());
 		textFornecedor.setBackground(Color.WHITE);
-		
+
 		textEmailC = new JTextField();
 		textEmailC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEmailC.setColumns(10);
 		textEmailC.setBounds(1583, 233, 233, 38);
 		contentPane.add(textEmailC);
-		
+
 		JLabel lblEmailCliente = new JLabel("Email:");
 		lblEmailCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailCliente.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblEmailCliente.setBounds(1449, 233, 124, 38);
 		contentPane.add(lblEmailCliente);
-		
+
 		JLabel lblPagamento = new JLabel("Pagamento:");
 		lblPagamento.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPagamento.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblPagamento.setBounds(1354, 567, 219, 38);
 		contentPane.add(lblPagamento);
-		
-		
 
 	}
-	
+
 	private void erro(String string) {
 		TelaErro erro = new TelaErro((JFrame) this, string);
 		erro.setLocationRelativeTo(null);

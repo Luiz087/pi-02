@@ -230,7 +230,7 @@ public class TelaFornecedores extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setVisible(false);
 		panel_6.addMouseListener(new MouseAdapter() {
@@ -255,13 +255,13 @@ public class TelaFornecedores extends JFrame {
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
-		
+
 		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
 		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_1_2.setBounds(61, 835, 278, 52);
 		contentPane.add(lblNewLabel_4_1_1_1_2);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/casa.png")));
 		lblNewLabel.setBounds(22, 842, 40, 35);
@@ -269,7 +269,7 @@ public class TelaFornecedores extends JFrame {
 
 		panel_6.setBounds(0, 824, 340, 63);
 		contentPane.add(panel_6);
-		
+
 		panel_5.setBounds(0, 967, 340, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 439, 340, 63);
@@ -401,61 +401,112 @@ public class TelaFornecedores extends JFrame {
 				if (textEmpresa.getText().equals("")) {
 					textEmpresa.setBorder(redBorder);
 				} else {
+					String cnpj = textCNPJ.getText();
 					for (Fornecedor forn : forndao.ListarCNPJ()) {
-						if (!forn.getCnpjfornecedor().equals(Long.valueOf(textCNPJ.getText()))) {
-							fornec.setNomeFornecedor(textNome.getText());
-							fornec.setEmpresa(textEmpresa.getText());
-							fornec.setTelefoneFornecedor(Long.valueOf(textTel.getText()));
-							fornec.setCnpjfornecedor(Long.valueOf(textCNPJ.getText()));
-							fornec.setMarca(textMarca.getText());
-							end.setCidade(textCidade.getText());
-							end.setRua(textRua.getText());
-							end.setBairro(textBairro.getText());
-							end.setEstado(textEstado.getText());
-							end.setCep(Long.valueOf(textCep.getText()));
-							fornec.setEndereco(end);
+						if (!cnpj.isEmpty()) {
+							if (!forn.getCnpjfornecedor().equals(cnpj)) {
 
-							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-							if (verificacaoEnd == null) {
-								/*
-								 * Se o endereco for null Significa que nao encontrou nada no BD
-								 */
-								Integer idend = enddao.inserir(end);
-								end.setIdEndereco(idend);
+								String telefone = textTel.getText();
+								try {
+									String telefoneErrado = textTel.getText();
+
+									String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+
+									if (telefoneLimpo.matches("\\d{10,11}")) {
+										telefone = telefoneLimpo;
+									} else {
+										System.out.println("Número de telefone inválido");
+									}
+								} catch (NumberFormatException e1) {
+									System.out.println("Erro ao converter para Long: " + e1.getMessage());
+								}
+
+								Long cep = null;
+								try {
+									String cepErrado = textCep.getText();
+
+									String cepString = cepErrado.replaceAll("-", "");
+
+									cepString = cepString.trim();
+
+									if (!cepString.isEmpty()) {
+										cep = Long.valueOf(cepString);
+
+									}
+
+								} catch (NumberFormatException e1) {
+									System.out.println("Erro ao converter para Long: " + e1.getMessage());
+								}
+
+								String cnpjErrado = textCNPJ.getText();
+								if (!cnpjErrado.isEmpty()) {
+									try {
+
+										String cnpjString = cnpjErrado.replaceAll("-", "");
+
+										cnpjString = cnpjString.trim();
+
+										Long conpj2 = Long.valueOf(cnpjString);
+										fornec.setCnpjfornecedor(Long.valueOf(cnpjErrado));
+
+									} catch (NumberFormatException e1) {
+										System.out.println("Erro ao converter para Long: " + e1.getMessage());
+									}
+								}
+
+								fornec.setNomeFornecedor(textNome.getText());
+								fornec.setEmpresa(textEmpresa.getText());
+								fornec.setTelefoneFornecedor(Long.valueOf(telefone));
+								fornec.setMarca(textMarca.getText());
+								end.setCidade(textCidade.getText());
+								end.setRua(textRua.getText());
+								end.setBairro(textBairro.getText());
+								end.setEstado(textEstado.getText());
+								end.setCep(Long.valueOf(cep));
+								fornec.setEndereco(end);
+
+								Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+								if (verificacaoEnd == null) {
+									/*
+									 * Se o endereco for null Significa que nao encontrou nada no BD
+									 */
+									Integer idend = enddao.inserir(end);
+									end.setIdEndereco(idend);
+								} else {
+									/*
+									 * Se o endereco nao eh null significa que ja esta cadastrado
+									 */
+									end.setIdEndereco(verificacaoEnd.getIdEndereco());
+								}
+
+								fornec.setEndereco(end);
+								Integer id = forndao.inserir(fornec);
+
+								String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(),
+										textCNPJ.getText(), textMarca.getText(), textCidade.getText(),
+										textEmpresa.getText() };
+
+								// criar as linhas quando adicionar o fornecedor
+								DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+								tbltable.addRow(data);
+
+								System.out.println("Passou");
+
+								System.out.print("Deu boa");
+								// limpar apos clicar no botão
+								textNome.setText("");
+								textTel.setText("");
+								textCNPJ.setText("");
+								textMarca.setText("");
+								textCidade.setText("");
+								textBairro.setText("");
+								textEstado.setText("");
+								textRua.setText("");
+								textCep.setText("");
+								textEmpresa.setText("");
 							} else {
-								/*
-								 * Se o endereco nao eh null significa que ja esta cadastrado
-								 */
-								end.setIdEndereco(verificacaoEnd.getIdEndereco());
+								erro("Nome de usuário já cadastrado!");
 							}
-
-							fornec.setEndereco(end);
-							Integer id = forndao.inserir(fornec);
-
-							String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(),
-									textCNPJ.getText(), textMarca.getText(), textCidade.getText(),
-									textEmpresa.getText() };
-
-							// criar as linhas quando adicionar o fornecedor
-							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-							tbltable.addRow(data);
-
-							System.out.println("Passou");
-
-							System.out.print("Deu boa");
-							// limpar apos clicar no botão
-							textNome.setText("");
-							textTel.setText("");
-							textCNPJ.setText("");
-							textMarca.setText("");
-							textCidade.setText("");
-							textBairro.setText("");
-							textEstado.setText("");
-							textRua.setText("");
-							textCep.setText("");
-							textEmpresa.setText("");
-						} else {
-							erro("Nome de usuário já cadastrado!");
 						}
 					}
 				}
@@ -548,14 +599,14 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 
-		/*
-		 * MaskFormatter mascaraTel = null; try { mascaraTel = new
-		 * MaskFormatter("(##)#####-####"); } catch (ParseException e) {
-		 * e.printStackTrace(); }
-		 */
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-		// textTel = new JFormattedTextField(mascaraTel);
-		textTel = new JTextField();
+		textTel = new JFormattedTextField(mascaraTel);
 		textTel.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -567,14 +618,14 @@ public class TelaFornecedores extends JFrame {
 		textTel.setBounds(1042, 40, 335, 38);
 		contentPane.add(textTel);
 
-		/*
-		 * MaskFormatter mascaraCNPJ = null; try { mascaraCNPJ = new
-		 * MaskFormatter("##.###.###/####-##"); } catch (ParseException e) {
-		 * e.printStackTrace(); }
-		 */
+		MaskFormatter mascaraCNPJ = null;
+		try {
+			mascaraCNPJ = new MaskFormatter("##.###.###/####-##");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 
-		// textCNPJ = new JFormattedTextField(mascaraCNPJ);
-		textCNPJ = new JTextField();
+		textCNPJ = new JFormattedTextField(mascaraCNPJ);
 		textCNPJ.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
@@ -883,14 +934,15 @@ public class TelaFornecedores extends JFrame {
 		textRua.setBounds(1503, 219, 355, 38);
 		contentPane.add(textRua);
 
-		/*
-		 * MaskFormatter mascaraCEP = null; try { mascaraCEP = new
-		 * MaskFormatter("#####-### "); } catch (ParseException e) {
-		 * e.printStackTrace(); }
-		 * 
-		 * textCep = new JFormattedTextField(mascaraCEP);
-		 */
-		textCep = new JTextField();
+		MaskFormatter mascaraCEP = null;
+		try {
+			mascaraCEP = new MaskFormatter("#####-### ");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textCep = new JFormattedTextField(mascaraCEP);
+
 		textCep.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {

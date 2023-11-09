@@ -255,18 +255,6 @@ public class TelaVendas extends JFrame {
 			}
 		});
 
-		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Home");
-		lblNewLabel_4_1_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1_1_1_1.setBounds(67, 788, 267, 52);
-		contentPane.add(lblNewLabel_4_1_1_1_1_1);
-
-		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/casa.png")));
-		lblNewLabel_6.setBounds(17, 794, 40, 35);
-		contentPane.add(lblNewLabel_6);
-
 		panel_6.setBounds(0, 788, 334, 63);
 		contentPane.add(panel_6);
 
@@ -302,6 +290,18 @@ public class TelaVendas extends JFrame {
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setBackground(new Color(215, 215, 215, 50));
+		panel_6.setLayout(null);
+		
+				JLabel lblNewLabel_6 = new JLabel("");
+				lblNewLabel_6.setBounds(21, 11, 40, 35);
+				panel_6.add(lblNewLabel_6);
+				lblNewLabel_6.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/casa.png")));
+				
+						JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Home");
+						lblNewLabel_4_1_1_1_1_1.setBounds(69, 0, 255, 63);
+						panel_6.add(lblNewLabel_4_1_1_1_1_1);
+						lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+						lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("       Sair");
 		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {

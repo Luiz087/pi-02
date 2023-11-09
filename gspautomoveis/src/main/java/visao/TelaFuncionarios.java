@@ -232,21 +232,35 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setVisible(false);
+		panel_6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6.setVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_6.setVisible(false);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal prin = new TelaPrincipal();
+				dispose();
+				prin.setLocationRelativeTo(null);
+				prin.setVisible(true);
+			}
+		});
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
 		
-		JLabel lblNewLabel_4_1_2 = new JLabel("Home");
-		lblNewLabel_4_1_2.setForeground(Color.WHITE);
-		lblNewLabel_4_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_2.setBounds(81, 775, 269, 56);
-		contentPane.add(lblNewLabel_4_1_2);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/casa.png")));
-		lblNewLabel_2.setBounds(33, 777, 40, 38);
-		contentPane.add(lblNewLabel_2);
-
+		panel_6.setBounds(0, 777, 350, 63);
+		contentPane.add(panel_6);
 		panel_5.setBounds(0, 913, 350, 63);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 390, 350, 63);
@@ -263,6 +277,7 @@ public class TelaFuncionarios extends JFrame {
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
+		panel_6.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 629, 350, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
@@ -271,6 +286,19 @@ public class TelaFuncionarios extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
+		panel_6.setBackground(new Color(215, 215, 215, 50));
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_4_1_2 = new JLabel("Home");
+		lblNewLabel_4_1_2.setBounds(94, 16, 135, 33);
+		panel_6.add(lblNewLabel_4_1_2);
+		lblNewLabel_4_1_2.setForeground(Color.WHITE);
+		lblNewLabel_4_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(32, 11, 40, 38);
+		panel_6.add(lblNewLabel_2);
+		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/casa.png")));
 
 		JComboBox CBCargo = new JComboBox();
 		CBCargo.addFocusListener(new FocusAdapter() {

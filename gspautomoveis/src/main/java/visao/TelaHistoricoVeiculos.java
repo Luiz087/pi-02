@@ -541,7 +541,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 						String segundaParte = partes[1];
 						String terceiroParte = partes[2];
 
-						String resultado = terceiroParte + segundaParte + primeiroParte;
+						String resultado = terceiroParte + "/" +  segundaParte + "/" + primeiroParte;
 
 						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 						String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),

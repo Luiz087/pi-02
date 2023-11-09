@@ -33,8 +33,8 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		Connection con = c.conectar();
 
 		String query = "INSERT INTO funcionarios " + "(nome, " + "cpf, " + "telefone, " + "email, " + "dataDeNasc, "
-				+ "usuario, " + "senha, " + "NivelCargo, " + "salario, " + "comissao, " + "enderecos_id_endereco) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "usuario, " + "senha, " + "NivelCargo, " + "salario, " + "comissao, " + "validado, " + "enderecos_id_endereco) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -48,11 +48,12 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			ps.setString(7, f.getSenha());
 			ps.setString(8, f.getNivelCargo());
 			ps.setDouble(9, f.getSalario());
-			ps.setDouble(10, f.getComissao());
+			ps.setBoolean(10, false);
+			ps.setDouble(11, f.getComissao());
 			if(f.getEndereco()==null) {
 				throw new SQLException("Erro SQL endereço null");
 			}
-			ps.setInt(11, f.getEndereco().getIdEndereco());
+			ps.setInt(12, f.getEndereco().getIdEndereco());
 
 			ps.executeUpdate();
 			try (ResultSet generatedKeys = ps.getGeneratedKeys()) {

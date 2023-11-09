@@ -27,6 +27,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
@@ -1234,6 +1235,7 @@ public class TelaFuncionarios extends JFrame {
 				textCep.setEditable(true);
 				textEstado.setEditable(true);
 				textBairro.setEditable(true);
+				
 			}
 		});
 
@@ -1280,6 +1282,24 @@ public class TelaFuncionarios extends JFrame {
 				textComissao.setText("");
 				textSenha.setText("");
 				CBCargo.setSelectedIndex(0);
+				
+				btnAdicionar.setVisible(true);
+				btnAtualizar.setVisible(false);
+				textSenha.setEditable(true);
+				textCPF.setEditable(true);
+				textDataNasc.setEditable(true);
+				textRua.setEditable(true);
+				textCidade.setEditable(true);
+				textCep.setEditable(true);
+				textEstado.setEditable(true);
+				textBairro.setEditable(true);
+				textNome.setEditable(true);
+				textUsuario.setEditable(true);
+				textEmail.setEditable(true);
+				textTelefone.setEditable(true);
+				textComissao.setEditable(true);
+				textSalario.setEditable(true);
+				CBCargo.setEditable(true);
 
 			}
 		});
@@ -1356,4 +1376,5 @@ public class TelaFuncionarios extends JFrame {
 		erro.setLocationRelativeTo(null);
 		erro.setVisible(true);
 	}
+	
 }

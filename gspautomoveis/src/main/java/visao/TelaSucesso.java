@@ -41,7 +41,7 @@ public class TelaSucesso extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.inactiveCaptionBorder);
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setUndecorated(true);
 		setContentPane(contentPane);
@@ -49,33 +49,31 @@ public class TelaSucesso extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(TelaSucesso.class.getResource("/visao/imagens/ok.png")));
-		lblNewLabel.setBounds(178, 23, 143, 100);
+		lblNewLabel.setBounds(182, 23, 86, 100);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("OPERAÇÃO CONCLUÍDA");
 		lblNewLabel_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(64, 123, 600, 77);
+		lblNewLabel_1.setBounds(72, 123, 306, 77);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("COM SUCESSO");
 		lblNewLabel_1_1.setFont(new Font("Krona One", Font.PLAIN, 20));
-		lblNewLabel_1_1.setBounds(121, 168, 203, 77);
+		lblNewLabel_1_1.setBounds(125, 168, 200, 77);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JButton btnNewButton = new JButton("OK");
-		btnNewButton.setBackground(new Color(255, 255, 255));
-		
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnNewButton_1 = new JButton("OK");
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnNewButton.setFont(new Font("Krona One", Font.PLAIN, 11));
-		btnNewButton.setBounds(151, 235, 143, 36);
-		contentPane.add(btnNewButton);
-		btnNewButton.setBorder(new RoundedBorder(20));
+		btnNewButton_1.setForeground(new Color(64, 0, 0));
+		btnNewButton_1.setFont(new Font("Krona One", Font.PLAIN, 15));
+		btnNewButton_1.setBackground(new Color(0, 255, 0));
+		btnNewButton_1.setBounds(10, 232, 430, 57);
+		contentPane.add(btnNewButton_1);
 		
 		
 	}
-
 }

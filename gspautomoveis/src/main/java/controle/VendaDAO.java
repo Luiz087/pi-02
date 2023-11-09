@@ -174,7 +174,7 @@ public class VendaDAO implements IVendaDAO {
 		Carro C = new Carro();
 		ArrayList<Venda> Vendas = new ArrayList<>();
 
-		String query = "SELECT * FROM Vendas WHERE nomeCliente = ?";
+		String query = "SELECT * FROM Vendas WHERE nomeCliente LIKE '%?%'";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
@@ -211,7 +211,6 @@ public class VendaDAO implements IVendaDAO {
 			e.printStackTrace();
 		} finally {
 			c.fecharConexao();
-
 		}
 
 		return Vendas;

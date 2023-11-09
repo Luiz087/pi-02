@@ -205,7 +205,7 @@ public class TelaLogin extends JFrame {
 						sucesso.setVisible(true);
 					} else {
 						// Exibe mensagem de erro
-						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Usuário não encontrado!");
+						telaLoginIncorreto dadosIncorretos = new telaLoginIncorreto("Funcionário não encontrado!");
 						dadosIncorretos.setLocationRelativeTo(null);
 						dadosIncorretos.setVisible(true);
 					}

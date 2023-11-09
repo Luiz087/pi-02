@@ -280,7 +280,7 @@ public class TelaVendas extends JFrame {
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
 		panel_6.setForeground(new Color(0, 0, 0));
-		
+
 		panel.setBounds(0, 640, 334, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
@@ -675,7 +675,6 @@ public class TelaVendas extends JFrame {
 					}
 					venda.setCpfCliente(cpf);
 					venda.setCarro(carro);
-					Endereco end = new Endereco();
 					venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText() + ", "
 							+ textCidadeC.getText() + ", " + textEstadoC.getText() + ", " + textCepC.getText());
 					venda.setFunc(funcdao.passaLogado());
@@ -692,19 +691,22 @@ public class TelaVendas extends JFrame {
 					LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
 							Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
 					venda.setDataVenda(dataNascimentoCorreta);
-					vendadao.inserir(venda);
+					if (vendadao.inserir(venda) == 1) {
 
-					TelaVeiculos vei = new TelaVeiculos();
-					vei.setExtendedState(MAXIMIZED_BOTH);
-					vei.setVisible(true);
+						TelaVeiculos vei = new TelaVeiculos();
+						vei.setExtendedState(MAXIMIZED_BOTH);
+						vei.setVisible(true);
 
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
+						TelaSucesso sucesso = new TelaSucesso();
+						sucesso.setLocationRelativeTo(null);
+						sucesso.setVisible(true);
 
-					SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
+						SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2);
 
-					dispose();
+						dispose();
+					} else {
+						erro("Dados incompletos.");
+					}
 				} else {
 					erro("Venda cancelada!");
 				}

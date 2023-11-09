@@ -92,7 +92,8 @@ public class Configuracao extends JFrame {
 				dispose();
 			}
 		});
-		lblSair.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/sair.png")));
+		
+		lblSair.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/voltar.png")));
 		lblSair.setBounds(828, 22, 40, 35);
 		contentPane.add(lblSair);
 		

@@ -71,12 +71,15 @@ public class Configuracao extends JFrame {
 	 * @param princip
 	 */
 	public Configuracao() {
+		setFont(new Font("Krona One", Font.PLAIN, 12));
+		setTitle("Configurações");
 		Funcionario func = new Funcionario();
 
 		func = funcdao.passaLogado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(196, 155, 87));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -98,11 +101,11 @@ public class Configuracao extends JFrame {
 		contentPane.add(lblSair);
 		
 
-		JLabel lblNewLabel_3_1 = new JLabel("AUTOMÓVEIS");
+		JLabel lblNewLabel_3_1 = new JLabel("CONFIGURAÇÕES");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setForeground(new Color(196, 155, 87));
 		lblNewLabel_3_1.setFont(new Font("Krona One", Font.PLAIN, 33));
-		lblNewLabel_3_1.setBounds(320, 113, 288, 72);
+		lblNewLabel_3_1.setBounds(258, 113, 408, 72);
 		contentPane.add(lblNewLabel_3_1);
 
 		JLabel lblNewLabel_3 = new JLabel("GSP");

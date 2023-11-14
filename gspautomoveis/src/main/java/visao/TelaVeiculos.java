@@ -78,6 +78,7 @@ public class TelaVeiculos extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaVeiculos() {
+		setTitle("Veículos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -436,17 +437,17 @@ public class TelaVeiculos extends JFrame {
 		lblNewLabel_4_1_1_1_1_1_1_1.setBounds(76, 894, 93, 35);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1_1);
 
-		JLabel lblNewLabel_3_1 = new JLabel("GSP");
+		JLabel lblNewLabel_3_1 = new JLabel("Veículos");
 		lblNewLabel_3_1.setForeground(Color.WHITE);
-		lblNewLabel_3_1.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3_1.setBounds(78, 49, 175, 87);
+		lblNewLabel_3_1.setFont(new Font("Krona One", Font.PLAIN, 40));
+		lblNewLabel_3_1.setBounds(68, 19, 244, 87);
 		contentPane.add(lblNewLabel_3_1);
 
 		JLabel lblNewLabel_3 = new JLabel("GSP");
 		lblNewLabel_3.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(78, 193, 175, 190);
+		lblNewLabel_3.setBounds(89, 166, 175, 190);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("Veículos");

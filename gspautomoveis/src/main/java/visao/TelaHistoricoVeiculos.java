@@ -65,6 +65,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaHistoricoVeiculos() {
+		setTitle("Histórico");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -288,16 +289,16 @@ public class TelaHistoricoVeiculos extends JFrame {
 		lblNewLabel_4_1_1_1_1_1_1.setBounds(0, 936, 334, 58);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
 
-		JLabel lblNewLabel_3 = new JLabel("GSP");
+		JLabel lblNewLabel_3 = new JLabel("Histórico");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(63, 43, 166, 72);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 40));
+		lblNewLabel_3.setBounds(50, 23, 254, 72);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1
 				.setIcon(new ImageIcon(TelaHistoricoVeiculos.class.getResource("/visao/imagens/Logo sem fundo.png")));
-		lblNewLabel_1.setBounds(63, 141, 175, 190);
+		lblNewLabel_1.setBounds(76, 141, 175, 190);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");

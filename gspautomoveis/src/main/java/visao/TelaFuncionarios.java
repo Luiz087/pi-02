@@ -87,6 +87,7 @@ public class TelaFuncionarios extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaFuncionarios() {
+		setTitle("Funcionários");
 		Funcionario func = new Funcionario();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1940, 1119);
@@ -644,10 +645,10 @@ public class TelaFuncionarios extends JFrame {
 		lblNewLabel_2_1_1_1_1_1_1.setBounds(39, 928, 40, 35);
 		contentPane.add(lblNewLabel_2_1_1_1_1_1_1);
 
-		JLabel lblNewLabel_3 = new JLabel("GSP");
+		JLabel lblNewLabel_3 = new JLabel("Funcionários");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(85, 34, 166, 72);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 40));
+		lblNewLabel_3.setBounds(0, 34, 350, 52);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");

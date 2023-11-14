@@ -80,6 +80,7 @@ public class TelaFornecedores extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaFornecedores() {
+		setTitle("Fornecedores");
 
 		Fornecedor fornec = new Fornecedor();
 		Endereco end = new Endereco();
@@ -551,10 +552,10 @@ public class TelaFornecedores extends JFrame {
 		textEmpresa.setBounds(1053, 219, 324, 38);
 		contentPane.add(textEmpresa);
 
-		JLabel lblNewLabel_3 = new JLabel("GSP");
+		JLabel lblNewLabel_3 = new JLabel("Fornecedores");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(78, 49, 175, 87);
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 36));
+		lblNewLabel_3.setBounds(0, 23, 399, 87);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNome = new JLabel("Nome:");

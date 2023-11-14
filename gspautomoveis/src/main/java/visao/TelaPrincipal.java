@@ -59,6 +59,7 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		setTitle("Home");
 		Funcionario logado = new Funcionario();
 
 		logado = funcdao.passaLogado();
@@ -356,10 +357,10 @@ public class TelaPrincipal extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(TelaPrincipal.class.getResource("/visao/imagens/Logo sem fundo.png")));
 		contentPane.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_3 = new JLabel("GSP");
-		lblNewLabel_3.setBounds(74, 51, 166, 72);
+		JLabel lblNewLabel_3 = new JLabel("Home");
+		lblNewLabel_3.setBounds(85, 32, 175, 72);
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 40));
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_4 = new JLabel("        Veículos");

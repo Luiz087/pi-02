@@ -85,6 +85,7 @@ public class TelaVendas extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaVendas(Integer idCarroRecebido) {
+		setTitle("Vendas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
 		contentPane = new JPanel();
@@ -316,15 +317,15 @@ public class TelaVendas extends JFrame {
 		lblNewLabel_4_1_1_1_1_1_1.setBounds(0, 936, 334, 58);
 		contentPane.add(lblNewLabel_4_1_1_1_1_1_1);
 
-		JLabel lblNewLabel_3 = new JLabel("GSP");
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 57));
-		lblNewLabel_3.setBounds(63, 43, 166, 72);
+		JLabel lblNewLabel_3 = new JLabel("Vendas");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setFont(new Font("Krona One", Font.PLAIN, 40));
+		lblNewLabel_3.setBounds(69, 30, 210, 72);
 		contentPane.add(lblNewLabel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/Logo sem fundo.png")));
-		lblNewLabel_1.setBounds(63, 141, 175, 190);
+		lblNewLabel_1.setBounds(69, 141, 175, 190);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");

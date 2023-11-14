@@ -12,6 +12,9 @@ import controle.VendaDAO;
 import modelo.Carro;
 import modelo.Funcionario;
 import modelo.Venda;
+import ravenU.cell.TableActionCellEditorU;
+import ravenU.cell.TableActionCellRenderU;
+import ravenU.cell.TableActionEventU;
 
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -497,7 +500,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Cliente", "Cpf", "Telefone", "Endereço", "Data Venda", "Preço venda" }));
+				new String[] { "Cliente", "Cpf", "Telefone", "Endereço", "Data Venda", "Preço venda", "Ações" }));
 
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1
@@ -571,6 +574,30 @@ public class TelaHistoricoVeiculos extends JFrame {
 				}
 			}
 		});
+		table.getColumnModel().getColumn(6).setPreferredWidth(1);
+
+		TableActionEventU eventU = new TableActionEventU(){
+			@Override
+			public void onEdit(int row) {
+				//esse aqui tlg pai
+			}
+
+			@Override
+			public void onDelete(int row) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onView(int row) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		};
+		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRenderU());
+		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditorU(eventU));
+		
 		
 		comboBox.setHorizontalAlignment(SwingConstants.CENTER);
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 20));

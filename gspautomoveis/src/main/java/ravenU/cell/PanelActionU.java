@@ -30,21 +30,10 @@ public class PanelActionU extends  javax.swing.JPanel {
         cmdEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                eventU.onEdit(row);
-            }
-        });
-        cmdDelete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
                 eventU.onDelete(row);
             }
         });
-        cmdvisu.addActionListener(new ActionListener() {
-        	@Override
-        	public void actionPerformed(ActionEvent ae) {
-        		eventU.onView(row);
-        	}
-        });
+       
     }
 
     /**
@@ -55,48 +44,29 @@ public class PanelActionU extends  javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         cmdEdit = new ravenU.cell.ActionButtonU();
-        cmdDelete = new ravenU.cell.ActionButtonU();
-        cmdvisu = new ravenU.cell.ActionButtonU();
-        
 
-        cmdEdit.setIcon(new ImageIcon(PanelActionU.class.getResource("/visao/imagens/edit.png"))); // NOI18N
-
-        cmdDelete.setIcon(new ImageIcon(PanelActionU.class.getResource("/visao/imagens/delete.png")));
-        
-        
-        cmdvisu.setIcon(new ImageIcon(PanelActionU.class.getResource("/visao/imagens/moedas (1).png")));
+        cmdEdit.setIcon(new ImageIcon(PanelActionU.class.getResource("/visao/imagens/visu (1).png")));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(148, Short.MAX_VALUE)
-        			.addComponent(cmdEdit, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-        			.addGap(18)
-        			.addComponent(cmdDelete, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.UNRELATED)
-        			.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-        			.addGap(176))
-        );
-        layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(143, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(cmdvisu, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-        				.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
-        					.addComponent(cmdEdit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        					.addComponent(cmdDelete, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 20, Short.MAX_VALUE)))
-        			.addContainerGap(132, Short.MAX_VALUE))
+        			.addGap(48)
+        			.addComponent(cmdEdit, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(352, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap(140, Short.MAX_VALUE)
+        			.addComponent(cmdEdit, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(135))
         );
         this.setLayout(layout);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ravenU.cell.ActionButtonU cmdDelete;
     private ravenU.cell.ActionButtonU cmdEdit;
-    private ravenU.cell.ActionButtonU cmdvisu;
 }

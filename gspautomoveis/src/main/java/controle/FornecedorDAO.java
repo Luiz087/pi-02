@@ -248,8 +248,8 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		return null;
 	}
-	
-	public ArrayList<Fornecedor> ListarCNPJ() {
+
+	public ArrayList<Fornecedor> ListarCNPJ(Long cnpj) {
 
 		Conexao c = Conexao.getInstancia();
 
@@ -257,10 +257,11 @@ public class FornecedorDAO implements IFornecedorDAO {
 
 		ArrayList<Fornecedor> Fornecedores = new ArrayList<>();
 
-		String Query = "SELECT cnpjFornecedor FROM fornecedores";
+		String Query = "SELECT cnpjFornecedor FROM fornecedores WHERE cnpjFornecedor = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(Query);
+			ps.setLong(1, cnpj);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -269,7 +270,7 @@ public class FornecedorDAO implements IFornecedorDAO {
 				String Cpnj = rs.getString("cnpjFornecedor");
 
 				Fornecedor F = new Fornecedor();
-				
+
 				F.setCnpjfornecedor(Long.valueOf(Cpnj));
 
 				Fornecedores.add(F);

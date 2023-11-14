@@ -30,6 +30,7 @@ import javax.swing.text.MaskFormatter;
 
 import controle.EnderecoDAO;
 import controle.FornecedorDAO;
+import controle.Validacoes;
 import modelo.Endereco;
 import modelo.Fornecedor;
 import modelo.Funcionario;
@@ -403,111 +404,97 @@ public class TelaFornecedores extends JFrame {
 					textEmpresa.setBorder(redBorder);
 				} else {
 					String cnpj = textCNPJ.getText();
-					for (Fornecedor forn : forndao.ListarCNPJ()) {
-						if (!cnpj.isEmpty()) {
-							if (!forn.getCnpjfornecedor().equals(cnpj)) {
+					if (!cnpj.isEmpty()) {
 
-								String telefone = textTel.getText();
-								try {
-									String telefoneErrado = textTel.getText();
+						if (forndao.ListarCNPJ(Validacoes.validaCNPJ(cnpj)).isEmpty() == true) {
 
-									String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+							String telefone = textTel.getText();
+							try {
+								String telefoneErrado = textTel.getText();
 
-									if (telefoneLimpo.matches("\\d{10,11}")) {
-										telefone = telefoneLimpo;
-									} else {
-										System.out.println("Número de telefone inválido");
-									}
-								} catch (NumberFormatException e1) {
-									System.out.println("Erro ao converter para Long: " + e1.getMessage());
-								}
+								String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
 
-								Long cep = null;
-								try {
-									String cepErrado = textCep.getText();
-
-									String cepString = cepErrado.replaceAll("-", "");
-
-									cepString = cepString.trim();
-
-									if (!cepString.isEmpty()) {
-										cep = Long.valueOf(cepString);
-
-									}
-
-								} catch (NumberFormatException e1) {
-									System.out.println("Erro ao converter para Long: " + e1.getMessage());
-								}
-
-								String cnpjErrado = textCNPJ.getText();
-								if (!cnpjErrado.isEmpty()) {
-									try {
-
-										String cnpjString = cnpjErrado.replaceAll("-", "");
-
-										cnpjString = cnpjString.trim();
-
-										Long conpj2 = Long.valueOf(cnpjString);
-										fornec.setCnpjfornecedor(Long.valueOf(cnpjErrado));
-
-									} catch (NumberFormatException e1) {
-										System.out.println("Erro ao converter para Long: " + e1.getMessage());
-									}
-								}
-
-								fornec.setNomeFornecedor(textNome.getText());
-								fornec.setEmpresa(textEmpresa.getText());
-								fornec.setTelefoneFornecedor(Long.valueOf(telefone));
-								fornec.setMarca(textMarca.getText());
-								end.setCidade(textCidade.getText());
-								end.setRua(textRua.getText());
-								end.setBairro(textBairro.getText());
-								end.setEstado(textEstado.getText());
-								end.setCep(Long.valueOf(cep));
-								fornec.setEndereco(end);
-
-								Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-								if (verificacaoEnd == null) {
-									/*
-									 * Se o endereco for null Significa que nao encontrou nada no BD
-									 */
-									Integer idend = enddao.inserir(end);
-									end.setIdEndereco(idend);
+								telefone = telefoneLimpo;
+								if (telefoneLimpo.matches("\\d{10,11}")) {
+									telefone = telefoneLimpo;
 								} else {
-									/*
-									 * Se o endereco nao eh null significa que ja esta cadastrado
-									 */
-									end.setIdEndereco(verificacaoEnd.getIdEndereco());
+									System.out.println("Número de telefone inválido");
+								}
+							} catch (NumberFormatException e1) {
+								System.out.println("Erro ao converter para Long: " + e1.getMessage());
+							}
+
+							Long cep = null;
+							try {
+								String cepErrado = textCep.getText();
+
+								String cepString = cepErrado.replaceAll("-", "");
+
+								cepString = cepString.trim();
+
+								if (!cepString.isEmpty()) {
+									cep = Long.valueOf(cepString);
+
 								}
 
-								fornec.setEndereco(end);
-								Integer id = forndao.inserir(fornec);
-
-								String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(),
-										textCNPJ.getText(), textMarca.getText(), textCidade.getText(),
-										textEmpresa.getText() };
-
-								// criar as linhas quando adicionar o fornecedor
-								DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-								tbltable.addRow(data);
-
-								System.out.println("Passou");
-
-								System.out.print("Deu boa");
-								// limpar apos clicar no botão
-								textNome.setText("");
-								textTel.setText("");
-								textCNPJ.setText("");
-								textMarca.setText("");
-								textCidade.setText("");
-								textBairro.setText("");
-								textEstado.setText("");
-								textRua.setText("");
-								textCep.setText("");
-								textEmpresa.setText("");
-							} else {
-								erro("Nome de usuário já cadastrado!");
+							} catch (NumberFormatException e1) {
+								System.out.println("Erro ao converter para Long: " + e1.getMessage());
 							}
+
+							fornec.setCnpjfornecedor(Validacoes.validaCNPJ(cnpj));
+
+							fornec.setNomeFornecedor(textNome.getText());
+							fornec.setEmpresa(textEmpresa.getText());
+							fornec.setTelefoneFornecedor(Long.valueOf(telefone));
+							fornec.setMarca(textMarca.getText());
+							end.setCidade(textCidade.getText());
+							end.setRua(textRua.getText());
+							end.setBairro(textBairro.getText());
+							end.setEstado(textEstado.getText());
+							end.setCep(Long.valueOf(cep));
+							fornec.setEndereco(end);
+
+							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+							if (verificacaoEnd == null) {
+								/*
+								 * Se o endereco for null Significa que nao encontrou nada no BD
+								 */
+								Integer idend = enddao.inserir(end);
+								end.setIdEndereco(idend);
+							} else {
+								/*
+								 * Se o endereco nao eh null significa que ja esta cadastrado
+								 */
+								end.setIdEndereco(verificacaoEnd.getIdEndereco());
+							}
+
+							fornec.setEndereco(end);
+							Integer id = forndao.inserir(fornec);
+
+							String data[] = { String.valueOf(id), textNome.getText(), textTel.getText(),
+									textCNPJ.getText(), textMarca.getText(), textCidade.getText(),
+									textEmpresa.getText() };
+
+							// criar as linhas quando adicionar o fornecedor
+							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+							tbltable.addRow(data);
+
+							System.out.println("Passou");
+
+							System.out.print("Deu boa");
+							// limpar apos clicar no botão
+							textNome.setText("");
+							textTel.setText("");
+							textCNPJ.setText("");
+							textMarca.setText("");
+							textCidade.setText("");
+							textBairro.setText("");
+							textEstado.setText("");
+							textRua.setText("");
+							textCep.setText("");
+							textEmpresa.setText("");
+						} else {
+							erro("Nome de usuário já cadastrado!");
 						}
 					}
 				}

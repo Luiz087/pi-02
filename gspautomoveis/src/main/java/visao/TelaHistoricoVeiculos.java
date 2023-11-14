@@ -538,7 +538,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 				if(!comboBox.getText().isEmpty()) {
 					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
 					dtm.setRowCount(0);
-					for (Venda venda : vendadao.buscaNome(String.valueOf(comboBox.getText()))) {
+					for (Venda venda : vendadao.buscaPorPalavra(String.valueOf(comboBox.getText()))) {
 						String[] partes = String.valueOf(venda.getDataVenda()).split("-");
 
 						String primeiroParte = partes[0];

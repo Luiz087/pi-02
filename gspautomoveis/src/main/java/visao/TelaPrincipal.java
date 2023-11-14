@@ -22,6 +22,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
@@ -785,6 +788,19 @@ public class TelaPrincipal extends JFrame {
 		lblNomeFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblNomeFunc.setBounds(1562, 12, 273, 35);
 		contentPane.add(lblNomeFunc);
+		
+		JFrame frame = this;
+		
+		JButton btnNewButton = new JButton("Validar Conta");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaValidacao valida = new TelaValidacao(frame);
+				valida.setLocationRelativeTo(frame);
+				valida.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(360, 12, 119, 23);
+		contentPane.add(btnNewButton);
 
 	}
 }

@@ -563,7 +563,7 @@ public class TelaFuncionarios extends JFrame {
 
 							func1.setEndereco(end);
 							Integer matricula = funcdao.inserir(func1);
-							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1);
+							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
 							System.out.println("Passou");
 
 							textNome.setText("");

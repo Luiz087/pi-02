@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,27 +18,27 @@ import modelo.Funcionario;
 import modelo.Venda;
 
 public class VendaDAOTest {
-	
+
 	@Test
-	public void testListarVendas(){
+	public void testListarVendas() {
 
 		VendaDAO dao = new VendaDAO();
-		
+
 		ArrayList<Venda> Vendas = dao.ListarVendas();
-		
+
 		assertNotNull(Vendas);
 	}
-	
+
 	@Test
-	public void testMarca(){
+	public void testMarca() {
 
 		VendaDAO dao = new VendaDAO();
-		
-		ArrayList<Venda> Vendas = dao.buscaNome("Luiz");
-		
+
+		List<Venda> Vendas = dao.buscaPorPalavra("Luiz");
+
 		assertNotNull(Vendas);
 	}
-	
+
 	@Test
 	public void testInserirVendas() {
 		Venda venda = new Venda();
@@ -48,10 +49,10 @@ public class VendaDAOTest {
 		String segundaParte = dataVenda.substring(3, 5);
 		String terceiroParte = dataVenda.substring(6, 10);
 
-		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-		
-		venda.setDataVenda(dataVendaCorreta);		
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte), Integer.valueOf(segundaParte),
+				Integer.valueOf(primeiroParte));
+
+		venda.setDataVenda(dataVendaCorreta);
 		venda.setIdVenda(11111);
 		venda.setNomeCliente("Gabriel reidelas");
 		venda.setPrecoVenda(1.200000);
@@ -82,9 +83,9 @@ public class VendaDAOTest {
 		String SegundaParte = dataNascimento.substring(3, 5);
 		String TerceiroParte = dataNascimento.substring(6, 10);
 
-		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(TerceiroParte),
-				Integer.valueOf(SegundaParte), Integer.valueOf(PrimeiroParte));
-		
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(TerceiroParte), Integer.valueOf(SegundaParte),
+				Integer.valueOf(PrimeiroParte));
+
 		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Gerente de Vendas");
 		func.setSalario(123123.9);
@@ -102,14 +103,14 @@ public class VendaDAOTest {
 
 		venda.setCarro(carro);
 		venda.setFunc(func);
-		
 
 		VendaDAO dao = new VendaDAO();
 		Integer vInserido = dao.inserir(venda);
-		
+
 		assertNotNull(vInserido);
-		
+
 	}
+
 	@Test
 	public void testAtualizar() {
 		Venda venda = new Venda();
@@ -120,10 +121,10 @@ public class VendaDAOTest {
 		String segundaParte = dataVenda.substring(3, 5);
 		String terceiroParte = dataVenda.substring(6, 10);
 
-		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-		
-		venda.setDataVenda(dataVendaCorreta);		
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte), Integer.valueOf(segundaParte),
+				Integer.valueOf(primeiroParte));
+
+		venda.setDataVenda(dataVendaCorreta);
 		venda.setIdVenda(1);
 		venda.setNomeCliente("Gabriel reidelas");
 		venda.setPrecoVenda(1.200);
@@ -154,9 +155,9 @@ public class VendaDAOTest {
 		String SegundaParte = dataNascimento.substring(3, 5);
 		String TerceiroParte = dataNascimento.substring(6, 10);
 
-		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(TerceiroParte),
-				Integer.valueOf(SegundaParte), Integer.valueOf(PrimeiroParte));
-		
+		LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(TerceiroParte), Integer.valueOf(SegundaParte),
+				Integer.valueOf(PrimeiroParte));
+
 		func.setDataDeNasc(dataNascimentoCorreta);
 		func.setNivelCargo("Gerente de Vendas");
 		func.setSalario(123123.9);
@@ -174,12 +175,13 @@ public class VendaDAOTest {
 
 		venda.setCarro(carro);
 		venda.setFunc(func);
-		
+
 		VendaDAO dao = new VendaDAO();
 		boolean vAtualizado = dao.atualizar(venda);
-		
+
 		assertEquals(true, vAtualizado);
 	}
+
 	@Test
 	public void testInserir() {
 		Venda venda = new Venda();
@@ -190,19 +192,19 @@ public class VendaDAOTest {
 		String segundaParte = dataVenda.substring(3, 5);
 		String terceiroParte = dataVenda.substring(6, 10);
 
-		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-				Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-		
-		venda.setDataVenda(dataVendaCorreta);		
+		LocalDate dataVendaCorreta = LocalDate.of(Integer.valueOf(terceiroParte), Integer.valueOf(segundaParte),
+				Integer.valueOf(primeiroParte));
+
+		venda.setDataVenda(dataVendaCorreta);
 		venda.setIdVenda(3333);
 		venda.setNomeCliente("luiz ");
 		venda.setPrecoVenda(7.0000);
 		venda.setTelefoneCliente(47777799999l);
 		venda.setEnderecoCliente("antonio santos 101");
-		
+
 		VendaDAO dao = new VendaDAO();
-        boolean vDeletado = dao.excluir(venda);
-		
+		boolean vDeletado = dao.excluir(venda);
+
 		assertEquals(true, vDeletado);
 	}
 

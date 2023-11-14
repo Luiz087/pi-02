@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import modelo.Carro;
 import modelo.Fornecedor;
@@ -166,20 +167,32 @@ public class VendaDAO implements IVendaDAO {
 		return Vendas;
 	}
 
-	public ArrayList<Venda> buscaNome(String nome) {
+	public List<Venda> buscaPorPalavra(String palavra) {
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		Carro C = new Carro();
-		ArrayList<Venda> Vendas = new ArrayList<>();
+		List<Venda> Vendas = new ArrayList<>();
 
-		String query = "SELECT * FROM Vendas WHERE nomeCliente LIKE '%?%'";
+		int i = 0;
+
+		String query = "SELECT * FROM Vendas WHERE" + " nomeCliente LIKE ? " + "OR cpfCliente LIKE ? "
+				+ "OR telefoneCliente LIKE ? " + "OR enderecoCliente LIKE ? " + "OR dataVenda LIKE ? "
+				+ "OR precoVenda LIKE ? " + "OR formaPagamento LIKE ? " + "OR funcionarios_matricula LIKE ? "
+				+ "OR Carros_id_carro LIKE ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 
-			ps.setString(1, nome);
+			ps.setString(1, "%" + palavra + "%");
+			ps.setString(2, "%" + palavra + "%");
+			ps.setString(3, "%" + palavra + "%");
+			ps.setString(4, "%" + palavra + "%");
+			ps.setString(5, "%" + palavra + "%");
+			ps.setString(6, "%" + palavra + "%");
+			ps.setString(7, "%" + palavra + "%");
+			ps.setString(8, "%" + palavra + "%");
+			ps.setString(9, "%" + palavra + "%");
 
 			ResultSet rs = ps.executeQuery();
 

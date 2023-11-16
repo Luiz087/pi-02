@@ -12,6 +12,7 @@ import controle.CarroDAO;
 import controle.FornecedorDAO;
 import controle.FuncionarioDAO;
 import controle.SendEmail;
+import controle.Validacoes;
 import controle.VendaDAO;
 import modelo.Carro;
 import modelo.Endereco;
@@ -292,17 +293,17 @@ public class TelaVendas extends JFrame {
 		panel_5.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setLayout(null);
-		
-				JLabel lblNewLabel_6 = new JLabel("");
-				lblNewLabel_6.setBounds(21, 11, 40, 35);
-				panel_6.add(lblNewLabel_6);
-				lblNewLabel_6.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/casa.png")));
-				
-						JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Home");
-						lblNewLabel_4_1_1_1_1_1.setBounds(69, 0, 255, 63);
-						panel_6.add(lblNewLabel_4_1_1_1_1_1);
-						lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
-						lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+
+		JLabel lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setBounds(21, 11, 40, 35);
+		panel_6.add(lblNewLabel_6);
+		lblNewLabel_6.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/casa.png")));
+
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("Home");
+		lblNewLabel_4_1_1_1_1_1.setBounds(69, 0, 255, 63);
+		panel_6.add(lblNewLabel_4_1_1_1_1_1);
+		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("       Sair");
 		lblNewLabel_4_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
@@ -552,13 +553,27 @@ public class TelaVendas extends JFrame {
 		lblTelefoneCliente.setBounds(919, 233, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 
-		textTelefoneC = new JTextField();
+		MaskFormatter mascaraTel = null;
+		try {
+			mascaraTel = new MaskFormatter("(##)#####-####");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textTelefoneC = new JFormattedTextField(mascaraTel);
 		textTelefoneC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textTelefoneC.setColumns(10);
 		textTelefoneC.setBounds(1086, 233, 233, 38);
 		contentPane.add(textTelefoneC);
 
-		textCepC = new JTextField();
+		MaskFormatter mascaraCEP = null;
+		try {
+			mascaraCEP = new MaskFormatter("#####-### ");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		textCepC = new JFormattedTextField(mascaraCEP);
 		textCepC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCepC.setColumns(10);
 		textCepC.setBounds(1583, 407, 233, 38);
@@ -674,42 +689,64 @@ public class TelaVendas extends JFrame {
 					if (!cpfstring.isEmpty()) {
 						cpf = Long.valueOf(cpfstring);
 					}
-					venda.setCpfCliente(cpf);
-					venda.setCarro(carro);
-					venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText() + ", "
-							+ textCidadeC.getText() + ", " + textEstadoC.getText() + ", " + textCepC.getText());
-					venda.setFunc(funcdao.passaLogado());
-					venda.setNomeCliente(textNomeC.getText());
-					venda.setPrecoVenda(carro.getPrecoCarro());
-					venda.setTelefoneCliente(Long.valueOf((textTelefoneC.getText())));
-					venda.setFormaPagamento(String.valueOf(comboBox.getSelectedItem()));
 
-					String dataNascimento = textDataCompra.getText();
+					if (Validacoes.validaTelefone(textTelefoneC.getText()) != null) {
+						
+						Long cep = null;
+						try {
+							String cepErrado = textCepC.getText();
 
-					String primeiroParte = dataNascimento.substring(0, 2);
-					String segundaParte = dataNascimento.substring(3, 5);
-					String terceiroParte = dataNascimento.substring(6, 10);
-					LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-							Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-					venda.setDataVenda(dataNascimentoCorreta);
-					if (vendadao.inserir(venda) == 1) {
+							String cepString = cepErrado.replaceAll("-", "");
 
-						TelaVeiculos vei = new TelaVeiculos();
-						vei.setExtendedState(MAXIMIZED_BOTH);
-						vei.setVisible(true);
+							cepString = cepString.trim();
 
-						TelaSucesso sucesso = new TelaSucesso();
-						sucesso.setLocationRelativeTo(null);
-						sucesso.setVisible(true);
+							if (!cepString.isEmpty()) {
+								cep = Long.valueOf(cepString);
 
-						SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2, null);
+							}
 
-						dispose();
+						} catch (NumberFormatException e1) {
+							System.out.println("Erro ao converter para Long: " + e1.getMessage());
+						}
+
+						venda.setCpfCliente(cpf);
+						venda.setCarro(carro);
+						venda.setEnderecoCliente("Rua " + textRuaC.getText() + ", Bairro " + textBairroC.getText()
+								+ ", " + textCidadeC.getText() + ", " + textEstadoC.getText() + ", "
+								+ String.valueOf(cep));
+						venda.setFunc(funcdao.passaLogado());
+						venda.setNomeCliente(textNomeC.getText());
+						venda.setPrecoVenda(carro.getPrecoCarro());
+						venda.setTelefoneCliente(Long.valueOf(Validacoes.validaTelefone(textTelefoneC.getText())));
+						venda.setFormaPagamento(String.valueOf(comboBox.getSelectedItem()));
+
+						String dataNascimento = textDataCompra.getText();
+
+						String primeiroParte = dataNascimento.substring(0, 2);
+						String segundaParte = dataNascimento.substring(3, 5);
+						String terceiroParte = dataNascimento.substring(6, 10);
+						LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
+								Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
+						venda.setDataVenda(dataNascimentoCorreta);
+						if (vendadao.inserir(venda) == 1) {
+
+							TelaVeiculos vei = new TelaVeiculos();
+							vei.setExtendedState(MAXIMIZED_BOTH);
+							vei.setVisible(true);
+
+							TelaSucesso sucesso = new TelaSucesso();
+							sucesso.setLocationRelativeTo(null);
+							sucesso.setVisible(true);
+
+							SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2, null);
+
+							dispose();
+						} else {
+							erro("Dados incompletos.");
+						}
 					} else {
-						erro("Dados incompletos.");
+						erro("Venda cancelada!");
 					}
-				} else {
-					erro("Venda cancelada!");
 				}
 			}
 		});

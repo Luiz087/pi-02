@@ -8,7 +8,7 @@ public class SendSMS {
 	private static final String TOKEN = "0eadb61c74cb428ba7c1cb2eada218f8";
 	private static ApiConnection conn;
 
-	public static void mandarSMS(String nome, Long numero, Integer opcao, Integer cgdValidacao) {
+	public static void mandarSMS(String nome, Long numero, Integer opcao, StringBuilder cgdValidacao) {
 		String SENDER = "447520662431";
 		String[] RECIPIENTS = { "55" + numero };
 

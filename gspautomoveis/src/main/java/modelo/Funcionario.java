@@ -16,6 +16,7 @@ public class Funcionario {
 	private String nivelCargo;
 	private Double comissao;
 	private Endereco endereco;
+	private Boolean validado;
 
 	public Endereco getEndereco() {
 		return endereco;
@@ -111,5 +112,13 @@ public class Funcionario {
 
 	public void setMatricula(Integer matricula) {
 		this.matricula = matricula;
+	}
+
+	public Boolean getValidado() {
+		return validado;
+	}
+
+	public void setValidado(Boolean validado) {
+		this.validado = validado;
 	}
 }

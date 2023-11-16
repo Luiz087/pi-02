@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class TelaSucesso extends JFrame {
 
@@ -48,8 +49,11 @@ public class TelaSucesso extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(TelaSucesso.class.getResource("/visao/imagens/ok.png")));
-		lblNewLabel.setBounds(182, 23, 86, 100);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		lblNewLabel.setIcon(new ImageIcon(TelaSucesso.class.getResource("/visao/imagens/validado.gif")));
+		lblNewLabel.setBounds(127, 23, 196, 100);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("OPERAÇÃO CONCLUÍDA");
@@ -68,7 +72,7 @@ public class TelaSucesso extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setForeground(new Color(64, 0, 0));
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setFont(new Font("Krona One", Font.PLAIN, 15));
 		btnNewButton_1.setBackground(new Color(0, 255, 0));
 		btnNewButton_1.setBounds(10, 232, 430, 57);

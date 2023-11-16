@@ -38,11 +38,15 @@ import org.dom4j.io.SAXReader;
 import controle.EnderecoDAO;
 import controle.FuncionarioDAO;
 import controle.SendEmail;
+import controle.Validacoes;
 import modelo.Endereco;
 import modelo.Funcionario;
+import modelo.Venda;
 import raven.cell.TableActionCellEditor;
 import raven.cell.TableActionCellRender;
 import raven.cell.TableActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TelaFuncionarios extends JFrame {
 
@@ -66,6 +70,7 @@ public class TelaFuncionarios extends JFrame {
 	private EnderecoDAO enddao = EnderecoDAO.getInstancia();
 	private JTextField textId;
 	private JPanel panel;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -234,7 +239,7 @@ public class TelaFuncionarios extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setVisible(false);
 		panel_6.addMouseListener(new MouseAdapter() {
@@ -259,8 +264,7 @@ public class TelaFuncionarios extends JFrame {
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
-		
-		
+
 		panel_6.setBounds(0, 777, 350, 63);
 		contentPane.add(panel_6);
 		panel_5.setBounds(0, 913, 350, 63);
@@ -290,13 +294,13 @@ public class TelaFuncionarios extends JFrame {
 		panel_5.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setLayout(null);
-		
+
 		JLabel lblNewLabel_4_1_2 = new JLabel("Home");
 		lblNewLabel_4_1_2.setBounds(94, 16, 135, 33);
 		panel_6.add(lblNewLabel_4_1_2);
 		lblNewLabel_4_1_2.setForeground(Color.WHITE);
 		lblNewLabel_4_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
-		
+
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setBounds(32, 11, 40, 38);
 		panel_6.add(lblNewLabel_2);
@@ -408,204 +412,153 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Retirar máscaras de CPF, Data de Nascimento e CEP
+				String cpfstring = textCPF.getText().replaceAll("-", "");
+				cpfstring = cpfstring.replaceAll("\\.", "");
+				cpfstring = cpfstring.trim();
+				
+				String primeiroParte = textDataNasc.getText().substring(0, 2);
+				String segundaParte = textDataNasc.getText().substring(3, 5);
+				String terceiroParte = textDataNasc.getText().substring(6, 10);
+				String dataN = terceiroParte + "-" + segundaParte + "-" + primeiroParte;
+				
+				String cepString = textCep.getText();
+				cepString = cepString.replaceAll("-", "");
+				cepString = cepString.trim();
+				
 
-				if (textNome.getText().equals("") || textCPF.getText().equals("") || textEmail.getText().equals("")
-						|| textUsuario.getText().equals("") || textSenha.getText().equals("")
-						|| textTelefone.getText().equals("") || CBCargo.getSelectedIndex() == 0
-						|| textDataNasc.getText().equals("") || textRua.getText().equals("")
-						|| textCep.getText().equals("") || textBairro.getText().equals("")
-						|| textCidade.getText().equals("") || textEstado.getText().equals("")
-						|| textComissao.getText().equals("") || textSalario.getText().equals("")) {
+				if (textNome.getText().trim().equals("") || cpfstring.equals("")
+						|| textEmail.getText().trim().equals("") || textUsuario.getText().trim().equals("")
+						|| textSenha.getText().trim().equals("") || textTelefone.getText().trim().equals("")
+						|| CBCargo.getSelectedIndex() == 0 || dataN.trim().equals("")
+						|| textRua.getText().trim().equals("") || cepString.equals("")
+						|| textBairro.getText().trim().equals("") || textCidade.getText().trim().equals("")
+						|| textEstado.getText().trim().equals("") || textComissao.getText().trim().equals("")
+						|| textSalario.getText().trim().equals("")) {
 					erro("Preencha todos os dados!");
-					if (textNome.getText().equals("")) {
+					if (textNome.getText().trim().equals("")) {
 						textNome.setBorder(redBorder);
 					}
-					if (textCPF.getText().equals("")) {
+					if (cpfstring.equals("")) {
 						textCPF.setBorder(redBorder);
 					}
-					if (textUsuario.getText().equals("")) {
+					if (textUsuario.getText().trim().equals("")) {
 						textUsuario.setBorder(redBorder);
 					}
-					if (textSenha.getText().equals("")) {
+					if (textSenha.getText().trim().equals("")) {
 						textSenha.setBorder(redBorder);
 					}
-					if (textEmail.getText().equals("")) {
+					if (textEmail.getText().trim().equals("")|| !Validacoes.validaEmail(textEmail.getText())) {
 						textEmail.setBorder(redBorder);
 					}
-					if (textTelefone.getText().equals("")) {
+					if (textTelefone.getText().trim().equals("")) {
 						textTelefone.setBorder(redBorder);
 					}
 					if (CBCargo.getSelectedIndex() == 0) {
 						CBCargo.setBorder(redBorder);
 					}
-					if (textDataNasc.getText().equals("")) {
+					if (dataN.trim().equals("")) {
 						textDataNasc.setBorder(redBorder);
 					}
-					if (textRua.getText().equals("")) {
+					if (textRua.getText().trim().equals("")) {
 						textRua.setBorder(redBorder);
 					}
-					if (textCep.getText().equals("")) {
+					if (cepString.equals("")) {
 						textRua.setBorder(redBorder);
 					}
-					if (textBairro.getText().equals("")) {
+					if (textBairro.getText().trim().equals("")) {
 						textBairro.setBorder(redBorder);
 					}
-					if (textCidade.getText().equals("")) {
+					if (textCidade.getText().trim().equals("")) {
 						textCidade.setBorder(redBorder);
 					}
-					if (textEstado.getText().equals("")) {
+					if (textEstado.getText().trim().equals("")) {
 						textEstado.setBorder(redBorder);
 					}
-					if (textComissao.getText().equals("")) {
+					if (textComissao.getText().trim().trim().equals("")) {
 						textComissao.setBorder(redBorder);
 					}
-					if (textSalario.getText().equals("")) {
+					if (textSalario.getText().trim().equals("")) {
 						textSalario.setBorder(redBorder);
 					}
 				} else {
-					for (Funcionario funcTeste : funcdao.ListarUsuarios()) {
-						if (!funcTeste.getUsuario().equals(textUsuario.getText())) {
-							Funcionario func1 = new Funcionario();
-							String nome = textNome.getText();
-							String cpfErrado = textCPF.getText();
-							String cpfSemHifens = cpfErrado.replaceAll("-", "");
-							String cpfstring = cpfSemHifens.replaceAll("\\.", "");
-							cpfstring = cpfstring.trim();
-							Long cpf = null;
-							if (!cpfstring.isEmpty()) {
-								cpf = Long.valueOf(cpfstring);
-							}
+					if (funcdao.ListarUsuarios(textUsuario.getText().trim()) == null) {
+						Funcionario func1 = new Funcionario();
+						String nome = textNome.getText();
+						Long cpf = Validacoes.validaCPF(textCPF.getText());
+						String email = textEmail.getText();
+						String usuario = textUsuario.getText();
+						String senha = textSenha.getText();
+						Long telefone = Validacoes.validaTelefone(textTelefone.getText());
+						String cargo = (String) CBCargo.getSelectedItem();
+						LocalDate dataNascimento = Validacoes.validaData(textDataNasc.getText());
+						String rua = textRua.getText();
+						String estado = textEstado.getText();
+						String cidade = textCidade.getText();
+						String bairro = textBairro.getText();
+						Long cep = Validacoes.validaCEP(textCep.getText());
+						Double salario = Double.valueOf(textSalario.getText());
+						Double comissao = Double.valueOf(textComissao.getText());
 
-							String email = textEmail.getText();
-							String usuario = textUsuario.getText();
-							String senha = textSenha.getText();
-							String telefone = textTelefone.getText();
-							try {
-								String telefoneErrado = textTelefone.getText();
+						func1.setNome(nome);
+						func1.setCpf(cpf);
+						func1.setEmail(email);
+						func1.setUsuario(usuario);
+						func1.setSenha(senha);
+						func1.setTelefone(Long.valueOf(telefone));
+						func1.setNivelCargo(cargo);
+						func1.setDataDeNasc(dataNascimento);
+						func1.setSalario(salario);
+						func1.setComissao(comissao);
 
-								String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+						Endereco end = new Endereco();
+						end.setRua(rua);
+						end.setCidade(cidade);
+						end.setEstado(estado);
+						end.setCep(cep);
+						end.setBairro(bairro);
 
-								if (telefoneLimpo.matches("\\d{10,11}")) {
-									telefone = telefoneLimpo;
-								} else {
-									System.out.println("Número de telefone inválido");
-								}
-							} catch (NumberFormatException e1) {
-								System.out.println("Erro ao converter para Long: " + e1.getMessage());
-							}
-
-							String cargo = (String) CBCargo.getSelectedItem();
-
-							String dataNascimento = textDataNasc.getText();
-
-							String primeiroParte = dataNascimento.substring(0, 2);
-							String segundaParte = dataNascimento.substring(3, 5);
-							String terceiroParte = dataNascimento.substring(6, 10);
-
-							LocalDate dataNascimentoCorreta = LocalDate.of(Integer.valueOf(terceiroParte),
-									Integer.valueOf(segundaParte), Integer.valueOf(primeiroParte));
-
-							String rua = textRua.getText();
-							String estado = textEstado.getText();
-							String cidade = textCidade.getText();
-							String bairro = textBairro.getText();
-							Long cep = null;
-							try {
-								String cepErrado = textCep.getText();
-
-								String cepString = cepErrado.replaceAll("-", "");
-
-								cepString = cepString.trim();
-
-								if (!cepString.isEmpty()) {
-									cep = Long.valueOf(cepString);
-
-								}
-
-							} catch (NumberFormatException e1) {
-								System.out.println("Erro ao converter para Long: " + e1.getMessage());
-							}
-
-							Double salario = Double.valueOf(textSalario.getText());
-							Double comissao = Double.valueOf(textComissao.getText());
-
-							func1.setNome(nome);
-							func1.setCpf(cpf);
-							func1.setEmail(email);
-							func1.setUsuario(usuario);
-							func1.setSenha(senha);
-							func1.setTelefone(Long.valueOf(telefone));
-							func1.setNivelCargo(cargo);
-							func1.setDataDeNasc(dataNascimentoCorreta);
-							func1.setSalario(salario);
-							func1.setComissao(comissao);
-
-							Endereco end = new Endereco();
-							end.setRua(rua);
-							end.setCidade(cidade);
-							end.setEstado(estado);
-							end.setCep(cep);
-							end.setBairro(bairro);
-
-							Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
-							if (verificacaoEnd == null) {
-								/*
-								 * Se o endereco for null Significa que nao encontrou nada no BD
-								 */
-								Integer idend = enddao.inserir(end);
-								end.setIdEndereco(idend);
-							} else {
-								/*
-								 * Se o endereco nao eh null significa que ja esta cadastrado
-								 */
-								end.setIdEndereco(verificacaoEnd.getIdEndereco());
-							}
-
-							func1.setEndereco(end);
-							Integer matricula = funcdao.inserir(func1);
-							SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
-							System.out.println("Passou");
-
-							textNome.setText("");
-							textCPF.setText("");
-							textEmail.setText("");
-							textUsuario.setText("");
-							textSenha.setText("");
-							textTelefone.setText("");
-							CBCargo.setSelectedIndex(0);
-
-							textRua.setText("");
-							textCidade.setText("");
-							textEstado.setText("");
-							textCep.setText("");
-							textBairro.setText("");
-							textComissao.setText("");
-							textSalario.setText("");
-
-							String data[] = { String.valueOf(matricula), nome, usuario, telefone, cargo,
-									textDataNasc.getText(), email };
-							textDataNasc.setText("");
-							DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
-							tbltable.addRow(data);
-
-							TelaSucesso sucesso = new TelaSucesso();
-							sucesso.setLocationRelativeTo(null);
-							sucesso.setVisible(true);
-							break;
-
+						Endereco verificacaoEnd = enddao.buscaEnderecoByAtributo(end);
+						if (verificacaoEnd == null) {
+							Integer idend = enddao.inserir(end);
+							end.setIdEndereco(idend);
 						} else {
-							erro("Nome de usuário já cadastrado!");
+							end.setIdEndereco(verificacaoEnd.getIdEndereco());
 						}
+						func1.setEndereco(end);
+						
+						Integer matricula = funcdao.inserir(func1);
+						SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
 
+						String data[] = { String.valueOf(matricula), nome, usuario, textTelefone.getText(), cargo,
+								textDataNasc.getText(), email };
+						
+						textTelefone.setText("");
+						textDataNasc.setText("");
+						textNome.setText("");
+						textCPF.setText("");
+						textEmail.setText("");
+						textUsuario.setText("");
+						textSenha.setText("");
+						CBCargo.setSelectedIndex(0);
+						textRua.setText("");
+						textCidade.setText("");
+						textEstado.setText("");
+						textCep.setText("");
+						textBairro.setText("");
+						textComissao.setText("");
+						textSalario.setText("");
+						
+						DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
+						tbltable.addRow(data);
+
+						TelaSucesso sucesso = new TelaSucesso();
+						sucesso.setLocationRelativeTo(null);
+						sucesso.setVisible(true);
+					} else {
+						erro("Nome de usuário já cadastrado!");
 					}
-				}
 
-				/*
-				 * Configuracao configuracao = new Configuracao();
-				 * Configuracao.textUsuario.setText(TelaFuncionarios.textUsuario.getText());
-				 * Configuracao.textSen.setText(TelaFuncionarios.textSenha.getText());
-				 * configuracao.setVisible(true);
-				 */
+				}
 			}
 
 		});
@@ -941,7 +894,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(414, 403, 1454, 560);
+		scrollPane.setBounds(-94, 464, 1454, 499);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -999,7 +952,7 @@ public class TelaFuncionarios extends JFrame {
 				textEmail.setEditable(false);
 				textSalario.setEditable(false);
 				textComissao.setEditable(false);
-				
+
 				textId.setText(String.valueOf(funcC.getMatricula()));
 
 				String[] partes = String.valueOf(funcC.getDataDeNasc()).split("-");
@@ -1183,32 +1136,27 @@ public class TelaFuncionarios extends JFrame {
 				int linhaSelecionada = table.getSelectedRow();
 				Integer matricula = Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString());
 
-				// select no banco só pelo nome da matricula
-				// buscaFuncionarioPorMatricula(matricula);
-				// metodo retorna um Funcionario
-
 				Funcionario funcDelete = new Funcionario();
 				funcDelete = funcdao.clicado(matricula);
 
-				// quer excluir mesmo?
-				// FALTA COLOCAR CONFIRMAÇÃO
-
-				TelaConfirmacao confirma = new TelaConfirmacao(essaJanela);
-				confirma.setLocationRelativeTo(essaJanela);
-				confirma.setVisible(true);
-				if (confirma.getResult() == true) {
-					funcdao.excluir(funcDelete);
-
-					// remove a linha da tabela (visualmente)
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					model.removeRow(row);
-
-					// tela de sucesso de ação
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
+				if (matricula == funcdao.passaLogado().getMatricula()) {
+					erro("Você não pode excluir seu próprio usuário!");
 				} else {
-					erro("Ação cancelada!");
+					TelaConfirmacao confirma = new TelaConfirmacao(essaJanela);
+					confirma.setLocationRelativeTo(essaJanela);
+					confirma.setVisible(true);
+					if (confirma.getResult() == true) {
+						funcdao.excluir(funcDelete);
+
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.removeRow(row);
+
+						TelaSucesso sucesso = new TelaSucesso();
+						sucesso.setLocationRelativeTo(null);
+						sucesso.setVisible(true);
+					} else {
+						erro("Ação cancelada!");
+					}
 				}
 			}
 
@@ -1236,7 +1184,7 @@ public class TelaFuncionarios extends JFrame {
 				textCep.setEditable(true);
 				textEstado.setEditable(true);
 				textBairro.setEditable(true);
-				
+
 			}
 		});
 
@@ -1264,8 +1212,8 @@ public class TelaFuncionarios extends JFrame {
 		btnBuscar.setBackground(Color.WHITE);
 		contentPane.add(btnBuscar);
 
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLimparCampos = new JButton("");
+		btnLimparCampos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textId.setText("");
 				textNome.setText("");
@@ -1283,7 +1231,7 @@ public class TelaFuncionarios extends JFrame {
 				textComissao.setText("");
 				textSenha.setText("");
 				CBCargo.setSelectedIndex(0);
-				
+
 				btnAdicionar.setVisible(true);
 				btnAtualizar.setVisible(false);
 				textSenha.setEditable(true);
@@ -1301,13 +1249,78 @@ public class TelaFuncionarios extends JFrame {
 				textComissao.setEditable(true);
 				textSalario.setEditable(true);
 				CBCargo.setEditable(true);
+				
+				textId.setBorder(blackBorder);
+				textNome.setBorder(blackBorder);
+				textEmail.setBorder(blackBorder);
+				textUsuario.setBorder(blackBorder);
+				textTelefone.setBorder(blackBorder);
+				textRua.setBorder(blackBorder);
+				textBairro.setBorder(blackBorder);
+				textCidade.setBorder(blackBorder);
+				textEstado.setBorder(blackBorder);
+				textCep.setBorder(blackBorder);
+				textDataNasc.setBorder(blackBorder);
+				textCPF.setBorder(blackBorder);
+				textSalario.setBorder(blackBorder);
+				textComissao.setBorder(blackBorder);
+				textSenha.setBorder(blackBorder);
+				CBCargo.setBorder(blackBorder);
 
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/419660 (1).png")));
-		btnNewButton.setBackground(new Color(255, 255, 255));
-		btnNewButton.setBounds(1304, 271, 56, 38);
-		contentPane.add(btnNewButton);
+		btnLimparCampos.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/vassoura.png")));
+		btnLimparCampos.setBackground(new Color(255, 255, 255));
+		btnLimparCampos.setBounds(1304, 271, 56, 38);
+		contentPane.add(btnLimparCampos);
+
+		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!textField.getText().isEmpty()) {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Funcionario func : funcdao.buscaPorPalavra(String.valueOf(textField.getText()))) {
+						String[] partes = String.valueOf(func.getDataDeNasc()).split("-");
+
+						String primeiroParte = partes[0];
+						String segundaParte = partes[1];
+						String terceiroParte = partes[2];
+
+						String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
+
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						String data[] = { String.valueOf(func.getMatricula()), func.getNome(), func.getUsuario(),
+								String.valueOf(func.getTelefone()), func.getNivelCargo(), resultado, func.getEmail() };
+						tblModel.addRow(data);
+					}
+				} else {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Funcionario funcs : funcdao.ListarFuncionarios()) {
+						String[] partes = String.valueOf(funcs.getDataDeNasc()).split("-");
+
+						String primeiroParte = partes[0];
+						String segundaParte = partes[1];
+						String terceiroParte = partes[2];
+
+						// Reorganiza as partes da string no formato desejado
+						String resultado = terceiroParte + segundaParte + primeiroParte;
+
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						String data[] = { String.valueOf(funcs.getMatricula()), funcs.getNome(), funcs.getUsuario(),
+								String.valueOf(funcs.getTelefone()), funcs.getNivelCargo(), resultado,
+								funcs.getEmail() };
+						tblModel.addRow(data);
+					}
+				}
+			}
+		});
+		textField.setFont(new Font("Krona One", Font.PLAIN, 12));
+		textField.setColumns(10);
+		textField.setBounds(941, 415, 196, 38);
+		contentPane.add(textField);
 
 	}
 
@@ -1377,5 +1390,4 @@ public class TelaFuncionarios extends JFrame {
 		erro.setLocationRelativeTo(null);
 		erro.setVisible(true);
 	}
-	
 }

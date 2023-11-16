@@ -289,7 +289,7 @@ public class FuncionarioDAOTest {
 	public void testListarUsuarios() { // Listar
 		FuncionarioDAO dao = new FuncionarioDAO();
 
-		ArrayList<Funcionario> funcList = dao.ListarUsuarios();
+		Funcionario funcList = dao.ListarUsuarios("jose");
 
 		assertNotNull(funcList);
 

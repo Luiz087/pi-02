@@ -27,7 +27,7 @@ public class SendEmail {
 						+ ".\n Essa é uma mensagem automática informando que você acaba de comprar um veículo com a maior loja de veículos de Santa Catarina, a GSP "
 						+ "Automóveis!\n\n Ficamos felizes por sua conquista e desejamos-lhe que desfrute sua nova conquista com responsabilidade e muito gosto!!!");
 			} else if (opcao == 3) {
-				email.setSubject("BIBIIIIII, MOTORIZADO PORRA!");
+				email.setSubject("Código de Verificação");
 
 				email.setMsg("Olá, " + nome
 						+ ".\n Esse e-mail é referente ao seu código de validação. \n É de EXTREMA IMPORTÂNCIA que não o compartilhe com ninguém, apenas para validar sua conta. \n O código é: " + codigo);

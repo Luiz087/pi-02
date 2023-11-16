@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
@@ -12,6 +13,7 @@ import com.mysql.cj.xdevapi.Table;
 
 import controle.Conexao;
 import controle.FuncionarioDAO;
+import controle.Validacoes;
 import modelo.Funcionario;
 
 import javax.swing.JLabel;
@@ -37,6 +39,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Configuracao extends JFrame {
 
@@ -74,11 +78,23 @@ public class Configuracao extends JFrame {
 		setFont(new Font("Krona One", Font.PLAIN, 12));
 		setTitle("Configurações");
 		Funcionario func = new Funcionario();
+		
+		LineBorder redBorder = new LineBorder(Color.RED);
+		LineBorder blackBorder = new LineBorder(Color.BLACK);
 
 		func = funcdao.passaLogado();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
+		contentPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				textUsuario.setBorder(blackBorder);
+				textSen.setBorder(blackBorder);
+				textTel.setBorder(blackBorder);
+				textEmail.setBorder(blackBorder);
+			}
+		});
 		contentPane.setForeground(new Color(196, 155, 87));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -95,11 +111,10 @@ public class Configuracao extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		lblSair.setIcon(new ImageIcon(Configuracao.class.getResource("/visao/imagens/voltar.png")));
 		lblSair.setBounds(828, 22, 40, 35);
 		contentPane.add(lblSair);
-		
 
 		JLabel lblNewLabel_3_1 = new JLabel("CONFIGURAÇÕES");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -131,6 +146,12 @@ public class Configuracao extends JFrame {
 		contentPane.add(lblUsurio);
 
 		textUsuario = new JTextField();
+		textUsuario.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textUsuario.setBorder(blackBorder);
+			}
+		});
 		textUsuario.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textUsuario.setColumns(10);
 		textUsuario.setBounds(192, 319, 321, 38);
@@ -149,6 +170,12 @@ public class Configuracao extends JFrame {
 		}
 
 		textTel = new JFormattedTextField(mascaraTel);
+		textTel.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textTel.setBorder(blackBorder);
+			}
+		});
 		textTel.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textTel.setColumns(10);
 		textTel.setBounds(194, 373, 345, 38);
@@ -160,6 +187,12 @@ public class Configuracao extends JFrame {
 		contentPane.add(lblSenha);
 
 		textSen = new JTextField();
+		textSen.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textSen.setBorder(blackBorder);
+			}
+		});
 		textSen.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textSen.setColumns(10);
 		textSen.setBounds(193, 431, 196, 38);
@@ -171,52 +204,59 @@ public class Configuracao extends JFrame {
 		contentPane.add(lblEmail);
 
 		textEmail = new JTextField();
+		textEmail.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				textEmail.setBorder(blackBorder);
+			}
+		});
 		textEmail.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textEmail.setColumns(10);
 		textEmail.setBounds(193, 497, 675, 38);
 		contentPane.add(textEmail);
 
+		JFrame frame = this;
+
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				Funcionario func1 = new Funcionario();
-				
-				String telefone = textTel.getText();
-				try {
-					String telefoneErrado = textTel.getText();
+				String telefoneSting = textTel.getText().trim();
+				telefoneSting = telefoneSting.replaceAll("[()\\s-]+", "");
+				telefoneSting = telefoneSting.trim();
 
-					String telefoneLimpo = telefoneErrado.replaceAll("[()\\s-]+", "");
+				if (!textUsuario.getText().trim().equals("") || !textID.getText().trim().equals("")
+						|| Validacoes.validaEmail(textEmail.getText().trim()) || !textSen.getText().trim().equals("")
+						|| !telefoneSting.equals("")) {
+					func1.setMatricula(Integer.valueOf(textID.getText()));
+					func1.setUsuario(textUsuario.getText().trim());
+					func1.setTelefone(Validacoes.validaTelefone(textTel.getText().trim()));
+					func1.setEmail(textEmail.getText().trim());
+					func1.setSenha(textSen.getText());
 
-					if (telefoneLimpo.matches("\\d{10,11}")) {
-						telefone = telefoneLimpo;
-					} else {
-						System.out.println("Número de telefone inválido");
-					}
-				} catch (NumberFormatException e1) {
-					System.out.println("Erro ao converter para Long: " + e1.getMessage());
-				}
-				
-				func1.setMatricula(Integer.valueOf(textID.getText()));
-				func1.setUsuario(textUsuario.getText());
-				func1.setTelefone(Long.valueOf(telefone));
-				func1.setEmail(textEmail.getText());
-				func1.setSenha(textSen.getText());
-
-				Configuracao config = new Configuracao();
-				
-				String usuarioLogado = funcdao.passaLogado().getUsuario();
-
-				for (Funcionario func : funcdao.ListarUsuarios()) {
-					if (!func.getUsuario().equals(func1.getUsuario())||func.getUsuario().equals(usuarioLogado)) {
+					if (funcdao.ListarUsuarios(func1.getUsuario()) == null) {
 						funcdao.atualizarFunc(func1);
 					} else {
-						TelaErro erro = new TelaErro(config, "Usuário já existe no sistema!");
+						TelaErro erro = new TelaErro(frame, "Usuário já existe no sistema!");
 						erro.setLocationRelativeTo(null);
 						erro.setVisible(true);
-						break;
+					}
+				} else {
+					erro("Preencha todos os dados!");
+					if(textUsuario.getText().equals("")) {
+						textUsuario.setBorder(redBorder);
+					}
+					if(telefoneSting.equals("")) {
+						textTel.setBorder(redBorder);
+					}
+					if(textSen.getText().equals("")) {
+						textSen.setBorder(redBorder);
+					}
+					if(textEmail.getText().equals("")) {
+						textEmail.setBorder(redBorder);
 					}
 				}
-
 			}
 		});
 		btnAtualizar.setForeground(Color.BLACK);
@@ -250,5 +290,11 @@ public class Configuracao extends JFrame {
 			// TODO: handle exception
 		}
 
+	}
+	
+	private void erro(String string) {
+		TelaErro erro = new TelaErro((JFrame) this, string);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
 	}
 }

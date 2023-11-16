@@ -41,6 +41,7 @@ public class TelaPrincipal extends JFrame {
 	private JTextField textField_9;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 	private JPanel panel;
+	private JPanel panelValidacao;
 
 	/**
 	 * Launch the application.
@@ -788,19 +789,53 @@ public class TelaPrincipal extends JFrame {
 		lblNomeFunc.setFont(new Font("Krona One", Font.PLAIN, 24));
 		lblNomeFunc.setBounds(1562, 12, 273, 35);
 		contentPane.add(lblNomeFunc);
-		
+
 		JFrame frame = this;
-		
-		JButton btnNewButton = new JButton("Validar Conta");
-		btnNewButton.addActionListener(new ActionListener() {
+
+		panelValidacao = new JPanel();
+		panelValidacao.setBounds(360, 12, 189, 72);
+		contentPane.add(panelValidacao);
+		panelValidacao.setLayout(null);
+		panelValidacao.setBorder(null);
+		if (funcdao.passaLogado().getValidado()) {
+			panelValidacao.setVisible(false);
+		} else {
+			panelValidacao.setVisible(true);
+		}
+
+		JButton btnValidar = new JButton("Validar Conta");
+		btnValidar.setBounds(26, 47, 137, 25);
+		panelValidacao.add(btnValidar);
+		btnValidar.setForeground(new Color(255, 255, 255));
+		btnValidar.setFont(new Font("Krona One", Font.PLAIN, 10));
+		btnValidar.setBackground(new Color(43, 43, 113));
+
+		JLabel lblNewLabel_7 = new JLabel("Você ainda não");
+		lblNewLabel_7.setFont(new Font("Krona One", Font.PLAIN, 11));
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setBounds(0, 5, 189, 14);
+		panelValidacao.add(lblNewLabel_7);
+
+		JLabel lblNewLabel_7_1 = new JLabel("validou sua conta!");
+		lblNewLabel_7_1.setFont(new Font("Krona One", Font.PLAIN, 11));
+		lblNewLabel_7_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7_1.setBounds(0, 23, 189, 14);
+		panelValidacao.add(lblNewLabel_7_1);
+		btnValidar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaValidacao valida = new TelaValidacao(frame);
 				valida.setLocationRelativeTo(frame);
 				valida.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(360, 12, 119, 23);
-		contentPane.add(btnNewButton);
 
+	}
+	
+	public void checkValidacao() {
+		if (funcdao.passaLogado().getValidado()) {
+			panelValidacao.setVisible(false);
+		} else {
+			panelValidacao.setVisible(true);
+		}
 	}
 }

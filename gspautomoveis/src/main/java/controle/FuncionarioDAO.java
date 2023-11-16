@@ -8,10 +8,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.IFuncionarioDAO;
+import modelo.Venda;
 
 public class FuncionarioDAO implements IFuncionarioDAO {
 
@@ -195,6 +197,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				String NivelCargo = rs.getString("NivelCargo");
 				Double Salario = rs.getDouble("Salario");
 				Double Comissao = rs.getDouble("Comissao");
+				Boolean Validado = rs.getBoolean("validado");
 				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
 				Funcionario F = new Funcionario();
@@ -213,6 +216,7 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 				Endereco end = new Endereco();
 				end.setIdEndereco(endFunc);
 				F.setEndereco(end);
+				F.setValidado(Validado);
 
 				Funcionarios.add(F);
 			}
@@ -306,30 +310,59 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 		return F;
 	}
 
-	public ArrayList<Funcionario> ListarUsuarios() {
+	public Funcionario ListarUsuarios(String string) {
 
 		Conexao c = Conexao.getInstancia();
 
 		Connection con = c.conectar();
 
-		ArrayList<Funcionario> Funcionarios = new ArrayList<>();
+		Funcionario F = new Funcionario();
 
-		String Query = "SELECT usuario FROM funcionarios";
+		String Query = "SELECT usuario FROM funcionarios WHERE usuario = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(Query);
+			
+			ps.setString(1, string);
 
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 
-				String Usuario = rs.getString("Usuario");
-
-				Funcionario F = new Funcionario();
+				Integer matricula = rs.getInt("matricula");
+				String Nome = rs.getString("Nome");
+				Long Cpf = rs.getLong("Cpf");
+				Long Telefone = rs.getLong("Telefone");
+				String Email = rs.getString("Email");
 				
-				F.setUsuario(Usuario);
+				java.sql.Date DataDeNasc = rs.getDate("DataDeNasc");
+				LocalDate localDate = DataDeNasc.toLocalDate();
+				
+				String Usuario = rs.getString("Usuario");
+				String Senha = rs.getString("Senha");
+				String NivelCargo = rs.getString("NivelCargo");
+				Double Salario = rs.getDouble("Salario");
+				Double Comissao = rs.getDouble("Comissao");
+				Boolean Validado = rs.getBoolean("validado");
+				Integer endFunc = rs.getInt("enderecos_id_endereco");
 
-				Funcionarios.add(F);
+				F.setMatricula(matricula);
+				F.setNome(Nome);
+				F.setCpf(Cpf);
+				F.setTelefone(Telefone);
+				F.setEmail(Email);
+				F.setDataDeNasc(localDate);
+				F.setUsuario(Usuario);
+				F.setSenha(Senha);
+				F.setNivelCargo(NivelCargo);
+				F.setSalario(Salario);
+				F.setComissao(Comissao);
+				Endereco end = new Endereco();
+				end.setIdEndereco(endFunc);
+				F.setEndereco(end);
+				F.setValidado(Validado);
+				
+				return F;
 			}
 
 		} catch (SQLException e) {
@@ -338,6 +371,101 @@ public class FuncionarioDAO implements IFuncionarioDAO {
 			c.fecharConexao();
 		}
 
+		return null;
+	}
+	
+	public boolean validar() {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		String query = "UPDATE funcionarios SET validado = ? WHERE matricula = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setBoolean(1, true);
+			ps.setLong(2, passaLogado().getMatricula());
+
+			ps.executeUpdate();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return false;
+	}
+
+	public List<Funcionario> buscaPorPalavra(String palavra) {
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		List<Funcionario> Funcionarios = new ArrayList<>();
+
+		int i = 0;
+
+		String query = "SELECT * FROM Funcionarios WHERE" + " nome LIKE ? " + "OR cpf LIKE ? "
+				+ "OR telefone LIKE ? " + "OR email LIKE ? " + "OR dataDeNasc LIKE ? "
+				+ "OR usuario LIKE ? " + "OR nivelCargo LIKE ? " + "OR salario LIKE ? "
+				+ "OR comissao LIKE ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(query);
+
+			ps.setString(1, "%" + palavra + "%");
+			ps.setString(2, "%" + palavra + "%");
+			ps.setString(3, "%" + palavra + "%");
+			ps.setString(4, "%" + palavra + "%");
+			ps.setString(5, "%" + palavra + "%");
+			ps.setString(6, "%" + palavra + "%");
+			ps.setString(7, "%" + palavra + "%");
+			ps.setString(8, "%" + palavra + "%");
+			ps.setString(9, "%" + palavra + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Integer matricula = rs.getInt("matricula");
+				String nome = rs.getString("nome");
+				Long cpf = rs.getLong("cpf");
+				Long telefone = rs.getLong("telefone");
+				String email = rs.getString("email");
+				java.sql.Date dataNasc = rs.getDate("dataDeNasc");
+				LocalDate localDate = dataNasc.toLocalDate();
+				String usuario = rs.getString("usuario");
+				String nivelCargo = rs.getString("nivelCargo");
+				Double salario = rs.getDouble("salario");
+				Double comissao = rs.getDouble("comissao");
+
+				Funcionario F = new Funcionario();
+
+				F.setMatricula(matricula);
+				F.setNome(nome);
+				F.setCpf(cpf);
+				F.setTelefone(telefone);
+				F.setEmail(email);
+				F.setDataDeNasc(localDate);
+				F.setUsuario(usuario);
+				F.setNivelCargo(nivelCargo);
+				F.setSalario(salario);
+				F.setComissao(comissao);
+
+				Funcionarios.add(F);
+
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
 		return Funcionarios;
 	}
+
 }

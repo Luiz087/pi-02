@@ -894,7 +894,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Criação do ScrollPane, JFrame vai dentro
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(-94, 464, 1454, 499);
+		scrollPane.setBounds(384, 474, 1454, 499);
 		contentPane.add(scrollPane);
 
 		// Criação da JTable
@@ -1120,7 +1120,7 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textSalario);
 
 		// Mudando o tamanho da coluna 7 (Ações)
-		table.getColumnModel().getColumn(6).setPreferredWidth(1);
+		table.getColumnModel().getColumn(0).setPreferredWidth(1);
 		JFrame essaJanela = this;
 		TableActionEvent event = new TableActionEvent() {
 

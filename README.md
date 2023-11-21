@@ -8,7 +8,7 @@ GSP Automóveis é um sistema Java desenvolvido para a disciplina Projeto Integr
 
 O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP Automóveis com as opções de gerenciar os carros disponíveis, funcionários da loja, fornecedores além de gerenciar informações sobre as vendas dos carros.
 
-# 🖥️ Principais Telas
+# 🖥️ PRINCIPAIS TELAS
 
 - Login
 ![Captura de tela 2023-10-31 100909](https://github.com/Luiz087/pi-02/assets/111303712/c7511eaf-676e-417d-8ebf-f4ec611bfc08)
@@ -25,13 +25,18 @@ O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP
 
 
 
-# Tecnologias utilizadas
+# 🌐 TECNOLOGIAS UTILIZADAS
 - Java 19.0.2
 - Eclipse IDE for Java Developer
 - MySQL Workbench
 - WindowBuilder
 - Figma
 - Apache Maven
+
+# 🛠️ API's UTILIZADAS
+- DOM4J
+- COMMONS-EMAIL
+- SINCH SKD SMS
 
 # Autores
 Este projeto foi desenvolvido por [Eric de Oliveira ](https://github.com/Erico26), [Gabriel Luiz Rothermel](https://github.com/Biell77), [João Lucas Maffezzolli

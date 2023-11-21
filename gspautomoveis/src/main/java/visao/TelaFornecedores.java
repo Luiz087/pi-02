@@ -313,10 +313,10 @@ public class TelaFornecedores extends JFrame {
 
 				Integer id = Integer.valueOf(textId.getText());
 				String nome = textNome.getText();
-				Long telefone = Long.parseLong(textTel.getText());
+				Long telefone = Validacoes.validaTelefone(textTel.getText());
 				String empresa = textEmpresa.getText();
-				Long Cep = Long.parseLong(textCep.getText());
-				Long Cnpj = Long.parseLong(textCNPJ.getText());
+				Long Cep = Validacoes.validaCEP(textCep.getText());
+				Long Cnpj = Validacoes.validaCNPJ(textCNPJ.getText());
 				String estado = textEstado.getText();
 				String cidade = textCidade.getText();
 				String rua = textRua.getText();
@@ -370,10 +370,11 @@ public class TelaFornecedores extends JFrame {
 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textNome.getText().equals("") || textTel.getText().equals("") || textCNPJ.getText().equals("")
-						|| textMarca.getText().equals("") || textCidade.getText().equals("")
-						|| textBairro.getText().equals("") || textEstado.getText().equals("")
-						|| textCep.getText().equals("") || textRua.getText().equals("")) {
+				if (textNome.getText().equals("") || textTel.getText().equals("")
+						|| textCNPJ.getText().trim().equals("") || textMarca.getText().equals("")
+						|| textCidade.getText().equals("") || textBairro.getText().equals("")
+						|| textEstado.getText().equals("") || textCep.getText().equals("")
+						|| textRua.getText().equals("")) {
 					erro("Preencha todos os campos!");
 				}
 				if (textNome.getText().equals("")) {
@@ -409,30 +410,21 @@ public class TelaFornecedores extends JFrame {
 				if (textEmpresa.getText().equals("")) {
 					textEmpresa.setBorder(redBorder);
 				} else {
-					String cnpj = textCNPJ.getText();
+					String cnpj = textCNPJ.getText().trim();
 					if (!cnpj.isEmpty()) {
-
 						if (forndao.ListarCNPJ(Validacoes.validaCNPJ(cnpj)).isEmpty() == true) {
-
 							if (Validacoes.validaTelefone(textTel.getText()) != null) {
-
 								Long cep = null;
 								try {
 									String cepErrado = textCep.getText();
-
 									String cepString = cepErrado.replaceAll("-", "");
-
 									cepString = cepString.trim();
-
 									if (!cepString.isEmpty()) {
 										cep = Long.valueOf(cepString);
-
 									}
-
 								} catch (NumberFormatException e1) {
 									System.out.println("Erro ao converter para Long: " + e1.getMessage());
 								}
-
 								fornec.setCnpjfornecedor(Validacoes.validaCNPJ(cnpj));
 
 								fornec.setNomeFornecedor(textNome.getText());

@@ -141,8 +141,9 @@ public class Configuracao extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JLabel lblUsurio = new JLabel("Usuário:");
+		lblUsurio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsurio.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblUsurio.setBounds(25, 314, 163, 38);
+		lblUsurio.setBounds(0, 319, 175, 38);
 		contentPane.add(lblUsurio);
 
 		textUsuario = new JTextField();
@@ -158,8 +159,9 @@ public class Configuracao extends JFrame {
 		contentPane.add(textUsuario);
 
 		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefone.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefone.setBounds(27, 373, 163, 38);
+		lblTelefone.setBounds(0, 373, 175, 38);
 		contentPane.add(lblTelefone);
 
 		MaskFormatter mascaraTel = null;
@@ -182,8 +184,9 @@ public class Configuracao extends JFrame {
 		contentPane.add(textTel);
 
 		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenha.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblSenha.setBounds(26, 426, 114, 38);
+		lblSenha.setBounds(0, 431, 175, 38);
 		contentPane.add(lblSenha);
 
 		textSen = new JTextField();
@@ -199,8 +202,9 @@ public class Configuracao extends JFrame {
 		contentPane.add(textSen);
 
 		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmail.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblEmail.setBounds(26, 492, 98, 38);
+		lblEmail.setBounds(0, 497, 175, 38);
 		contentPane.add(lblEmail);
 
 		textEmail = new JTextField();
@@ -268,8 +272,9 @@ public class Configuracao extends JFrame {
 		contentPane.add(btnAtualizar);
 
 		JLabel lblId = new JLabel("Id:");
+		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblId.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblId.setBounds(25, 242, 147, 38);
+		lblId.setBounds(0, 242, 175, 38);
 		contentPane.add(lblId);
 
 		textID = new JTextField();

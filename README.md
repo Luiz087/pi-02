@@ -36,7 +36,7 @@ O sistema permite ao usuário gerenciar uma loja fictícia de carros chamada GSP
 # 🛠️ API's UTILIZADAS
 - DOM4J
 - COMMONS-EMAIL
-- SINCH SKD SMS
+- SINCH SDK SMS
 
 # Autores
 Este projeto foi desenvolvido por [Eric de Oliveira ](https://github.com/Erico26), [Gabriel Luiz Rothermel](https://github.com/Biell77), [João Lucas Maffezzolli

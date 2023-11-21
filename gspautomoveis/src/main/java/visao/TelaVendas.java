@@ -40,6 +40,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JInternalFrame;
 
 public class TelaVendas extends JFrame {
 
@@ -520,18 +521,18 @@ public class TelaVendas extends JFrame {
 		JLabel lblMarca = new JLabel("Nome:");
 		lblMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca.setBounds(977, 272, 114, 38);
+		lblMarca.setBounds(992, 173, 114, 38);
 		contentPane.add(lblMarca);
 
 		textNomeC = new JTextField();
 		textNomeC.setFont(new Font("Krona One", Font.PLAIN, 14));
-		textNomeC.setBounds(1101, 272, 233, 38);
+		textNomeC.setBounds(1109, 177, 233, 38);
 		contentPane.add(textNomeC);
 		textNomeC.setColumns(10);
 
 		JLabel lblCpfCliente = new JLabel("CPF:");
 		lblCpfCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCpfCliente.setBounds(1017, 335, 74, 38);
+		lblCpfCliente.setBounds(1042, 270, 74, 38);
 		contentPane.add(lblCpfCliente);
 
 		MaskFormatter mascaraCPF = null;
@@ -544,13 +545,13 @@ public class TelaVendas extends JFrame {
 		textCPFC = new JFormattedTextField(mascaraCPF);
 		textCPFC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCPFC.setColumns(10);
-		textCPFC.setBounds(1101, 335, 233, 38);
+		textCPFC.setBounds(1126, 274, 233, 38);
 		contentPane.add(textCPFC);
 
 		JLabel lblTelefoneCliente = new JLabel("Telefone:");
 		lblTelefoneCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefoneCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefoneCliente.setBounds(936, 398, 157, 38);
+		lblTelefoneCliente.setBounds(959, 364, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 
 		MaskFormatter mascaraTel = null;
@@ -563,7 +564,7 @@ public class TelaVendas extends JFrame {
 		textTelefoneC = new JFormattedTextField(mascaraTel);
 		textTelefoneC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textTelefoneC.setColumns(10);
-		textTelefoneC.setBounds(1103, 398, 233, 38);
+		textTelefoneC.setBounds(1126, 368, 233, 38);
 		contentPane.add(textTelefoneC);
 
 		MaskFormatter mascaraCEP = null;
@@ -576,61 +577,61 @@ public class TelaVendas extends JFrame {
 		textCepC = new JFormattedTextField(mascaraCEP);
 		textCepC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCepC.setColumns(10);
-		textCepC.setBounds(1553, 424, 233, 38);
+		textCepC.setBounds(1575, 173, 233, 38);
 		contentPane.add(textCepC);
 
 		JLabel lblBairro = new JLabel("CEP:");
 		lblBairro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblBairro.setBounds(1450, 424, 93, 38);
+		lblBairro.setBounds(1472, 172, 93, 38);
 		contentPane.add(lblBairro);
 
 		JLabel lblCidae = new JLabel("Cidade:");
 		lblCidae.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae.setBounds(1422, 550, 132, 38);
+		lblCidae.setBounds(1433, 363, 132, 38);
 		contentPane.add(lblCidae);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 18));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Pix", "Boleto", "Crédito", "Débito" }));
 		comboBox.setBackground(new Color(255, 255, 255));
-		comboBox.setBounds(1103, 567, 233, 38);
+		comboBox.setBounds(1126, 651, 233, 38);
 		contentPane.add(comboBox);
 
 		textCidadeC = new JTextField();
 		textCidadeC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCidadeC.setColumns(10);
-		textCidadeC.setBounds(1564, 550, 233, 38);
+		textCidadeC.setBounds(1575, 368, 233, 38);
 		contentPane.add(textCidadeC);
 
 		JLabel lblEstado = new JLabel("Estado:");
 		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEstado.setBounds(1400, 487, 143, 38);
+		lblEstado.setBounds(1422, 270, 143, 38);
 		contentPane.add(lblEstado);
 
 		textEstadoC = new JTextField();
 		textEstadoC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEstadoC.setColumns(10);
-		textEstadoC.setBounds(1553, 487, 233, 38);
+		textEstadoC.setBounds(1575, 270, 233, 38);
 		contentPane.add(textEstadoC);
 
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblRua.setBounds(1459, 659, 95, 38);
+		lblRua.setBounds(1470, 550, 95, 38);
 		contentPane.add(lblRua);
 
 		textRuaC = new JTextField();
 		textRuaC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textRuaC.setColumns(10);
-		textRuaC.setBounds(1564, 659, 233, 38);
+		textRuaC.setBounds(1575, 555, 233, 38);
 		contentPane.add(textRuaC);
 
 		JLabel lblData = new JLabel("Data:");
 		lblData.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblData.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblData.setBounds(993, 507, 100, 38);
+		lblData.setBounds(1016, 550, 100, 38);
 		contentPane.add(lblData);
 
 		MaskFormatter mascaraData = null;
@@ -643,32 +644,32 @@ public class TelaVendas extends JFrame {
 		textDataCompra = new JFormattedTextField(mascaraData);
 		textDataCompra.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textDataCompra.setColumns(10);
-		textDataCompra.setBounds(1103, 512, 233, 38);
+		textDataCompra.setBounds(1126, 550, 233, 38);
 		contentPane.add(textDataCompra);
 
 		JLabel lblPreo = new JLabel("Preço:");
 		lblPreo.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblPreo.setBounds(443, 463, 114, 38);
+		lblPreo.setBounds(465, 652, 114, 38);
 		contentPane.add(lblPreo);
 
 		textPreco = new JTextField();
 		textPreco.setEditable(false);
 		textPreco.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textPreco.setColumns(10);
-		textPreco.setBounds(567, 463, 233, 38);
+		textPreco.setBounds(587, 654, 233, 38);
 		contentPane.add(textPreco);
 		textPreco.setText("R$ " + String.valueOf(carro.getPrecoCarro()));
 		textPreco.setBackground(Color.WHITE);
 
 		JLabel lblCep = new JLabel("Bairro:");
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCep.setBounds(1440, 607, 114, 38);
+		lblCep.setBounds(1451, 460, 114, 38);
 		contentPane.add(lblCep);
 
 		textBairroC = new JTextField();
 		textBairroC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textBairroC.setColumns(10);
-		textBairroC.setBounds(1564, 607, 233, 38);
+		textBairroC.setBounds(1575, 465, 233, 38);
 		contentPane.add(textBairroC);
 
 		JFrame tela = this;
@@ -752,64 +753,66 @@ public class TelaVendas extends JFrame {
 		});
 		btnVender.setFont(new Font("Krona One", Font.PLAIN, 14));
 		btnVender.setBackground(Color.GREEN);
-		btnVender.setBounds(1286, 657, 251, 35);
+		btnVender.setBounds(1368, 931, 277, 56);
 		contentPane.add(btnVender);
 
 		JLabel lblNewLabel_2 = new JLabel("Informação do Carro");
 		lblNewLabel_2.setFont(new Font("Krona One", Font.PLAIN, 25));
-		lblNewLabel_2.setBounds(474, 60, 340, 63);
+		lblNewLabel_2.setBounds(418, 41, 340, 63);
 		contentPane.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setBackground(new Color(68, 116, 157));
+		lblNewLabel_5.setForeground(new Color(68, 116, 157));
 		lblNewLabel_5.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/bglateral.png")));
-		lblNewLabel_5.setBounds(843, -47, 8, 1088);
+		lblNewLabel_5.setBounds(843, 51, 6, 938);
 		contentPane.add(lblNewLabel_5);
 
 		JLabel lblCpfCliente_1 = new JLabel("Marca:");
 		lblCpfCliente_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCpfCliente_1.setBounds(451, 141, 106, 38);
+		lblCpfCliente_1.setBounds(465, 173, 106, 38);
 		contentPane.add(lblCpfCliente_1);
 
 		textMarca = new JTextField();
 		textMarca.setEditable(false);
 		textMarca.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textMarca.setColumns(10);
-		textMarca.setBounds(567, 141, 233, 38);
+		textMarca.setBounds(581, 173, 233, 38);
 		contentPane.add(textMarca);
 		textMarca.setText(carro.getMarca());
 		textMarca.setBackground(Color.WHITE);
 
 		JLabel lblMarca_1 = new JLabel("Modelo:");
 		lblMarca_1.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca_1.setBounds(431, 205, 126, 38);
+		lblMarca_1.setBounds(465, 274, 126, 38);
 		contentPane.add(lblMarca_1);
 
 		textModelo = new JTextField();
 		textModelo.setEditable(false);
 		textModelo.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textModelo.setColumns(10);
-		textModelo.setBounds(567, 205, 233, 38);
+		textModelo.setBounds(601, 274, 219, 38);
 		contentPane.add(textModelo);
 		textModelo.setText(carro.getModelo());
 		textModelo.setBackground(Color.WHITE);
 
 		JLabel lblCidae_1 = new JLabel("Ano:");
 		lblCidae_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae_1.setBounds(478, 272, 79, 38);
+		lblCidae_1.setBounds(499, 368, 79, 38);
 		contentPane.add(lblCidae_1);
 
 		textAno = new JTextField();
 		textAno.setEditable(false);
 		textAno.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textAno.setColumns(10);
-		textAno.setBounds(567, 271, 233, 38);
+		textAno.setBounds(588, 367, 233, 38);
 		contentPane.add(textAno);
 		textAno.setText(String.valueOf(carro.getAno()));
 		textAno.setBackground(Color.WHITE);
 
 		JLabel lblQuilometragem = new JLabel("Km:");
 		lblQuilometragem.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblQuilometragem.setBounds(490, 335, 67, 38);
+		lblQuilometragem.setBounds(512, 460, 67, 38);
 		contentPane.add(lblQuilometragem);
 
 		Float num = 5.8f;
@@ -818,21 +821,21 @@ public class TelaVendas extends JFrame {
 		textQuilometragem.setEditable(false);
 		textQuilometragem.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textQuilometragem.setColumns(10);
-		textQuilometragem.setBounds(567, 335, 233, 38);
+		textQuilometragem.setBounds(587, 460, 233, 38);
 		contentPane.add(textQuilometragem);
 		textQuilometragem.setText(String.valueOf(carro.getQuilometragem() + " Km"));
 		textQuilometragem.setBackground(Color.WHITE);
 
 		JLabel lblFornecedor = new JLabel("Fornecedor:");
 		lblFornecedor.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblFornecedor.setBounds(347, 399, 210, 38);
+		lblFornecedor.setBounds(370, 550, 210, 38);
 		contentPane.add(lblFornecedor);
 
 		textFornecedor = new JTextField();
 		textFornecedor.setEditable(false);
 		textFornecedor.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textFornecedor.setColumns(10);
-		textFornecedor.setBounds(567, 399, 233, 38);
+		textFornecedor.setBounds(587, 552, 233, 38);
 		contentPane.add(textFornecedor);
 		textFornecedor.setText(forn.getNomeFornecedor());
 		textFornecedor.setBackground(Color.WHITE);
@@ -840,20 +843,25 @@ public class TelaVendas extends JFrame {
 		textEmailC = new JTextField();
 		textEmailC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEmailC.setColumns(10);
-		textEmailC.setBounds(1101, 458, 233, 38);
+		textEmailC.setBounds(1126, 460, 233, 38);
 		contentPane.add(textEmailC);
 
 		JLabel lblEmailCliente = new JLabel("Email:");
 		lblEmailCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailCliente.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEmailCliente.setBounds(967, 458, 124, 38);
+		lblEmailCliente.setBounds(992, 460, 124, 38);
 		contentPane.add(lblEmailCliente);
 
 		JLabel lblPagamento = new JLabel("Pagamento:");
 		lblPagamento.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPagamento.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblPagamento.setBounds(874, 570, 219, 38);
+		lblPagamento.setBounds(897, 654, 219, 38);
 		contentPane.add(lblPagamento);
+		
+		JLabel lblNewLabel_7 = new JLabel("Informações do cliente");
+		lblNewLabel_7.setFont(new Font("Krona One", Font.PLAIN, 25));
+		lblNewLabel_7.setBounds(1214, 55, 388, 35);
+		contentPane.add(lblNewLabel_7);
 
 	}
 

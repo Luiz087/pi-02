@@ -42,6 +42,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TelaVeiculos extends JFrame {
 
@@ -59,6 +61,7 @@ public class TelaVeiculos extends JFrame {
 	private JTextField textId;
 	private JPanel panel;
 	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
+	private JTextField textPesquisa;
 
 	/**
 	 * Launch the application.
@@ -551,7 +554,7 @@ public class TelaVeiculos extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(444, 291, 1450, 689);
+		scrollPane.setBounds(464, 373, 1347, 553);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -1139,6 +1142,77 @@ public class TelaVeiculos extends JFrame {
 		btnNewButton.setBounds(1480, 174, 57, 37);
 		contentPane.add(btnNewButton);
 
+		textPesquisa = new JTextField();
+		textPesquisa.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				if (!textPesquisa.getText().isEmpty()) {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Carro vei : carrodao.buscaPorPalavra(String.valueOf(textPesquisa.getText()))) {
+						String carroPromo;
+						String carroAbs;
+						String carroNovo;
+						if (vei.getPromocao() == true) {
+							carroPromo = "Sim";
+						} else {
+							carroPromo = "Não";
+						}
+						if (vei.getAbs() == true) {
+							carroAbs = "Sim";
+						} else {
+							carroAbs = "Não";
+						}
+						if (vei.getNovo() == true) {
+							carroNovo = "Sim";
+						} else {
+							carroNovo = "Não";
+						}
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						String data[] = { String.valueOf(vei.getIdCarro()), vei.getMarca(), vei.getModelo(),
+								vei.getFornecedor().getNomeFornecedor(), carroPromo, carroAbs, vei.getPotencia(),
+								String.valueOf(vei.getQuilometragem()), vei.getCombustivel(), vei.getTipo(), vei.getCor(),
+								String.valueOf(vei.getAno()), carroNovo, String.valueOf(vei.getPrecoCarro()) };
+						tblModel.addRow(data);
+					}
+				} else {
+					DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+					dtm.setRowCount(0);
+					for (Carro carros : carrodao.ListarCarros()) {
+						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
+						Fornecedor forn = forndao.buscaFornecedor(carros.getFornecedor());
+						String carroPromo;
+						String carroAbs;
+						String carroNovo;
+						if (carros.getPromocao() == true) {
+							carroPromo = "Sim";
+						} else {
+							carroPromo = "Não";
+						}
+						if (carros.getAbs() == true) {
+							carroAbs = "Sim";
+						} else {
+							carroAbs = "Não";
+						}
+						if (carros.getNovo() == true) {
+							carroNovo = "Sim";
+						} else {
+							carroNovo = "Não";
+						}
+						String data[] = { String.valueOf(carros.getIdCarro()), carros.getMarca(), carros.getModelo(),
+								forn.getNomeFornecedor(), carroPromo, carroAbs, carros.getPotencia(),
+								String.valueOf(carros.getQuilometragem()), carros.getCombustivel(), carros.getTipo(),
+								carros.getCor(), String.valueOf(carros.getAno()), carroNovo,
+								String.valueOf(carros.getPrecoCarro()) };
+						tblModel.addRow(data);
+					}
+				}
+			}
+		});
+		textPesquisa.setBounds(810, 316, 86, 20);
+		contentPane.add(textPesquisa);
+		textPesquisa.setColumns(10);
+
 		for (Carro carros : carrodao.ListarCarros()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 			Fornecedor forn = forndao.buscaFornecedor(carros.getFornecedor());
@@ -1246,6 +1320,8 @@ public class TelaVeiculos extends JFrame {
 
 			}
 		});
+
+		
 
 	}
 

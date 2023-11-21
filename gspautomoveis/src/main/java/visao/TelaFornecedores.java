@@ -59,6 +59,7 @@ public class TelaFornecedores extends JFrame {
 	private JTextField textEmpresa;
 	private JTextField textId;
 	private JPanel panel;
+	private JPanel panel_6;
 
 	/**
 	 * Launch the application.
@@ -233,7 +234,26 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 
-		JPanel panel_6 = new JPanel();
+		LineBorder redBorder = new LineBorder(Color.RED);
+		LineBorder blackBorder = new LineBorder(Color.BLACK);
+
+		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("         Home");
+		lblNewLabel_4_1_1_1_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal telaprinc = new TelaPrincipal();
+				dispose();
+				telaprinc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaprinc.setVisible(true);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6.setVisible(true);
+
+			}
+		});
+
+		panel_6 = new JPanel();
 		panel_6.setVisible(false);
 		panel_6.addMouseListener(new MouseAdapter() {
 			@Override
@@ -255,24 +275,22 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 
-		LineBorder redBorder = new LineBorder(Color.RED);
-		LineBorder blackBorder = new LineBorder(Color.BLACK);
-
-		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
+		panel_6.setBounds(0, 835, 340, 52);
+		contentPane.add(panel_6);
+		panel_6.setForeground(new Color(0, 0, 0));
+		panel_6.setBackground(new Color(215, 215, 215, 50));
 		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblNewLabel_4_1_1_1_2.setBounds(61, 835, 278, 52);
+		lblNewLabel_4_1_1_1_2.setBounds(0, 835, 339, 52);
 		contentPane.add(lblNewLabel_4_1_1_1_2);
 
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/casa.png")));
-		lblNewLabel.setBounds(22, 842, 40, 35);
+		lblNewLabel.setBounds(0, 835, 68, 52);
 		contentPane.add(lblNewLabel);
 
-		panel_6.setBounds(0, 824, 340, 63);
-		contentPane.add(panel_6);
-
-		panel_5.setBounds(0, 967, 340, 63);
+		panel_5.setBounds(0, 975, 340, 55);
 		contentPane.add(panel_5);
 		panel_4.setBounds(0, 439, 340, 63);
 		contentPane.add(panel_4);
@@ -288,7 +306,6 @@ public class TelaFornecedores extends JFrame {
 		panel_3.setForeground(new Color(0, 0, 0));
 		panel_4.setForeground(new Color(0, 0, 0));
 		panel_5.setForeground(new Color(0, 0, 0));
-		panel_6.setForeground(new Color(0, 0, 0));
 		panel.setBounds(0, 684, 340, 52);
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
@@ -297,7 +314,6 @@ public class TelaFornecedores extends JFrame {
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
-		panel_6.setBackground(new Color(215, 215, 215, 50));
 
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
@@ -637,8 +653,9 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(textCidade);
 
 		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Engrenagem.png")));
-		lblNewLabel_2_1.setBounds(28, 536, 40, 35);
+		lblNewLabel_2_1.setBounds(0, 526, 68, 56);
 		contentPane.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_4_1 = new JLabel("         Configurações");
@@ -668,6 +685,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -678,12 +696,13 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/Pessoa.png")));
-		lblNewLabel_2_1_1.setBounds(28, 616, 40, 35);
+		lblNewLabel_2_1_1.setBounds(0, 610, 68, 52);
 		contentPane.add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/bau veiculos.png")));
-		lblNewLabel_2_1_2.setBounds(28, 456, 40, 35);
+		lblNewLabel_2_1_2.setBounds(0, 439, 68, 63);
 		contentPane.add(lblNewLabel_2_1_2);
 
 		JLabel lblNewLabel_4_1_1_1 = new JLabel("         Histórico");
@@ -699,9 +718,10 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1);
 
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1_1_1
 				.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/carrinho compras.png")));
-		lblNewLabel_2_1_1_1.setBounds(28, 691, 40, 35);
+		lblNewLabel_2_1_1_1.setBounds(0, 684, 68, 52);
 		contentPane.add(lblNewLabel_2_1_1_1);
 
 		JLabel lblNewLabel_4_1_1 = new JLabel("         Funcionários");
@@ -747,6 +767,7 @@ public class TelaFornecedores extends JFrame {
 		contentPane.add(lblNewLabel_4_1_1_1_1);
 
 		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -757,7 +778,7 @@ public class TelaFornecedores extends JFrame {
 			}
 		});
 		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaFornecedores.class.getResource("/visao/imagens/carro +.png")));
-		lblNewLabel_2_1_1_1_1.setBounds(28, 763, 40, 35);
+		lblNewLabel_2_1_1_1_1.setBounds(0, 759, 68, 52);
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 
 		JLabel lblNewLabel_4_1_1_1_1_1_1 = new JLabel("      Sair");

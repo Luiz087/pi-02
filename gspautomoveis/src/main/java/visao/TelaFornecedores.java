@@ -323,10 +323,10 @@ public class TelaFornecedores extends JFrame {
 
 				Integer id = Integer.valueOf(textId.getText());
 				String nome = textNome.getText();
-				Long telefone = Long.parseLong(textTel.getText());
+				Long telefone = Validacoes.validaTelefone(textTel.getText());
 				String empresa = textEmpresa.getText();
-				Long Cep = Long.parseLong(textCep.getText());
-				Long Cnpj = Long.parseLong(textCNPJ.getText());
+				Long Cep = Validacoes.validaCEP(textCep.getText());
+				Long Cnpj = Validacoes.validaCNPJ(textCNPJ.getText());
 				String estado = textEstado.getText();
 				String cidade = textCidade.getText();
 				String rua = textRua.getText();

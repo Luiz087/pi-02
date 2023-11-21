@@ -1136,6 +1136,7 @@ public class TelaFuncionarios extends JFrame {
 
 		// Mudando o tamanho da coluna 7 (Ações)
 		table.getColumnModel().getColumn(6).setPreferredWidth(1);
+		table.getColumnModel().getColumn(5).setPreferredWidth(1);
 		JFrame essaJanela = this;
 		TableActionEvent event = new TableActionEvent() {
 
@@ -1336,6 +1337,11 @@ public class TelaFuncionarios extends JFrame {
 		textField.setColumns(10);
 		textField.setBounds(941, 415, 196, 38);
 		contentPane.add(textField);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/search.png")));
+		lblNewLabel_2.setBounds(897, 420, 40, 33);
+		contentPane.add(lblNewLabel_2);
 
 	}
 

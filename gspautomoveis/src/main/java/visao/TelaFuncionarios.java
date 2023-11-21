@@ -417,7 +417,7 @@ public class TelaFuncionarios extends JFrame {
 		btnAtualizar.setFocusPainted(false);
 		btnAtualizar.setBorder(new RoundedBorder(10));
 		btnAtualizar.setBackground(new Color(255, 249, 0));
-		btnAtualizar.setBounds(1069, 357, 251, 35);
+		btnAtualizar.setBounds(1031, 357, 251, 35);
 		contentPane.add(btnAtualizar);
 
 		btnAdicionar.addActionListener(new ActionListener() {
@@ -578,7 +578,7 @@ public class TelaFuncionarios extends JFrame {
 		btnAdicionar.setFocusPainted(false);
 		btnAdicionar.setBorder(new RoundedBorder(10));
 		btnAdicionar.setBackground(Color.GREEN);
-		btnAdicionar.setBounds(1069, 357, 251, 35);
+		btnAdicionar.setBounds(1031, 357, 251, 35);
 		contentPane.add(btnAdicionar);
 
 		JLabel lblNewLabel_4 = new JLabel("          Veículos");
@@ -1335,7 +1335,7 @@ public class TelaFuncionarios extends JFrame {
 		});
 		textField.setFont(new Font("Krona One", Font.PLAIN, 12));
 		textField.setColumns(10);
-		textField.setBounds(941, 415, 196, 38);
+		textField.setBounds(895, 403, 532, 38);
 		contentPane.add(textField);
 		
 		JLabel lblNewLabel_2 = new JLabel("");

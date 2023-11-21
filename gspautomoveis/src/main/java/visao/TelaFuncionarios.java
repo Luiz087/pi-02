@@ -333,6 +333,7 @@ public class TelaFuncionarios extends JFrame {
 
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				// Botão atualizar
 				Funcionario func1 = new Funcionario();
 				Endereco end = new Endereco();
@@ -425,16 +426,15 @@ public class TelaFuncionarios extends JFrame {
 				String cpfstring = textCPF.getText().replaceAll("-", "");
 				cpfstring = cpfstring.replaceAll("\\.", "");
 				cpfstring = cpfstring.trim();
-				
+
 				String primeiroParte = textDataNasc.getText().substring(0, 2);
 				String segundaParte = textDataNasc.getText().substring(3, 5);
 				String terceiroParte = textDataNasc.getText().substring(6, 10);
 				String dataN = terceiroParte + "-" + segundaParte + "-" + primeiroParte;
-				
+
 				String cepString = textCep.getText();
 				cepString = cepString.replaceAll("-", "");
 				cepString = cepString.trim();
-				
 
 				if (textNome.getText().trim().equals("") || cpfstring.equals("")
 						|| textEmail.getText().trim().equals("") || textUsuario.getText().trim().equals("")
@@ -457,7 +457,7 @@ public class TelaFuncionarios extends JFrame {
 					if (textSenha.getText().trim().equals("")) {
 						textSenha.setBorder(redBorder);
 					}
-					if (textEmail.getText().trim().equals("")|| !Validacoes.validaEmail(textEmail.getText())) {
+					if (textEmail.getText().trim().equals("") || !Validacoes.validaEmail(textEmail.getText())) {
 						textEmail.setBorder(redBorder);
 					}
 					if (textTelefone.getText().trim().equals("")) {
@@ -535,13 +535,13 @@ public class TelaFuncionarios extends JFrame {
 							end.setIdEndereco(verificacaoEnd.getIdEndereco());
 						}
 						func1.setEndereco(end);
-						
+
 						Integer matricula = funcdao.inserir(func1);
 						SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
 
 						String data[] = { String.valueOf(matricula), nome, usuario, textTelefone.getText(), cargo,
 								textDataNasc.getText(), email };
-						
+
 						textTelefone.setText("");
 						textDataNasc.setText("");
 						textNome.setText("");
@@ -557,7 +557,7 @@ public class TelaFuncionarios extends JFrame {
 						textBairro.setText("");
 						textComissao.setText("");
 						textSalario.setText("");
-						
+
 						DefaultTableModel tbltable = (DefaultTableModel) table.getModel();
 						tbltable.addRow(data);
 
@@ -1264,7 +1264,7 @@ public class TelaFuncionarios extends JFrame {
 				textComissao.setEditable(true);
 				textSalario.setEditable(true);
 				CBCargo.setEditable(true);
-				
+
 				textId.setBorder(blackBorder);
 				textNome.setBorder(blackBorder);
 				textEmail.setBorder(blackBorder);

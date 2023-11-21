@@ -116,9 +116,15 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
-				dispose();
-				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafornec.setVisible(true);
+				String Cargo = funcdao.passaLogado().getNivelCargo(); 
+				if(Cargo == "Administrador" || Cargo == "Gerente de Vendas") {
+					dispose();
+					telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafornec.setVisible(true);
+				} else {
+					erro("Cargo insuficiente");
+				}
+
 			}
 		});
 
@@ -138,9 +144,14 @@ public class TelaPrincipal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
-				dispose();
-				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafunc.setVisible(true);
+				String Cargo = funcdao.passaLogado().getNivelCargo(); 
+				if(Cargo == "Administrador" || Cargo == "Gerente de Vendas") {
+					dispose();
+					telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafunc.setVisible(true);
+				} else {
+					erro("Cargo insuficiente");
+				}
 			}
 		});
 
@@ -890,5 +901,10 @@ public class TelaPrincipal extends JFrame {
 		} else {
 			panelValidacao.setVisible(true);
 		}
+	}
+	private void erro(String string) {
+		TelaErro erro = new TelaErro((JFrame) this, string);
+		erro.setLocationRelativeTo(null);
+		erro.setVisible(true);
 	}
 }

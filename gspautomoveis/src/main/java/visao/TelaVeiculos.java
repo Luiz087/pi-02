@@ -20,6 +20,7 @@ import com.mysql.cj.xdevapi.Table;
 
 import controle.CarroDAO;
 import controle.FornecedorDAO;
+import controle.FuncionarioDAO;
 import modelo.Carro;
 import modelo.Endereco;
 import modelo.Fornecedor;
@@ -57,6 +58,7 @@ public class TelaVeiculos extends JFrame {
 	private CarroDAO carrodao = CarroDAO.getInstancia();
 	private JTextField textId;
 	private JPanel panel;
+	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -226,8 +228,7 @@ public class TelaVeiculos extends JFrame {
 				telalogin.setVisible(true);
 			}
 		});
-		
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setVisible(false);
 		panel_6.addMouseListener(new MouseAdapter() {
@@ -249,33 +250,32 @@ public class TelaVeiculos extends JFrame {
 				prin.setVisible(true);
 			}
 		});
-		
-		
+
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
-		
-				JLabel lblNewLabel_4_1 = new JLabel("          Configurações");
-				lblNewLabel_4_1.setBounds(0, 492, 350, 63);
-				contentPane.add(lblNewLabel_4_1);
-				lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
-				lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						Configuracao telaconfig = new Configuracao();
-						dispose();
-						telaconfig.setLocationRelativeTo(null);
-						telaconfig.setVisible(true);
-					}
 
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						panel_3.setVisible(true);
+		JLabel lblNewLabel_4_1 = new JLabel("          Configurações");
+		lblNewLabel_4_1.setBounds(0, 492, 350, 63);
+		contentPane.add(lblNewLabel_4_1);
+		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
 
-					}
-				});
-				lblNewLabel_4_1.setForeground(Color.WHITE);
-				lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-		
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_3.setVisible(true);
+
+			}
+		});
+		lblNewLabel_4_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+
 		panel_6.setBounds(0, 788, 350, 61);
 		contentPane.add(panel_6);
 		panel_5.setBounds(0, 883, 350, 49);
@@ -300,112 +300,112 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
 		panel.setLayout(null);
-		
-				JLabel lblNewLabel_2_1_1_1 = new JLabel("");
-				lblNewLabel_2_1_1_1.setBounds(34, 11, 40, 35);
-				panel.add(lblNewLabel_2_1_1_1);
-				lblNewLabel_2_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-				lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
-						dispose();
-						telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-						telaHV.setVisible(true);
-					}
-				});
-				lblNewLabel_2_1_1_1
-						.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
-				
-						JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
-						lblNewLabel_4_1_1_1.setBounds(0, 0, 350, 61);
-						panel.add(lblNewLabel_4_1_1_1);
-						lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-						lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
-								dispose();
-								telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-								telaHV.setVisible(true);
-							}
 
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								panel.setVisible(true);
-							}
-						});
-						lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
-						lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1.setBounds(34, 11, 40, 35);
+		panel.add(lblNewLabel_2_1_1_1);
+		lblNewLabel_2_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1_1
+				.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
+
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
+		lblNewLabel_4_1_1_1.setBounds(0, 0, 350, 61);
+		panel.add(lblNewLabel_4_1_1_1);
+		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setVisible(true);
+			}
+		});
+		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		panel_1.setBackground(new Color(215, 215, 215, 50));
 		panel_1.setLayout(null);
-		
-				JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
-				lblNewLabel_2_1_1_1_1.setBounds(34, 11, 40, 35);
-				panel_1.add(lblNewLabel_2_1_1_1_1);
-				lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-				lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						TelaFornecedores telafornec = new TelaFornecedores();
-						dispose();
-						telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-						telafornec.setVisible(true);
-					}
-				});
-				lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carro +.png")));
-				
-						JLabel lblNewLabel_4_1_1_1_1 = new JLabel("         Fornecedores");
-						lblNewLabel_4_1_1_1_1.setBounds(0, 0, 350, 63);
-						panel_1.add(lblNewLabel_4_1_1_1_1);
-						lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-						lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								TelaFornecedores telafornec = new TelaFornecedores();
-								dispose();
-								telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-								telafornec.setVisible(true);
-							}
 
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								panel_1.setVisible(true);
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setBounds(34, 11, 40, 35);
+		panel_1.add(lblNewLabel_2_1_1_1_1);
+		lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carro +.png")));
 
-							}
-						});
-						lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
-						lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("         Fornecedores");
+		lblNewLabel_4_1_1_1_1.setBounds(0, 0, 350, 63);
+		panel_1.add(lblNewLabel_4_1_1_1_1);
+		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_1.setVisible(true);
+
+			}
+		});
+		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		panel_2.setBackground(new Color(215, 215, 215, 50));
 		panel_2.setLayout(null);
-		
-				JLabel lblNewLabel_2_1_1 = new JLabel("");
-				lblNewLabel_2_1_1.setBounds(36, 11, 40, 35);
-				panel_2.add(lblNewLabel_2_1_1);
-				lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-				lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						TelaFuncionarios telafunc = new TelaFuncionarios();
-						dispose();
-						telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-						telafunc.setVisible(true);
-					}
-				});
-				lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Pessoa.png")));
+
+		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setBounds(36, 11, 40, 35);
+		panel_2.add(lblNewLabel_2_1_1);
+		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios();
+				dispose();
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Pessoa.png")));
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_3.setLayout(null);
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setLayout(null);
-		
+
 		JLabel lblNewLabel_2_1_2_1 = new JLabel("");
 		lblNewLabel_2_1_2_1.setBounds(39, 11, 40, 35);
 		panel_6.add(lblNewLabel_2_1_2_1);
 		lblNewLabel_2_1_2_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/casa.png")));
 		lblNewLabel_2_1_2_1.setHorizontalAlignment(SwingConstants.LEFT);
-		
+
 		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
 		lblNewLabel_4_1_1_1_2.setBounds(89, 0, 258, 61);
 		panel_6.add(lblNewLabel_4_1_1_1_2);
@@ -413,7 +413,6 @@ public class TelaVeiculos extends JFrame {
 		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
 
-		
 		JComboBox cbAbs = new JComboBox();
 		cbAbs.addFocusListener(new FocusAdapter() {
 			@Override
@@ -790,48 +789,47 @@ public class TelaVeiculos extends JFrame {
 						|| txt_preco.getText().equals("") || comboBoxPromocao.getSelectedIndex() == 0
 						|| comboBoxFornecedor.getSelectedIndex() == 0) {
 					erro("Preencha todos os campos!");
-				} 
-				
-				if(txt_marca.getText().equals("")) {
+				}
+
+				if (txt_marca.getText().equals("")) {
 					txt_marca.setBorder(redBorder);
 				}
-				if(txt_modelo.getText().equals("")) {
+				if (txt_modelo.getText().equals("")) {
 					txt_modelo.setBorder(redBorder);
 				}
-				if(comboBoxNovo.getSelectedIndex() == 0) {
+				if (comboBoxNovo.getSelectedIndex() == 0) {
 					comboBoxNovo.setBorder(redBorder);
 				}
-				if(txt_tipo.getText().equals("")) {
+				if (txt_tipo.getText().equals("")) {
 					txt_tipo.setBorder(redBorder);
 				}
-				if(Cbcombustivel.getSelectedIndex() == 0) {
+				if (Cbcombustivel.getSelectedIndex() == 0) {
 					Cbcombustivel.setBorder(redBorder);
 				}
-				if(txt_quilometragem.getText().equals("")) {
+				if (txt_quilometragem.getText().equals("")) {
 					txt_quilometragem.setBorder(redBorder);
 				}
-				if(comboBoxFornecedor.getSelectedIndex() == 0) {
+				if (comboBoxFornecedor.getSelectedIndex() == 0) {
 					comboBoxFornecedor.setBorder(redBorder);
 				}
-				if(txt_potencia.getText().equals("")) {
+				if (txt_potencia.getText().equals("")) {
 					txt_potencia.setBorder(redBorder);
 				}
-				if(txt_cor.getText().equals("")) {
+				if (txt_cor.getText().equals("")) {
 					txt_cor.setBorder(redBorder);
 				}
-				if(txt_preco.getText().equals("")) {
+				if (txt_preco.getText().equals("")) {
 					txt_preco.setBorder(redBorder);
 				}
-				if(cbAbs.getSelectedIndex() == 0) {
+				if (cbAbs.getSelectedIndex() == 0) {
 					cbAbs.setBorder(redBorder);
 				}
-				if(comboBoxPromocao.getSelectedIndex() == 0) {
+				if (comboBoxPromocao.getSelectedIndex() == 0) {
 					comboBoxPromocao.setBorder(redBorder);
 				}
-				if(comboBoxAno.getSelectedIndex() == 0) {
+				if (comboBoxAno.getSelectedIndex() == 0) {
 					comboBoxAno.setBorder(redBorder);
-				}
-				else {
+				} else {
 					Carro carro = new Carro();
 					String marca = txt_marca.getText();
 					String modelo = txt_modelo.getText();
@@ -923,79 +921,99 @@ public class TelaVeiculos extends JFrame {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
-				 * TelaContinuar telaContinua = new TelaContinuar();
-				 * telaContinua.setLocationRelativeTo(null); telaContinua.setVisible(true);
-				 */
-				// if (telaContinua.confirmado) {
-				Carro carro = new Carro();
-				String marca = txt_marca.getText();
-				String modelo = txt_modelo.getText();
-				Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
-				String tipo = txt_tipo.getText();
-				String combustivel = (String) Cbcombustivel.getSelectedItem();
-				Long quilometragem = Long.valueOf(txt_quilometragem.getText());
-				String fornecedor = (String) comboBoxFornecedor.getSelectedItem();
-				String potencia = txt_potencia.getText();
-				String cor = txt_cor.getText();
-				Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
-				Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
-				Double precoCarro = Double.valueOf(txt_preco.getText());
-				Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;
-				Integer id = Integer.valueOf(textId.getText());
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo == "Administrador" || Cargo == "Gerente de Vendas" || Cargo == "Gestor de Estoque") {
+					/*
+					 * TelaContinuar telaContinua = new TelaContinuar();
+					 * telaContinua.setLocationRelativeTo(null); telaContinua.setVisible(true);
+					 */
+					// if (telaContinua.confirmado) {
+					Carro carro = new Carro();
+					String marca = txt_marca.getText();
+					String modelo = txt_modelo.getText();
+					Boolean novo = comboBoxNovo.getSelectedItem().equals("Sim") ? true : false;
+					String tipo = txt_tipo.getText();
+					String combustivel = (String) Cbcombustivel.getSelectedItem();
+					Long quilometragem = Long.valueOf(txt_quilometragem.getText());
+					String fornecedor = (String) comboBoxFornecedor.getSelectedItem();
+					String potencia = txt_potencia.getText();
+					String cor = txt_cor.getText();
+					Integer ano = Integer.valueOf((String) comboBoxAno.getSelectedItem());
+					Boolean abs = (Boolean) cbAbs.getSelectedItem().equals("Sim") ? true : false;
+					Double precoCarro = Double.valueOf(txt_preco.getText());
+					Boolean promocao = (Boolean) comboBoxPromocao.getSelectedItem().equals("Sim") ? true : false;
+					Integer id = Integer.valueOf(textId.getText());
 
-				Fornecedor fornece = new Fornecedor();
-				carro.setIdCarro(id);
-				fornece = forndao.pegarForn(fornecedor);
-				carro.setFornecedor(fornece);
-				carro.setMarca(marca);
-				carro.setModelo(modelo);
-				carro.setNovo(novo);
-				carro.setAno(ano);
-				carro.setCor(cor);
-				carro.setTipo(tipo);
-				carro.setCombustivel(combustivel);
-				carro.setQuilometragem(quilometragem);
-				carro.setPotencia(potencia);
-				carro.setAbs(abs);
-				carro.setPrecoCarro(precoCarro);
-				carro.setPromocao(promocao);
+					Fornecedor fornece = new Fornecedor();
+					carro.setIdCarro(id);
+					fornece = forndao.pegarForn(fornecedor);
+					carro.setFornecedor(fornece);
+					carro.setMarca(marca);
+					carro.setModelo(modelo);
+					carro.setNovo(novo);
+					carro.setAno(ano);
+					carro.setCor(cor);
+					carro.setTipo(tipo);
+					carro.setCombustivel(combustivel);
+					carro.setQuilometragem(quilometragem);
+					carro.setPotencia(potencia);
+					carro.setAbs(abs);
+					carro.setPrecoCarro(precoCarro);
+					carro.setPromocao(promocao);
 
-				carrodao.atualizar(carro);
+					carrodao.atualizar(carro);
 
-				int linhaSelecionada = table.getSelectedRow();
-				if (linhaSelecionada != -1) {
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					model.setValueAt(marca, linhaSelecionada, 1);
-					model.setValueAt(modelo, linhaSelecionada, 2);
-					model.setValueAt(fornecedor, linhaSelecionada, 3);
-					if (promocao) {
-						model.setValueAt("Sim", linhaSelecionada, 4);
-					} else {
-						model.setValueAt("Não", linhaSelecionada, 4);
+					int linhaSelecionada = table.getSelectedRow();
+					if (linhaSelecionada != -1) {
+						DefaultTableModel model = (DefaultTableModel) table.getModel();
+						model.setValueAt(marca, linhaSelecionada, 1);
+						model.setValueAt(modelo, linhaSelecionada, 2);
+						model.setValueAt(fornecedor, linhaSelecionada, 3);
+						if (promocao) {
+							model.setValueAt("Sim", linhaSelecionada, 4);
+						} else {
+							model.setValueAt("Não", linhaSelecionada, 4);
+						}
+						if (abs) {
+							model.setValueAt("Sim", linhaSelecionada, 5);
+						} else {
+							model.setValueAt("Não", linhaSelecionada, 5);
+						}
+						model.setValueAt(potencia, linhaSelecionada, 6);
+						model.setValueAt(quilometragem, linhaSelecionada, 7);
+						model.setValueAt(combustivel, linhaSelecionada, 8);
+						model.setValueAt(tipo, linhaSelecionada, 9);
+						model.setValueAt(cor, linhaSelecionada, 10);
+						model.setValueAt(ano, linhaSelecionada, 11);
+						if (novo) {
+							model.setValueAt("Sim", linhaSelecionada, 12);
+						} else {
+							model.setValueAt("Não", linhaSelecionada, 12);
+						}
+						model.setValueAt(precoCarro, linhaSelecionada, 13);
+
+						// Tela de sucesso de ação
+						TelaSucesso sucesso = new TelaSucesso();
+						sucesso.setLocationRelativeTo(null);
+						sucesso.setVisible(true);
 					}
-					if (abs) {
-						model.setValueAt("Sim", linhaSelecionada, 5);
-					} else {
-						model.setValueAt("Não", linhaSelecionada, 5);
-					}
-					model.setValueAt(potencia, linhaSelecionada, 6);
-					model.setValueAt(quilometragem, linhaSelecionada, 7);
-					model.setValueAt(combustivel, linhaSelecionada, 8);
-					model.setValueAt(tipo, linhaSelecionada, 9);
-					model.setValueAt(cor, linhaSelecionada, 10);
-					model.setValueAt(ano, linhaSelecionada, 11);
-					if (novo) {
-						model.setValueAt("Sim", linhaSelecionada, 12);
-					} else {
-						model.setValueAt("Não", linhaSelecionada, 12);
-					}
-					model.setValueAt(precoCarro, linhaSelecionada, 13);
+				} else {
+					txt_marca.setText("");
+					cbAbs.setSelectedIndex(0);
+					txt_tipo.setText("");
+					comboBoxFornecedor.setSelectedIndex(0);
+					txt_preco.setText("");
+					comboBoxPromocao.setSelectedIndex(0);
+					txt_modelo.setText("");
+					Cbcombustivel.setSelectedIndex(0);
+					txt_potencia.setText("");
+					comboBoxAno.setSelectedIndex(0);
+					comboBoxNovo.setSelectedIndex(0);
+					txt_quilometragem.setText("");
+					txt_cor.setText("");
+					textId.setText("");
 
-					// Tela de sucesso de ação
-					TelaSucesso sucesso = new TelaSucesso();
-					sucesso.setLocationRelativeTo(null);
-					sucesso.setVisible(true);
+					erro("Cargo insuficiente");
 				}
 
 			}
@@ -1042,22 +1060,22 @@ public class TelaVeiculos extends JFrame {
 			@Override
 			public void onView(int row) {
 				int linhaSelecionada = table.getSelectedRow();
-				TelaVendas vendas = new TelaVendas(Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString()));
+				TelaVendas vendas = new TelaVendas(
+						Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString()));
 				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				vendas.setVisible(true);
 				dispose();
 				/*
-				TelaVendas ven = new TelaVendas();
-				
-				int index = Table.getSelectedRow();
-				TableModel model = Table.getModel();
-				String marca = model.getValueAt(index, 0).toString();
-				String modelo = model.getValueAt(index, 0).toString();
-				
-				
-				ven.setVisible(true);
-				ven.pack();
-				ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);*/
+				 * TelaVendas ven = new TelaVendas();
+				 * 
+				 * int index = Table.getSelectedRow(); TableModel model = Table.getModel();
+				 * String marca = model.getValueAt(index, 0).toString(); String modelo =
+				 * model.getValueAt(index, 0).toString();
+				 * 
+				 * 
+				 * ven.setVisible(true); ven.pack();
+				 * ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);
+				 */
 			}
 		};
 		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());
@@ -1082,7 +1100,7 @@ public class TelaVeiculos extends JFrame {
 			@Override
 			public void focusGained(FocusEvent e) {
 				textId.setBorder(blackBorder);
-				
+
 			}
 		});
 		textId.setEditable(false);
@@ -1096,6 +1114,30 @@ public class TelaVeiculos extends JFrame {
 		lblNewLabel_4_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
 		lblNewLabel_4_1_1_2.setBounds(85, 589, 265, 35);
 		contentPane.add(lblNewLabel_4_1_1_2);
+
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txt_marca.setText("");
+				cbAbs.setSelectedIndex(0);
+				txt_tipo.setText("");
+				comboBoxFornecedor.setSelectedIndex(0);
+				txt_preco.setText("");
+				comboBoxPromocao.setSelectedIndex(0);
+				txt_modelo.setText("");
+				Cbcombustivel.setSelectedIndex(0);
+				txt_potencia.setText("");
+				comboBoxAno.setSelectedIndex(0);
+				comboBoxNovo.setSelectedIndex(0);
+				txt_quilometragem.setText("");
+				txt_cor.setText("");
+				textId.setText("");
+			}
+		});
+		btnNewButton.setBackground(new Color(255, 255, 255));
+		btnNewButton.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/vassoura.png")));
+		btnNewButton.setBounds(1480, 174, 57, 37);
+		contentPane.add(btnNewButton);
 
 		for (Carro carros : carrodao.ListarCarros()) {
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();

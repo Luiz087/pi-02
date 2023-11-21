@@ -267,6 +267,11 @@ public class TelaFuncionarios extends JFrame {
 																prin.setVisible(true);
 															}
 														});
+																
+																JLabel lblNewLabel_2 = new JLabel("");
+																lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/search.png")));
+																lblNewLabel_2.setBounds(897, 403, 32, 38);
+																contentPane.add(lblNewLabel_2);
 														
 																panel_6_1.setBounds(0, 784, 350, 56);
 																contentPane.add(panel_6_1);
@@ -1344,11 +1349,6 @@ public class TelaFuncionarios extends JFrame {
 		textField.setColumns(10);
 		textField.setBounds(895, 403, 532, 38);
 		contentPane.add(textField);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/search.png")));
-		lblNewLabel_2.setBounds(897, 420, 40, 33);
-		contentPane.add(lblNewLabel_2);
 
 	}
 

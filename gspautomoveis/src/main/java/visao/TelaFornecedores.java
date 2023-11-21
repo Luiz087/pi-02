@@ -21,12 +21,18 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 import java.text.ParseException;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import javax.swing.border.Border;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import controle.EnderecoDAO;
 import controle.FornecedorDAO;
@@ -911,7 +917,7 @@ public class TelaFornecedores extends JFrame {
 
 		MaskFormatter mascaraCEP = null;
 		try {
-			mascaraCEP = new MaskFormatter("#####-### ");
+			mascaraCEP = new MaskFormatter("#####-###");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -922,6 +928,10 @@ public class TelaFornecedores extends JFrame {
 			@Override
 			public void focusGained(FocusEvent e) {
 				textCep.setBorder(blackBorder);
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				buscarCep();
 			}
 		});
 		textCep.setFont(new Font("Krona One", Font.PLAIN, 12));
@@ -1006,4 +1016,66 @@ public class TelaFornecedores extends JFrame {
 		erro.setLocationRelativeTo(null);
 		erro.setVisible(true);
 	}
+	
+	public static String trocarPorAsteriscos(String palavra) {
+		StringBuilder resultado = new StringBuilder();
+
+		for (int i = 0; i < palavra.length(); i++) {
+			resultado.append('*');
+		}
+
+		return resultado.toString();
+	}
+
+	private void buscarCep() {
+		String logradouro = "";
+		String tipoLogradoro = "";
+		String resultado = null;
+		Long cepS = null;
+		try {
+			String cepErrado = textCep.getText();
+			String cepString = cepErrado.replaceAll("-", "");
+			cepS = Long.valueOf(cepString);
+		} catch (NumberFormatException e1) {
+			System.out.println("Erro ao converter para Long: " + e1.getMessage());
+		}
+		String cep = String.valueOf(cepS);
+
+		try {
+			URL url = new URL(" http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=xml");
+			SAXReader xml = new SAXReader();
+			Document documento = xml.read(url);
+			Element root = documento.getRootElement();
+			for (Iterator<Element> it = root.elementIterator(); it.hasNext();) {
+				Element element = it.next();
+				if (element.getQualifiedName().equals("cidade")) {
+					textCidade.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("bairro")) {
+					textBairro.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("uf")) {
+					textEstado.setText(element.getText());
+				}
+				if (element.getQualifiedName().equals("tipo_logradouro")) {
+					tipoLogradoro = element.getText();
+				}
+				if (element.getQualifiedName().equals("logradouro")) {
+					logradouro = element.getText();
+				}
+				if (element.getQualifiedName().equals("resultado")) {
+					resultado = element.getText();
+					if (resultado.equals("1")) {
+					} else {
+						erro("CEP inválido!");
+					}
+				}
+				textRua.setText(tipoLogradoro + " " + logradouro);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
 }

@@ -1135,8 +1135,15 @@ public class TelaFuncionarios extends JFrame {
 		contentPane.add(textSalario);
 
 		// Mudando o tamanho da coluna 7 (Ações)
-		table.getColumnModel().getColumn(6).setPreferredWidth(1);
-		table.getColumnModel().getColumn(5).setPreferredWidth(1);
+		table.getColumnModel().getColumn(7).setPreferredWidth(10);
+		table.getColumnModel().getColumn(6).setPreferredWidth(95);
+		table.getColumnModel().getColumn(5).setPreferredWidth(45);
+		table.getColumnModel().getColumn(4).setPreferredWidth(10);
+		table.getColumnModel().getColumn(3).setPreferredWidth(60);
+		table.getColumnModel().getColumn(2).setPreferredWidth(20);
+		table.getColumnModel().getColumn(1).setPreferredWidth(10);
+		table.getColumnModel().getColumn(0).setPreferredWidth(1);
+		
 		JFrame essaJanela = this;
 		TableActionEvent event = new TableActionEvent() {
 

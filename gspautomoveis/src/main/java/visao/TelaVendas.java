@@ -520,18 +520,18 @@ public class TelaVendas extends JFrame {
 		JLabel lblMarca = new JLabel("Nome:");
 		lblMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMarca.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblMarca.setBounds(962, 319, 114, 38);
+		lblMarca.setBounds(977, 272, 114, 38);
 		contentPane.add(lblMarca);
 
 		textNomeC = new JTextField();
 		textNomeC.setFont(new Font("Krona One", Font.PLAIN, 14));
-		textNomeC.setBounds(1086, 319, 233, 38);
+		textNomeC.setBounds(1101, 272, 233, 38);
 		contentPane.add(textNomeC);
 		textNomeC.setColumns(10);
 
 		JLabel lblCpfCliente = new JLabel("CPF:");
 		lblCpfCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblCpfCliente.setBounds(1002, 152, 74, 38);
+		lblCpfCliente.setBounds(1017, 335, 74, 38);
 		contentPane.add(lblCpfCliente);
 
 		MaskFormatter mascaraCPF = null;
@@ -544,13 +544,13 @@ public class TelaVendas extends JFrame {
 		textCPFC = new JFormattedTextField(mascaraCPF);
 		textCPFC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCPFC.setColumns(10);
-		textCPFC.setBounds(1086, 152, 233, 38);
+		textCPFC.setBounds(1101, 335, 233, 38);
 		contentPane.add(textCPFC);
 
 		JLabel lblTelefoneCliente = new JLabel("Telefone:");
 		lblTelefoneCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelefoneCliente.setFont(new Font("Krona One", Font.PLAIN, 24));
-		lblTelefoneCliente.setBounds(919, 233, 157, 38);
+		lblTelefoneCliente.setBounds(936, 398, 157, 38);
 		contentPane.add(lblTelefoneCliente);
 
 		MaskFormatter mascaraTel = null;
@@ -563,7 +563,7 @@ public class TelaVendas extends JFrame {
 		textTelefoneC = new JFormattedTextField(mascaraTel);
 		textTelefoneC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textTelefoneC.setColumns(10);
-		textTelefoneC.setBounds(1086, 233, 233, 38);
+		textTelefoneC.setBounds(1103, 398, 233, 38);
 		contentPane.add(textTelefoneC);
 
 		MaskFormatter mascaraCEP = null;
@@ -576,61 +576,61 @@ public class TelaVendas extends JFrame {
 		textCepC = new JFormattedTextField(mascaraCEP);
 		textCepC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCepC.setColumns(10);
-		textCepC.setBounds(1583, 407, 233, 38);
+		textCepC.setBounds(1553, 424, 233, 38);
 		contentPane.add(textCepC);
 
 		JLabel lblBairro = new JLabel("CEP:");
 		lblBairro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblBairro.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblBairro.setBounds(1480, 407, 93, 38);
+		lblBairro.setBounds(1450, 424, 93, 38);
 		contentPane.add(lblBairro);
 
 		JLabel lblCidae = new JLabel("Cidade:");
 		lblCidae.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCidae.setBounds(944, 407, 132, 38);
+		lblCidae.setBounds(1422, 550, 132, 38);
 		contentPane.add(lblCidae);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 18));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Pix", "Boleto", "Crédito", "Débito" }));
 		comboBox.setBackground(new Color(255, 255, 255));
-		comboBox.setBounds(1583, 564, 233, 38);
+		comboBox.setBounds(1103, 567, 233, 38);
 		contentPane.add(comboBox);
 
 		textCidadeC = new JTextField();
 		textCidadeC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textCidadeC.setColumns(10);
-		textCidadeC.setBounds(1086, 407, 233, 38);
+		textCidadeC.setBounds(1564, 550, 233, 38);
 		contentPane.add(textCidadeC);
 
 		JLabel lblEstado = new JLabel("Estado:");
 		lblEstado.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEstado.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEstado.setBounds(1430, 487, 143, 38);
+		lblEstado.setBounds(1400, 487, 143, 38);
 		contentPane.add(lblEstado);
 
 		textEstadoC = new JTextField();
 		textEstadoC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEstadoC.setColumns(10);
-		textEstadoC.setBounds(1583, 487, 233, 38);
+		textEstadoC.setBounds(1553, 487, 233, 38);
 		contentPane.add(textEstadoC);
 
 		JLabel lblRua = new JLabel("Rua:");
 		lblRua.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblRua.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblRua.setBounds(1478, 152, 95, 38);
+		lblRua.setBounds(1459, 659, 95, 38);
 		contentPane.add(lblRua);
 
 		textRuaC = new JTextField();
 		textRuaC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textRuaC.setColumns(10);
-		textRuaC.setBounds(1583, 152, 233, 38);
+		textRuaC.setBounds(1564, 659, 233, 38);
 		contentPane.add(textRuaC);
 
 		JLabel lblData = new JLabel("Data:");
 		lblData.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblData.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblData.setBounds(1473, 314, 100, 38);
+		lblData.setBounds(993, 507, 100, 38);
 		contentPane.add(lblData);
 
 		MaskFormatter mascaraData = null;
@@ -643,7 +643,7 @@ public class TelaVendas extends JFrame {
 		textDataCompra = new JFormattedTextField(mascaraData);
 		textDataCompra.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textDataCompra.setColumns(10);
-		textDataCompra.setBounds(1583, 319, 233, 38);
+		textDataCompra.setBounds(1103, 512, 233, 38);
 		contentPane.add(textDataCompra);
 
 		JLabel lblPreo = new JLabel("Preço:");
@@ -662,13 +662,13 @@ public class TelaVendas extends JFrame {
 
 		JLabel lblCep = new JLabel("Bairro:");
 		lblCep.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblCep.setBounds(962, 487, 114, 38);
+		lblCep.setBounds(1440, 607, 114, 38);
 		contentPane.add(lblCep);
 
 		textBairroC = new JTextField();
 		textBairroC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textBairroC.setColumns(10);
-		textBairroC.setBounds(1086, 487, 233, 38);
+		textBairroC.setBounds(1564, 607, 233, 38);
 		contentPane.add(textBairroC);
 
 		JFrame tela = this;
@@ -762,7 +762,7 @@ public class TelaVendas extends JFrame {
 
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(TelaVendas.class.getResource("/visao/imagens/bglateral.png")));
-		lblNewLabel_5.setBounds(889, 60, 5, 678);
+		lblNewLabel_5.setBounds(843, -47, 8, 1088);
 		contentPane.add(lblNewLabel_5);
 
 		JLabel lblCpfCliente_1 = new JLabel("Marca:");
@@ -840,19 +840,19 @@ public class TelaVendas extends JFrame {
 		textEmailC = new JTextField();
 		textEmailC.setFont(new Font("Krona One", Font.PLAIN, 14));
 		textEmailC.setColumns(10);
-		textEmailC.setBounds(1583, 233, 233, 38);
+		textEmailC.setBounds(1101, 458, 233, 38);
 		contentPane.add(textEmailC);
 
 		JLabel lblEmailCliente = new JLabel("Email:");
 		lblEmailCliente.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmailCliente.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblEmailCliente.setBounds(1449, 233, 124, 38);
+		lblEmailCliente.setBounds(967, 458, 124, 38);
 		contentPane.add(lblEmailCliente);
 
 		JLabel lblPagamento = new JLabel("Pagamento:");
 		lblPagamento.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPagamento.setFont(new Font("Krona One", Font.PLAIN, 26));
-		lblPagamento.setBounds(1354, 567, 219, 38);
+		lblPagamento.setBounds(874, 570, 219, 38);
 		contentPane.add(lblPagamento);
 
 	}

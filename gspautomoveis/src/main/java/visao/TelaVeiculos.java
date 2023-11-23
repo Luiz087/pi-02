@@ -158,10 +158,16 @@ public class TelaVeiculos extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaFuncionarios telafunc = new TelaFuncionarios();
-				dispose();
-				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafunc.setVisible(true);
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
+					TelaFuncionarios telafunc = new TelaFuncionarios();
+					dispose();
+					telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafunc.setVisible(true);
+
+				} else {
+					erro("Cargo insuficiente");
+				}
 			}
 		});
 
@@ -257,6 +263,119 @@ public class TelaVeiculos extends JFrame {
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
 
+		JLabel lblNewLabel_2_1_2 = new JLabel("");
+		lblNewLabel_2_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/bau veiculos.png")));
+		lblNewLabel_2_1_2.setBounds(30, 418, 51, 63);
+		contentPane.add(lblNewLabel_2_1_2);
+
+		JLabel lblNewLabel_2_1_2_1 = new JLabel("");
+		lblNewLabel_2_1_2_1.setBounds(30, 788, 51, 63);
+		contentPane.add(lblNewLabel_2_1_2_1);
+		lblNewLabel_2_1_2_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/casa.png")));
+		lblNewLabel_2_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+
+		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
+		lblNewLabel_4_1_1_1_2.setBounds(0, 788, 302, 61);
+		contentPane.add(lblNewLabel_4_1_1_1_2);
+		lblNewLabel_4_1_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
+
+		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
+		lblNewLabel_2_1_1_1_1.setBounds(30, 714, 51, 63);
+		contentPane.add(lblNewLabel_2_1_1_1_1);
+		lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFornecedores telafornec = new TelaFornecedores();
+				dispose();
+				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafornec.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carro +.png")));
+
+		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("         Fornecedores");
+		lblNewLabel_4_1_1_1_1.setBounds(0, 714, 350, 63);
+		contentPane.add(lblNewLabel_4_1_1_1_1);
+		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
+					TelaFornecedores telafornec = new TelaFornecedores();
+					dispose();
+					telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafornec.setVisible(true);
+
+				} else {
+					erro("Cargo insuficiente");
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_1.setVisible(true);
+
+			}
+		});
+		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
+		lblNewLabel.setBounds(30, 642, 51, 63);
+		contentPane.add(lblNewLabel);
+
+		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
+		lblNewLabel_4_1_1_1.setBounds(0, 642, 350, 61);
+		contentPane.add(lblNewLabel_4_1_1_1);
+		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setVisible(true);
+			}
+		});
+		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+
+		JLabel lblNewLabel_2_1_1 = new JLabel("");
+		lblNewLabel_2_1_1.setBounds(30, 566, 51, 63);
+		contentPane.add(lblNewLabel_2_1_1);
+		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios();
+				dispose();
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
+			}
+		});
+		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Pessoa.png")));
+
 		JLabel lblNewLabel_4_1 = new JLabel("          Configurações");
 		lblNewLabel_4_1.setBounds(0, 492, 350, 63);
 		contentPane.add(lblNewLabel_4_1);
@@ -303,118 +422,16 @@ public class TelaVeiculos extends JFrame {
 		contentPane.add(panel);
 		panel.setBackground(new Color(215, 215, 215, 50));
 		panel.setLayout(null);
-
-		JLabel lblNewLabel_2_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1.setBounds(34, 11, 40, 35);
-		panel.add(lblNewLabel_2_1_1_1);
-		lblNewLabel_2_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
-				dispose();
-				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);
-			}
-		});
-		lblNewLabel_2_1_1_1
-				.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carrinho compras.png")));
-
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("Histórico");
-		lblNewLabel_4_1_1_1.setBounds(0, 0, 350, 61);
-		panel.add(lblNewLabel_4_1_1_1);
-		lblNewLabel_4_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
-				dispose();
-				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaHV.setVisible(true);
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panel.setVisible(true);
-			}
-		});
-		lblNewLabel_4_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		panel_1.setBackground(new Color(215, 215, 215, 50));
 		panel_1.setLayout(null);
-
-		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("");
-		lblNewLabel_2_1_1_1_1.setBounds(34, 11, 40, 35);
-		panel_1.add(lblNewLabel_2_1_1_1_1);
-		lblNewLabel_2_1_1_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2_1_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaFornecedores telafornec = new TelaFornecedores();
-				dispose();
-				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafornec.setVisible(true);
-			}
-		});
-		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/carro +.png")));
-
-		JLabel lblNewLabel_4_1_1_1_1 = new JLabel("         Fornecedores");
-		lblNewLabel_4_1_1_1_1.setBounds(0, 0, 350, 63);
-		panel_1.add(lblNewLabel_4_1_1_1_1);
-		lblNewLabel_4_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_4_1_1_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaFornecedores telafornec = new TelaFornecedores();
-				dispose();
-				telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafornec.setVisible(true);
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				panel_1.setVisible(true);
-
-			}
-		});
-		lblNewLabel_4_1_1_1_1.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
 		panel_2.setBackground(new Color(215, 215, 215, 50));
 		panel_2.setLayout(null);
-
-		JLabel lblNewLabel_2_1_1 = new JLabel("");
-		lblNewLabel_2_1_1.setBounds(36, 11, 40, 35);
-		panel_2.add(lblNewLabel_2_1_1);
-		lblNewLabel_2_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2_1_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaFuncionarios telafunc = new TelaFuncionarios();
-				dispose();
-				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafunc.setVisible(true);
-			}
-		});
-		lblNewLabel_2_1_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Pessoa.png")));
 		panel_3.setBackground(new Color(215, 215, 215, 50));
 		panel_3.setLayout(null);
 		panel_4.setBackground(new Color(215, 215, 215, 50));
 		panel_5.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setBackground(new Color(215, 215, 215, 50));
 		panel_6.setLayout(null);
-
-		JLabel lblNewLabel_2_1_2_1 = new JLabel("");
-		lblNewLabel_2_1_2_1.setBounds(39, 11, 40, 35);
-		panel_6.add(lblNewLabel_2_1_2_1);
-		lblNewLabel_2_1_2_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/casa.png")));
-		lblNewLabel_2_1_2_1.setHorizontalAlignment(SwingConstants.LEFT);
-
-		JLabel lblNewLabel_4_1_1_1_2 = new JLabel("Home");
-		lblNewLabel_4_1_1_1_2.setBounds(89, 0, 258, 61);
-		panel_6.add(lblNewLabel_4_1_1_1_2);
-		lblNewLabel_4_1_1_1_2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_4_1_1_1_2.setForeground(Color.WHITE);
-		lblNewLabel_4_1_1_1_2.setFont(new Font("Krona One", Font.PLAIN, 26));
 
 		JComboBox cbAbs = new JComboBox();
 		cbAbs.addFocusListener(new FocusAdapter() {
@@ -474,23 +491,8 @@ public class TelaVeiculos extends JFrame {
 		lblNewLabel_4.setBounds(0, 418, 339, 63);
 		contentPane.add(lblNewLabel_4);
 
-		JLabel lblNewLabel_2_1_2 = new JLabel("");
-		lblNewLabel_2_1_2.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_2_1_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				TelaVeiculos telaveic = new TelaVeiculos();
-				dispose();
-				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telaveic.setVisible(true);
-			}
-		});
-		lblNewLabel_2_1_2.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/bau veiculos.png")));
-		lblNewLabel_2_1_2.setBounds(39, 429, 40, 35);
-		contentPane.add(lblNewLabel_2_1_2);
-
 		JLabel lblNewLabel_2_1 = new JLabel("");
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -501,7 +503,7 @@ public class TelaVeiculos extends JFrame {
 			}
 		});
 		lblNewLabel_2_1.setIcon(new ImageIcon(TelaVeiculos.class.getResource("/visao/imagens/Engrenagem.png")));
-		lblNewLabel_2_1.setBounds(39, 509, 40, 35);
+		lblNewLabel_2_1.setBounds(30, 492, 51, 63);
 		contentPane.add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_4_1_1 = new JLabel("        Funcionários");
@@ -1063,22 +1065,28 @@ public class TelaVeiculos extends JFrame {
 			@Override
 			public void onView(int row) {
 				int linhaSelecionada = table.getSelectedRow();
-				TelaVendas vendas = new TelaVendas(
-						Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString()));
-				vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				vendas.setVisible(true);
-				dispose();
-				/*
-				 * TelaVendas ven = new TelaVendas();
-				 * 
-				 * int index = Table.getSelectedRow(); TableModel model = Table.getModel();
-				 * String marca = model.getValueAt(index, 0).toString(); String modelo =
-				 * model.getValueAt(index, 0).toString();
-				 * 
-				 * 
-				 * ven.setVisible(true); ven.pack();
-				 * ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);
-				 */
+
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas") || Cargo.equals("Vendedor")) {
+					TelaVendas vendas = new TelaVendas(
+							Integer.valueOf(table.getModel().getValueAt(linhaSelecionada, 0).toString()));
+					vendas.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					vendas.setVisible(true);
+					dispose();
+					/*
+					 * TelaVendas ven = new TelaVendas();
+					 * 
+					 * int index = Table.getSelectedRow(); TableModel model = Table.getModel();
+					 * String marca = model.getValueAt(index, 0).toString(); String modelo =
+					 * model.getValueAt(index, 0).toString();
+					 * 
+					 * 
+					 * ven.setVisible(true); ven.pack();
+					 * ven.setDefaultCloseOperation(Jframe.DISPOSE_ON_CLOSE);
+					 */
+				}else {
+					erro("Cargo insuficinte");
+				}
 			}
 		};
 		table.getColumnModel().getColumn(14).setCellRenderer(new TableActionCellRenderD());
@@ -1171,8 +1179,9 @@ public class TelaVeiculos extends JFrame {
 						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
 						String data[] = { String.valueOf(vei.getIdCarro()), vei.getMarca(), vei.getModelo(),
 								vei.getFornecedor().getNomeFornecedor(), carroPromo, carroAbs, vei.getPotencia(),
-								String.valueOf(vei.getQuilometragem()), vei.getCombustivel(), vei.getTipo(), vei.getCor(),
-								String.valueOf(vei.getAno()), carroNovo, String.valueOf(vei.getPrecoCarro()) };
+								String.valueOf(vei.getQuilometragem()), vei.getCombustivel(), vei.getTipo(),
+								vei.getCor(), String.valueOf(vei.getAno()), carroNovo,
+								String.valueOf(vei.getPrecoCarro()) };
 						tblModel.addRow(data);
 					}
 				} else {
@@ -1320,8 +1329,6 @@ public class TelaVeiculos extends JFrame {
 
 			}
 		});
-
-		
 
 	}
 

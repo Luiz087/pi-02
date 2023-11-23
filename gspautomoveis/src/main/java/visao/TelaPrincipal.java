@@ -117,7 +117,7 @@ public class TelaPrincipal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				TelaFornecedores telafornec = new TelaFornecedores();
 				String Cargo = funcdao.passaLogado().getNivelCargo(); 
-				if(Cargo == "Administrador" || Cargo == "Gerente de Vendas") {
+				if(Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
 					dispose();
 					telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					telafornec.setVisible(true);
@@ -145,7 +145,7 @@ public class TelaPrincipal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				TelaFuncionarios telafunc = new TelaFuncionarios();
 				String Cargo = funcdao.passaLogado().getNivelCargo(); 
-				if(Cargo == "Administrador" || Cargo == "Gerente de Vendas") {
+				if(Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
 					dispose();
 					telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					telafunc.setVisible(true);

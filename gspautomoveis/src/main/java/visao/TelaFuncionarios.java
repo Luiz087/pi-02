@@ -74,7 +74,6 @@ public class TelaFuncionarios extends JFrame {
 	private JTextField textField;
 	private JPanel panel_6_1;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -110,216 +109,221 @@ public class TelaFuncionarios extends JFrame {
 
 		LineBorder redBorder = new LineBorder(Color.RED);
 		LineBorder blackBorder = new LineBorder(Color.BLACK);
-		
-				JPanel panel_5 = new JPanel();
+
+		JPanel panel_5 = new JPanel();
+		panel_5.setVisible(false);
+		panel_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_5.setVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
 				panel_5.setVisible(false);
-				panel_5.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseEntered(MouseEvent e) {
-						panel_5.setVisible(true);
-					}
+			}
 
-					@Override
-					public void mouseExited(MouseEvent e) {
-						panel_5.setVisible(false);
-					}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaLogin telalogin = new TelaLogin();
+				dispose();
+				telalogin.setLocationRelativeTo(null);
+				telalogin.setVisible(true);
+			}
+		});
 
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						TelaLogin telalogin = new TelaLogin();
-						dispose();
-						telalogin.setLocationRelativeTo(null);
-						telalogin.setVisible(true);
-					}
-				});
-				
-						JPanel panel_4 = new JPanel();
-						panel_4.setVisible(false);
-						panel_4.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								panel_4.setVisible(true);
-							}
+		JPanel panel_4 = new JPanel();
+		panel_4.setVisible(false);
+		panel_4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_4.setVisible(true);
+			}
 
-							@Override
-							public void mouseExited(MouseEvent e) {
-								panel_4.setVisible(false);
-							}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_4.setVisible(false);
+			}
 
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								TelaVeiculos telaveic = new TelaVeiculos();
-								dispose();
-								telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
-								telaveic.setVisible(true);
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaVeiculos telaveic = new TelaVeiculos();
+				dispose();
+				telaveic.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaveic.setVisible(true);
 
-							}
-						});
-						JPanel panel_3 = new JPanel();
-						panel_3.setVisible(false);
-						panel_3.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseEntered(MouseEvent e) {
-								panel_3.setVisible(true);
-							}
+			}
+		});
+		JPanel panel_3 = new JPanel();
+		panel_3.setVisible(false);
+		panel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_3.setVisible(true);
+			}
 
-							@Override
-							public void mouseExited(MouseEvent e) {
-								panel_3.setVisible(false);
-							}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_3.setVisible(false);
+			}
 
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								Configuracao telaconfig = new Configuracao();
-								dispose();
-								telaconfig.setLocationRelativeTo(null);
-								telaconfig.setVisible(true);
-							}
-						});
-						
-								JPanel panel_2 = new JPanel();
-								panel_2.setVisible(false);
-								panel_2.addMouseListener(new MouseAdapter() {
-									@Override
-									public void mouseEntered(MouseEvent e) {
-										panel_2.setVisible(true);
-									}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Configuracao telaconfig = new Configuracao();
+				dispose();
+				telaconfig.setLocationRelativeTo(null);
+				telaconfig.setVisible(true);
+			}
+		});
 
-									@Override
-									public void mouseExited(MouseEvent e) {
-										panel_2.setVisible(false);
-									}
+		JPanel panel_2 = new JPanel();
+		panel_2.setVisible(false);
+		panel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_2.setVisible(true);
+			}
 
-									@Override
-									public void mouseClicked(MouseEvent e) {
-										TelaFuncionarios telafunc = new TelaFuncionarios();
-										dispose();
-										telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-										telafunc.setVisible(true);
-									}
-								});
-								
-										JPanel panel_1 = new JPanel();
-										panel_1.setVisible(false);
-										panel_1.addMouseListener(new MouseAdapter() {
-											@Override
-											public void mouseEntered(MouseEvent e) {
-												panel_1.setVisible(true);
-											}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_2.setVisible(false);
+			}
 
-											@Override
-											public void mouseExited(MouseEvent e) {
-												panel_1.setVisible(false);
-											}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaFuncionarios telafunc = new TelaFuncionarios();
+				dispose();
+				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telafunc.setVisible(true);
+			}
+		});
 
-											@Override
-											public void mouseClicked(MouseEvent e) {
-												TelaFornecedores telafornec = new TelaFornecedores();
-												dispose();
-												telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
-												telafornec.setVisible(true);
-											}
-										});
-										
-												panel = new JPanel();
-												panel.setVisible(false);
-												panel.addMouseListener(new MouseAdapter() {
-													@Override
-													public void mouseEntered(MouseEvent e) {
-														panel.setVisible(true);
+		JPanel panel_1 = new JPanel();
+		panel_1.setVisible(false);
+		panel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_1.setVisible(true);
+			}
 
-													}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_1.setVisible(false);
+			}
 
-													@Override
-													public void mouseExited(MouseEvent e) {
-														panel.setVisible(false);
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
+					TelaFornecedores telafornec = new TelaFornecedores();
+					dispose();
+					telafornec.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafornec.setVisible(true);
+				}else {
+					erro("Cargo insuficiente");
+				}
+			}
+		});
 
-													}
+		panel = new JPanel();
+		panel.setVisible(false);
+		panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel.setVisible(true);
 
-													@Override
-													public void mouseClicked(MouseEvent e) {
-														TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
-														dispose();
-														telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
-														telaHV.setVisible(true);
+			}
 
-													}
-												});
-												
-														JPanel panel_6_1 = new JPanel();
-														panel_6_1.setVisible(false);
-														panel_6_1.addMouseListener(new MouseAdapter() {
-															@Override
-															public void mouseEntered(MouseEvent e) {
-																panel_6_1.setVisible(true);
-															}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel.setVisible(false);
 
-															@Override
-															public void mouseExited(MouseEvent e) {
-																panel_6_1.setVisible(false);
-															}
+			}
 
-															@Override
-															public void mouseClicked(MouseEvent e) {
-																TelaPrincipal prin = new TelaPrincipal();
-																dispose();
-																prin.setLocationRelativeTo(null);
-																prin.setVisible(true);
-															}
-														});
-																
-																JLabel lblNewLabel_2 = new JLabel("");
-																lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/search.png")));
-																lblNewLabel_2.setBounds(897, 403, 32, 38);
-																contentPane.add(lblNewLabel_2);
-														
-																panel_6_1.setBounds(0, 784, 350, 56);
-																contentPane.add(panel_6_1);
-																panel_6_1.setForeground(new Color(0, 0, 0));
-																panel_6_1.setBackground(new Color(215, 215, 215, 50));
-																panel_6_1.setLayout(null);
-												
-												JLabel lblNewLabel_2_1_3 = new JLabel("");
-												lblNewLabel_2_1_3.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/casa.png")));
-												lblNewLabel_2_1_3.setHorizontalAlignment(SwingConstants.CENTER);
-												lblNewLabel_2_1_3.setBounds(0, 784, 79, 56);
-												contentPane.add(lblNewLabel_2_1_3);
-												
-												JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("          Home");
-												lblNewLabel_4_1_1_1_1_1.addMouseListener(new MouseAdapter() {
-													@Override
-													public void mouseEntered(MouseEvent e) {
-														panel_6_1.setVisible(true);
-													}
-												});
-												lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
-												lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
-												lblNewLabel_4_1_1_1_1_1.setBounds(0, 784, 350, 52);
-												contentPane.add(lblNewLabel_4_1_1_1_1_1);
-												panel.setForeground(new Color(0, 0, 0));
-												panel.setBounds(0, 629, 350, 52);
-												contentPane.add(panel);
-												panel.setBackground(new Color(215, 215, 215, 50));
-										panel_1.setBounds(0, 702, 350, 56);
-										contentPane.add(panel_1);
-										panel_1.setForeground(new Color(0, 0, 0));
-										panel_1.setBackground(new Color(215, 215, 215, 50));
-								panel_2.setBounds(0, 554, 350, 52);
-								contentPane.add(panel_2);
-								panel_2.setForeground(new Color(0, 0, 0));
-								panel_2.setBackground(new Color(215, 215, 215, 50));
-						panel_3.setBounds(0, 474, 350, 56);
-						contentPane.add(panel_3);
-						panel_3.setForeground(new Color(0, 0, 0));
-						panel_3.setBackground(new Color(215, 215, 215, 50));
-						panel_4.setBounds(0, 390, 350, 63);
-						contentPane.add(panel_4);
-						panel_4.setForeground(new Color(0, 0, 0));
-						panel_4.setBackground(new Color(215, 215, 215, 50));
-				panel_5.setBounds(0, 913, 350, 63);
-				contentPane.add(panel_5);
-				panel_5.setForeground(new Color(0, 0, 0));
-				panel_5.setBackground(new Color(215, 215, 215, 50));
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaHistoricoVeiculos telaHV = new TelaHistoricoVeiculos();
+				dispose();
+				telaHV.setExtendedState(JFrame.MAXIMIZED_BOTH);
+				telaHV.setVisible(true);
+
+			}
+		});
+
+		JPanel panel_6_1 = new JPanel();
+		panel_6_1.setVisible(false);
+		panel_6_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6_1.setVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				panel_6_1.setVisible(false);
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				TelaPrincipal prin = new TelaPrincipal();
+				dispose();
+				prin.setLocationRelativeTo(null);
+				prin.setVisible(true);
+			}
+		});
+
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/search.png")));
+		lblNewLabel_2.setBounds(897, 403, 32, 38);
+		contentPane.add(lblNewLabel_2);
+
+		panel_6_1.setBounds(0, 784, 350, 56);
+		contentPane.add(panel_6_1);
+		panel_6_1.setForeground(new Color(0, 0, 0));
+		panel_6_1.setBackground(new Color(215, 215, 215, 50));
+		panel_6_1.setLayout(null);
+
+		JLabel lblNewLabel_2_1_3 = new JLabel("");
+		lblNewLabel_2_1_3.setIcon(new ImageIcon(TelaFuncionarios.class.getResource("/visao/imagens/casa.png")));
+		lblNewLabel_2_1_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1_3.setBounds(0, 784, 79, 56);
+		contentPane.add(lblNewLabel_2_1_3);
+
+		JLabel lblNewLabel_4_1_1_1_1_1 = new JLabel("          Home");
+		lblNewLabel_4_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				panel_6_1.setVisible(true);
+			}
+		});
+		lblNewLabel_4_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_4_1_1_1_1_1.setFont(new Font("Krona One", Font.PLAIN, 26));
+		lblNewLabel_4_1_1_1_1_1.setBounds(0, 784, 350, 52);
+		contentPane.add(lblNewLabel_4_1_1_1_1_1);
+		panel.setForeground(new Color(0, 0, 0));
+		panel.setBounds(0, 629, 350, 52);
+		contentPane.add(panel);
+		panel.setBackground(new Color(215, 215, 215, 50));
+		panel_1.setBounds(0, 702, 350, 56);
+		contentPane.add(panel_1);
+		panel_1.setForeground(new Color(0, 0, 0));
+		panel_1.setBackground(new Color(215, 215, 215, 50));
+		panel_2.setBounds(0, 554, 350, 52);
+		contentPane.add(panel_2);
+		panel_2.setForeground(new Color(0, 0, 0));
+		panel_2.setBackground(new Color(215, 215, 215, 50));
+		panel_3.setBounds(0, 474, 350, 56);
+		contentPane.add(panel_3);
+		panel_3.setForeground(new Color(0, 0, 0));
+		panel_3.setBackground(new Color(215, 215, 215, 50));
+		panel_4.setBounds(0, 390, 350, 63);
+		contentPane.add(panel_4);
+		panel_4.setForeground(new Color(0, 0, 0));
+		panel_4.setBackground(new Color(215, 215, 215, 50));
+		panel_5.setBounds(0, 913, 350, 63);
+		contentPane.add(panel_5);
+		panel_5.setForeground(new Color(0, 0, 0));
+		panel_5.setBackground(new Color(215, 215, 215, 50));
 
 		JComboBox CBCargo = new JComboBox();
 		CBCargo.addFocusListener(new FocusAdapter() {
@@ -1148,7 +1152,7 @@ public class TelaFuncionarios extends JFrame {
 		table.getColumnModel().getColumn(2).setPreferredWidth(20);
 		table.getColumnModel().getColumn(1).setPreferredWidth(10);
 		table.getColumnModel().getColumn(0).setPreferredWidth(1);
-		
+
 		JFrame essaJanela = this;
 		TableActionEvent event = new TableActionEvent() {
 

@@ -30,6 +30,7 @@ import javax.swing.text.MaskFormatter;
 
 import controle.EnderecoDAO;
 import controle.FornecedorDAO;
+import controle.FuncionarioDAO;
 import controle.Validacoes;
 import modelo.Endereco;
 import modelo.Fornecedor;
@@ -60,6 +61,7 @@ public class TelaFornecedores extends JFrame {
 	private JTextField textId;
 	private JPanel panel;
 	private JPanel panel_6;
+	private FuncionarioDAO funcdao = FuncionarioDAO.getInstancia();
 
 	/**
 	 * Launch the application.
@@ -160,10 +162,15 @@ public class TelaFornecedores extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaFuncionarios telafunc = new TelaFuncionarios();
-				dispose();
-				telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-				telafunc.setVisible(true);
+				String Cargo = funcdao.passaLogado().getNivelCargo();
+				if (Cargo.equals("Administrador") || Cargo.equals("Gerente de Vendas")) {
+					TelaFuncionarios telafunc = new TelaFuncionarios();
+					dispose();
+					telafunc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+					telafunc.setVisible(true);
+				}else {
+					erro("Cargo insuficiente");
+				}
 			}
 		});
 
@@ -246,6 +253,7 @@ public class TelaFornecedores extends JFrame {
 				telaprinc.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				telaprinc.setVisible(true);
 			}
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_6.setVisible(true);

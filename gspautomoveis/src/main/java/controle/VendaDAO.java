@@ -26,6 +26,8 @@ public class VendaDAO implements IVendaDAO {
 		return instancia;
 	}
 
+	public Integer vendaS;
+	
 	public Integer inserir(Venda v) {
 
 		Conexao c = Conexao.getInstancia();
@@ -292,6 +294,10 @@ public class VendaDAO implements IVendaDAO {
 		}
 
 		return Vendas;
+	}
+
+	public void vendaselecionada(int linha) {
+		vendaS = linha+1;
 	}
 
 }

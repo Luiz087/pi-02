@@ -592,24 +592,26 @@ public class TelaHistoricoVeiculos extends JFrame {
 		TableActionEventU eventU = new TableActionEventU(){
 			@Override
 			public void onEdit(int row) {
-				//esse aqui tlg pai
 			}
 
 			@Override
 			public void onDelete(int row) {
-				// TODO Auto-generated method stub
+				int linha = table.getSelectedRow();
+				vendadao.vendaselecionada(linha);
+				AmadoBatista batista = new AmadoBatista();
+				
+				batista.setVisible(true);
 				
 			}
 
 			@Override
 			public void onView(int row) {
-				// TODO Auto-generated method stub
 				
 			}
 
 		};
 		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRenderU());
-		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditorU(eventU));
+		table.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditorU(eventU));
 		
 		
 		comboBox.setHorizontalAlignment(SwingConstants.CENTER);

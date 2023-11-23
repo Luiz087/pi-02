@@ -11,6 +11,7 @@ import java.util.List;
 
 import modelo.Carro;
 import modelo.Fornecedor;
+import modelo.Funcionario;
 import modelo.IVendaDAO;
 import modelo.Venda;
 
@@ -135,7 +136,7 @@ public class VendaDAO implements IVendaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				
+
 				Integer id = rs.getInt("id_venda");
 				String NomeCliente = rs.getString("NomeCliente");
 				Long CpfCliente = rs.getLong("CpfCliente");
@@ -167,6 +168,66 @@ public class VendaDAO implements IVendaDAO {
 		}
 
 		return Vendas;
+	}
+
+	public Venda procuraVendaPorID(Integer idRecebido) {
+
+		Conexao c = Conexao.getInstancia();
+
+		Connection con = c.conectar();
+
+		Venda venda = new Venda();
+
+		String Query = "SELECT * FROM Vendas WHERE id_venda = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(Query);
+
+			ps.setInt(1, idRecebido);
+
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				Integer id = rs.getInt("id_venda");
+				String NomeCliente = rs.getString("NomeCliente");
+				Long CpfCliente = rs.getLong("CpfCliente");
+				Long TelefoneCliente = rs.getLong("TelefoneCliente");
+				String EnderecoCliente = rs.getString("EnderecoCliente");
+				java.sql.Date DataVenda = rs.getDate("DataVenda");
+				LocalDate localDate = DataVenda.toLocalDate();
+				Double PrecoVenda = rs.getDouble("Precovenda");
+				String formaPagamento = rs.getString("formaPagamento");
+				Integer idCarro = rs.getInt("Carros_id_carro");
+				Integer idFunc = rs.getInt("funcionarios_matricula");
+				
+				Carro carro = new Carro();
+				Funcionario func = new Funcionario();
+				
+				carro.setIdCarro(idCarro);
+				func.setMatricula(idFunc);
+
+				venda.setIdVenda(id);
+				venda.setNomeCliente(NomeCliente);
+				venda.setCpfCliente(CpfCliente);
+				venda.setTelefoneCliente(TelefoneCliente);
+				venda.setEnderecoCliente(EnderecoCliente);
+				venda.setDataVenda(localDate);
+				venda.setPrecoVenda(PrecoVenda);
+				venda.setFormaPagamento(formaPagamento);
+				venda.setCarro(carro);
+				venda.setFunc(func);
+
+				return venda;
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			c.fecharConexao();
+		}
+
+		return venda;
 	}
 
 	public List<Venda> buscaPorPalavra(String palavra) {

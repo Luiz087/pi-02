@@ -135,7 +135,8 @@ public class VendaDAO implements IVendaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-
+				
+				Integer id = rs.getInt("id_venda");
 				String NomeCliente = rs.getString("NomeCliente");
 				Long CpfCliente = rs.getLong("CpfCliente");
 				Long TelefoneCliente = rs.getLong("TelefoneCliente");
@@ -147,6 +148,7 @@ public class VendaDAO implements IVendaDAO {
 
 				Venda V = new Venda();
 
+				V.setIdVenda(id);
 				V.setNomeCliente(NomeCliente);
 				V.setCpfCliente(CpfCliente);
 				V.setTelefoneCliente(TelefoneCliente);
@@ -197,6 +199,7 @@ public class VendaDAO implements IVendaDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
+				Integer id = rs.getInt("id_venda");
 				String NomeCliente = rs.getString("NomeCliente");
 				Long CpfCliente = rs.getLong("CpfCliente");
 				Long TelefoneCliente = rs.getLong("TelefoneCliente");
@@ -208,6 +211,7 @@ public class VendaDAO implements IVendaDAO {
 
 				Venda V = new Venda();
 
+				V.setIdVenda(id);
 				V.setNomeCliente(NomeCliente);
 				V.setCpfCliente(CpfCliente);
 				V.setTelefoneCliente(TelefoneCliente);

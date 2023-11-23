@@ -513,7 +513,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 		table.setFont(new Font("Krona One", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { "Cliente", "Cpf", "Telefone", "Endereço", "Data Venda", "Preço venda", "Ações" }));
+				new String[] { "ID", "Cliente", "Cpf", "Telefone", "Endereço", "Data Venda", "Preço venda", "Ações" }));
 
 		JLabel lblNewLabel_2_1_1_1_1_1_1 = new JLabel("");
 		lblNewLabel_2_1_1_1_1_1_1
@@ -538,7 +538,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 			String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
 
 			DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-			String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+			String data[] = {String.valueOf(venda.getIdVenda()), venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
 					venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
 			tblModel.addRow(data);
 		}
@@ -561,7 +561,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 						String resultado = terceiroParte + "/" +  segundaParte + "/" + primeiroParte;
 
 						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-						String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+						String data[] = {String.valueOf(venda.getIdVenda()), venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
 								venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
 						tblModel.addRow(data);
 					}
@@ -580,7 +580,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 						String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
 
 						DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-						String data[] = { venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
+						String data[] = {String.valueOf(venda.getIdVenda()), venda.getNomeCliente(), String.valueOf(venda.getCpfCliente()), String.valueOf(venda.getTelefoneCliente()),
 								venda.getEnderecoCliente(), resultado, String.valueOf(venda.getPrecoVenda())};
 						tblModel.addRow(data);
 					}
@@ -608,7 +608,7 @@ public class TelaHistoricoVeiculos extends JFrame {
 			}
 
 		};
-		table.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRenderU());
+		table.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRenderU());
 		table.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditorU(eventU));
 		
 		

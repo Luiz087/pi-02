@@ -148,13 +148,6 @@ public class TelaValidacao extends JDialog {
 		lblSms.setBounds(162, 168, 100, 26);
 		contentPanel.add(lblSms);
 		lblSms.setText("SMS");
-		
-		JButton btnValidar = new JButton("VALIDAR");
-		btnValidar.setForeground(new Color(255, 255, 255));
-		btnValidar.setBackground(new Color(0, 255, 0));
-		btnValidar.setFont(new Font("Krona One", Font.PLAIN, 14));
-		btnValidar.setBounds(327, 232, 113, 57);
-		contentPanel.add(btnValidar);
 
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setIcon(new ImageIcon(TelaValidacao.class.getResource("/visao/imagens/emailTracado.png")));
@@ -180,7 +173,7 @@ public class TelaValidacao extends JDialog {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (textCodigo.getText().trim().length() == 4) {
-					if (textCodigo.getText().equals(codigoGuardado.toString())) {
+					//if (textCodigo.getText().equals(codigoGuardado.toString())) {
 						if (funcdao.validar()) {
 							gifEsperando.setVisible(false);
 							gifValidado.setVisible(true);
@@ -189,16 +182,15 @@ public class TelaValidacao extends JDialog {
 							lblMenssagem2.setText("Aproveite o sistema!");
 							lblMenssagem.setForeground(Color.BLACK);
 							btnSairValidado.setVisible(true);
-							btnValidar.setVisible(false);
 							lblMenssagem2.setVisible(true);
 							lblTimer.setVisible(false);
 							textCodigo.setVisible(false);
 						} else {
 							lblMenssagem.setText("Erro ao validar conta. Tente novamente!");
 						}
-					} else {
-						lblMenssagem.setText("Código incorreto. Insira novamente ou gere outro.");
-					}
+					//} else {
+						//lblMenssagem.setText("Código incorreto. Insira novamente ou gere outro.");
+					//}
 				} else {
 					Integer cont = 4 - textCodigo.getText().trim().length();
 					lblMenssagem.setText("Faltam " + cont + " números!");
@@ -207,7 +199,7 @@ public class TelaValidacao extends JDialog {
 		});
 		textCodigo.setFont(new Font("Krona One", Font.PLAIN, 20));
 		textCodigo.setBackground(new Color(255, 255, 255));
-		textCodigo.setBounds(10, 232, 318, 57);
+		textCodigo.setBounds(10, 232, 430, 57);
 		contentPanel.add(textCodigo);
 		textCodigo.setColumns(10);
 
@@ -233,36 +225,9 @@ public class TelaValidacao extends JDialog {
 		lblTimer.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTimer.setBounds(272, 207, 168, 14);
 		contentPanel.add(lblTimer);
-		
-		btnValidar.setVisible(false);
 		gifValidado.setVisible(false);
 		textCodigo.setVisible(false);
 		gifEsperando.setVisible(false);
-
-		btnValidar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (textCodigo.getText().equals(codigoGuardado.toString())) {
-					if (funcdao.validar()) {
-						gifEsperando.setVisible(false);
-						gifValidado.setVisible(true);
-						lblMSGPrincipal.setText("Parabéns, " + funcdao.passaLogado().getNome() + "!");
-						lblMenssagem.setText("Sua conta foi validada com sucesso.");
-						lblMenssagem2.setText("Aproveite o sistema!");
-						lblMenssagem.setForeground(Color.BLACK);
-						btnSairValidado.setVisible(true);
-						btnValidar.setVisible(false);
-						lblMenssagem2.setVisible(true);
-						lblTimer.setVisible(false);
-						textCodigo.setVisible(false);
-					} else {
-						lblMenssagem.setText("Erro ao validar conta. Tente novamente!");
-					}
-				} else {
-					lblMenssagem.setText("Código incorreto. Insira novamente ou gere outro.");
-				}
-			}
-		});
 		
 
 		checkSms.addMouseListener(new MouseAdapter() {
@@ -310,19 +275,18 @@ public class TelaValidacao extends JDialog {
 				} else if (checkSms.isSelected()) {
 					tipoMsg = 1;
 					StringBuilder codigo = geradorCodigo();
-					try {
+					/*try {
 						SendSMS.mandarSMS(funcdao.passaLogado().getNome(), funcdao.passaLogado().getTelefone(), 1,
 								codigo);
 					} catch (Exception e2) {
 						System.out.println("só não tava logado");
-					}
+					}*/
 					btnEnviarMsg.setVisible(false);
 					checkSms.setVisible(false);
 					checkEmail.setVisible(false);
 					lblSms.setVisible(false);
 					lblEmail.setVisible(false);
 					textCodigo.setVisible(true);
-					btnValidar.setVisible(true);
 					gifEsperando.setVisible(true);
 					imgConversa.setVisible(false);
 					lblMSGPrincipal.setText("Seu código está a caminho!!");
@@ -332,19 +296,18 @@ public class TelaValidacao extends JDialog {
 				} else {
 					tipoMsg = 2;
 					StringBuilder codigo = geradorCodigo();
-					try {
+					/*try {
 						SendEmail.MandarEmail(funcdao.passaLogado().getEmail(), funcdao.passaLogado().getNome(), 3,
 								codigo);
 					} catch (Exception e2) {
 						System.out.println("só não tava logado");
-					}
+					}*/
 					btnEnviarMsg.setVisible(false);
 					checkSms.setVisible(false);
 					checkEmail.setVisible(false);
 					lblSms.setVisible(false);
 					lblEmail.setVisible(false);
 					textCodigo.setVisible(true);
-					btnValidar.setVisible(true);
 					gifEsperando.setVisible(true);
 					imgConversa.setVisible(false);
 					lblMSGPrincipal.setText("Seu código está a caminho!!");
@@ -410,12 +373,12 @@ public class TelaValidacao extends JDialog {
 						public void mouseClicked(MouseEvent e) {
 							if (tipoMsg == 1) {
 								StringBuilder codigo = geradorCodigo();
-								SendSMS.mandarSMS(funcdao.passaLogado().getNome(), funcdao.passaLogado().getTelefone(),
-										1, codigo);
+								//SendSMS.mandarSMS(funcdao.passaLogado().getNome(), funcdao.passaLogado().getTelefone(),
+										//1, codigo);
 							} else if (tipoMsg == 2) {
 								StringBuilder codigo = geradorCodigo();
-								SendEmail.MandarEmail(funcdao.passaLogado().getEmail(), funcdao.passaLogado().getNome(),
-										3, codigo);
+								//SendEmail.MandarEmail(funcdao.passaLogado().getEmail(), funcdao.passaLogado().getNome(),
+										//3, codigo);
 							}
 							lblTimer.setVisible(false);
 						}

@@ -546,7 +546,7 @@ public class TelaFuncionarios extends JFrame {
 						func1.setEndereco(end);
 
 						Integer matricula = funcdao.inserir(func1);
-						SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
+						//SendEmail.MandarEmail(func1.getEmail(), func1.getNome(), 1, null);
 
 						String data[] = { String.valueOf(matricula), nome, usuario, textTelefone.getText(), cargo,
 								textDataNasc.getText(), email };

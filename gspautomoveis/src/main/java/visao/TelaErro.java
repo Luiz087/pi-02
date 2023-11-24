@@ -47,6 +47,8 @@ public class TelaErro extends JDialog {
 	 */
 
 	public TelaErro(JFrame asd, String string) {
+		super(asd, true);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(255, 255, 255));

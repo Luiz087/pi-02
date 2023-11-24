@@ -739,7 +739,7 @@ public class TelaVendas extends JFrame {
 							sucesso.setLocationRelativeTo(null);
 							sucesso.setVisible(true);
 
-							SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2, null);
+							//SendEmail.MandarEmail(textEmailC.getText(), textNomeC.getText(), 2, null);
 
 							dispose();
 						} else {

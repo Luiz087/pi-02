@@ -593,7 +593,7 @@ public class TelaVendas extends JFrame {
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Krona One", Font.PLAIN, 18));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Pix", "Boleto", "Crédito", "Débito" }));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Pix", "Boleto", "Cartão de Crédito", "Cartão de Débito", "Dinheiro em espécie" }));
 		comboBox.setBackground(new Color(255, 255, 255));
 		comboBox.setBounds(1126, 651, 233, 38);
 		contentPane.add(comboBox);

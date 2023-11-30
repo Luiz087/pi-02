@@ -108,79 +108,79 @@ public class AmadoBatista extends JFrame {
 		
 		JLabel lblModelo = new JLabel("edit");
 		lblModelo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblModelo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblModelo.setBounds(10, 211, 235, 28);
 		contentPane.add(lblModelo);
 		
 		JLabel lblMarca = new JLabel("edit");
 		lblMarca.setHorizontalAlignment(SwingConstants.LEFT);
-		lblMarca.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblMarca.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblMarca.setBounds(10, 249, 235, 28);
 		contentPane.add(lblMarca);
 		
 		JLabel lblAno = new JLabel("edit");
 		lblAno.setHorizontalAlignment(SwingConstants.LEFT);
-		lblAno.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblAno.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblAno.setBounds(10, 285, 235, 28);
 		contentPane.add(lblAno);
 		
 		JLabel lblNovo = new JLabel("edit");
 		lblNovo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNovo.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblNovo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblNovo.setBounds(10, 323, 235, 28);
 		contentPane.add(lblNovo);
 		
 		JLabel lblTipo = new JLabel("edit");
 		lblTipo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblTipo.setBounds(10, 362, 235, 28);
 		contentPane.add(lblTipo);
 		
 		JLabel lblCombustivel = new JLabel("edit");
 		lblCombustivel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCombustivel.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblCombustivel.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCombustivel.setBounds(10, 399, 235, 28);
 		contentPane.add(lblCombustivel);
 		
 		JLabel lblPotencia = new JLabel("edit");
 		lblPotencia.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPotencia.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblPotencia.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblPotencia.setBounds(10, 438, 235, 28);
 		contentPane.add(lblPotencia);
 		
 		JLabel lblCor = new JLabel("edit");
 		lblCor.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCor.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblCor.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCor.setBounds(10, 472, 235, 28);
 		contentPane.add(lblCor);
 		
 		JLabel lblABS = new JLabel("edit");
 		lblABS.setHorizontalAlignment(SwingConstants.LEFT);
-		lblABS.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblABS.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblABS.setBounds(10, 508, 235, 28);
 		contentPane.add(lblABS);
 		
 		JLabel lblPreco = new JLabel("edit");
 		lblPreco.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPreco.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblPreco.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblPreco.setBounds(10, 547, 235, 28);
 		contentPane.add(lblPreco);
 		
 		JLabel lblQuilometragem = new JLabel("edit");
 		lblQuilometragem.setHorizontalAlignment(SwingConstants.LEFT);
-		lblQuilometragem.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblQuilometragem.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblQuilometragem.setBounds(10, 581, 235, 28);
 		contentPane.add(lblQuilometragem);
 		
 		JLabel lblPromocao = new JLabel("edit");
 		lblPromocao.setHorizontalAlignment(SwingConstants.LEFT);
-		lblPromocao.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblPromocao.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblPromocao.setBounds(10, 620, 235, 28);
 		contentPane.add(lblPromocao);
 		
 		JLabel lblFornecedor = new JLabel("edit");
 		lblFornecedor.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFornecedor.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblFornecedor.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblFornecedor.setBounds(10, 659, 235, 28);
 		contentPane.add(lblFornecedor);
 		
@@ -188,92 +188,92 @@ public class AmadoBatista extends JFrame {
 		lblNewLabel_5.setIcon(new ImageIcon(AmadoBatista.class.getResource("/visao/imagens/bglateral.png")));
 		lblNewLabel_5.setForeground(new Color(68, 116, 157));
 		lblNewLabel_5.setBackground(new Color(68, 116, 157));
-		lblNewLabel_5.setBounds(271, 188, 4, 473);
+		lblNewLabel_5.setBounds(264, 189, 4, 473);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_5_1 = new JLabel("");
 		lblNewLabel_5_1.setIcon(new ImageIcon(AmadoBatista.class.getResource("/visao/imagens/bglateral.png")));
 		lblNewLabel_5_1.setForeground(new Color(68, 116, 157));
 		lblNewLabel_5_1.setBackground(new Color(68, 116, 157));
-		lblNewLabel_5_1.setBounds(619, 189, 4, 473);
+		lblNewLabel_5_1.setBounds(613, 189, 4, 473);
 		contentPane.add(lblNewLabel_5_1);
 		
 		JLabel lblNome = new JLabel("edit");
 		lblNome.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNome.setBounds(294, 211, 235, 28);
+		lblNome.setBounds(278, 216, 235, 28);
 		contentPane.add(lblNome);
 		
 		JLabel lblUsuario = new JLabel("edit");
 		lblUsuario.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblUsuario.setBounds(294, 250, 235, 28);
+		lblUsuario.setBounds(278, 255, 235, 28);
 		contentPane.add(lblUsuario);
 		
 		JLabel lbltelefone = new JLabel("edit");
 		lbltelefone.setHorizontalAlignment(SwingConstants.LEFT);
 		lbltelefone.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lbltelefone.setBounds(294, 288, 235, 28);
+		lbltelefone.setBounds(278, 293, 292, 28);
 		contentPane.add(lbltelefone);
 		
 		JLabel lblEmail = new JLabel("edit");
 		lblEmail.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblEmail.setBounds(294, 327, 235, 28);
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblEmail.setBounds(278, 332, 329, 28);
 		contentPane.add(lblEmail);
 		
 		JLabel lblNomeCliente = new JLabel("edit");
 		lblNomeCliente.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNomeCliente.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNomeCliente.setBounds(633, 211, 235, 28);
+		lblNomeCliente.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblNomeCliente.setBounds(627, 211, 266, 28);
 		contentPane.add(lblNomeCliente);
 		
 		JLabel lblTelCliente = new JLabel("edit");
 		lblTelCliente.setHorizontalAlignment(SwingConstants.LEFT);
-		lblTelCliente.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblTelCliente.setBounds(633, 249, 235, 28);
+		lblTelCliente.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblTelCliente.setBounds(627, 249, 266, 28);
 		contentPane.add(lblTelCliente);
 		
 		JLabel lblEnderecoCliente = new JLabel("edit");
 		lblEnderecoCliente.setHorizontalAlignment(SwingConstants.LEFT);
-		lblEnderecoCliente.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblEnderecoCliente.setBounds(633, 285, 235, 28);
+		lblEnderecoCliente.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblEnderecoCliente.setBounds(627, 285, 266, 28);
 		contentPane.add(lblEnderecoCliente);
 		
 		JLabel lblDataVenda = new JLabel("edit");
 		lblDataVenda.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDataVenda.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblDataVenda.setBounds(633, 323, 235, 28);
+		lblDataVenda.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblDataVenda.setBounds(627, 323, 266, 28);
 		contentPane.add(lblDataVenda);
 		
 		JLabel lblFormaPagamento = new JLabel("edit");
 		lblFormaPagamento.setHorizontalAlignment(SwingConstants.LEFT);
-		lblFormaPagamento.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblFormaPagamento.setBounds(633, 362, 235, 28);
+		lblFormaPagamento.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblFormaPagamento.setBounds(627, 362, 266, 28);
 		contentPane.add(lblFormaPagamento);
 		
 		JLabel lblNivelCargo = new JLabel("edit");
 		lblNivelCargo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNivelCargo.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNivelCargo.setBounds(294, 362, 235, 28);
+		lblNivelCargo.setBounds(278, 367, 235, 28);
 		contentPane.add(lblNivelCargo);
 		
 		JLabel lblEndereco = new JLabel("Cor: <dynamic>");
 		lblEndereco.setHorizontalAlignment(SwingConstants.LEFT);
 		lblEndereco.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblEndereco.setBounds(294, 396, 235, 28);
+		lblEndereco.setBounds(278, 401, 235, 28);
 		contentPane.add(lblEndereco);
 		
 		JLabel lblCidade = new JLabel("Estado: <dynamic>");
 		lblCidade.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCidade.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblCidade.setBounds(294, 438, 235, 28);
+		lblCidade.setBounds(278, 443, 235, 28);
 		contentPane.add(lblCidade);
 		
 		JLabel lblBairro = new JLabel("Estado: <dynamic>");
 		lblBairro.setHorizontalAlignment(SwingConstants.LEFT);
 		lblBairro.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblBairro.setBounds(294, 472, 235, 28);
+		lblBairro.setBounds(278, 477, 235, 28);
 		contentPane.add(lblBairro);
 		
 		try {
@@ -340,7 +340,18 @@ public class AmadoBatista extends JFrame {
 
 			String resultado = terceiroParte + "/" + segundaParte + "/" + primeiroParte;
 			lblDataVenda.setText("Venda: "+resultado);
-			lblFormaPagamento.setText("Pagamento: "+venda.getFormaPagamento());
+			if(venda.getFormaPagamento().equals("Cartão de Crédito")) {
+				lblFormaPagamento.setText("Pagamento: Crédito");
+			}else if(venda.getFormaPagamento().equals("Cartão de Débito")){
+				lblFormaPagamento.setText("Pagamento: Débito");
+			}else if(venda.getFormaPagamento().equals("Pix")) {
+				lblFormaPagamento.setText("Pagamento: Pix");
+			}else if(venda.getFormaPagamento().equals("Boleto"))  {
+				lblFormaPagamento.setText("Pagamento: Boleto");
+			}else if(venda.getFormaPagamento().equals("Dinheiro em espécie")) {
+				lblFormaPagamento.setText("Pagamento: Dinheiro");
+			}
+			
 			
 			
 			
